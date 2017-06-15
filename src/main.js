@@ -6,7 +6,7 @@ import './css/common.css'
 import routes from './routes'
 import SmartUI from 'smart-ui'
 import 'smart-ui/lib/smart-ui.css'
-import App from './App'
+import App from 'views/app'
 
 // error tracking
 import Raven from 'raven-js'
