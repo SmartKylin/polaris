@@ -10,5 +10,6 @@ exports.getIP = function() {
       }
     });
   }
+  return '192.168.1.95'
   return IPv4;
 }

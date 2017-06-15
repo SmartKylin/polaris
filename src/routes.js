@@ -1,5 +1,8 @@
 import Login from 'views/user/login'
 import TentacleIndex from 'views/tentacle/index'
+import TentacleList from 'views/tentacle/list'
+import TentacleSearch from 'views/tentacle/search'
+
 import ClueIndex from 'views/clue/index'
 import UserIndex from 'views/user/index'
 
@@ -14,7 +17,15 @@ export default [
   },
   {
     path: '/tentacle',
-    component: TentacleIndex
+    component: TentacleIndex,
+  },
+  {
+    path: '/tentacle/list',
+    component: TentacleList
+  },
+  {
+    path: '/tentacle/search/:level',
+    component: TentacleSearch
   },
   {
     path: '/clue',

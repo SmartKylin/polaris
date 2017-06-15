@@ -30,7 +30,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      views: path.resolve(__dirname, '../src/views')
+      views: path.resolve(__dirname, '../src/views'),
     }
   },
 
