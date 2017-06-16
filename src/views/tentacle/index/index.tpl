@@ -1,5 +1,6 @@
 <div>
   <SearchBox/>
+
   <div class="index--count">
     <div class="index--total count--inner">
       <div class="index--num">121</div>
@@ -19,28 +20,28 @@
     </div>
   </div>
   <div class="index--overview">
-    <div class="index--wrap">
+    <div class="index--wrap success">
       <router-link to="/tentacle/list">
         <div>12</div>
-        <div class="index--label">1-A-高</div>
+        <div class="index--label">"1-A-高"触点</div>
         <div class="index--reply">进行逼单，扩大战果</div>
       </router-link>
     </div>
-    <div class="index--wrap">
+    <div class="index--wrap blue">
       <router-link to="/tentacle/list">
         <div >12</div>
-        <div class="index--label">"1-B-高"</div>
+        <div class="index--label">"B-高"触点</div>
         <div class="index--reply">定期回访，升级关系</div>
       </router-link>
     </div>
-    <div class="index--wrap">
+    <div class="index--wrap warning">
       <router-link to="/tentacle/list">
         <div>12</div>
-        <div class="index--label">"1-c-高"</div>
+        <div class="index--label">"1-c-高"触点</div>
         <div class="index--reply">价值驱动，定点激活</div>
       </router-link>
     </div>
-    <div class="index--wrap">
+    <div class="index--wrap danger">
       <router-link to="/tentacle/list">
         <div class="index--reply">12</div>
         <div class="index--label">VIP->5级、2级以上长期休眠</div>

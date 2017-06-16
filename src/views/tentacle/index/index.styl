@@ -1,3 +1,12 @@
+blue = #20A0FF
+green = #13CE66
+red = #FF4949
+orange = #F7BA2A
+black = #1F2D3D
+border(color)
+  border 4px solid color
+  border-radius 50%
+
 .index--search {
   margin: 30px;
   height: 30px;
@@ -15,13 +24,29 @@
   box-sizing: border-box;
   justify-content:space-between;
   text-align: center;
-  .count--inner {
-    font-size: 4px;
-    margin: 5px;
-    .index--num {
-        font-size: 18px;
-      }
+
+
+  .index--active {
+    border(orange)
   }
+  .index--contract {
+    border(blue)
+  }
+  .index--order {
+    border(green)
+  }
+}
+.index--total {
+  border(black)
+}
+.count--inner {
+  font-size: 12px;
+  margin: 5px;
+  padding 10px
+  .index--num {
+    font-size: 18px;
+  }
+
 }
 .index--overview {
   display: flex;
@@ -31,10 +56,13 @@
   justify-content:space-between;
   padding: 10px;
   box-sizing: border-box;
+
 }
 .index--wrap {
   width:46%;
   margin: 5px;
+  height: 80px;
+  border-radius: 10px;
   background: #fff;
   text-align: center;
   line-height: 20px;
@@ -44,10 +72,21 @@
     color: #000;
   }
 }
-
+.danger {
+  background: red
+}
+.success {
+  background green
+}
+.warning {
+  background orange
+}
+.blue {
+  background blue
+}
 .index--label {
-  color: #bbbbbb;
-  font-size:8px;
+  color: #fff;
+  font-size:12px;
 }
 
 

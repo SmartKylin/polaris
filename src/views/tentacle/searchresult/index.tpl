@@ -1,4 +1,4 @@
 <div>
-  <LevelOverview/>
+  <SearchBox/>
   <TentacleBar/>
 </div>

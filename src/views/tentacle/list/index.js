@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
-import Tentacle from '../../../components/Tentacle.vue'
 import LevelOverview from '../../../components/leveloverview'
+import TentacleBar from '../../../components/tentaclebar'
 
 export default create({
   data() {
@@ -11,6 +11,6 @@ export default create({
   },
   components: {
     LevelOverview,
-    Tentacle
+    TentacleBar
   }
 })

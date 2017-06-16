@@ -1,6 +1,5 @@
 import create from './index.tpl'
 import './index.styl'
-import TentacleBar from '../../../components/tentaclebar'
 
 export default create({
   data() {
@@ -8,7 +7,5 @@ export default create({
     }
   },
   components: {
-    TentacleBar
   }
 })
-
