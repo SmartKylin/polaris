@@ -10,6 +10,7 @@ import TentacleDetailLogger from 'views/tentacle/detail/logger'
 import TentacleDetailInfo from 'views/tentacle/detail/info'
 
 import ClueIndex from 'views/clue/index'
+import ClueDetail from 'views/clue/detail'
 import UserIndex from 'views/user/index'
 
 export default [
@@ -62,6 +63,10 @@ export default [
   {
     path: '/clue',
     component: ClueIndex
+  },
+  {
+    path: '/clue/:id',
+    component: ClueDetail
   },
   {
     path: '/user',
