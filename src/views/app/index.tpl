@@ -2,7 +2,7 @@
   <div :class="{havepadding: visible}">
     <router-view></router-view>
   </div>
-  <TabBar :visible="visible" bgcolor="rgba(255, 255, 255, 0.7)" fixed>
+  <TabBar :visible="visible" bgcolor="rgba(255, 255, 255, 0.9)" fixed>
     <TabBarItem :selected="route === '/tentacle'" title="触点" to="/tentacle">
       <img slot="icon" src="../../images/home.svg" />
       <img slot="icon-selected" src="../../images/home-active.svg" />
