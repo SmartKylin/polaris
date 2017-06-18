@@ -1,15 +1,20 @@
 import create from './index.tpl'
+import './index.styl'
+
+const rootPaths = [
+  '/tentacle',
+  '/clue',
+  '/user'
+]
 
 export default create({
-  data() {
-    return {
-      visible: true,
-    }
-  },
-
   computed: {
     route() {
-      return this.$route.path
+      return this.$route.path;
+    },
+    visible() {
+      return rootPaths.indexOf(this.$route.path) > -1
     }
   }
 })
+

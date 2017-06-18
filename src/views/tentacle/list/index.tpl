@@ -1,0 +1,4 @@
+<div>
+  <LevelOverview/>
+  <TentacleBar/>
+</div>
