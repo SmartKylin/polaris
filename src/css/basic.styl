@@ -1,10 +1,11 @@
 /* global variables
  ======================================== */
 
-color-20a0ff = #20a0ff // 蓝色
-color-fd6322 = #fd6322 // 黄色
-color-8492a6 = #8492a6 // 浅黑
-color-13ce66 = #13ce66 // 绿色
+color-blue = #20a0ff // 蓝色
+color-orange = #fd6322 // 黄色
+color-gray = #8492a6 // 浅黑
+color-green = #13ce66 // 绿色
+color-red = #FF4949 // 红色
 
 
 
@@ -58,25 +59,52 @@ for num in 5 10 15 20 25 30 35 40
  /* font color
  ======================================== */
 
- /* 蓝色 */
-.color-20a0ff {
-  color: color-20a0ff;
-}
-/* 黄色 */
-.color-fd6322 {
-  color: color-fd6322;
-}
-/* 浅灰 */
-.color-8492a6 {
-  color: color-8492a6;
-}
-/* 绿色 */
-.color-13ce66 {
-  color: color-13ce66;
+/* 提高优先级 */
+body {
+   /* 蓝色 */
+  .color-blue {
+    color: color-blue;
+  }
+  /* 黄色 */
+  .color-orange {
+    color: color-orange;
+  }
+  /* 浅灰 */
+  .color-gray {
+    color: color-gray;
+  }
+  /* 绿色 */
+  .color-green {
+    color: color-green;
+  }
+  /* 红色 */
+  .color-red {
+    color: color-red;
+  }
 }
 
+/* 提高优先级 */
+body {
+  .bg-blue {
+    background-color: color-blue;
+  }
 
+  .bg-orange {
+    background-color: color-orange;
+  }
 
+  .bg-gray {
+    background-color: color-gray;
+  }
+
+  .bg-green {
+    background-color: color-green;
+  }
+
+  .bg-red {
+    background-color: color-red;
+  }
+}
 /* clear
  ======================================== */
 
