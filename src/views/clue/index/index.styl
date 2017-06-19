@@ -175,6 +175,13 @@
   padding: 10px 15px;
   border-bottom: 1px solid #e0e0e0;
   background-color: #fff;
+  .tab--item {
+    padding: 0;
+    border: 0;
+  }
+  .tab--item.active {
+    background-color: transparent;
+  }
 }
 
 .clueView--list--sortBtn {
@@ -182,10 +189,6 @@
   text-decoration: underline;
   font-size: 14px;
   color: #8492a6;
-}
-
-.clueView--list--sortBtn:first-child {
-  color: #fd6322;
 }
 
 .clueView--list--amount {

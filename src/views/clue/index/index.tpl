@@ -1,9 +1,9 @@
 <div>
   <div class="clueView--top">
-    <div class="clueView--search">
+    <a class="clueView--search" href="#/clue/search">
       <input class="clueView--search--ipt" type="text" placeholder="输入姓名等关键词搜索线索...">
-    </div>
-    <div class="clueView--add"></div>
+    </a>
+    <a class="clueView--add" href="#/clue/add"></a>
   </div>
 
 <!--   <div class="clueView--data">
@@ -17,7 +17,7 @@
   </div>
  -->
 
-  <Tab @change="handleChange">
+  <Tab @change="queryWithStatus">
     <div class="tab--item" data-key="0">
       <p class="clueView--tabItem--cont">123</p>
       <p class="clueView--tabItem--name">全部</p>
@@ -40,22 +40,16 @@
     </div>
   </Tab>
 
-  <Tab @change="handleChange">
-    <div class="tab--item">123</div>
-    <div class="tab--item active">123</div>
-  </Tab>
-
   <div class="clueView--list--sort">
-    <div>
-      <span class="clueView--list--sortBtn">概率有限</span>
-      <span class="clueView--list--sortBtn">金额优先</span>
-    </div>
+    <Tab @change="sortBy">
+      <div class="tab--item clueView--list--sortBtn active" data-key="效率">概率有限</div>
+      <div class="tab--item clueView--list--sortBtn" data-key="金额">金额优先</div>
+    </Tab>
     <span class="clueView--list--amount">查询总金额：250万</span>
   </div>
 
-  <div class="clueView--list mt10">
-    <router-link to="/clue/123">
-    <div class="clueView--listItem" v-for="i in [1,2,2,3]">
+  <ListView class="clueView--list mt10">
+    <div class="clueView--listItem" v-for="i in [1,2,3,4]" :data-listview-to="'/clue/'+ i">
       <div class="clueView--listItem--main">
 
         <div class="clueView--listItem--hd">
@@ -78,20 +72,16 @@
               <span>招商银行</span>
               <span>金领贷</span>
             </div>
-            <div>
-              已停留 3 天
-            </div>
+            <div>已停留 3 天</div>
           </div>
-          <a class="call-up-ctrl" href="tel:18692120886"></a>
+          <a class="call-up-ctrl" href="tel:18692120886" @click.stop></a>
         </div>
 
         <div class="clueView--listItem--ft">
-          <div class="button--small mr10">关闭线索</div>
-          <div class="button--small mr10">转单</div>
-          <div class="button--small">生成咨询订单</div>
+          <a class="button--small mr10" href="#/clue/close/123" @click.stop>关闭线索</a>
+          <a class="button--small" href="#/clue/edit/123" @click.stop>预约面签</a>
         </div>
       </div>
     </div>
-    </router-link>
-  </div>
+  </ListView>
 </div>
