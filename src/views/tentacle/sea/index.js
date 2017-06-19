@@ -6,8 +6,6 @@ import TentacleBar from '../../../components/tentaclebar'
 export default create({
   data() {
     return {
-      keyword: '',
-      overviewAry: [],
     }
   },
   components: {

@@ -2,7 +2,7 @@
   <SearchBar @search-focus="tosearch()"></SearchBar>
   <LevelOverview/>
 
-  <div class="tentacleSearch--tab mt10">
+  <div class="tentacleSearch--tab mt10" @click="selectLabel($event)">
     <div class="tentacleSearch--tabItem">
       <p class="tentacleSearch--tabItem--name">高产</p>
     </div>
@@ -16,7 +16,7 @@
       <p class="tentacleSearch--tabItem--name">全部</p>
     </div>
   </div>
-  <div class="tentacleSearch--tab mt10">
+  <div class="tentacleSearch--tab mt10" @click="selectLabel($event)">
     <div class="tentacleSearch--tabItem">
       <p class="tentacleSearch--tabItem--name">A类</p>
     </div>

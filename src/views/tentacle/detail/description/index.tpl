@@ -1,7 +1,7 @@
 <div>
   <div class="achieve--history ">
     <div class="descrip--title">评价标签</div>
-    <div class="descrip--bd">
+    <div class="descrip--bd" @click="selectLabel($event)">
       <div>
         关系标签
         <span class="active">A类</span>

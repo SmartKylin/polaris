@@ -19,28 +19,28 @@
     </div>
   </div>
   <div class="index--overview">
-    <div class="index--wrap success">
+    <div class="index--wrap">
       <router-link to="/tentacle/list">
         <div>12</div>
         <div class="index--label">"1-A-高"触点</div>
         <div class="index--reply">进行逼单，扩大战果</div>
       </router-link>
     </div>
-    <div class="index--wrap blue">
+    <div class="index--wrap">
       <router-link to="/tentacle/list">
         <div >12</div>
         <div class="index--label">"B-高"触点</div>
         <div class="index--reply">定期回访，升级关系</div>
       </router-link>
     </div>
-    <div class="index--wrap warning">
+    <div class="index--wrap">
       <router-link to="/tentacle/list">
         <div>12</div>
         <div class="index--label">"C-高"触点</div>
         <div class="index--reply">价值驱动，定点激活</div>
       </router-link>
     </div>
-    <div class="index--wrap danger">
+    <div class="index--wrap">
       <router-link to="/tentacle/list">
         <div class="index--reply">12</div>
         <div class="index--label">VIP->5级、2级以上长期休眠</div>
@@ -48,24 +48,18 @@
       </router-link>
     </div>
   </div>
-  <CellGroup style="margin-top: 15px" class="index--cellgroup">
-    <Cell title="一级触点" arrow class="index--cell" to="/tentacle/search/:1">
-      <span slot="body">12</span>
+  <CellGroup class="index--cellgroup">
+    <Cell title="一级触点" arrow class="index--cell" to="/tentacle/search/:1" content="12">
     </Cell>
-    <Cell title="二级触点" arrow class="index--cell" to="/tentacle/search/:2">
-      <span slot="body">12</span>
+    <Cell title="二级触点" arrow class="index--cell" to="/tentacle/search/:2" content="12">
     </Cell>
-    <Cell title="三级触点" arrow class="index--cell" to="/tentacle/search/:3">
-      <span slot="body">12</span>
+    <Cell title="三级触点" arrow class="index--cell" to="/tentacle/search/:3" content="12">
     </Cell>
-    <Cell title="四级触点" arrow class="index--cell" to="/tentacle/search/:4">
-      <span slot="body">12</span>
+    <Cell title="四级触点" arrow class="index--cell" to="/tentacle/search/:4" content="12">
     </Cell>
-    <Cell title="五级触点" arrow class="index--cell" to="/tentacle/search/:5">
-      <span slot="body">12</span>
+    <Cell title="五级触点" arrow class="index--cell" to="/tentacle/search/:5" content="12">
     </Cell>
-    <Cell title="VIP触点" arrow class="index--cell" to="/tentacle/search/:6">
-      <span slot="body">12</span>
-    </Cell>
+    <Cell title="VIP触点" arrow class="index--cell" to="/tentacle/search/:6" content="12">
+     </Cell>
   </CellGroup>
 </div>

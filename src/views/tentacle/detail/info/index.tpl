@@ -40,4 +40,5 @@
       </div>
     </div>
   </div>
+  <router-link class="tentacle--listItem--btn" to="/tentacle/edit">编辑</router-link>
 </div>
