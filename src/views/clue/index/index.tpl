@@ -54,8 +54,8 @@
         <div class="clueView--listItem--hd">
           <span class="clueView--listItem--code">ZFL201706191633</span>
           <div class="clear-gap">
-            <span class="tag--fd6322 mr5">待签约</span>
-            <span class="tag--fd6322">未收款</span>
+            <span class="tag--orange mr5">待签约</span>
+            <span class="tag--orange">未收款</span>
           </div>
         </div>
 
