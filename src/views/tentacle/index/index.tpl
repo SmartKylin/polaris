@@ -1,22 +1,21 @@
 <div>
   <SearchBox/>
-
-  <div class="index--count">
-    <div class="index--total count--inner">
-      <div class="index--num">121</div>
-      <div>触点总量</div>
+  <div class="tentacleView--tab mt10">
+    <div class="tentacleView--tabItem">
+      <p class="tentacleView--tabItem--cont">121</p>
+      <p class="tentacleView--tabItem--name">触点总量</p>
     </div>
-    <div class="index--active count--inner">
-      <div class="index--num">42</div>
-      <div>激活触点</div>
+    <div class="tentacleView--tabItem">
+      <p class="tentacleView--tabItem--cont">42</p>
+      <p class="tentacleView--tabItem--name">激活触点</p>
     </div>
-    <div class="index--contract count--inner">
-      <div class="index--num">27</div>
-      有签约记录
+    <div class="tentacleView--tabItem">
+      <p class="tentacleView--tabItem--cont">27</p>
+      <p class="tentacleView--tabItem--name">有签约记录</p>
     </div>
-    <div class="index--order count--inner">
-      <div class="index--num">8</div>
-      <div>有成单记录</div>
+    <div class="tentacleView--tabItem">
+      <p class="tentacleView--tabItem--cont">8</p>
+      <p class="tentacleView--tabItem--name">有成单记录</p>
     </div>
   </div>
   <div class="index--overview">
@@ -37,7 +36,7 @@
     <div class="index--wrap warning">
       <router-link to="/tentacle/list">
         <div>12</div>
-        <div class="index--label">"1-c-高"触点</div>
+        <div class="index--label">"C-高"触点</div>
         <div class="index--reply">价值驱动，定点激活</div>
       </router-link>
     </div>

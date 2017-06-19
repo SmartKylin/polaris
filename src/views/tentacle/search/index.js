@@ -1,19 +1,25 @@
 import create from './index.tpl'
 import './index.styl'
-import SearchBox from '../../../components/searchbar'
+import SearchBar from '../../../components/searchbar'
 import TentacleBar from '../../../components/tentaclebar'
 import LevelOverview from '../../../components/leveloverview'
 
 export default create({
   data() {
     return {
-      keyword: '',
-      overviewAry: [],
+
     }
   },
   components: {
-    SearchBox,
+    SearchBar,
     LevelOverview,
     TentacleBar
+  },
+  methods: {
+    tosearch() {
+      console.log('search');
+      console.log('111');
+      this.$router.push('/tentacle/searchresult');
+    }
   }
 })

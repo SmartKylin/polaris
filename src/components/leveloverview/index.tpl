@@ -1,36 +1,33 @@
 <div class="overview--wrap">
-  <div class="level--group">
-    <div class="level--item active">
-      <div class="level--num">12</div>
-      <div class="level">全部</div>
-    </div>
-  </div>
-  <div class="level--group">
-    <div class="level--item">
-      <div class="level--num">12</div>
-      <div class="level">1级触点</div>
-    </div>
-    <div class="level--item">
-      <div class="level--num">12</div>
-      <div class="level">2级触点</div>
-    </div>
-    <div class="level--item">
-      <div class="level--num">12</div>
-      <div class="level">3级触点</div>
-    </div>
-  </div>
-  <div class="level--group">
-    <div class="level--item">
-      <div class="level--num">12</div>
-      <div class="level">4级触点</div>
-    </div>
-    <div class="level--item">
-      <div class="level--num">12</div>
-      <div class="level">5级触点</div>
-    </div>
-    <div class="level--item">
-      <div class="level--num">12</div>
-      <div class="level">VIP触点</div>
+    <div class="tentacleView--tab mt10">
+      <div class="tentacleView--tabItem active">
+        <p class="tentacleView--tabItem--cont">12</p>
+        <p class="tentacleView--tabItem--name">全部</p>
+      </div>
+      <div class="tentacleView--tabItem">
+        <p class="tentacleView--tabItem--cont">123</p>
+        <p class="tentacleView--tabItem--name">1级触点</p>
+      </div>
+      <div class="tentacleView--tabItem">
+        <p class="tentacleView--tabItem--cont">123</p>
+        <p class="tentacleView--tabItem--name">2级触点</p>
+      </div>
+      <div class="tentacleView--tabItem">
+        <p class="tentacleView--tabItem--cont">123</p>
+        <p class="tentacleView--tabItem--name">3级触点</p>
+      </div>
+      <div class="tentacleView--tabItem">
+        <p class="tentacleView--tabItem--cont">123</p>
+        <p class="tentacleView--tabItem--name">4级触点</p>
+      </div>
+      <div class="tentacleView--tabItem">
+        <p class="tentacleView--tabItem--cont">123</p>
+        <p class="tentacleView--tabItem--name">5级触点</p>
+      </div>
+      <div class="tentacleView--tabItem">
+        <p class="tentacleView--tabItem--cont">123</p>
+        <p class="tentacleView--tabItem--name">vip级触点</p>
+      </div>
     </div>
   </div>
 </div>

@@ -1,24 +1,40 @@
-.level--group {
+.tentacleView--tab {
   display: flex;
-  width: 100%;
-  text-align: center;
-  justify-content space-around
-  box-sizing border-box
-  line-height 20px
-  padding: 0 30px;
-  .level--item {
-    //padding 3px
-    border-bottom 1px solid #000
-  }
-  .level--item.active {
-    .level--num, .level {
-      color: red
-    }
-    border-color red
-    border-bottom-width 5px
-  }
+  background-color: #fff;
 }
 
+.tentacleView--tabItem {
+  flex: 1;
+  text-align: center;
+  padding: 10px 5px;
+  border-bottom: 2px solid #20a0ff;
+  box-sizing: border-box;
+}
+
+.tentacleView--tabItem--cont {
+  padding-bottom: 5px;
+  font-size: 14px;
+  color: #353535;
+}
+
+.tentacleView--tabItem--name {
+  font-size: 12px;
+  color: #8492A6;
+}
+
+.tentacleView--tabItem.active {
+  background-color: #f5f5f5;
+}
+
+.tentacleView--tabItem.active .tentacleView--tabItem--cont,
+.tentacleView--tabItem.active .tentacleView--tabItem--name {
+  color: #fd6322;
+}
+
+.mt10 {
+  margin-top: 0;
+}
 .overview--wrap {
-  padding: 20px 30px;
+  margin 0;
+  padding 0
 }

@@ -4,7 +4,12 @@ import './index.styl'
 export default create({
   data() {
     return {
-      keyword: '',
     }
   },
+  methods: {
+    foucusHandler() {
+      console.log('component emit');
+      this.$emit('search-focus');
+    }
+  }
 })

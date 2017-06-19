@@ -1,20 +1,33 @@
-.search--type {
+.tentacleSearch--tab {
   display flex
-  list-style none
   background #fff
-  width 100%
-  margin 0 auto
-  //padding 20px 30px
-  box-sizing border-box
-  justify-content space-around
+  margin-bottom: 10px;
+}
+.tentacleSearch--tabItem {
+  flex: 1;
+  text-align: center;
+  padding: 10px 5px;
+  box-sizing: border-box;
 }
 
-.search--yield {
-  display flex
-  background #fff
-  //width 100%
-  //margin 10px 30px
-  padding 20px 30px
-  box-sizing border-box
-  justify-content space-around
+.tentacleSearch--tabItem--cont {
+  padding-bottom: 5px;
+  font-size: 14px;
+  color: #353535;
 }
+
+.tentacleSearch--tabItem--name {
+  font-size: 12px;
+  color: #8492A6;
+}
+
+.tentacleSearch--tabItem.active {
+  background-color: #f5f5f5;
+}
+
+.tentacleSearch--tabItem.active .tentacleSearch--tabItem--cont,
+.tentacleSearch--tabItem.active .tentacleSearch--tabItem--name {
+  color: #fd6322;
+}
+
+
