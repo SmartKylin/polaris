@@ -12,6 +12,7 @@ import TentacleDetailInfo from 'views/tentacle/detail/info'
 
 import ClueIndex from 'views/clue/index'
 import ClueDetail from 'views/clue/detail'
+import ClueEdit from 'views/clue/edit'
 import UserIndex from 'views/user/index'
 
 export default [
@@ -19,10 +20,12 @@ export default [
     path: '/',
     redirect: '/tentacle'
   },
-  {
-    path: '/login',
-    component: Login
-  },
+
+
+  /**
+   * 触点
+   * ==========================
+   */
   {
     path: '/tentacle',
     component: TentacleIndex,
@@ -65,16 +68,36 @@ export default [
       }
     ]
   },
+
+
+  /**
+   * 线索
+   * ==========================
+   */
   {
     path: '/clue',
     component: ClueIndex
   },
   {
-    path: '/clue/:id',
+    path: '/clue/add',
+    component: ClueEdit
+  },
+  {
+    path: '/clue/:id(\\d+)',
     component: ClueDetail
   },
+
+
+  /**
+   * 用户中心
+   * ==========================
+   */
   {
     path: '/user',
     component: UserIndex
-  }
+  },
+  {
+    path: '/login',
+    component: Login
+  },
 ]
