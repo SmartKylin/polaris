@@ -47,14 +47,15 @@
   </div>
 
   <div class="clueView--list">
+    <router-link to="/clue/123">
     <div class="clueView--listItem" v-for="i in [1,2,2,3]">
       <div class="clueView--listItem--main">
 
         <div class="clueView--listItem--hd">
           <span class="clueView--listItem--code">ZFL201706191633</span>
-          <div class="clueView--listItem--tag">
-            <span>待签约</span>
-            <span>未收款</span>
+          <div class="clear-gap">
+            <span class="tag--fd6322 mr5">待签约</span>
+            <span class="tag--fd6322">未收款</span>
           </div>
         </div>
 
@@ -74,15 +75,16 @@
               已停留 3 天
             </div>
           </div>
-          <a class="mobile" href="tel:18692120886"></a>
+          <a class="call-up-ctrl" href="tel:18692120886"></a>
         </div>
 
         <div class="clueView--listItem--ft">
-          <div class="clueView--listItem--btn">关闭线索</div>
-          <div class="clueView--listItem--btn">转单</div>
-          <div class="clueView--listItem--btn">生成咨询订单</div>
+          <div class="button--small mr10">关闭线索</div>
+          <div class="button--small mr10">转单</div>
+          <div class="button--small">生成咨询订单</div>
         </div>
       </div>
     </div>
+    </router-link>
   </div>
 </div>
