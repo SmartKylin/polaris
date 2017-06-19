@@ -2,12 +2,11 @@ require('es6-promise').polyfill()
 import Vue from 'vue'
 import Router from 'vue-router'
 import FastClick from 'fastclick'
-import './css/normalize.css'
-import './css/common.css'
-import routes from './routes'
 import SmartUI from 'smart-ui'
 import 'smart-ui/lib/smart-ui.css'
+import routes from './routes'
 import App from 'views/app'
+import './css/index.styl'
 
 // error tracking
 import Raven from 'raven-js'
