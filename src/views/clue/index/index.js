@@ -5,5 +5,11 @@ export default create({
   data() {
     return {
     }
+  },
+
+  methods: {
+    handleChange(key) {
+      console.log(key)
+    }
   }
 })

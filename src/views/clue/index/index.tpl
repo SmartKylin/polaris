@@ -16,28 +16,35 @@
     <div>更多线索</div>
   </div>
  -->
-  <div class="clueView--tab">
-    <div class="clueView--tabItem">
+
+  <Tab @change="handleChange">
+    <div class="tab--item" data-key="0">
       <p class="clueView--tabItem--cont">123</p>
       <p class="clueView--tabItem--name">全部</p>
     </div>
-    <div class="clueView--tabItem active">
+    <div class="tab--item active" data-key="1">
       <p class="clueView--tabItem--cont">123</p>
       <p class="clueView--tabItem--name">待预约</p>
     </div>
-    <div class="clueView--tabItem">
+    <div class="tab--item" data-key="2">
       <p class="clueView--tabItem--cont">123</p>
       <p class="clueView--tabItem--name">待签约</p>
     </div>
-    <div class="clueView--tabItem">
+    <div class="tab--item" data-key="3">
       <p class="clueView--tabItem--cont">123</p>
       <p class="clueView--tabItem--name">待放款</p>
     </div>
-    <div class="clueView--tabItem">
+    <div class="tab--item" data-key="4">
       <p class="clueView--tabItem--cont">123</p>
       <p class="clueView--tabItem--name">待结单</p>
     </div>
-  </div>
+  </Tab>
+
+  <Tab @change="handleChange">
+    <div class="tab--item">123</div>
+    <div class="tab--item active">123</div>
+  </Tab>
+
   <div class="clueView--list--sort">
     <div>
       <span class="clueView--list--sortBtn">概率有限</span>

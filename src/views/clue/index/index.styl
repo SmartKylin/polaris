@@ -100,20 +100,6 @@
 }
 
 
-
-.clueView--tab {
-  display: flex;
-  background-color: #fff;
-}
-
-.clueView--tabItem {
-  flex: 1;
-  text-align: center;
-  padding: 10px 5px;
-  border-bottom: 2px solid #20a0ff;
-  box-sizing: border-box;
-}
-
 .clueView--tabItem--cont {
   padding-bottom: 5px;
   font-size: 14px;
@@ -125,16 +111,11 @@
   color: #8492A6;
 }
 
-.clueView--tabItem.active {
-  background-color: #f5f5f5;
+.tab--item.active {
+  .clueView--tabItem--cont {
+    color: #fd6322;
+  }
 }
-
-.clueView--tabItem.active .clueView--tabItem--cont,
-.clueView--tabItem.active .clueView--tabItem--name {
-  color: #fd6322;
-}
-
-
 
 .clueView--listItem {
   margin-bottom: 10px;
