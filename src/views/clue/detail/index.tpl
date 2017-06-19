@@ -3,7 +3,7 @@
     <div class="clueDetail--order--hd">
       <span class="clueDetail--order--code">FYT10876862</span>
       <div class="flex vertical-center">
-        <span class="color-orange">面聊</span>
+        <span class="color-green">面聊</span>
         <i class="dividing-line ml10 mr10"></i>
         <span class="color-blue">待收费</span>
       </div>

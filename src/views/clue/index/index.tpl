@@ -6,7 +6,7 @@
     <div class="clueView--add"></div>
   </div>
 
-  <div class="clueView--data">
+<!--   <div class="clueView--data">
     <p class="clueView--data--amount">652万</p>
     <p class="clueView--data--desc">在途总金额</p>
   </div>
@@ -15,19 +15,19 @@
     <i class="clueView--links--line"></i>
     <div>更多线索</div>
   </div>
-
-  <div class="clueView--tab mt10">
+ -->
+  <div class="clueView--tab">
     <div class="clueView--tabItem">
       <p class="clueView--tabItem--cont">123</p>
-      <p class="clueView--tabItem--name">在途线索</p>
+      <p class="clueView--tabItem--name">全部</p>
     </div>
     <div class="clueView--tabItem active">
       <p class="clueView--tabItem--cont">123</p>
-      <p class="clueView--tabItem--name">待签约</p>
+      <p class="clueView--tabItem--name">待预约</p>
     </div>
     <div class="clueView--tabItem">
       <p class="clueView--tabItem--cont">123</p>
-      <p class="clueView--tabItem--name">待审批</p>
+      <p class="clueView--tabItem--name">待签约</p>
     </div>
     <div class="clueView--tabItem">
       <p class="clueView--tabItem--cont">123</p>
@@ -46,7 +46,7 @@
     <span class="clueView--list--amount">查询总金额：250万</span>
   </div>
 
-  <div class="clueView--list">
+  <div class="clueView--list mt10">
     <router-link to="/clue/123">
     <div class="clueView--listItem" v-for="i in [1,2,2,3]">
       <div class="clueView--listItem--main">
