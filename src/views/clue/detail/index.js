@@ -5,5 +5,5 @@ export default create({
   data() {
     return {
     }
-  }
+  },
 })
