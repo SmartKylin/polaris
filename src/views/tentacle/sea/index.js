@@ -1,21 +1,17 @@
 import create from './index.tpl'
 import './index.styl'
-import LevelOverview from '../../../components/leveloverview'
+import SearchBox from '../../../components/searchbar'
 import TentacleBar from '../../../components/tentaclebar'
 
 export default create({
   data() {
     return {
-
+      keyword: '',
+      overviewAry: [],
     }
   },
   components: {
-    LevelOverview,
+    SearchBox,
     TentacleBar
-  },
-  methods: {
-    loadmore() {
-      console.log('loadmore')
-    }
   }
 })

@@ -5,6 +5,7 @@ import TentacleSearch from 'views/tentacle/search'
 import TentacleSearchResult from 'views/tentacle/searchresult'
 import TentacleDetail from 'views/tentacle/detail'
 import TentacleAdd from 'views/tentacle/add'
+import TentacleSea from 'views/tentacle/sea'
 import TentacleDetailAchieve from 'views/tentacle/detail/achieve'
 import TentacleDetailDescription from 'views/tentacle/detail/description'
 import TentacleDetailLogger from 'views/tentacle/detail/logger'
@@ -31,6 +32,10 @@ export default [
     component: TentacleIndex,
   },
   {
+    path: '/tentacle/sea',
+    component: TentacleSea
+  },
+  {
     path: '/tentacle/add',
     component: TentacleAdd
   },
@@ -51,7 +56,11 @@ export default [
     component: TentacleDetail,
     children: [
       {
-        path: 'achieve',
+        path: '/',
+        redirect: 'achieve'
+      },
+      {
+        path: '/tentacle/detail/achieve',
         component: TentacleDetailAchieve
       },
       {

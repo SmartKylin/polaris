@@ -1,0 +1,4 @@
+<div>
+  <SearchBox/>
+  <TentacleBar/>
+</div>

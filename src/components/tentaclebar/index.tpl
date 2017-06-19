@@ -24,13 +24,15 @@
             <a class="mobile" href="tel:18692120886"></a>
           </div>
           <div class="tentacle--listItem--ft">
-            <div class="tentacle--listItem--btn" @click="visible1=true">加入拜访计划</div>
-            <div class="tentacle--listItem--btn" @click="visible2=true">写日志</div>
-            <div class="tentacle--listItem--btn" @click="visible3=true">释放触点</div>
+            <div class="tentacle--listItem--btn" @click="addPlan($event)">加入拜访计划</div>
+            <div class="tentacle--listItem--btn" @click="addLogger($event)">写日志</div>
+            <div class="tentacle--listItem--btn" @click="deliverTentacle($event)">释放触点</div>
 
             <Popup v-model="visible1">
               <div class="popup-plan popup--layer">
-                <span>display from the top</span>
+                <div>提醒时间</div>
+                <Field label="拜访标题" type="text" placeholder="拜访标题"></Field>
+                <textarea name="" id="" cols="30" rows="10">拜访情况</textarea>
               </div>
             </Popup>
             <Popup v-model="visible2">
