@@ -13,7 +13,7 @@
         <dd class="cont color-orange">85%</dd>
         <dt class="name">成单概率</dt>
       </dl>
-      <i class="clueDetail--line"></i>
+      <i class="dividing-line"></i>
       <dl class="clueDetail--order--cost">
         <dd class="cont">
           应收 <span class="color-orange">3000</span> 实收 <span class="color-orange">0</span>
