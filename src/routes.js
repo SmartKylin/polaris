@@ -4,6 +4,7 @@ import TentacleList from 'views/tentacle/list'
 import TentacleSearch from 'views/tentacle/search'
 import TentacleSearchResult from 'views/tentacle/searchresult'
 import TentacleDetail from 'views/tentacle/detail'
+import TentacleAdd from 'views/tentacle/add'
 import TentacleDetailAchieve from 'views/tentacle/detail/achieve'
 import TentacleDetailDescription from 'views/tentacle/detail/description'
 import TentacleDetailLogger from 'views/tentacle/detail/logger'
@@ -25,6 +26,10 @@ export default [
   {
     path: '/tentacle',
     component: TentacleIndex,
+  },
+  {
+    path: '/tentacle/add',
+    component: TentacleAdd
   },
   {
     path: '/tentacle/list',

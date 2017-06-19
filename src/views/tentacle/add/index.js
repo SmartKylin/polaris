@@ -1,12 +1,14 @@
 import create from './index.tpl'
 import './index.styl'
+import TentacleBar from '../../../components/tentaclebar'
 
 export default create({
   data() {
     return {
-      visible1: false,
-      visible2: false,
-      visible3: false
     }
   },
+  components: {
+    TentacleBar
+  }
 })
+
