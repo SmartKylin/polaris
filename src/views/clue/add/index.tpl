@@ -1,6 +1,12 @@
 <div>
   <CellGroup :hasBorder="false">
-    <Cell title="关联触点" content="" arrow></Cell>
+    <Cell
+      title="关联触点"
+      arrow
+      to="/clue/add/pick-tentacle"
+    >
+      <p v-show="tentacle.code" class="clueAdd--tentacle" slot="body">{{tentacle.name}} | {{tentacle.channelInstitutionName}}({{tentacle.address}}) | {{tentacle.mobile}}</p>
+    </Cell>
   </CellGroup>
 
   <CellGroup :hasBorder="false" class="mt10">

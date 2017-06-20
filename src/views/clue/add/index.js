@@ -1,4 +1,5 @@
 import { addClue, editClue } from 'services'
+import bus from '../../../helper/bus'
 import create from './index.tpl'
 import './index.styl'
 
@@ -7,6 +8,8 @@ export default create({
     return {
       // 线索编码
       clueCode: '',
+      // 触点信息
+      tentacle: {},
       // 借款人信息
       users: {
         // 真实姓名
@@ -45,6 +48,11 @@ export default create({
       this.$toast.show('服务异常，请重试', () => {
         this.$router.back()
       })
+    })
+
+    // 保存选择的触点信息
+    bus.$on('pick-tentacle', data => {
+      this.tentacle = data
     })
   },
 
