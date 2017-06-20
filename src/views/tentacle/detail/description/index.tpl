@@ -1,7 +1,7 @@
 <div>
-  <div class="achieve--history ">
+  <div>
     <div class="descrip--title">评价标签</div>
-    <div class="descrip--bd">
+    <div class="descrip--bd" @click="selectLabel($event)">
       <div>
         关系标签
         <span class="active">A类</span>
@@ -22,21 +22,26 @@
       </div>
     </div>
   </div>
-  <div class="achieve--exchange ">
+  <div>
     <div class="descrip--title">兴趣爱好</div>
     <!--<ol>
       <li>喜欢喝酒</li>
       <li>喜欢足球</li>
       <li>对花粉过敏</li>
     </ol>-->
-    <textarea name="" id="" cols="43" rows="5">
+    <div class="text--wrap">
+      <textarea name="" id="" cols="43" rows="5" class="text--area">
       喜欢喝酒
       喜欢足球
       对花粉过敏
     </textarea>
+    </div>
   </div>
-  <div class="achieve--status">
-    <div class=" achieve--title">其他画像备注</div>
-    <textarea >画像备注。。。。</textarea>
+  <div>
+    <div class="descrip--title">其他画像备注</div>
+    <div class="text--wrap">
+      <textarea name="" id="" cols="30" rows="5" class="text--area"></textarea>
+    </div>
   </div>
+  <div class="tentacle--btn">提交</div>
 </div>

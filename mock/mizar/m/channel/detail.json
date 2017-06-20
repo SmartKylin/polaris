@@ -1,0 +1,53 @@
+{
+  "path": "",
+  "delay": 500,
+  "name": "",
+  "description": "",
+  "isPaging": false,
+  "datasource": "success.data",
+  "responseName": "success",
+  "response": {
+    "success": {
+      "retcode": 2000000,
+      "msg": "成功",
+      "data": {
+        "id":"30",
+        "code":"csMtg5k42hKKe",
+        "name":"郑麒麟",
+        "mobile":"18623171659",
+        "position":"产品经理",
+        "address":"四惠大厦",
+        "remark":"备注",
+        "source":"3",
+        "status":"1",
+        "level":"1",
+        "label":[
+          "B类",
+          "底产",
+          "一级"
+        ],
+        "industry":"1",
+        "endorseSuccProbability":0,
+        "loanSuccProbability":0,
+        "groupId":"1",
+        "channelInstitutionId":"1",
+        "cityId":"1",
+        "areaId":"10",
+        "staffCode":"666666",
+        "claimTime":"2017-06-17 21:29:16",
+        "channelInstitutionName":"链家地产",
+        "recentRelationTime":"0",
+        "recentDeliveryClueTime":"0",
+        "deliveryNum":"0",
+        "endorseNum":"0",
+        "bargainNum":"0",
+        "recentDeliveryClueId":"0",
+        "recentBargainClueId":"0"
+      }
+    },
+    "failure": {
+      "retcode": "201",
+      "msg": "服务异常"
+    }
+  }
+}

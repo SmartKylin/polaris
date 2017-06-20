@@ -1,10 +1,11 @@
 <div>
-  <div class="tentacleDetail--tab mt10">
-    <div class="tentacleDetail--tabItem active">
-      <p class="tentacleDetail--tabItem--name">拜访记录</p>
-    </div>
-    <div class="tentacleDetail--tabItem">
-      <p class="tentacleDetail--tabItem--name">操作记录</p>
+  <Tab @change="handleChange">
+    <div class="tab--item active">拜访记录</div>
+    <div class="tab--item">操作记录</div>
+  </Tab>
+  <div class="visit--record">
+    <div class="visit--record--top pd20">
+      <TodoItem></TodoItem>
     </div>
   </div>
 </div>

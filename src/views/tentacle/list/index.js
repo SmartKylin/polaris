@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
-import LevelOverview from '../../../components/leveloverview'
-import TentacleBar from '../../../components/tentaclebar'
+import LevelOverview from 'components/leveloverview'
+import TentacleBar from 'components/tentaclebar'
 
 export default create({
   data() {
@@ -12,5 +12,10 @@ export default create({
   components: {
     LevelOverview,
     TentacleBar
+  },
+  methods: {
+    loadmore() {
+      console.log('loadmore')
+    }
   }
 })

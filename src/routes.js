@@ -5,6 +5,8 @@ import TentacleSearch from 'views/tentacle/search'
 import TentacleSearchResult from 'views/tentacle/searchresult'
 import TentacleDetail from 'views/tentacle/detail'
 import TentacleAdd from 'views/tentacle/add'
+import TentacleEdit from 'views/tentacle/Edit'
+import TentacleSea from 'views/tentacle/sea'
 import TentacleDetailAchieve from 'views/tentacle/detail/achieve'
 import TentacleDetailDescription from 'views/tentacle/detail/description'
 import TentacleDetailLogger from 'views/tentacle/detail/logger'
@@ -24,7 +26,6 @@ export default [
     redirect: '/tentacle'
   },
 
-
   /**
    * 触点
    * ==========================
@@ -34,8 +35,16 @@ export default [
     component: TentacleIndex,
   },
   {
+    path: '/tentacle/sea',
+    component: TentacleSea
+  },
+  {
     path: '/tentacle/add',
     component: TentacleAdd
+  },
+  {
+    path: '/tentacle/edit',
+    component: TentacleEdit
   },
   {
     path: '/tentacle/list',
@@ -50,11 +59,17 @@ export default [
     component: TentacleSearchResult
   },
   {
+    // path: '/tentacle/detail/:datakey',
     path: '/tentacle/detail',
+    name: "detail",
     component: TentacleDetail,
     children: [
+     /* {
+        path: '/',
+        redirect: 'achieve'
+      },*/
       {
-        path: 'achieve',
+        path: '/tentacle/detail/achieve',
         component: TentacleDetailAchieve
       },
       {

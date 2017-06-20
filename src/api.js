@@ -11,6 +11,9 @@ export default (config => {
     return copy
   }, {})
 })({
+  "statis": "/mizar/m/channel/statis",
+  "tentaclelist": "/mizar/m/channel/list",
+  "tentacledetail": "/mizar/m/channel/detail",
   // 查询线索
   "clueList": "/mizar/m/clue/list",
   // 编辑线索

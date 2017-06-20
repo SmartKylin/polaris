@@ -2,7 +2,7 @@
   <div class="tentacleView--top">
     <div class="tentacleView--search">
       <router-link to="/tentacle/searchresult">
-        <input class="tentacleView--search--ipt" type="text" placeholder="输入姓名等关键词搜索触点..." @focus="foucusHandler">
+        <input class="tentacleView--search--ipt" type="text" placeholder="输入姓名等关键词搜索触点...">
       </router-link>
     </div>
     <router-link to="/tentacle/add">

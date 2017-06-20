@@ -26,13 +26,14 @@
     </Tab>
   </div>
 
-  <!-- <div class="clueView--list--sort">
-    <Tab @change="sortBy">
-      <div class="tab--item clueView--list--sortBtn active" data-key="效率">概率有限</div>
-      <div class="tab--item clueView--list--sortBtn" data-key="金额">金额优先</div>
-    </Tab>
-    <span class="clueView--list--amount">查询总金额：250万</span>
-  </div> -->
+
+    <!-- <div class="clueView--list--sort">
+      <Tab @change="sortBy">
+        <div class="tab--item clueView--list--sortBtn active" data-key="效率">概率有限</div>
+        <div class="tab--item clueView--list--sortBtn" data-key="金额">金额优先</div>
+      </Tab>
+      <span class="clueView--list--amount">查询总金额：250万</span>
+    </div> -->
 
   <ListView class="clueView--list">
     <div class="clueView--listItem" v-for="data in dataList" :data-listview-to="'/clue/'+ data.clueCode">

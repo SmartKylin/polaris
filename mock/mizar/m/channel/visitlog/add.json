@@ -1,0 +1,28 @@
+```
+{
+  "path": "",
+  "delay": 500,
+  "name": "",
+  "description": "",
+  "isPaging": false,
+  "datasource": "success.data",
+  "responseName": "success",
+  "response": {
+    "success": {
+      "retcode": 2000000,
+      "msg": "成功",
+      "data": {
+        参数名	类型	参数说明	是否必填	备注
+        visitTime	string	拜访时间	Y
+        channelCode	string	触点编码	Y
+        content	string	拜访内容	Y
+
+      }
+    },
+    "failure": {
+      "retcode": "201",
+      "msg": "服务异常"
+    }
+  }
+}
+```

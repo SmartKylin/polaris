@@ -9,21 +9,21 @@
   "response": {
     "success": {
       "retcode": 2000000,
-      "msg": "获取数据成功",
-      "data": {
-        "all":1620,
-        "waitSignedService":50,
-        "loan":11,
-        "waitApproval":23,
-        "success":9,
-        "waitEndOrder":612,
-        "waitLoan":8,
-        "waitFace":998
+      "msg": "成功",
+      "data":{
+        "all":20,
+        "waitSignedService":0,
+        "loan":0,
+        "waitApproval":0,
+        "success":0,
+        "waitEndOrder":0,
+        "waitLoan":0,
+        "waitFace":1
       }
     },
     "failure": {
-      "retcode": 4000000,
-      "msg": "系统罢工啦~"
+      "retcode": "201",
+      "msg": "服务异常"
     }
   }
 }

@@ -7,9 +7,6 @@ export default create({
     }
   },
   methods: {
-    foucusHandler() {
-      console.log('component emit');
-      this.$emit('search-focus');
-    }
+
   }
 })

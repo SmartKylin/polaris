@@ -15,6 +15,7 @@ Vue.use(SmartUI)
 initHelper(Vue)
 
 
+
 /**
  * 注册通用全局组件
  */
@@ -71,5 +72,6 @@ import App from 'views/app'
 import './css/index.styl'
 
 new Vue({ el: '#app', router, ...App })
+
 
 

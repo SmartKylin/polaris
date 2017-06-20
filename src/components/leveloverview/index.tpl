@@ -1,6 +1,6 @@
 <div class="overview--wrap">
-    <div class="tentacleView--tab mt10">
-      <div class="tentacleView--tabItem active">
+    <div class="tentacleView--tab mt10" @click="changeLevel($event)">
+      <div class="tentacleView--tabItem selected">
         <p class="tentacleView--tabItem--cont">12</p>
         <p class="tentacleView--tabItem--name">全部</p>
       </div>
