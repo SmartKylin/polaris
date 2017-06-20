@@ -14,7 +14,9 @@ import TentacleDetailInfo from 'views/tentacle/detail/info'
 
 import ClueIndex from 'views/clue/index'
 import ClueDetail from 'views/clue/detail'
+import ClueAdd from 'views/clue/add'
 import ClueEdit from 'views/clue/edit'
+import ClueClose from 'views/clue/close'
 import UserIndex from 'views/user/index'
 
 export default [
@@ -95,10 +97,18 @@ export default [
   },
   {
     path: '/clue/add',
+    component: ClueAdd
+  },
+  {
+    path: '/clue/edit/:code',
     component: ClueEdit
   },
   {
-    path: '/clue/:id(\\d+)',
+    path: '/clue/close/:code',
+    component: ClueClose
+  },
+  {
+    path: '/clue/:code',
     component: ClueDetail
   },
 

@@ -8,11 +8,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import SmartUI from 'smart-ui'
 import 'smart-ui/lib/smart-ui.css'
-import Api from './api'
+import initHelper from './helper'
 
 Vue.use(Router)
 Vue.use(SmartUI)
-Vue.use(Api);
+initHelper(Vue)
+
 
 
 /**

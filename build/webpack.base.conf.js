@@ -31,7 +31,8 @@ module.exports = {
     extensions: ['.js', '.vue'],
     alias: {
       views: path.resolve(__dirname, '../src/views'),
-      components: path.resolve(__dirname, '../src/components')
+      components: path.resolve(__dirname, '../src/components'),
+      services: path.resolve(__dirname, '../src/services/index.js'),
     }
   },
 

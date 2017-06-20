@@ -21,9 +21,9 @@
         <dt class="name">服务费</dt>
       </dl>
     </div>
-    <div class="clueDetail--order--ft">
+    <!-- <div class="clueDetail--order--ft">
       <div class="button--small">修改成功概率</div>
-    </div>
+    </div> -->
   </div>
 
   <div class="clueDetail--card mt10">
@@ -133,7 +133,20 @@
   </div>
 
   <div class="clueDetail--operation">
-    <div class="clueDetail--operation-btn">关闭线索</div>
-    <div class="clueDetail--operation-btn">预约面签</div>
+    <a class="clueDetail--operation-btn" href="#/clue/close/123">关闭</a>
+    <a class="clueDetail--operation-btn" href="#/clue/edit/123">编辑</a>
+    <div class="clueDetail--operation-btn" @click="makeInterview">预约面签</div>
   </div>
+
+  <Popup v-model="interviewVisible">
+    <div class="clueDetail--interview">
+      <Cell title="待办内容" content="预约面签"></Cell>
+      <Cell title="预约日期" arrow>
+        <Datepicker slot="body" placeholder="请选择预约日期"/>
+      </Cell>
+      <div class="pt30 pl15 pr15">
+        <div class="button--large">提交</div>
+      </div>
+    </div>
+  </Popup>
 </div>

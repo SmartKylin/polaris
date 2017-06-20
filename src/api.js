@@ -14,6 +14,20 @@ export default (config => {
   "statis": "/mizar/m/channel/statis",
   "tentaclelist": "/mizar/m/channel/list",
   "tentacledetail": "/mizar/m/channel/detail",
+  // 查询线索
+  "clueList": "/mizar/m/clue/list",
+  // 编辑线索
+  "clueEdit": "/mizar/m/clue/editor",
+  // 关闭线索
+  "clueClose": "/mizar/m/clue/close",
+  // 线索详情
+  "clueDetail": "/mizar/m/clue/detail",
+  // 线索操作日志
+  "clueLog": "/mizar/m/clue/log",
+  // 添加线索
+  "clueAdd": "/mizar/m/clue/add",
+  // 线索统计数据
+  "clueStatis": "/mizar/m/clue/statis"
 })
 
 
