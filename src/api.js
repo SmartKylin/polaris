@@ -11,8 +11,9 @@ export default (config => {
     return copy
   }, {})
 })({
-  // 示例，可以删除
-  "example": "/api/v1/example",
+  "statis": "/mizar/m/channel/statis",
+  "tentaclelist": "/mizar/m/channel/list",
+  "tentacledetail": "/mizar/m/channel/detail",
 })
 
 

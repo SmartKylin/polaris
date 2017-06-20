@@ -6,18 +6,26 @@ export default create({
     hasOwner: {
       type: Boolean,
       default: true,
+    },
+    data: {
+      type: Object
+    },
+    datakey: {
+      type: String,
+      default: '',
     }
   },
   data() {
     return {
       visible1: false,
       visible2: false,
-      visible3: false
+      visible3: false,
+      canLink: true,
     }
   },
   methods: {
     addPlan(event) {
-      console.log(event);
+      event.stopPropagation()
       this.visible1 = true
 
     },
@@ -28,6 +36,19 @@ export default create({
     deliverTentacle (event) {
       this.visible3 = true
       event.stopPropagation()
+    },
+    pushto() {
+      if (this.$route.path.indexOf('/tentacle/detail') <= -1) {
+        console.log('push');
+        console.log(this.datakey);
+        this.$router.push({name: 'detail' ,params: {datakey: this.datakey}})
+      }
+    }
+  },
+  mounted() {
+    console.log(this.$route.path);
+    if (this.$route.path.indexOf('/tentacle/detail') > -1) {
+      this.canLink = false
     }
   }
 })

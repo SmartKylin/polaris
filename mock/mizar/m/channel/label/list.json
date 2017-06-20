@@ -1,0 +1,67 @@
+{
+  "path": "",
+  "delay": 500,
+  "name": "",
+  "description": "",
+  "isPaging": false,
+  "datasource": "success.data",
+  "responseName": "success",
+  "response": {
+    "success": {
+      "retcode": 2000000,
+      "msg": "成功",
+      "data": {
+        "1":{
+          "type":"关系标签",
+          "list":[
+            {
+              "id":"1",
+              "type":"关系标签",
+              "name":"A类",
+              "explain":"关系近，积极合作"
+            },
+            {
+              "id":"2",
+              "type":"关系标签",
+              "name":"B类",
+              "explain":"表现犹豫，有顾忌"
+            },
+            {
+              "id":"3",
+              "type":"关系标签",
+              "name":"C类",
+              "explain":"表现敷衍，需要激励"
+            },
+            {
+              "id":"4",
+              "type":"关系标签",
+              "name":"D类",
+              "explain":"明确拒接合作或被释放"
+            }
+          ]
+        },
+        "2":{
+          "type":"产能标签",
+          "list":[
+            {
+              "id":"6",
+              "type":"产能标签",
+              "name":"高产",
+              "explain":"高产能"
+            },
+            {
+              "id":"7",
+              "type":"产能标签",
+              "name":"底产",
+              "explain":"底产能"
+            }
+          ]
+        }
+      }
+    },
+    "failure": {
+      "retcode": "201",
+      "msg": "服务异常"
+    }
+  }
+}

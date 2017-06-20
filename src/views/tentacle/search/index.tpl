@@ -1,37 +1,18 @@
 <div>
-  <SearchBar @search-focus="tosearch()"></SearchBar>
+  <SearchBar></SearchBar>
   <LevelOverview/>
-
-  <div class="tentacleSearch--tab mt10" @click="selectLabel($event)">
-    <div class="tentacleSearch--tabItem">
-      <p class="tentacleSearch--tabItem--name">高产</p>
-    </div>
-    <div class="tentacleSearch--tabItem active">
-      <p class="tentacleSearch--tabItem--name">中产</p>
-    </div>
-    <div class="tentacleSearch--tabItem">
-      <p class="tentacleSearch--tabItem--name">低产</p>
-    </div>
-    <div class="tentacleSearch--tabItem">
-      <p class="tentacleSearch--tabItem--name">全部</p>
-    </div>
-  </div>
-  <div class="tentacleSearch--tab mt10" @click="selectLabel($event)">
-    <div class="tentacleSearch--tabItem">
-      <p class="tentacleSearch--tabItem--name">A类</p>
-    </div>
-    <div class="tentacleSearch--tabItem active">
-      <p class="tentacleSearch--tabItem--name">B类</p>
-    </div>
-    <div class="tentacleSearch--tabItem">
-      <p class="tentacleSearch--tabItem--name">C类</p>
-    </div>
-    <div class="tentacleSearch--tabItem">
-      <p class="tentacleSearch--tabItem--name">D类</p>
-    </div>
-    <div class="tentacleSearch--tabItem">
-      <p class="tentacleSearch--tabItem--name">E类</p>
-    </div>
-  </div>
-  <TentacleBar v-for="i in [1, 2, 3, 4]"/>
+  <Tab @change="handleChange">
+    <div class="tab--item active" data-key="206">高产</div>
+    <!--<div class="tab&#45;&#45;item">中产</div>-->
+    <div class="tab--item" data-key="207">低产</div>
+    <div class="tab--item">全部</div>
+  </Tab>
+  <Tab @change="handleChange">
+    <div class="tab--item active" data-key="101">A类</div>
+    <div class="tab--item" data-key="102">B类</div>
+    <div class="tab--item" data-key="103">C类</div>
+    <div class="tab--item" data-key="104">D类</div>
+    <div class="tab--item">休眠</div>
+  </Tab>
+  <TentacleBar v-for="tent in data.list" :data="tent" :datakey="tent.code"/>
 </div>

@@ -9,5 +9,5 @@
   </Cell>
   <Field label="职位" placeholder="请输入职位名称"></Field>
   <Field label="备注" placeholder="请输入备注"></Field>
-  <Button class="Button--primary">保存</Button>
+  <div class="tentacle--btn">保存</div>
 </div>

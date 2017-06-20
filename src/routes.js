@@ -23,7 +23,6 @@ export default [
     redirect: '/tentacle'
   },
 
-
   /**
    * 触点
    * ==========================
@@ -57,13 +56,15 @@ export default [
     component: TentacleSearchResult
   },
   {
+    // path: '/tentacle/detail/:datakey',
     path: '/tentacle/detail',
+    name: "detail",
     component: TentacleDetail,
     children: [
-      {
+     /* {
         path: '/',
         redirect: 'achieve'
-      },
+      },*/
       {
         path: '/tentacle/detail/achieve',
         component: TentacleDetailAchieve

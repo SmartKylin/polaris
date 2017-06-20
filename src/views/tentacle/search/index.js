@@ -4,10 +4,15 @@ import SearchBar from '../../../components/searchbar'
 import TentacleBar from '../../../components/tentaclebar'
 import LevelOverview from '../../../components/leveloverview'
 
+import http from '../../../http'
+import api from '../../../api'
+
 export default create({
   data() {
     return {
-
+      data: {
+        list: []
+      }
     }
   },
   components: {
@@ -17,8 +22,6 @@ export default create({
   },
   methods: {
     tosearch() {
-      console.log('search');
-      console.log('111');
       this.$router.push('/tentacle/searchresult');
     },
     selectLabel (event) {
@@ -36,8 +39,20 @@ export default create({
         let chils = par.getElementsByTagName('div')
         chils = Array.from(chils)
         chils.forEach(e=>(e.className = 'tentacleSearch--tabItem'))
-        ele.className += ' active';
+        ele.className += ' active'
       }
+    },
+    handleChange(key) {
+      console.log(key);
     }
+  },
+  mounted() {
+    let level = parseInt(this.$route.params.level)
+    http.get(api.tentaclelist, {
+      level,
+    }).then(data=> {
+      console.log(data)
+      this.data = data
+    })
   }
 })

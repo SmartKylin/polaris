@@ -32,12 +32,12 @@ var server = new WebpackDevServer(webpack(config), {
 	hot: useHot,
 	stats: { colors: true, chunks: false },
   disableHostCheck: true,
-	// proxy: {
-	//   '/api': {
-	//     target: 'http://192.168.1.91',
-	//     secure: false
-	//   }
-	// },
+	proxy: {
+	  // '/api': {
+	  //   target: 'http://127.0.0.1',
+	  //   secure: false
+	  // }
+	},
 })
 
 server.listen(8080, function() {

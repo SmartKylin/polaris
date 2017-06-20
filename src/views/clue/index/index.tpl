@@ -41,7 +41,7 @@
   </Tab>
 
   <Tab @change="handleChange">
-    <div class="tab--item">123</div>
+    <div class="tab--item" >123</div>
     <div class="tab--item active">123</div>
   </Tab>
 

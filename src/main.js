@@ -8,10 +8,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import SmartUI from 'smart-ui'
 import 'smart-ui/lib/smart-ui.css'
+import Api from './api'
 
 Vue.use(Router)
 Vue.use(SmartUI)
-
+Vue.use(Api);
 
 
 /**
@@ -70,5 +71,6 @@ import App from 'views/app'
 import './css/index.styl'
 
 new Vue({ el: '#app', router, ...App })
+
 
 
