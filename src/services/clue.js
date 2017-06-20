@@ -83,3 +83,11 @@ export function editClue(params) {
 }
 
 
+/**
+ * 添加金融方案
+ */
+export function addLoanScheme(params) {
+  return http.post(apis.addLoanScheme, params)
+}
+
+

@@ -27,7 +27,9 @@ export default (config => {
   // 添加线索
   "clueAdd": "/mizar/m/clue/add",
   // 线索统计数据
-  "clueStatis": "/mizar/m/clue/statis"
+  "clueStatis": "/mizar/m/clue/statis",
+  // 添加金融方案
+  "addLoanScheme": "/mizar/m/clue/solutions/add",
 })
 
 
