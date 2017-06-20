@@ -85,15 +85,15 @@ export default [
     component: ClueAdd
   },
   {
-    path: '/clue/edit/:id',
+    path: '/clue/edit/:code',
     component: ClueEdit
   },
   {
-    path: '/clue/close/:id',
+    path: '/clue/close/:code',
     component: ClueClose
   },
   {
-    path: '/clue/:id(\\d+)',
+    path: '/clue/:code',
     component: ClueDetail
   },
 
