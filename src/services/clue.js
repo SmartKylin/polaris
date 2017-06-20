@@ -73,3 +73,13 @@ export function closeClue(params) {
 export function addClue(params) {
   return http.post(apis.clueAdd, params)
 }
+
+
+/**
+ * 编辑线索
+ */
+export function editClue(params) {
+  return http.post(apis.clueEdit, params)
+}
+
+

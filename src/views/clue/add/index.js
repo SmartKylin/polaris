@@ -1,12 +1,14 @@
-import { addClue } from 'services'
+import { addClue, editClue } from 'services'
 import create from './index.tpl'
 import './index.styl'
 
 export default create({
   data() {
     return {
+      // 线索编码
+      clueCode: '',
       // 借款人信息
-      user: {
+      users: {
         // 真实姓名
         name: '',
         // 手机号
@@ -15,7 +17,7 @@ export default create({
         idCard: ''
       },
       // 抵押物信息
-      house: {
+      houses: {
         // 地址
         address: '',
         // 估值
@@ -33,9 +35,31 @@ export default create({
     }
   },
 
-  methods: {
-    save() {
+  created() {
+    // 每次进入添加线索页时，发送一个空的提交用于产生一个临时线索
+    // 主要是为了拿到 clueCode
+    // 接下来的操作实际就成了编辑刚刚创建的临时线索
+    addClue({}).then(res => {
+      this.clueCode = res.clueCode
+    }).catch(err => {
+      this.$toast.show('服务异常，请重试', () => {
+        this.$router.back()
+      })
+    })
+  },
 
+  methods: {
+    // 保存修改
+    save() {
+      this.$loading.show()
+      editClue(this.$data).then(res => {
+        this.$loading.hide()
+        this.$toast.show('操作成功')
+      })
+      .catch(err => {
+        this.$loading.hide()
+        this.$dialog.alert('提示', err.message)
+      })
     }
   }
 })
