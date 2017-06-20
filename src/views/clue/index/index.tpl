@@ -18,18 +18,22 @@
     </div>
    -->
 
-  <Tab @change="handleChange">
-    <div class="tab--item" >123</div>
-    <div class="tab--item active">123</div>
-  </Tab>
-
-  <!-- <div class="clueView--list--sort">
-    <Tab @change="sortBy">
-      <div class="tab--item clueView--list--sortBtn active" data-key="效率">概率有限</div>
-      <div class="tab--item clueView--list--sortBtn" data-key="金额">金额优先</div>
+    <Tab @change="queryWithStatus">
+      <div class="tab--item" :data-key="data.id" v-for="(data, k) in categories" :class="{active: k === 0}">
+        <p class="clueView--tabItem--cont">{{data.val}}</p>
+        <p class="clueView--tabItem--name">{{data.name}}</p>
+      </div>
     </Tab>
-    <span class="clueView--list--amount">查询总金额：250万</span>
-  </div> -->
+  </div>
+
+
+    <!-- <div class="clueView--list--sort">
+      <Tab @change="sortBy">
+        <div class="tab--item clueView--list--sortBtn active" data-key="效率">概率有限</div>
+        <div class="tab--item clueView--list--sortBtn" data-key="金额">金额优先</div>
+      </Tab>
+      <span class="clueView--list--amount">查询总金额：250万</span>
+    </div> -->
 
   <ListView class="clueView--list">
     <div class="clueView--listItem" v-for="data in dataList" :data-listview-to="'/clue/'+ data.clueCode">
