@@ -1,0 +1,29 @@
+{
+  "path": "",
+  "delay": 500,
+  "name": "",
+  "description": "",
+  "isPaging": false,
+  "datasource": "success.data",
+  "responseName": "success",
+  "response": {
+    "success": {
+      "retcode": 2000000,
+      "msg": "获取数据成功",
+      "data": {
+        "all":1620,
+        "waitSignedService":50,
+        "loan":11,
+        "waitApproval":23,
+        "success":9,
+        "waitEndOrder":612,
+        "waitLoan":8,
+        "waitFace":998
+      }
+    },
+    "failure": {
+      "retcode": 4000000,
+      "msg": "系统罢工啦~"
+    }
+  }
+}
