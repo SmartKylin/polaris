@@ -17,7 +17,7 @@ import ClueDetail from 'views/clue/detail'
 import ClueAdd from 'views/clue/add'
 import ClueEdit from 'views/clue/edit'
 import ClueClose from 'views/clue/close'
-import PickerTentacle from 'views/clue/picker-tentacle'
+import PickTentacle from 'views/clue/pick-tentacle'
 import UserIndex from 'views/user/index'
 
 export default [
@@ -101,8 +101,8 @@ export default [
     component: ClueAdd,
     children: [
       {
-        path: 'picker-tentacle',
-        component: PickerTentacle
+        path: 'pick-tentacle',
+        component: PickTentacle
       }
     ]
   },
