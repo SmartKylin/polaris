@@ -65,3 +65,11 @@ export function queryClueStatis() {
 export function closeClue(params) {
   return http.post(apis.clueClose, params)
 }
+
+
+/**
+ * 添加线索
+ */
+export function addClue(params) {
+  return http.post(apis.clueAdd, params)
+}

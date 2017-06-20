@@ -1,5 +1,7 @@
 <div>
-  <Cell title="关联触点" content="" arrow></Cell>
+  <CellGroup :hasBorder="false">
+    <Cell title="关联触点" content="" arrow></Cell>
+  </CellGroup>
 
   <CellGroup :hasBorder="false" class="mt10">
     <Field label="借款人姓名" align="right" placeholder="输入借款人的姓名"></Field>
@@ -17,9 +19,12 @@
     <Field label="借款周期(月)" align="right" placeholder="输入借款周期"></Field>
   </CellGroup>
 
-  <CellGroup :hasBorder="false" class="mt10">
-    <Field label="收费方式" align="right" placeholder="输入收费方式"></Field>
-    <Field label="计算方式" align="right" placeholder="输入计算方式"></Field>
-    <Field label="服务费(元)/服务费率(%)" align="right" placeholder="输入计算方式"></Field>
+  <p class="clueAdd--notice">成单概率能帮助你更好的管理时间</p>
+  <CellGroup :hasBorder="false">
+    <Field label="成单概率(%)" align="right" placeholder="请输入成单概率"></Field>
   </CellGroup>
+
+  <div class="mt30 pl20 pr20">
+    <div class="button--large">提交</div>
+  </div>
 </div>
