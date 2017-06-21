@@ -30,7 +30,6 @@ export default create({
 
       if (!params.id) {
         delete params.id
-
         addLoanScheme(params).then(res => {
           this.$loading.hide()
           this.dataList.push({

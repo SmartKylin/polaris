@@ -99,3 +99,39 @@ export function editLoanScheme(params) {
 }
 
 
+/**
+ * 查询指定线索信息
+ */
+export function queryClueByCode(params) {
+  return http.get(apis.clueDetail, params).then(res => {
+    if (!res.serviceInfo) {
+      res.serviceInfo = {
+        "contractNo": "",
+        "chargesAmount": 0,
+        "deposit": 0,
+        "serviceCharge": 0,
+        "about": ""
+      }
+    }
+    return res
+  })
+}
+
+
+/**
+ * 预约面签
+ */
+export function makeInterview(params) {
+  return http.post(apis.makeInterview, params)
+}
+
+
+/**
+ * 编辑待办事项
+ */
+export function editTodo(params) {
+  return http.post(apis.todoEdit, params)
+}
+
+
+

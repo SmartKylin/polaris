@@ -18,6 +18,7 @@ import ClueAdd from 'views/clue/add'
 import ClueEdit from 'views/clue/edit'
 import ClueClose from 'views/clue/close'
 import PickTentacle from 'views/clue/pick-tentacle'
+import TodoDone from 'views/clue/todo-done'
 import UserIndex from 'views/user/index'
 
 export default [
@@ -118,8 +119,10 @@ export default [
     path: '/clue/:code',
     component: ClueDetail
   },
-
-
+  {
+    path: '/todo/close/:id',
+    component: TodoDone
+  },
   /**
    * 用户中心
    * ==========================

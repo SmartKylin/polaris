@@ -42,8 +42,8 @@
         <div class="clueView--listItem--hd">
           <span class="clueView--listItem--code">{{data.clueCode}}</span>
           <div class="clear-gap">
-            <span class="tag--orange mr5">待签约</span>
-            <span class="tag--orange">未收款</span>
+            <span class="tag--orange mr5" v-if="data.statusName">{{data.statusName}}</span>
+            <span class="tag--orange" v-if="data.serviceStatusName">{{data.serviceStatusName}}</span>
           </div>
         </div>
 

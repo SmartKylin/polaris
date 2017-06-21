@@ -11,6 +11,85 @@
       "retcode": 2000000,
       "msg": "获取数据成功",
       "data": {
+        "clueCode": "CU21170619763051",
+        "cityId": 21,
+        "channelCode": "21",
+        "businessCode": "1497343287480340",
+        "status": 0,
+        "statusName": "面聊",
+        "serviceStatusName": "待收款",
+        "source": 1,
+        "declarationTime": "2017-06-19 19:31:34",
+        "probability": 100,
+        "users": {
+          "id": 12,
+          "clueCode": "CU21170619763051",
+          "name": "小强",
+          "phone": "18601901479",
+          "idCard": "12312asdasfasd",
+          "type": 0
+        },
+        "houses": {
+          "id": 12,
+          "clueCode": "CU21170619763051",
+          "city": 21,
+          "district": 21,
+          "address": "半山坡",
+          "assessedValue" : ""
+        },
+        "expect": {
+          "id": 15,
+          "clueCode": "CU21170619763051",
+          "amount": 20000000,
+          "term": 12,
+          "emergency": 1,
+          "repaymentMethod": 0
+        },
+        "serviceInfo": {
+          "contractNo": "XXXXXXXXXXX",
+          "chargesAmount": 123,
+          "deposit": 12,
+          "serviceCharge": 1,
+          "about": "备注"
+        },
+        "loanInfos": {
+          "bank":"招商银行",
+          "loanStatusName": "已提交",
+          "contractNo": "XXXXXXXXXXX",
+          "loanStatus": 1,
+          "loanAmount": 3000000,
+          "loanRate": 1,
+          "loanTerm": 10,
+          "about": "备注"
+        },
+        "channel":{
+          "name": "曹操",
+          "channelInstitutionName": "中原房产",
+          "mobile": 18623171659
+        },
+        "backlog": [
+          {
+            "planTime": "2017-07-01 10:10",
+            "title": "预约面聊",
+            "isAccomplish": 2,
+            "id": 123,
+            "remark": "这里是长长长长长长长长长长长长长长长长长长长长的备注信息"
+          },
+          {
+            "planTime": "2017-07-02 10:10",
+            "title": "搞基搞基",
+            "isAccomplish": 0,
+            "id": 1234,
+            "remark": "这里是长长长长长长长长长长长长长长长长长长长长的备注信息"
+          },
+          {
+            "planTime": "2017-07-02 10:10",
+            "title": "挖鱼挖鱼",
+            "isAccomplish": 1,
+            "id": 1234,
+            "remark": "这里是长长长长长长长长长长长长长长长长长长长长的备注信息"
+          }
+        ]
       }
     },
     "failure": {

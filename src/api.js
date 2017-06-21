@@ -31,7 +31,11 @@ export default (config => {
   // 添加金融方案
   "addLoanScheme": "/mizar/m/clue/solutions/add",
   // 修改金融方案
-  "editLoanScheme": "/mizar/m/clue/solutions/editor"
+  "editLoanScheme": "/mizar/m/clue/solutions/editor",
+  // 预约面签
+  "makeInterview": "/mizar/m/clue/interview",
+  // 待办事项
+  "todoEdit": "/mizar/m/task/up"
 })
 
 
