@@ -2,24 +2,24 @@
   <div>
     <div class="descrip--title">评价标签</div>
     <div class="descrip--bd" @click="selectLabel($event)">
-      <div>
+      <div class="flex">
         关系标签
         <span class="active">A类</span>
         <span>B类</span>
         <span>C类</span>
         <span>D类</span>
       </div>
-      <div>
+      <div class="flex">
         产能标签
         <span class="active">高产</span>
         <span>中产</span>
         <span>低产</span>
       </div>
-      <div>
+    <!--  <div>
         其他描述
         <span class="active">递单快</span>
         <span>熟悉行业</span>
-      </div>
+      </div>-->
     </div>
   </div>
   <div>
@@ -43,5 +43,5 @@
       <textarea name="" id="" cols="30" rows="5" class="text--area"></textarea>
     </div>
   </div>
-  <div class="tentacle--btn">提交</div>
+  <div class="button--large">提交</div>
 </div>

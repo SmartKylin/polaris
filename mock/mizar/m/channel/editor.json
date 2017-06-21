@@ -9,12 +9,12 @@
   "response": {
     "success": {
       "retcode": 2000000,
-      "msg": "添加拜访日志成功"
+      "msg": "修改触点成功",
+      "data": "..."
     },
     "failure": {
-      "retcode": "201",
-      "msg": "添加拜访日志是失败"
+      "retcode": 4000000,
+      "msg": "修改触点失败~"
     }
   }
 }
-

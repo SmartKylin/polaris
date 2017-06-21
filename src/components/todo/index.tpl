@@ -23,7 +23,7 @@
         <Datepicker slot="body" placeholder="请选择提醒时间" value="2017/06/14"/>
       </Cell>
       <textarea name="" id="" cols="30" rows="5" placeholder="失败原因" class="text--area"></textarea>
-      <div class="tentacle--btn">删除待办事项</div>
+      <div class="button--large mt5">删除待办事项</div>
     </div>
   </Popup>
 </div>

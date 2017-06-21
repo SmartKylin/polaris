@@ -36,13 +36,14 @@
         "staffCode":"666666",
         "claimTime":"2017-06-17 21:29:16",
         "channelInstitutionName":"链家地产",
-        "recentRelationTime":"0",
-        "recentDeliveryClueTime":"0",
+        "recentRelationTime": "2017-05-17 21:29:16",
+        "recentDeliveryClueTime": "2017-06-129 21:20:16",
+        "recentBargainClueTime": "2017-06-17 21:29:16",
         "deliveryNum":"0",
         "endorseNum":"0",
         "bargainNum":"0",
-        "recentDeliveryClueId":"0",
-        "recentBargainClueId":"0"
+        "recentDeliveryClueId":"CU2117061976305-0",
+        "recentBargainClueId":"CU21170619763051-1"
       }
     },
     "failure": {

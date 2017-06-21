@@ -5,7 +5,5 @@ export default create({
   data() {
     return {
     }
-  },
-  components: {
   }
 })

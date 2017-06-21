@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import TentacleBar from '../../../components/tentaclebar'
+import TentacleBar from 'components/tentaclebar'
 
 import http from '../../../http'
 import api from '../../../api'
@@ -8,23 +8,21 @@ import api from '../../../api'
 export default create({
   data() {
     return {
-      data: {
-      }
+      data: {}
     }
   },
   components: {
     TentacleBar
   },
   mounted() {
-    console.log('detail:' + this.$route.params.datakey);
     let code = this.$route.params.datakey;
     http.get(api.tentacledetail, {
       code,
-    }).then(data=>{
-      console.log(data);
+    }).then(data => {
       this.data = data
+    }).catch(err => {
+      this.$dialog.alert('提示', err.message)
     })
-
   }
 })
 

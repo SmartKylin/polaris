@@ -45,12 +45,12 @@
       <div>
         <span>最近一次递单时间:</span>
         <span>{{data.recentDeliveryClueTime}}</span>
-        <router-link to="/clue">查询线索详情</router-link>
+        <router-link :to="'/clue/' + data.recentDeliveryClueId">查询线索详情</router-link>
       </div>
       <div>
-        <span>最近一次成单时间:???</span>
-        <span>2017年6月8</span>
-        <router-link to="/clue">查询线索详情</router-link>
+        <span>最近一次成单时间:</span>
+        <span>{{data.recentBargainClueTime}}</span>
+        <router-link :to="'/clue/' + data.recentBargainClueId">查询线索详情</router-link>
       </div>
     </div>
   </div>

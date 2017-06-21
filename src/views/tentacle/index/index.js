@@ -4,6 +4,8 @@ import create from './index.tpl'
 import './index.styl'
 import http from '../../../http'
 import api from '../../../api'
+import { queryTentacle } from 'services'
+
 
 export default create({
   data() {
@@ -30,15 +32,14 @@ export default create({
           "vip": 0
         }
       }
-
     }
   },
   components: {
     SearchBox,
-    LevelOverview
+    LevelOverview,
   },
   mounted() {
-    http.get(api.statis).then(data=> {
+    http.get(api.tentacleStatis).then(data=> {
       this.data = data;
     })
   }
