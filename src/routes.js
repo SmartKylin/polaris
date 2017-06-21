@@ -17,6 +17,7 @@ import ClueDetail from 'views/clue/detail'
 import ClueAdd from 'views/clue/add'
 import ClueEdit from 'views/clue/edit'
 import ClueClose from 'views/clue/close'
+import ClueLogs from 'views/clue/logs'
 import PickTentacle from 'views/clue/pick-tentacle'
 import TodoDone from 'views/clue/todo-done'
 import UserIndex from 'views/user/index'
@@ -118,6 +119,10 @@ export default [
   {
     path: '/clue/:code',
     component: ClueDetail
+  },
+  {
+    path: '/clue/logs/:code',
+    component: ClueLogs
   },
   {
     path: '/todo/close/:id',

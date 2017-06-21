@@ -139,4 +139,11 @@ export function editTodo(params) {
 }
 
 
+/**
+ * 查询线索操作日志
+ */
+export function queryClueLogs(params) {
+  return http.post(apis.clueLogs, params)
+}
+
 

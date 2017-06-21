@@ -35,7 +35,9 @@ export default (config => {
   // 预约面签
   "makeInterview": "/mizar/m/clue/interview",
   // 待办事项
-  "todoEdit": "/mizar/m/task/up"
+  "todoEdit": "/mizar/m/task/up",
+  // 查询线索操作日志
+  "clueLogs": "/mizar/m/clue/log"
 })
 
 
