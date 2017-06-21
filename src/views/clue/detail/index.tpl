@@ -1,22 +1,23 @@
-<div class="clueDetailWrapper">
+<div class="clueDetailWrapper" v-if="inited">
   <div class="clueDetail--order">
     <div class="clueDetail--order--hd">
-      <span class="clueDetail--order--code">FYT10876862</span>
+      <span class="clueDetail--order--code">{{model.clueCode}}</span>
       <div class="flex vertical-center">
-        <span class="color-green">面聊</span>
+        <span class="color-green">{{model.statusName}}</span>
         <i class="dividing-line ml10 mr10"></i>
-        <span class="color-blue">待收费</span>
+        <span class="color-blue">{{model.serviceStatusName}}</span>
       </div>
     </div>
     <div class="clueDetail--order--bd">
       <dl class="clueDetail--order--rate">
-        <dd class="cont color-orange">85%</dd>
+        <dd class="cont color-orange">{{model.probability}}%</dd>
         <dt class="name">成单概率</dt>
       </dl>
       <i class="dividing-line"></i>
       <dl class="clueDetail--order--cost">
         <dd class="cont">
-          应收 <span class="color-orange">3000</span> 实收 <span class="color-orange">0</span>
+          应收 <span class="color-orange">{{model.serviceInfo.chargesAmount}}</span>
+          实收 <span class="color-orange">{{model.serviceInfo.serviceCharge + model.serviceInfo.deposit}}</span>
         </dd>
         <dt class="name">服务费</dt>
       </dl>
@@ -25,6 +26,7 @@
       <div class="button--small">修改成功概率</div>
     </div> -->
   </div>
+  <a class="clueDetail--readLog" :href="'#/clue/logs/' + model.clueCode">查看操作日志 >></a>
 
   <div class="clueDetail--card mt10">
     <div class="clueDetail--card--hd">
@@ -32,23 +34,23 @@
     </div>
     <div class="clueDetail--card--bd">
       <dl>
-        <dd>100万</dd>
+        <dd>{{model.expect.amount}}万</dd>
         <dt>借款需求</dt>
       </dl>
       <i class="dividing-line"></i>
       <dl>
-        <dd>3个月</dd>
+        <dd>{{model.expect.term}}个月</dd>
         <dt>期限</dt>
       </dl>
-      <i class="dividing-line"></i>
+      <!-- <i class="dividing-line"></i>
       <dl>
         <dd>8% - 12%</dd>
         <dt>综合息费</dt>
-      </dl>
+      </dl> -->
     </div>
     <div class="clueDetail--card--ft">
-      <div class="clueDetail--username">张三</div>
-      <div class="clueDetail--userphone">18692120886</div>
+      <div class="clueDetail--username">{{model.users.name}}</div>
+      <a class="clueDetail--userphone" :href="'tel:' + model.users.phone">{{model.users.phone}}</a>
     </div>
   </div>
 
@@ -58,70 +60,74 @@
     </div>
     <div class="clueDetail--card--bd">
       <dl>
-        <dd>陈小春</dd>
+        <dd>{{model.channel.name}}</dd>
         <dt>联系人</dt>
       </dl>
       <i class="dividing-line"></i>
       <dl>
-        <dd>链家地产</dd>
+        <dd>{{model.channel.channelInstitutionName}}</dd>
         <dt>公司</dt>
       </dl>
       <i class="dividing-line"></i>
       <dl>
-        <dd>18692120886</dd>
+        <dd>{{model.channel.mobile}}</dd>
         <dt>联系电话</dt>
       </dl>
     </div>
   </div>
 
-  <div class="clueDetail--card mt10">
-    <div class="clueDetail--card--hd">
-      <span>贷款方案</span>
+  <div v-if="model.loanInfos.length > 0">
+    <p class="section-title">贷款金融方案</p>
+    <div class="clueDetail--card clueDetail--loanScheme" v-for="scheme in model.loanInfos">
+      <div class="clueDetail--card--hd pt10 pb10">
+        <span class="clueDetail--loanScheme-name">{{scheme.bank}} - {{scheme.name}}</span>
+        <span class="tag--blue ml5">{{scheme.loanStatusName}}</span>
+      </div>
+      <div class="clueDetail--card--bd">
+        <dl>
+          <dd>{{scheme.loanAmount | formatMoney}}万</dd>
+          <dt>金额</dt>
+        </dl>
+        <i class="dividing-line"></i>
+        <dl>
+          <dd>{{scheme.loanTerm}}个月</dd>
+          <dt>期限</dt>
+        </dl>
+        <i class="dividing-line"></i>
+        <dl>
+          <dd>{{scheme.loanRate}}%</dd>
+          <dt>利率</dt>
+        </dl>
+      </div>
     </div>
-    <div class="clueDetail--card--bd">
-      <dl>
-        <dd>100万</dd>
-        <dt>金额</dt>
-      </dl>
-      <i class="dividing-line"></i>
-      <dl>
-        <dd>3个月</dd>
-        <dt>期限</dt>
-      </dl>
-      <i class="dividing-line"></i>
-      <dl>
-        <dd>8%</dd>
-        <dt>利率</dt>
-      </dl>
+<!--     <div class="clueDetail--card--ft">
+      <div>{{model.loanInfos.bank}} - {{model.loanInfos.name}}</div>
+      <div>{{model.loanInfos.loanStatusName}}</div>
     </div>
-    <div class="clueDetail--card--ft">
-      <div>招商银行 - 金领贷</div>
-      <div>待审批</div>
-    </div>
-  </div>
+ -->  </div>
 
-  <div class="clueDetail--card mt10">
+  <div class="clueDetail--card mt10" v-if="model.backlog">
     <div class="clueDetail--card--hd">
       <span>待办事项</span>
     </div>
-    <div class="todos pl15 pr15">
+    <div class="todos pl15 pr15" v-for="todo in model.backlog">
+      <div class="todos--title">{{todo.title}}</div>
       <div class="flex pt10 pb10 vertical-center">
-        <div class="todos--time flex-1">2017/07/20 (今天) 14:30</div>
+        <div class="todos--time flex-1">{{todo.planTime}}</div>
         <div class="clear-gap">
-          <div class="button--small bg-red mr10">未完成</div>
-          <div class="button--small bg-green">完成</div>
+          <!-- <div class="button--small bg-red mr10">未完成</div> -->
+          <a v-if="todo.isAccomplish == 0" class="button--small bg-green" :href="'#/todo/close/' + todo.id">完成</a>
+          <div v-if="todo.isAccomplish == 1" class="button--small bg-gray">已完成</div>
+          <div v-if="todo.isAccomplish == 2" class="button--small bg-gray">已关闭</div>
         </div>
       </div>
-      <div class="todos--title">
-        预约面聊
-      </div>
-      <div class="todos--cont">
+      <!-- <div class="todos--cont">
         线索：张三 18692120886 待面聊
-      </div>
+      </div> -->
     </div>
   </div>
 
-  <div class="clueDetail--card mt10">
+<!--   <div class="clueDetail--card mt10">
     <div class="clueDetail--card--hd">
       <span>备注</span>
     </div>
@@ -131,21 +137,21 @@
       </div>
     </div>
   </div>
-
+ -->
   <div class="clueDetail--operation">
-    <a class="clueDetail--operation-btn" href="#/clue/close/123">关闭</a>
-    <a class="clueDetail--operation-btn" href="#/clue/edit/123">编辑</a>
-    <div class="clueDetail--operation-btn" @click="makeInterview">预约面签</div>
+    <a class="clueDetail--operation-btn" :href="'#/clue/close/' + model.clueCode">关闭</a>
+    <a class="clueDetail--operation-btn" :href="'#/clue/edit/' + model.clueCode">编辑</a>
+    <div class="clueDetail--operation-btn" @click="openInterviewPanel">预约面签</div>
   </div>
 
   <Popup v-model="interviewVisible">
     <div class="clueDetail--interview">
       <Cell title="待办内容" content="预约面签"></Cell>
       <Cell title="预约日期" arrow>
-        <Datepicker slot="body" placeholder="请选择预约日期"/>
+        <Datepicker slot="body" placeholder="请选择预约日期" v-model="interview.date"/>
       </Cell>
       <div class="pt30 pl15 pr15">
-        <div class="button--large">提交</div>
+        <div class="button--large" @click="save">提交</div>
       </div>
     </div>
   </Popup>

@@ -11,7 +11,7 @@
       "retcode": 2000000,
       "msg": "获取数据成功",
       "data": {
-        "clueCode": "CU2117061976305"
+        "solutionsId": "CU2117061976305"
       }
     },
     "failure": {

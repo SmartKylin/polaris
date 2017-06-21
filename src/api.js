@@ -30,7 +30,7 @@ export default (config => {
   // 线索详情
   "clueDetail": "/mizar/m/clue/detail",
   // 线索操作日志
-  "clueLog": "/mizar/m/clue/log",
+  "clueLogs": "/mizar/m/clue/log",
   // 添加线索
   "clueAdd": "/mizar/m/clue/add",
   // 线索统计数据
@@ -45,6 +45,14 @@ export default (config => {
   "visilogList": "/mizar/m/channel/visitlog/list",
   // 触点操作日志查询
   "operationlog": "/mizar/m/channel/operationlog",
+  // 添加金融方案
+  "addLoanScheme": "/mizar/m/clue/solutions/add",
+  // 修改金融方案
+  "editLoanScheme": "/mizar/m/clue/solutions/editor",
+  // 预约面签
+  "makeInterview": "/mizar/m/clue/interview",
+  // 待办事项
+  "todoEdit": "/mizar/m/task/up"
 })
 
 

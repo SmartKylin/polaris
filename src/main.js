@@ -71,7 +71,7 @@ const router = new Router({ routes })
 import App from 'views/app'
 import './css/index.styl'
 
-new Vue({ el: '#app', router, ...App })
+window.app = new Vue({ el: '#app', router, ...App })
 
 
 

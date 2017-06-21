@@ -1,5 +1,6 @@
 import apis from '../api'
 import http from '../http'
+import { formatMoney } from '../helper/filters'
 
 /**
  * 查询线索
@@ -73,3 +74,76 @@ export function closeClue(params) {
 export function addClue(params) {
   return http.post(apis.clueAdd, params)
 }
+
+
+/**
+ * 编辑线索
+ */
+export function editClue(params) {
+  return http.post(apis.clueEdit, params)
+}
+
+
+/**
+ * 添加金融方案
+ */
+export function addLoanScheme(params) {
+  return http.post(apis.addLoanScheme, params)
+}
+
+
+/**
+ * 修改金融方案
+ */
+export function editLoanScheme(params) {
+  return http.post(apis.editLoanScheme, params)
+}
+
+
+/**
+ * 查询指定线索信息
+ */
+export function queryClueByCode(params) {
+  return http.get(apis.clueDetail, params).then(res => {
+    // 单位转换
+    res.houses.assessedValue = formatMoney(res.houses.assessedValue)
+    res.expect.amount = formatMoney(res.expect.amount)
+
+    if (!res.serviceInfo) {
+      res.serviceInfo = {
+        "contractNo": "",
+        "chargesAmount": 0,
+        "deposit": 0,
+        "serviceCharge": 0,
+        "about": ""
+      }
+    }
+    return res
+  })
+}
+
+
+/**
+ * 预约面签
+ */
+export function makeInterview(params) {
+  return http.post(apis.makeInterview, params)
+}
+
+
+/**
+ * 编辑待办事项
+ */
+export function editTodo(params) {
+  return http.post(apis.todoEdit, params)
+}
+
+
+/**
+ * 查询线索操作日志
+ */
+export function queryClueLogs(params) {
+  return http.post(apis.clueLogs, params)
+}
+
+
