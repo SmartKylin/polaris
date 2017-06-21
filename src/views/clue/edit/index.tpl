@@ -34,7 +34,7 @@
   <LoanSchemeView />
 
   <div class="mt30 pl20 pr20 pb30">
-    <div class="button--large" @click="save">提交</div>
+    <div class="button--large" @click="save">保存修改</div>
   </div>
 
   <router-view></router-view>
