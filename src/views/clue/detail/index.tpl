@@ -26,6 +26,7 @@
       <div class="button--small">修改成功概率</div>
     </div> -->
   </div>
+  <a class="clueDetail--readLog" :href="'#/clue/log/' + model.clueCode">查看操作日志 >></a>
 
   <div class="clueDetail--card mt10">
     <div class="clueDetail--card--hd">
