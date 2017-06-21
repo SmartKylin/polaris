@@ -33,7 +33,7 @@
     </div>
     <div class="clueDetail--card--bd">
       <dl>
-        <dd>{{model.expect.amount | formatMoney}}万</dd>
+        <dd>{{model.expect.amount}}万</dd>
         <dt>借款需求</dt>
       </dl>
       <i class="dividing-line"></i>
@@ -75,31 +75,35 @@
     </div>
   </div>
 
-  <div class="clueDetail--card mt10" v-if="model.loanInfos">
-    <div class="clueDetail--card--hd">
-      <span>贷款方案</span>
+  <div v-if="model.loanInfos.length > 0">
+    <p class="section-title">贷款金融方案</p>
+    <div class="clueDetail--card clueDetail--loanScheme" v-for="scheme in model.loanInfos">
+      <div class="clueDetail--card--hd pt10 pb10">
+        <span class="clueDetail--loanScheme-name">{{scheme.bank}} - {{scheme.name}}</span>
+        <span class="tag--blue ml5">{{scheme.loanStatusName}}</span>
+      </div>
+      <div class="clueDetail--card--bd">
+        <dl>
+          <dd>{{scheme.loanAmount | formatMoney}}万</dd>
+          <dt>金额</dt>
+        </dl>
+        <i class="dividing-line"></i>
+        <dl>
+          <dd>{{scheme.loanTerm}}个月</dd>
+          <dt>期限</dt>
+        </dl>
+        <i class="dividing-line"></i>
+        <dl>
+          <dd>{{scheme.loanRate}}%</dd>
+          <dt>利率</dt>
+        </dl>
+      </div>
     </div>
-    <div class="clueDetail--card--bd">
-      <dl>
-        <dd>{{model.loanInfos.loanAmount | formatMoney}}万</dd>
-        <dt>金额</dt>
-      </dl>
-      <i class="dividing-line"></i>
-      <dl>
-        <dd>{{model.loanInfos.loanTerm}}个月</dd>
-        <dt>期限</dt>
-      </dl>
-      <i class="dividing-line"></i>
-      <dl>
-        <dd>{{model.loanInfos.loanRate}}%</dd>
-        <dt>利率</dt>
-      </dl>
-    </div>
-    <div class="clueDetail--card--ft">
+<!--     <div class="clueDetail--card--ft">
       <div>{{model.loanInfos.bank}} - {{model.loanInfos.name}}</div>
       <div>{{model.loanInfos.loanStatusName}}</div>
     </div>
-  </div>
+ -->  </div>
 
   <div class="clueDetail--card mt10" v-if="model.backlog">
     <div class="clueDetail--card--hd">
@@ -111,9 +115,9 @@
         <div class="todos--time flex-1">{{todo.planTime}}</div>
         <div class="clear-gap">
           <!-- <div class="button--small bg-red mr10">未完成</div> -->
-          <a v-if="todo.isAccomplish === 0" class="button--small bg-green" :href="'#/todo/close/' + todo.id">完成</a>
-          <div v-if="todo.isAccomplish === 1" class="button--small bg-gray">已完成</div>
-          <div v-if="todo.isAccomplish === 2" class="button--small bg-gray">已关闭</div>
+          <a v-if="todo.isAccomplish == 0" class="button--small bg-green" :href="'#/todo/close/' + todo.id">完成</a>
+          <div v-if="todo.isAccomplish == 1" class="button--small bg-gray">已完成</div>
+          <div v-if="todo.isAccomplish == 2" class="button--small bg-gray">已关闭</div>
         </div>
       </div>
       <!-- <div class="todos--cont">

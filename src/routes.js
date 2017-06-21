@@ -99,17 +99,17 @@ export default [
   },
   {
     path: '/clue/add',
-    component: ClueAdd,
+    component: ClueAdd
+  },
+  {
+    path: '/clue/edit/:code',
+    component: ClueEdit,
     children: [
       {
         path: 'pick-tentacle',
         component: PickTentacle
       }
     ]
-  },
-  {
-    path: '/clue/edit/:code',
-    component: ClueEdit
   },
   {
     path: '/clue/close/:code',

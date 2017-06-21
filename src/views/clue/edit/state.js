@@ -5,6 +5,8 @@ export default {
   model: {
     // 线索编码
     clueCode: '',
+    statusName: '',
+    serviceStatusName: '',
     // 借款人信息
     users: {
       // 真实姓名
@@ -30,5 +32,21 @@ export default {
     },
     // 成单概率
     probability: '',
-  }
+    // 触点信息
+    channel: {
+      channelCode: '',
+      name: '',
+      channelInstitutionName: '',
+      mobile: '',
+      address: ''
+    },
+    //
+    serviceInfo: {
+      chargesAmount: 0,
+      deposit: 0,
+      serviceCharge: 0
+    }
+  },
+  // 上级页面是线索添加页面
+  fromAdd: false
 }

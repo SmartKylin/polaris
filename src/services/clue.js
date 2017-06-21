@@ -1,5 +1,6 @@
 import apis from '../api'
 import http from '../http'
+import { formatMoney } from '../helper/filters'
 
 /**
  * 查询线索
@@ -104,6 +105,10 @@ export function editLoanScheme(params) {
  */
 export function queryClueByCode(params) {
   return http.get(apis.clueDetail, params).then(res => {
+    // 单位转换
+    res.houses.assessedValue = formatMoney(res.houses.assessedValue)
+    res.expect.amount = formatMoney(res.expect.amount)
+
     if (!res.serviceInfo) {
       res.serviceInfo = {
         "contractNo": "",

@@ -1,5 +1,5 @@
-import { addClue, editClue } from 'services'
-import LoanSchemeView from '../loan-scheme'
+import { editClue, queryClueByCode } from 'services'
+// import LoanSchemeView from '../loan-scheme'
 import bus from '../../../helper/bus'
 import state from './state'
 import create from './index.tpl'
@@ -10,24 +10,21 @@ export default create({
     return state
   },
 
-  components: { LoanSchemeView },
+  // components: { LoanSchemeView },
 
   created() {
-    // 每次进入添加线索页时，发送一个空的提交用于产生一个临时线索
-    // 主要是为了拿到 clueCode
-    // 接下来的操作实际就成了编辑刚刚创建的临时线索
-    addClue({}).then(res => {
-      this.clueCode = res.clueCode
-    }).catch(err => {
-      this.$toast.show('服务异常，请重试', () => {
-        this.$router.back()
-      })
-    })
-
     // 保存选择的触点信息
     bus.$on('pick-tentacle', data => {
-      this.tentacle = data
+      this.model.channel = {
+        channelCode: data.code,
+        name: data.name,
+        channelInstitutionName: data.channelInstitutionName,
+        mobile: data.mobile,
+        address: data.address
+      }
     })
+
+    this.query()
   },
 
   methods: {
@@ -37,6 +34,21 @@ export default create({
       editClue(this.$data).then(res => {
         this.$loading.hide()
         this.$toast.show('操作成功')
+      })
+      .catch(err => {
+        this.$loading.hide()
+        this.$dialog.alert('提示', err.message)
+      })
+    },
+
+    query() {
+      this.$loading.show('数据加载中...')
+      queryClueByCode({
+        clueCode: this.$route.params.code
+      })
+      .then(res => {
+        this.model = res
+        this.$loading.hide()
       })
       .catch(err => {
         this.$loading.hide()
