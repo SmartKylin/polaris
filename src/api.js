@@ -30,6 +30,8 @@ export default (config => {
   "clueStatis": "/mizar/m/clue/statis",
   // 添加金融方案
   "addLoanScheme": "/mizar/m/clue/solutions/add",
+  // 修改金融方案
+  "editLoanScheme": "/mizar/m/clue/solutions/editor"
 })
 
 

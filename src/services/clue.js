@@ -91,3 +91,11 @@ export function addLoanScheme(params) {
 }
 
 
+/**
+ * 修改金融方案
+ */
+export function editLoanScheme(params) {
+  return http.post(apis.editLoanScheme, params)
+}
+
+
