@@ -21,37 +21,37 @@ export function queryClueStatis() {
         key: 'all',
         name: '全部',
         val: data.all,
-        id: 1
+        id: 0
       },
       {
         key: 'waitFace',
         name: '待预约',
         val: data.waitFace,
-        id: 2
+        id: 1
       },
       {
         key: 'waitSignedService',
         name: '待签约',
         val: data.waitSignedService,
-        id: 3
+        id: 2
       },
       {
         key: 'waitLoan',
         name: '待放款',
         val: data.waitLoan,
-        id: 4
+        id: 3
       },
       {
         key: 'loan',
         name: '已放款',
         val: data.loan,
-        id: 5
+        id: 4
       },
       {
         key: 'waitEndOrder',
         name: '待结单',
         val: data.waitEndOrder,
-        id: 6
+        id: 5
       },
     ]
   }
