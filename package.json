@@ -47,7 +47,7 @@
     "normalize.css": "^7.0.0",
     "qs": "^6.4.0",
     "raven-js": "^3.15.0",
-    "smart-ui": "^2.1.8",
+    "smart-ui": "^2.1.9",
     "vue": "^2.3.2",
     "vue-router": "^2.5.3"
   },
