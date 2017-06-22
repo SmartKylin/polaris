@@ -1,10 +1,18 @@
 <div class="clueView">
   <div class="clueView--hd">
     <div class="clueView--top">
-      <a class="clueView--search" href="#/clue/search">
-        <input class="clueView--search--ipt" type="text" placeholder="输入姓名等关键词搜索线索...">
-      </a>
-      <a class="clueView--add" href="#/clue/add"></a>
+      <div class="clueView--search">
+        <input
+          v-model="keywords"
+          class="clueView--search--ipt"
+          type="text"
+          placeholder="输入姓名等关键词搜索线索..."
+          @focus="isFocus = true"
+          @blur="isFocus = false"
+        >
+      </div>
+      <a v-show="!isFocus" class="clueView--add" href="#/clue/add"></a>
+      <div v-show="isFocus" class="clueView--search--btn" @click="search">搜索</div>
     </div>
 
   <!--   <div class="clueView--data">
@@ -19,7 +27,7 @@
    -->
 
     <Tab @change="queryWithStatus">
-      <div class="tab--item" :data-key="data.id" v-for="(data, k) in categories" :class="{active: k === 0}">
+      <div class="tab--item" :data-key="data.id" v-for="(data, k) in categories" :class="{active: data.id == status}">
         <p class="clueView--tabItem--cont">{{data.val}}</p>
         <p class="clueView--tabItem--name">{{data.name}}</p>
       </div>
