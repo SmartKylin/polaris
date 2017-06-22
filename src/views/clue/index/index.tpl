@@ -80,5 +80,5 @@
     </div>
   </ListView>
 
-  <Loadmore2 @reachBottom="loadmore" :allLoaded="allLoaded"></Loadmore2>
+  <Loadmore @reachBottom="loadmore" :visible="!allLoaded"></Loadmore>
 </div>
