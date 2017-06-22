@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import {queryTask, addTask, queryVisitlog, addVisitlog} from 'services'
+import {queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle} from 'services'
 
 export default create({
   props: {
@@ -37,19 +37,22 @@ export default create({
     }
   },
   methods: {
+    // 点击添加拜访计划按钮，弹出相应弹出框
     addPlan(event) {
       event.stopPropagation()
       this.visible1 = true
-
     },
+    // 点击写日志按钮，相应弹出框可见
     addLogger (event) {
       this.visible2 = true
       event.stopPropagation()
     },
+    // 点击释放触点，
     deliverTentacle (event) {
       this.visible3 = true
       event.stopPropagation()
     },
+    // 跳转到触点详情页
     pushto() {
       if (this.$route.path.indexOf('/tentacle/detail') <= -1) {
         // 如果有弹出框出现则不跳转
@@ -59,6 +62,7 @@ export default create({
         this.$router.push({name: 'detail' ,params: {datakey: this.datakey}})
       }
     },
+    // 弹出框中提交添加拜访计划
     addTodo() {
       const params = {}
       params.title = this.title
@@ -71,8 +75,11 @@ export default create({
         if (res.retcode === 2000000) {
           this.visible1 = false
         }
+      }).catch(err => {
+        this.$dialog.alert('提示', err.message)
       })
     },
+    // 弹出框中提交增加日志
     visitlog() {
       const params = {}
       params.visitTime = this.time
@@ -83,8 +90,25 @@ export default create({
         if (res.retcode === 2000000) {
           this.visible2 = false
         }
+      }).catch(err => {
+        this.$dialog.alert('提示', err.message)
+      })
+    },
+    // 弹出框中提交释放触点按钮
+    release() {
+      const params = {}
+      params.channel_id = this.data.id
+      params.remark = this.content
+      releaseTentacle(params).then(res => {
+        console.log(res.msg);
+        if (res.retcode === 2000000) {
+          this.visible3 = false
+        }
+      }).catch(err => {
+        this.$dialog.alert('提示', err.message)
       })
     }
+
   },
   mounted() {
     console.log(this.$route.path);

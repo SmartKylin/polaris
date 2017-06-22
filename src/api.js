@@ -21,6 +21,18 @@ export default (config => {
   "tentacleAdd": "/mizar/m/channel/add",
   // 触点修改
   "tentacleEditor": "/mizar/m/channel/editor",
+  // 触点释放
+  "tentacleRelease": "/mizar/m/channel/commonality/release",
+  // 查询机构
+  "institutionList": "/mizar/m/channel/institution/list",
+  // 查询机构详情
+  "institutionDetail": "/mizar/m/channel/institution/detail",
+  // 查询标签
+  "labelList": "/mizar/m/channel/label/list",
+  // 城市列表
+  "cityList": "/mizar/m/tool/citylist",
+  // 区域列表
+  "areaList": "mizar/m/tool/arealist",
   // 查询线索
   "clueList": "/mizar/m/clue/list",
   // 编辑线索

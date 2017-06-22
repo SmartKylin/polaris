@@ -3,7 +3,9 @@ import './index.styl'
 
 export default create({
   props: {
-
+    plan: {
+      type: Object
+    }
   },
   data() {
     return {

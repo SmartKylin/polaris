@@ -72,4 +72,17 @@ export function addTentacle(params) {
   return http.post(apis.tentacleAdd, params)
 }
 
+/**
+ * 释放触点
+ */
+export function releaseTentacle(params) {
+  return http.post(apis.tentacleRelease, params)
+}
 
+
+/**
+ * 查询触点详情
+ */
+export function queryTentacleDetail(params) {
+  return http.post(apis.tentacledetail, params)
+}

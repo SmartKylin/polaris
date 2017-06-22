@@ -24,12 +24,12 @@ export default create({
       curLevel: 1,
       // 当前标签
       curLabel: "101,206",
-      // 标签数组
+     /* // 标签数组
       labelAry: [101, 206],
       // 是否休眠
-      dormant: 0,
-      /* // 是否VIP
-       vip: 0*/
+      dormant: 0,*/
+       // 是否VIP
+      vip: 0,
       total: 0
     }
   },
@@ -47,18 +47,8 @@ export default create({
     // 查询为指定状态分类下的线索
     queryWithStatus(status) {
       console.log(status);
-      if (/^[1-6]$/.test(status)) {
+      if (/^[0-6]$/.test(status)) {
         this.curLevel = parseInt(status)
-      }
-      if (status === "dormant") {
-        this.dormant = 1
-      } else if ((/^10[1234]$/).test(status)) {
-        this.curLabel = status
-        this.labelAry[0] = parseInt(status)
-      } else if ((/^20[67]$/).test(status)) {
-        this.labelAry[1] = parseInt(status)
-      } else if (status === "all") {
-        this.labelAry[1] = ''
       }
 
 
@@ -78,10 +68,20 @@ export default create({
       this.fetching = true
       this.pageNum += 1
 
-      let {label, level} = this.$route.query
+      let {label, dormant} = this.$route.query
       const params = {}
-      params.label = label
-      params.level = parseInt(level)
+
+      if (this.curLevel === 6) {
+        params.vip = 1
+      } else if (this.curLevel !== 0) {
+        params.level = parseInt(this.curLevel)
+      }
+      if (dormant) {
+        params.dormant = 1
+      } else {
+        params.label = label
+      }
+
       this.$loading.show()
       console.log(params);
       queryTentacle(params).then(res => {
@@ -114,6 +114,9 @@ export default create({
   },
   created() {
     // 查询线索
+    if (!this.$route.query.hasOwnProperty("level")) {
+      this.curLevel = 0
+    }
     this.query()
     queryTentacleLevelStatis().then(data=>{
       this.categories = data

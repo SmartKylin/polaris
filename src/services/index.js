@@ -3,4 +3,5 @@ export * from './tentacle'
 export * from './task'
 export * from './visitlog'
 export * from './operationlog'
-
+export * from './institution'
+export * from './tool'

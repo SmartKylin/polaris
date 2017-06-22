@@ -9,11 +9,11 @@
   "response": {
     "success": {
       "retcode": 2000000,
-      "msg": "修改触点成功"
+      "msg": "释放触点成功"
     },
     "failure": {
       "retcode": 4000000,
-      "msg": "修改触点失败~"
+      "msg": "释放触点失败~"
     }
   }
 }

@@ -7,7 +7,7 @@
     </div>
     <div class="tentacleView--tabItem">
       <p class="tentacleView--tabItem--cont">{{data.total.delivery_clue}}</p>
-      <p class="tentacleView--tabItem--name">激活触点</p>
+      <p class="tentacleView--tabItem--name">有递单记录</p>
     </div>
     <div class="tentacleView--tabItem">
       <p class="tentacleView--tabItem--cont">{{data.total.endorse_clue}}</p>
@@ -42,7 +42,7 @@
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list">
+      <router-link to="/tentacle/list?dormant=1">
         <div class="index--count">{{data.synthesize.dormant}}</div>
         <div class="index--label">VIP->5级、2级以上长期休眠</div>
         <div class="index--reply">危机公关，快速反应</div>

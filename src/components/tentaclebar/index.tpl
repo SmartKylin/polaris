@@ -3,7 +3,6 @@
     <div class="tentacle--list">
       <div class="tentacle--listItem">
         <div class="tentacle--listItem--main">
-
           <div class="tentacle--listItem--bd">
             <div class="tentacle--listItem--syn">
               <div>
@@ -51,8 +50,8 @@
           </Popup>
           <Popup v-model="visible3">
             <div class="popup-deliver popup--layer">
-              <textarea name="" id="uri" cols="30" rows="5" placeholder="释放原因" class="text--area"></textarea>
-              <div class="button--large mt20">提交</div>
+              <textarea name="" id="uri" cols="30" rows="5" placeholder="释放原因" class="text--area" v-model="content"></textarea>
+              <div class="button--large mt20" @click="release">提交</div>
             </div>
           </Popup>
         </div>

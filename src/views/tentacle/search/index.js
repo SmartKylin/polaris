@@ -52,14 +52,15 @@ export default create({
       if (status === "dormant") {
         this.dormant = 1
       } else if ((/^10[1234]$/).test(status)) {
+        this.dormant = 0
         this.curLabel = status
         this.labelAry[0] = parseInt(status)
       } else if ((/^20[67]$/).test(status)) {
+        this.dormant = 0
         this.labelAry[1] = parseInt(status)
       } else if (status === "all") {
-        this.labelAry[1] = ''
+        this.labelAry[1] = null
       }
-
 
       // 切换不同分类时要重置分页状态
       this.pageNum = 0

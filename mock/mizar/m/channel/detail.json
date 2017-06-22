@@ -10,7 +10,7 @@
     "success": {
       "retcode": 2000000,
       "msg": "成功",
-      "data": {
+      "data":{
         "id":"30",
         "code":"csMtg5k42hKKe",
         "name":"郑麒麟",
@@ -21,29 +21,60 @@
         "source":"3",
         "status":"1",
         "level":"1",
-        "label":[
-          "B类",
-          "底产",
-          "一级"
-        ],
         "industry":"1",
         "endorseSuccProbability":0,
         "loanSuccProbability":0,
+        "sourceName":"后台录入",
+        "cityName":"",
+        "areaName":"",
+        "label":[
+          "A类",
+          "低产",
+          "一级"
+        ],
+        "hobby": "1.喜欢踢球，2喜欢喝酒，3喜欢美女",
         "groupId":"1",
         "channelInstitutionId":"1",
         "cityId":"1",
         "areaId":"10",
-        "staffCode":"666666",
+        "staffCode":"1497436838861401",
+        "staffName":"",
         "claimTime":"2017-06-17 21:29:16",
         "channelInstitutionName":"链家地产",
-        "recentRelationTime": "2017-05-17 21:29:16",
-        "recentDeliveryClueTime": "2017-06-129 21:20:16",
-        "recentBargainClueTime": "2017-06-17 21:29:16",
+        "recentRelationTime":"",
+        "recentDeliveryClueTime":"2017-06-5 21:29:16",
         "deliveryNum":"0",
         "endorseNum":"0",
         "bargainNum":"0",
-        "recentDeliveryClueId":"CU2117061976305-0",
-        "recentBargainClueId":"CU21170619763051-1"
+        "recentDeliveryClueId":"0",
+        "recentBargainClueId":"0",
+        "recentBargainClueTime":"2017-06-7 21:29:16",
+        "backlog":[
+          {
+            "id":"1",
+            "title":"任务标题",
+            "type":"1",
+            "content":"回访并进行逼单",
+            "flag":"csMtg5k42hKKe",
+            "remark":"测试备注",
+            "staffCode":"666666",
+            "planTime":"12017-06-17 21:29:16",
+            "isRemind":"0",
+            "isAccomplish":"0"
+          },
+          {
+            "id":"2",
+            "title":"任务标题",
+            "type":"4",
+            "content":"任务内容",
+            "flag":"csMtg5k42hKKe",
+            "remark":"测试备注",
+            "staffCode":"666666",
+            "planTime":"12017-06-17 21:29:16",
+            "isRemind":"0",
+            "isAccomplish":"0"
+          }
+        ]
       }
     },
     "failure": {

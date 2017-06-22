@@ -6,6 +6,37 @@
   <div class="visit--log" v-if="visitlogVisible">
     <div class="visit--log--top pd10">
       <TodoItem></TodoItem>
+
+      <div class="todo--item" v-for="plan in data.backlog">
+        <div class="todo--left">
+          <div class="pb5 color-gray font-12">{{plan.planTime}}</div>
+          <div class="pb5 mt10">{{plan.content}}</div>
+          <div class="pb5 color-gray font-12 mt10">
+            触点
+            <span>{{data.name}}（{{data.label[0]}}-{{data.label[1]}}-{{data.label[2]}}）</span>
+          </div>
+        </div>
+        <div class="todo--right">
+          <a href="javascript:;" @click="alert" class="tentacle--listItem--btn">完成</a>
+          <div class="tentacle--listItem--btn" @click="visible2=true">未完成</div>
+        </div>
+      </div>
+      <Popup v-model="visible1">
+        <div class="popup-plan popup--layer">
+          <div>查看详情</div>
+          <div>返回首页</div>
+        </div>
+      </Popup>
+      <Popup v-model="visible2">
+        <div class="popup-logger popup--layer">
+          <Cell title="修改预约日期">
+            <Datepicker slot="body" placeholder="请选择提醒时间" value="2017/06/14"/>
+          </Cell>
+          <textarea name="" id="" cols="30" rows="5" placeholder="失败原因" class="text--area"></textarea>
+          <div class="button--large mt5">删除待办事项</div>
+        </div>
+      </Popup>
+
     </div>
     <div class="visit--log--bottom">
       <div class="flex item--wrap" v-for="visit in visitList">

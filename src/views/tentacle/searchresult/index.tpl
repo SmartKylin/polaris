@@ -8,5 +8,4 @@
     <div class="tentacleView--query" @click="query">查询</div>
   </div>
   <TentacleBar v-for="tent in data.list" :data="tent"/>
-
 </div>

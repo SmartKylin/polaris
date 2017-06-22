@@ -6,10 +6,14 @@ import LoggerItem from './LoggerItem.vue'
 
 export default create({
   props: {
-    data: {}
+    data: {
+      type: Object
+    }
   },
   data() {
     return {
+      visible1: false,
+      visible2: false,
       // 显示拜访记录还是操作记录
       visitlogVisible: true,
       operationList: [],
@@ -58,10 +62,22 @@ export default create({
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
       })
+    },
+    // 点击待办事项中完成按钮的处理函数
+    alert() {
+      this.$dialog.alert('', '', [{title: '查看详情', onClick() {}}, {title: '返回首页', onClick() {}}])
     }
   },
-  created() {
+  mounted() {
     // this.queryVis();
+   /* // 过滤掉其他任务，只保留触点任务
+    if (this.data.backlog) {
+      this.data.backlog = this.data.backlog.filter(log=>{
+        if (log.type === "1" || log.type === "3") {
+          return log
+        }
+      })
+    }*/
   },
   components: {
     TodoItem,

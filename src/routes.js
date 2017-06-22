@@ -46,6 +46,7 @@ export default [
   },
   {
     path: '/tentacle/edit',
+    name: "edittentacle",
     component: TentacleEdit
   },
   {
@@ -66,10 +67,10 @@ export default [
     name: "detail",
     component: TentacleDetail,
     children: [
-     /* {
+      {
         path: '/',
         redirect: 'achieve'
-      },*/
+      },
       {
         path: '/tentacle/detail/achieve',
         component: TentacleDetailAchieve
