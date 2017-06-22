@@ -14,7 +14,7 @@ export default create({
       // 标识是否已加载完所有数据
       allLoaded: false,
       // 当前状态分类
-      status: 1,
+      status: 0,
       // 根据状态分类
       categories: [],
       // 标识是否正在请求数据
@@ -74,11 +74,10 @@ export default create({
 
       queryClues(params).then(res => {
         const list = res.list
-
+        if (onsuccess) {
+          onsuccess()
+        }
         if (list.length > 0) {
-          if (onsuccess) {
-            onsuccess()
-          }
           this.dataList = this.dataList.concat(list)
         }
         // 已加载完所有数据
