@@ -5,15 +5,16 @@ var webpack = require('webpack')
 var DeployPlugin = require('deploy-kit/plugins/ftp-webpack-plugin')
 var config = require('./webpack.prod.conf')
 
-// config.output.publicPath = ''
+config.output.publicPath = '/mizar/static'
 
 config.plugins.push(
   new DeployPlugin({
-    username: '',
-    password: '',
-    hostname: ''
+    username: 'xiaofeng',
+    password: 'xiaofeng',
+    hostname: '10.13.3.4'
   }, [
-    {reg: /.*$/, to: ''},
+    {reg: /.phtml*$/, to: '/data1/htdocs/mizar/app/views/M'},
+    {reg: /.+/, to: '/data1/htdocs/mizar/public/static'}
   ])
 )
 
