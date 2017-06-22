@@ -14,11 +14,16 @@ export default create({
       // 标识是否已加载完所有数据
       allLoaded: false,
       // 当前状态分类
-      status: 1,
+      status: 0,
       // 根据状态分类
       categories: [],
       // 标识是否正在请求数据
-      fetching: false
+      fetching: false,
+      // 搜索关键词
+      keywords: '',
+      //
+      isFocus: false,
+      isSearch: false
     }
   },
 
@@ -39,6 +44,9 @@ export default create({
       // 切换不同分类时要重置分页状态
       this.pageNum = 0
       this.allLoaded = false
+      this.status = status
+      this.isSearch = false
+      this.keywords = ''
       // 查询成功后清空 dataList
       this.query(() => {
         this.dataList = []
@@ -54,18 +62,22 @@ export default create({
       this.pageNum += 1
 
       const params = {}
-      params.status = this.status
       params.pageNum = this.pageNum
+
+      if (this.isSearch) {
+        params.searchExt = this.keywords
+      } else {
+        params.status = this.status
+      }
 
       this.$loading.show()
 
       queryClues(params).then(res => {
         const list = res.list
-
+        if (onsuccess) {
+          onsuccess()
+        }
         if (list.length > 0) {
-          if (onsuccess) {
-            onsuccess()
-          }
           this.dataList = this.dataList.concat(list)
         }
         // 已加载完所有数据
@@ -85,6 +97,16 @@ export default create({
 
     loadmore() {
       this.query()
+    },
+
+    search() {
+      this.isSearch = true
+      this.pageNum = 0
+      this.allLoaded = false
+      this.status = 1
+      this.query(() => {
+        this.dataList = []
+      })
     }
   }
 })

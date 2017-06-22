@@ -21,37 +21,37 @@ export function queryClueStatis() {
         key: 'all',
         name: '全部',
         val: data.all,
-        id: 1
+        id: 0
       },
       {
         key: 'waitFace',
         name: '待预约',
         val: data.waitFace,
-        id: 2
+        id: 1
       },
       {
         key: 'waitSignedService',
         name: '待签约',
         val: data.waitSignedService,
-        id: 3
+        id: 2
       },
       {
         key: 'waitLoan',
         name: '待放款',
         val: data.waitLoan,
-        id: 4
+        id: 3
       },
       {
         key: 'loan',
         name: '已放款',
         val: data.loan,
-        id: 5
+        id: 4
       },
       {
         key: 'waitEndOrder',
         name: '待结单',
         val: data.waitEndOrder,
-        id: 6
+        id: 5
       },
     ]
   }
@@ -69,9 +69,26 @@ export function closeClue(params) {
 
 
 /**
+ * 保存触点信息前处理单位，删除多余字段
+ */
+function beforeSaveClue(params) {
+  console.log(params)
+  // 删除多余字段
+  delete params.status
+  delete params.statusName
+  delete params.serviceStatusName
+  delete params.serviceInfo
+  // 单位转换
+  params.expect.amount = params.expect.amount * 10000
+  params.houses.assessedValue = params.houses.assessedValue * 10000
+}
+
+
+/**
  * 添加线索
  */
 export function addClue(params) {
+  beforeSaveClue(params)
   return http.post(apis.clueAdd, params)
 }
 
@@ -80,6 +97,7 @@ export function addClue(params) {
  * 编辑线索
  */
 export function editClue(params) {
+  beforeSaveClue(params)
   return http.post(apis.clueEdit, params)
 }
 
