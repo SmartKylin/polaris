@@ -69,9 +69,26 @@ export function closeClue(params) {
 
 
 /**
+ * 保存触点信息前处理单位，删除多余字段
+ */
+function beforeSaveClue(params) {
+  console.log(params)
+  // 删除多余字段
+  delete params.status
+  delete params.statusName
+  delete params.serviceStatusName
+  delete params.serviceInfo
+  // 单位转换
+  params.expect.amount = params.expect.amount * 10000
+  params.houses.assessedValue = params.houses.assessedValue * 10000
+}
+
+
+/**
  * 添加线索
  */
 export function addClue(params) {
+  beforeSaveClue(params)
   return http.post(apis.clueAdd, params)
 }
 
@@ -80,6 +97,7 @@ export function addClue(params) {
  * 编辑线索
  */
 export function editClue(params) {
+  beforeSaveClue(params)
   return http.post(apis.clueEdit, params)
 }
 
