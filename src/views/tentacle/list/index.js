@@ -113,7 +113,7 @@ export default create({
     }
   },
   created() {
-    // 查询线索
+
     if (!this.$route.query.hasOwnProperty("level")) {
       this.curLevel = 0
     }

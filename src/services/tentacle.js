@@ -72,6 +72,14 @@ export function addTentacle(params) {
   return http.post(apis.tentacleAdd, params)
 }
 
+
+/**
+ * 查询触点详情
+ */
+export function queryTentacleDetail(params) {
+  return http.post(apis.tentacledetail, params)
+}
+
 /**
  * 释放触点
  */
@@ -79,10 +87,16 @@ export function releaseTentacle(params) {
   return http.post(apis.tentacleRelease, params)
 }
 
+/**
+ * 认领触点
+ */
+export function claimTentacle(params) {
+  return http.post(apis.tentacleClaim, params)
+}
 
 /**
- * 查询触点详情
+ * 查询公海
  */
-export function queryTentacleDetail(params) {
-  return http.post(apis.tentacledetail, params)
+export function queryCommonality(params) {
+  return http.post(apis.commonalityList, params)
 }

@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import {queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle} from 'services'
+import {queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle, claimTentacle} from 'services'
 
 export default create({
   props: {
@@ -34,6 +34,8 @@ export default create({
       title: '',
       // 任务内容/拜访内容
       content: '',
+      // 是否来自公海
+      isFromSea: false
     }
   },
   methods: {
@@ -57,6 +59,10 @@ export default create({
       if (this.$route.path.indexOf('/tentacle/detail') <= -1) {
         // 如果有弹出框出现则不跳转
         if (this.visible1 || this.visible2 || this.visible3) {
+          return
+        }
+        // 如果触点在公海（未被认领）则不跳转
+        if (!this.hasOwner) {
           return
         }
         this.$router.push({name: 'detail' ,params: {datakey: this.datakey}})
@@ -113,13 +119,25 @@ export default create({
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
       })
+    },
+    // 认领触点
+    tentacleClaim() {
+      claimTentacle({channel_id: this.data.id}).then(res => {
+        if (res.retcode == 2000000) {
+          console.log(res.msg);
+        }
+      }).catch(err => {
+        this.$dialog.alert('提示', err.message)
+      })
     }
-
   },
   mounted() {
-    console.log(this.$route.path);
+    console.log(this.$route.path)
     if (this.$route.path.indexOf('/tentacle/detail') > -1) {
       this.canLink = false
+    }
+    if (this.$route.path.indexOf('commonality') > -1) {
+      this.isFromSea = true
     }
   }
 })

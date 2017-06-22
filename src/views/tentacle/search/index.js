@@ -3,7 +3,6 @@ import './index.styl'
 import SearchBar from 'components/searchbar'
 import TentacleBar from 'components/tentaclebar'
 import LevelOverview from 'components/leveloverview'
-import Loadmore2 from 'components/loadmore'
 import { queryTentacle, queryTentacleLevelStatis} from 'services'
 
 export default create({
@@ -36,7 +35,6 @@ export default create({
     SearchBar,
     LevelOverview,
     TentacleBar,
-    Loadmore2
   },
   methods: {
     tosearch() {
@@ -51,10 +49,6 @@ export default create({
       }
       if (status === "dormant") {
         this.dormant = 1
-      } else if ((/^[1234]$/).test(status)) {
-        this.dormant = 0
-        this.curLabel = status
-        this.labelAry[0] = parseInt(status)
       } else if ((/^[67]$/).test(status)) {
         this.dormant = 0
         this.labelAry[1] = parseInt(status)
@@ -62,15 +56,17 @@ export default create({
         this.labelAry[1] = null
       }
 
-      // 切换不同分类时要重置分页状态
-      this.pageNum = 0
-      this.allLoaded = false
-      // 查询成功后清空 dataList
-      this.query(() => {
-        this.dataList = []
-      })
+      this.reQuery()
     },
 
+    relationChange(status) {
+      if ((/^[1234]$/).test(status)) {
+        this.dormant = 0
+        this.curLabel = status
+        this.labelAry[0] = parseInt(status)
+      }
+      this.reQuery()
+    },
     query(onsuccess) {
       if (this.fetching) {
         return
@@ -118,7 +114,15 @@ export default create({
           this.$dialog.alert('提示', err.message)
         })
     },
-
+    reQuery() {
+      // 切换不同分类时要重置分页状态
+      this.pageNum = 0
+      this.allLoaded = false
+      // 查询成功后清空 dataList
+      this.query(() => {
+        this.dataList = []
+      })
+    },
     loadmore() {
       this.query()
     }
@@ -133,7 +137,7 @@ export default create({
     })
   },*/
   created() {
-    // 查询线索
+
     this.curLevel = parseInt(this.$route.params.level)
     console.log('level:' + this.level);
     this.query()

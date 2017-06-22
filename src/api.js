@@ -23,6 +23,10 @@ export default (config => {
   "tentacleEditor": "/mizar/m/channel/editor",
   // 触点释放
   "tentacleRelease": "/mizar/m/channel/commonality/release",
+  // 查询公海
+  "commonalityList": "/mizar/m/channel/commonality/list",
+  // 认领触点
+  "tentacleClaim": "/mizar/m/channel/commonality/claim",
   // 查询机构
   "institutionList": "/mizar/m/channel/institution/list",
   // 查询机构详情

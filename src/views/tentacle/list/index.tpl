@@ -1,5 +1,4 @@
 <div>
-
   <Tab @change="queryWithStatus">
     <div class="tab--item" :data-key="0" :class="{active: curLevel == 0}">
       <p class="tentacleView--tabItem--cont">{{total}}</p>
@@ -11,11 +10,13 @@
     </div>
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :datakey="tent.code"/>
-  <Loadmore2 @reachBottom="loadmore" :allLoaded="true">
+  <Loadmore @reachBottom="loadmore" :allLoaded="true">
     <div>
       已经到底了，触点数不够？去看看
       <router-link to="/tentacle/list?label=102,206" :replace=true>"B-高"触点有没有新单</router-link>
       吧！
     </div>
-  </Loadmore2>
+  </Loadmore>
+
+  <router-link to="/tentacle/commonality" class="button--large" :replace="true" tag="div">去公海认领触点</router-link>
 </div>

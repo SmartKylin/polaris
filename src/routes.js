@@ -37,7 +37,7 @@ export default [
     component: TentacleIndex,
   },
   {
-    path: '/tentacle/sea',
+    path: '/tentacle/commonality',
     component: TentacleSea
   },
   {
