@@ -14,3 +14,10 @@ export function queryTask(params) {
 export function addTask(params) {
   return http.post(apis.taskAdd, params)
 }
+
+/**
+ * 修改待办事项
+ */
+export function updateTask(params) {
+  return http.post(apis.taskEdit, params)
+}

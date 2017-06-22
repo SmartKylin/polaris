@@ -20,8 +20,8 @@ export default create({
   },
   data() {
     return {
-      // 拜访计划弹出框是否可见
-      visible1: false,
+      /*// 拜访计划弹出框是否可见
+      visible1: false,*/
       // 写日志弹出框是否可见
       visible2: false,
       // 释放触点弹出框是否可见
@@ -38,8 +38,8 @@ export default create({
   },
   methods: {
     // 点击添加拜访计划按钮，弹出相应弹出框
-    addPlan(event) {
-      event.stopPropagation()
+    addPlan(position) {
+      this.addTodo(position)
       this.visible1 = true
     },
     // 点击写日志按钮，相应弹出框可见
@@ -53,7 +53,7 @@ export default create({
       event.stopPropagation()
     },
     // 跳转到触点详情页
-    pushto() {
+    toTentacleDetail() {
       if (this.$route.path.indexOf('/tentacle/detail') <= -1) {
         // 如果有弹出框出现则不跳转
         if (this.visible1 || this.visible2 || this.visible3) {
@@ -63,16 +63,22 @@ export default create({
       }
     },
     // 弹出框中提交添加拜访计划
-    addTodo() {
+    addTodo(position) {
       const params = {}
-      params.title = this.title
+      /*params.title = this.title
       params.content = this.content
       params.type = "1"
       params.flag = this.data.id
-      params.planTime = this.time
+      params.planTime = this.time*/
+      let now = new Date()
+      now.setDate(now.getDate() + 1)
+      params.planTime = now
       addTask(params).then(res=>{
         console.log(res.msg);
         if (res.retcode === 2000000) {
+          this.$toast.zIndex(8).show('添加成功~', position, function() {
+            console.log(position)
+          })
           this.visible1 = false
         }
       }).catch(err => {

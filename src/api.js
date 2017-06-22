@@ -51,6 +51,8 @@ export default (config => {
   "taskAdd": "/mizar/m/task/add",
   // 待办事项查询
   "taskList": "/mizar/m/task/list",
+  // 修改待办事项
+  "taskEdit": "/mizar/m/task/up",
   // 拜访日志新增
   "visitlogAdd": "/mizar/m/channel/visitlog/add",
   // 拜访日志查询

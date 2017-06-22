@@ -1,8 +1,8 @@
 <div>
   <div class="user--header">
     <Tab @change="handleChange">
-      <div class="tab--item">本周目标</div>
-      <div class="tab--item active">本月目标</div>
+      <div class="tab--item active">本周目标</div>
+      <div class="tab--item">本月目标</div>
     </Tab>
     <div class="flex">
       <div class="flex-1">

@@ -7,16 +7,16 @@
     </div>
   </Tab>
   <Tab @change="queryWithStatus">
-    <div class="tab--item active" data-key="206">高产</div>
+    <div class="tab--item active" data-key="6">高产</div>
     <!--<div class="tab&#45;&#45;item">中产</div>-->
-    <div class="tab--item" data-key="207">低产</div>
+    <div class="tab--item" data-key="7">低产</div>
     <div class="tab--item" data-key="all">全部</div>
   </Tab>
   <Tab @change="queryWithStatus">
-    <div class="tab--item active" data-key="101">A类</div>
-    <div class="tab--item" data-key="102">B类</div>
-    <div class="tab--item" data-key="103">C类</div>
-    <div class="tab--item" data-key="104">D类</div>
+    <div class="tab--item active" data-key="1">A类</div>
+    <div class="tab--item" data-key="2">B类</div>
+    <div class="tab--item" data-key="3">C类</div>
+    <div class="tab--item" data-key="4">D类</div>
     <div class="tab--item" data-key="dormant">休眠</div>
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :datakey="tent.code"/>

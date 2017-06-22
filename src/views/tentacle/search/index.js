@@ -23,9 +23,9 @@ export default create({
       // 当前级别
       curLevel: 1,
       // 当前标签
-      curLabel: "101,206",
+      curLabel: "1,6",
       // 标签数组
-      labelAry: [101, 206],
+      labelAry: [1, 6],
       // 是否休眠
       dormant: 0,
      /* // 是否VIP
@@ -51,11 +51,11 @@ export default create({
       }
       if (status === "dormant") {
         this.dormant = 1
-      } else if ((/^10[1234]$/).test(status)) {
+      } else if ((/^[1234]$/).test(status)) {
         this.dormant = 0
         this.curLabel = status
         this.labelAry[0] = parseInt(status)
-      } else if ((/^20[67]$/).test(status)) {
+      } else if ((/^[67]$/).test(status)) {
         this.dormant = 0
         this.labelAry[1] = parseInt(status)
       } else if (status === "all") {

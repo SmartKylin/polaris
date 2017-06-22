@@ -5,5 +5,10 @@ import TodoItem from '../../../components/todo'
 export default create({
   components: {
     TodoItem
+  },
+  methods: {
+    handleChange() {
+
+    }
   }
 })

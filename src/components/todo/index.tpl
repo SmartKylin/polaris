@@ -8,8 +8,8 @@
     </div>
   </div>
   <div class="todo--right">
-    <a href="javascript:;" @click="alert" class="tentacle--listItem--btn">完成</a>
-    <div class="tentacle--listItem--btn" @click="visible2=true">未完成</div>
+    <a href="javascript:;" @click="alert" class="tentacle--listItem--btn bg-green">完成</a>
+    <div class="tentacle--listItem--btn bg-orange" @click="visible2=true">关闭</div>
   </div>
   <Popup v-model="visible1">
     <div class="popup-plan popup--layer">
@@ -23,7 +23,6 @@
         <Datepicker slot="body" placeholder="请选择提醒时间" value="2017/06/14"/>
       </Cell>
       <textarea name="" id="" cols="30" rows="5" placeholder="失败原因" class="text--area"></textarea>
-      <div class="button--large mt5">删除待办事项</div>
     </div>
   </Popup>
 </div>

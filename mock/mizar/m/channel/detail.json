@@ -65,14 +65,26 @@
           {
             "id":"2",
             "title":"任务标题",
-            "type":"4",
+            "type":"3",
             "content":"任务内容",
             "flag":"csMtg5k42hKKe",
             "remark":"测试备注",
             "staffCode":"666666",
             "planTime":"12017-06-17 21:29:16",
             "isRemind":"0",
-            "isAccomplish":"0"
+            "isAccomplish":"1"
+          },
+          {
+            "id":"2",
+            "title":"任务标题",
+            "type":"3",
+            "content":"任务内容",
+            "flag":"csMtg5k42hKKe",
+            "remark":"测试备注",
+            "staffCode":"666666",
+            "planTime":"12017-06-17 21:29:16",
+            "isRemind":"0",
+            "isAccomplish":"2"
           }
         ]
       }
