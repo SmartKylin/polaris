@@ -1,6 +1,9 @@
 export default {
-  // 触点信息
-  tentacle: {},
+  // 标识是否是添加线索
+  // 添加和编辑线索都是在这个模块，
+  // 所以根据传过来的 code 判断是添加还是编辑
+  // 如果是添加，传过来的 code 为 "_"
+  isAdd: '',
   // 需要提交的数据
   model: {
     // 线索编码
@@ -46,7 +49,5 @@ export default {
       deposit: 0,
       serviceCharge: 0
     }
-  },
-  // 上级页面是线索添加页面
-  fromAdd: false
+  }
 }

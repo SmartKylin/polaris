@@ -1,5 +1,5 @@
-<div v-if="model.clueCode">
-  <div class="mb10 clueEdit--card">
+<div v-if="isAdd || model.clueCode">
+  <div class="mb10 clueEdit--card" v-if="!isAdd">
     <div class="clueEdit--card--hd">
       <span class="mr10">线索编号：{{model.clueCode}}</span>
       <span class="tag--green">{{model.statusName}}</span>
@@ -24,7 +24,7 @@
     <Cell
       title="关联触点"
       arrow
-      :to="`/clue/edit/${model.clueCode}/pick-tentacle`"
+      :to="`/clue/edit/${model.clueCode || '_'}/pick-tentacle`"
     >
       <p v-show="model.channel.channelCode" class="clueEdit--tentacle" slot="body">{{model.channel.name}} | {{model.channel.channelInstitutionName}}({{model.channel.address}}) | {{model.channel.mobile}}</p>
     </Cell>
@@ -55,7 +55,7 @@
   <LoanSchemeView /> -->
 
   <div class="mt30 pl20 pr20 pb30">
-    <div class="button--large" @click="save">保存修改</div>
+    <div class="button--large" @click="save">{{isAdd ? '生成线索' : '保存修改'}}</div>
   </div>
 
   <router-view></router-view>

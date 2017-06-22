@@ -11,7 +11,7 @@
           @blur="isFocus = false"
         >
       </div>
-      <a v-show="!isFocus" class="clueView--add" href="#/clue/add"></a>
+      <a v-show="!isFocus" class="clueView--add" href="#/clue/edit/_"></a>
       <div v-show="isFocus" class="clueView--search--btn" @click="search">搜索</div>
     </div>
 
