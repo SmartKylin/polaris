@@ -125,9 +125,13 @@ export function editLoanScheme(params) {
 export function queryClueByCode(params) {
   return http.get(apis.clueDetail, params).then(res => {
     // 单位转换
-    res.houses.assessedValue = formatMoney(res.houses.assessedValue)
-    res.expect.amount = formatMoney(res.expect.amount)
-
+    if (res.houses) {
+      res.houses.assessedValue = formatMoney(res.houses.assessedValue) || 0
+    }
+    // 单位转换
+    if (res.expect) {
+      res.expect.amount = formatMoney(res.expect.amount) || 0
+    }
     if (!res.serviceInfo) {
       res.serviceInfo = {
         "contractNo": "",
