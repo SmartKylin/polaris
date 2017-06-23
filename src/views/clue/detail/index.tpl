@@ -28,7 +28,7 @@
   </div>
   <a class="clueDetail--readLog" :href="'#/clue/logs/' + model.clueCode">查看操作日志 >></a>
 
-  <div class="clueDetail--card mt10">
+  <div class="clueDetail--card mt10" v-if="model.users">
     <div class="clueDetail--card--hd">
       <span>借款人信息</span>
     </div>
@@ -54,7 +54,7 @@
     </div>
   </div>
 
-  <div class="clueDetail--card mt10">
+  <div class="clueDetail--card mt10" v-if="model.channel">
     <div class="clueDetail--card--hd">
       <span>触点信息</span>
     </div>
@@ -141,7 +141,13 @@
   <div class="clueDetail--operation">
     <a class="clueDetail--operation-btn" :href="'#/clue/close/' + model.clueCode">关闭</a>
     <a class="clueDetail--operation-btn" :href="'#/clue/edit/' + model.clueCode">编辑</a>
-    <div class="clueDetail--operation-btn" @click="openInterviewPanel">预约面签</div>
+    <div
+      class="clueDetail--operation-btn"
+      :class="{'bg-gray': model.status !== 0}"
+      @click="openInterviewPanel"
+    >
+      预约面签
+    </div>
   </div>
 
   <Popup v-model="interviewVisible">
