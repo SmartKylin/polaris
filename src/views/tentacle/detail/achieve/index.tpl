@@ -45,12 +45,12 @@
       <div>
         <span>最近一次递单时间:</span>
         <span>{{data.recentDeliveryClueTime}}</span>
-        <router-link :to="'/clue/' + data.recentDeliveryClueId">查询线索详情</router-link>
+        <router-link v-if="data.recentDeliveryClueId" :to="'/clue/' + data.recentDeliveryClueId">查询线索详情</router-link>
       </div>
       <div>
         <span>最近一次成单时间:</span>
         <span>{{data.recentBargainClueTime}}</span>
-        <router-link :to="'/clue/' + data.recentBargainClueId">查询线索详情</router-link>
+        <router-link v-if="data.recentBargainClueId" :to="'/clue/' + data.recentBargainClueId">查询线索详情</router-link>
       </div>
     </div>
   </div>

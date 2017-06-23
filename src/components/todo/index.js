@@ -52,7 +52,7 @@ export default create({
     // 跳转到触点或线索详情
     routerToDetail() {
       // 如果点击了按钮，则不可跳转
-      if (this.visible = true) {
+      if (this.visible === true) {
         return
       }
       // 跳转到触点或线索详情

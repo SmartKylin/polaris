@@ -15,14 +15,13 @@ export default create({
       allLoaded: false,
       // 根据级别分类
       categories: [],
-      // 当前状态分类
-      status: 1,
+
       // 标识是否正在请求数据
       fetching: false,
       // 当前级别
       curLevel: 1,
       // 当前标签
-      curLabel: "1,6",
+      curLabel: "1,5",
       // 标签数组
       labelAry: [1, 6],
       // 是否休眠
@@ -41,32 +40,26 @@ export default create({
       this.$router.push('/tentacle/searchresult');
     },
 
-    // 查询为指定状态分类下的线索
-    queryWithStatus(status) {
-      console.log(status);
-      if (/^[1-6]$/.test(status)) {
-        this.curLevel = parseInt(status)
-      }
-      if (status === "dormant") {
+    // 级别改变,重新查询
+    levelChange(val) {
+      this.curLevel = val
+      this.reQuery()
+    },
+    // 标签改变
+    labelChange(val) {
+      if (val === "dormant") {
         this.dormant = 1
-      } else if ((/^[67]$/).test(status)) {
+      } else if (/^[1234]$/.test(val)) {
+        this.labelAry[0] = val
+      } else if ((/^[56]$/).test(val)) {
         this.dormant = 0
-        this.labelAry[1] = parseInt(status)
-      } else if (status === "all") {
+        this.labelAry[1] = parseInt(val)
+      } else if (val === "all") {
         this.labelAry[1] = null
       }
-
       this.reQuery()
     },
 
-    relationChange(status) {
-      if ((/^[1234]$/).test(status)) {
-        this.dormant = 0
-        this.curLabel = status
-        this.labelAry[0] = parseInt(status)
-      }
-      this.reQuery()
-    },
     query(onsuccess) {
       if (this.fetching) {
         return
@@ -84,11 +77,10 @@ export default create({
       } else {
         params.level = this.curLevel
       }
-      if (this.dormant === 1) {
+      if (this.dormant == 1) {
         params.dormant = 1
       } else {
-        this.curLabel = this.labelAry.join(',')
-        params.label = this.curLabel
+        params.label = this.labelAry.join(',')
       }
       this.$loading.show()
 
@@ -128,15 +120,7 @@ export default create({
       this.query()
     }
   },
- /* mounted() {
-    let level = parseInt(this.$route.params.level)
-    http.get(api.tentaclelist, {
-      level,
-    }).then(data=> {
-      console.log(data)
-      this.data = data
-    })
-  },*/
+
   created() {
 
     this.curLevel = parseInt(this.$route.params.level)
