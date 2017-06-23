@@ -21,3 +21,11 @@ export function queryArea(params) {
 export function queryLabel(params) {
   return http.get(apis.labelList, params)
 }
+
+/**
+ * 查询用户目标
+ */
+export function queryUserAims(params) {
+  return http.get(apis.userAims, params)
+}
+

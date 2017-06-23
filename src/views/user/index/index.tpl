@@ -12,7 +12,7 @@
         <div class="user--header--rt">
           <span>本周目标</span>
           <span>
-            <i>2</i>
+            <i>10</i>
             单</span>
         </div>
 
