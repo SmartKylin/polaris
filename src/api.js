@@ -11,6 +11,8 @@ export default (config => {
     return copy
   }, {})
 })({
+  // 个人中心目标
+  "userAims": "/mizar/m/user/aims",
   // 触点统计数据
   "tentacleStatis": "/mizar/m/channel/statis",
   // 触点查询
@@ -70,7 +72,7 @@ export default (config => {
   // 预约面签
   "makeInterview": "/mizar/m/clue/interview",
   // 待办事项
-  "todoEdit": "/mizar/m/task/up"
+  "todoEdit": "/mizar/m/task/up",
 })
 
 

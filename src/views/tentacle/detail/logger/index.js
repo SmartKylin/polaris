@@ -2,7 +2,6 @@ import create from './index.tpl'
 import './index.styl'
 import TodoItem from 'components/todo'
 import {queryOperationlog, queryVisitlog, updateTask} from 'services'
-import LoggerItem from './LoggerItem.vue'
 
 export default create({
   props: {
@@ -14,8 +13,6 @@ export default create({
     return {
       // 修改待办事项的弹出框是否显示
       visible1: false,
-      // 显示拜访记录还是操作记录
-      visitlogVisible: true,
       // 触点操作日志列表
       operationList: [],
       // 拜访日志列表
@@ -23,22 +20,28 @@ export default create({
       // 待办事项ID
       taskId: -1,
       // 完成待办事项备注
-      remark: ''
+      remark: '',
+      // 显示哪个tab页
+      showWhich: "visit"
     }
   },
   methods: {
     // 拜访记录和操作记录子页面切换
-    handleChange(key) {
-      if (key === "visit") {
-        this.queryOper()
-      } else {
+    handleChange(val) {
+      this.showWhich = val
+      console.log(this.showWhich);
+      if (this.showWhich == "visit") {
         this.queryVis()
+      } else {
+        this.queryOper()
       }
-      console.log(this.visitlogVisible)
     },
     // 发起查询操作日志列表请求
     queryOper() {
+      this.visitList = []
+      this.$loading.show()
       queryOperationlog({channelCode: this.data.code}).then(res => {
+        this.$loading.hide()
         this.operationList = res;
 
         this.operationList = this.operationList.map(l => {
@@ -51,12 +54,17 @@ export default create({
         console.log(this.operationList);
 
       }).catch(err => {
+        this.$loading.hide()
         this.$dialog.alert('提示', err.message)
+
       })
     },
     // 发起拜访记录列表请求
     queryVis() {
+      this.operationList = []
+      this.$loading.show()
       queryVisitlog({channelCode: this.data.code}).then(res => {
+        this.$loading.hide()
         this.visitList = res;
         this.visitList = this.visitList.map(l => {
           let dat= new Date(l.visitTime)
@@ -68,6 +76,7 @@ export default create({
         console.log(this.visitList);
 
       }).catch(err => {
+        this.$loading.hide()
         this.$dialog.alert('提示', err.message)
       })
     },
@@ -94,6 +103,10 @@ export default create({
   },
   components: {
     TodoItem,
-    LoggerItem
+  },
+  mounted() {
+    this.queryVis()
+    this.queryOper()
+    console.log(this.showWhich);
   }
 })

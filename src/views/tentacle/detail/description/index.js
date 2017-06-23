@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import { editTentacle } from 'services'
+import { editTentacle ,queryLabel} from 'services'
 
 export default create({
   props: {
@@ -10,42 +10,17 @@ export default create({
   },
   data() {
     return {
-      labels: {
-        relationLabs: [
-          {
-            id: 101,
-            name: "A类"
-          },
-          {
-            id: 102,
-            name: "B类"
-          },
-          {
-            id: 103,
-            name: "C类"
-          },
-          {
-            id: 104,
-            name: "D类"
-          }
-        ],
-        capacityLabs: [
-          {
-            id: 206,
-            name: '高产'
-          },
-          {
-            id: 207,
-            name: "低产"
-          }
-        ]
-      },
       // 选中的关系标签
       curRela: '',
       // 选中的产能标签
       curCap: '',
+      // 关系标签列表
+      labRelaList: [],
+      // 产能标签列表
+      labCapaList: [],
       // 要发送给后台的label
       label: '',
+      // 标签数组
       labelAry: [],
       // 兴趣爱好
       hobby: '',
@@ -63,19 +38,15 @@ export default create({
         spans.forEach(sp => (sp.className = ''))
         src.className += 'active';
 
-        console.log(src.innerText);
-        console.log(src.getAttribute("data-key"))
-
         let status = src.getAttribute("data-key")
-        if ((/^10[1234]$/).test(status)) {
-          this.curLabel = status
+
+        if ((/^[1234]$/).test(status)) {
           this.labelAry[0] = parseInt(status)
-        } else if ((/^20[67]$/).test(status)) {
-          this.dormant = 0
+        } else if ((/^[67]$/).test(status)) {
           this.labelAry[1] = parseInt(status)
-        } else if (status === "all") {
-          this.labelAry[1] = ''
         }
+        this.label = this.labelAry.join(',')
+        console.log(this.label);
       }
     },
     tentacleEdit() {
@@ -95,5 +66,13 @@ export default create({
         this.$dialog.alert('提示', err.message)
       })
     }
+  },
+  mounted() {
+    queryLabel().then(data => {
+      this.labRelaList = data[1].list
+      this.labCapaList = data[2].list
+    }).catch(err => {
+      this.$dialog.alert("提示", err.message)
+    })
   }
 })

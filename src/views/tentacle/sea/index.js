@@ -19,7 +19,7 @@ export default create({
     }
   },
   mounted() {
-    // 查询线索
+    // 查询触点
     this.query()
     console.log('sea ');
   },
