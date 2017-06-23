@@ -41,13 +41,14 @@
   "dependencies": {
     "axios": "^0.16.1",
     "bali.js": "github:xiaoyann/bali.js",
+    "better-scroll": "^0.2.4",
     "es6-promise": "^4.1.0",
     "express": "^4.15.3",
     "fastclick": "^1.0.6",
     "normalize.css": "^7.0.0",
     "qs": "^6.4.0",
     "raven-js": "^3.15.0",
-    "smart-ui": "^2.1.8",
+    "smart-ui": "^2.1.9",
     "vue": "^2.3.2",
     "vue-router": "^2.5.3"
   },

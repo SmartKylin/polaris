@@ -1,7 +1,7 @@
 <div v-if="isAdd || model.clueCode">
   <div class="mb10 clueEdit--card" v-if="!isAdd">
     <div class="clueEdit--card--hd">
-      <span class="mr10">线索编号：{{model.clueCode}}</span>
+      <span class="mr10">编号：{{model.clueCode}}</span>
       <span class="tag--green">{{model.statusName}}</span>
       <span class="tag--blue">{{model.serviceStatusName}}</span>
     </div>

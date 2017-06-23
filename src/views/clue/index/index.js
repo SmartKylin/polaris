@@ -1,6 +1,5 @@
 import { queryClues, queryClueStatis } from 'services'
 import ListView from 'components/listView'
-import Loadmore2 from './Loadmore'
 import create from './index.tpl'
 import './index.styl'
 
@@ -27,7 +26,7 @@ export default create({
     }
   },
 
-  components: { ListView, Loadmore2 },
+  components: { ListView },
 
   created() {
     // 查询线索

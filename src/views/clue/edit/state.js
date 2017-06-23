@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   // 标识是否是添加线索
   // 添加和编辑线索都是在这个模块，
   // 所以根据传过来的 code 判断是添加还是编辑
@@ -50,4 +50,4 @@ export default {
       serviceCharge: 0
     }
   }
-}
+})

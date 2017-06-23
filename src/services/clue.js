@@ -6,6 +6,7 @@ import { formatMoney } from '../helper/filters'
  * 查询线索
  */
 export function queryClues(params) {
+  params.pageSize = 10
   return http.get(apis.clueList, params)
 }
 
