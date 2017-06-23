@@ -77,7 +77,8 @@ export default create({
 
       const params = {}
       // params.status = this.status
-      params.pageNum = this.pageNum
+      params.page = this.pageNum
+
       if (this.curLevel === 6) {
         params.vip = 1
       } else {
@@ -90,7 +91,7 @@ export default create({
         params.label = this.curLabel
       }
       this.$loading.show()
-      console.log(params);
+
       queryTentacle(params).then(res => {
         const list = res.list
 
@@ -108,11 +109,11 @@ export default create({
         this.$loading.hide()
         this.fetching = false
       })
-        .catch(err => {
-          this.$loading.hide()
-          this.fetching = false
-          this.$dialog.alert('提示', err.message)
-        })
+      .catch(err => {
+        this.$loading.hide()
+        this.fetching = false
+        this.$dialog.alert('提示', err.message)
+      })
     },
     reQuery() {
       // 切换不同分类时要重置分页状态

@@ -10,8 +10,7 @@
     </div>
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :datakey="tent.code"/>
-  <Loadmore @reachBottom="loadmore" :allLoaded="true">
-    正在加载...
+  <Loadmore @reachBottom="loadmore" :visible="!allLoaded">
     <div v-if="allLoaded">
       已经到底了，触点数不够？
       <router-link to="/tentacle/list?label=2,6" :replace="true" tag="div"  v-if="isFromTabA">看看"B-高"触点有没有新单吧</router-link>
