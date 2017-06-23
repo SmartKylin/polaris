@@ -35,6 +35,8 @@ export default create({
       address: '',
       // 触点姓名
       name: '',
+      // 目标机构名称
+      institutionName: '',
       // 触点电话
       mobile: '',
       // 职位
@@ -62,6 +64,8 @@ export default create({
         this.cityId = parseInt(data.cityId)
         this.areaId = parseInt(data.areaId)
         this.industry = parseInt(data.industry)
+        this.institutionName = data.name
+        this.address = data.address
         console.log(this.areaId)
         console.log(this.industry)
       })
@@ -84,9 +88,9 @@ export default create({
         this.$dialog.alert('信息不全')
         return
       }
-      let {name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby} = this
-      console.log(name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby)
-      addTentacle({name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby}).then(res => {
+      let {name, mobile, institutionId,institutionName, position, cityId, areaId, industry, remark, label, hobby, address} = this
+      console.log(name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby, address, institutionName)
+      addTentacle({name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby, address, institutionName}).then(res => {
         if (res.retcode === 2000000) {
           this.$dialog.alert('提示', '触点添加成功')
           this.$router.back()

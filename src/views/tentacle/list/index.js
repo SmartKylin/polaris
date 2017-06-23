@@ -1,10 +1,8 @@
 import create from './index.tpl'
 import './index.styl'
-import SearchBar from 'components/searchbar'
 import TentacleBar from 'components/tentaclebar'
 import LevelOverview from 'components/leveloverview'
-import Loadmore2 from 'components/loadmore'
-import { queryTentacle, queryTentacleLevelStatis } from 'services'
+import { queryTentacle, queryTentacleLevelStatics } from 'services'
 
 export default create({
   data() {
@@ -23,21 +21,25 @@ export default create({
       // 当前级别
       curLevel: 1,
       // 当前标签
-      curLabel: "101,206",
+      curLabel: "1,6",
      /* // 标签数组
       labelAry: [101, 206],
       // 是否休眠
       dormant: 0,*/
        // 是否VIP
       vip: 0,
-      total: 0
+      total: 0,
+      // 是否查询休眠
+      isDormant: false,
+      // 是否来自1-A-高 Tab
+      isFromTabA: false,
+      // 是否来自B-高 Tab
+      isFromTabB: false
     }
   },
   components: {
-    SearchBar,
     LevelOverview,
     TentacleBar,
-    Loadmore2
   },
   methods: {
     tosearch() {
@@ -110,6 +112,8 @@ export default create({
 
     loadmore() {
       this.query()
+
+      // this.allLoaded = true
     }
   },
   created() {
@@ -117,8 +121,21 @@ export default create({
     if (!this.$route.query.hasOwnProperty("level")) {
       this.curLevel = 0
     }
+    // 是否来自 1-A-高 tab
+    if (this.$route.query.hasOwnProperty("level")) {
+      this.isFromTabA = true
+    }
+    // 是否来自 休眠选项 tab
+    if (!this.$route.query.hasOwnProperty("dormant")) {
+      this.isDormant = true
+    }
+    // 是否来自 B-高 tab
+    if (this.$route.query.hasOwnProperty("label=2")) {
+      this.isFromTabB = true
+    }
     this.query()
-    queryTentacleLevelStatis().then(data=>{
+    // 查询触点统计数据
+    queryTentacleLevelStatics().then(data=>{
       this.categories = data
       this.total = this.categories.reduce((pre,ten)=> (pre + ten.val), 0)
     })

@@ -1,13 +1,17 @@
 <div class="tentacle--listItem" @click="toTentacleDetail">
   <div class="tentacle--listItem--bd">
     <div class="tentacle--listItem--syn">
-      <div>
-        <span>{{data.name}}</span>
-        <span>{{data.mobile}}</span>
-        <span v-for="l in data.label" class="tentacle--label">{{l}}</span>
+      <div class="flex">
+        <div class="flex-1">
+          <span>{{data.name}}</span>
+          <span>{{data.mobile}}</span>
+        </div>
+        <div class="flex-1">
+          <span v-for="l in data.label" class="tentacle--label">{{l}}</span>
+        </div>
       </div>
       <div>
-        <span>{{data.channelInstitutionName}}（{{data.address}}）</span>
+        {{data.channelInstitutionName}}（{{data.address}}）
       </div>
       <div class="tentacle--listItem--contract">
         <span>最近一次联系时间</span>

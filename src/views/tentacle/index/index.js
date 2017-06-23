@@ -39,8 +39,10 @@ export default create({
     LevelOverview,
   },
   mounted() {
-    http.get(api.tentacleStatis).then(data=> {
+    http.get(api.tentacleStatics).then(data=> {
       this.data = data;
     })
+
+    console.log('this is tentacle');
   }
 })

@@ -5,13 +5,13 @@ import http from '../http'
  * 查询触点
  */
 export function queryTentacle(params) {
-  return http.get(apis.tentaclelist, params)
+  return http.get(apis.tentacleList, params)
 }
 
 /**
  * 查询触点统计信息
  */
-export function queryTentacleLevelStatis() {
+export function queryTentacleLevelStatics() {
 
   function callback(data) {
     return [
@@ -54,7 +54,7 @@ export function queryTentacleLevelStatis() {
     ]
   }
 
-  return http.get(apis.tentacleStatis).then(callback)
+  return http.get(apis.tentacleStatics).then(callback)
 }
 
 /**
@@ -77,7 +77,7 @@ export function addTentacle(params) {
  * 查询触点详情
  */
 export function queryTentacleDetail(params) {
-  return http.post(apis.tentacledetail, params)
+  return http.post(apis.tentacleDetail, params)
 }
 
 /**

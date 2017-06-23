@@ -2,7 +2,7 @@
   <div class="tentacleView--top">
     <div class="tentacleView--search">
       <router-link to="/tentacle/searchresult">
-        <input class="tentacleView--search--ipt" type="text" placeholder="输入姓名等关键词搜索触点..." v-model="search">
+        <input class="tentacleView--search--ipt" type="text" placeholder="输入姓名，手机号，机构名称等关键词搜索触点..." v-model="search">
       </router-link>
     </div>
     <div class="tentacleView--query" @click="query">查询</div>

@@ -3,7 +3,7 @@ import './index.styl'
 import SearchBar from 'components/searchbar'
 import TentacleBar from 'components/tentaclebar'
 import LevelOverview from 'components/leveloverview'
-import { queryTentacle, queryTentacleLevelStatis} from 'services'
+import { queryTentacle, queryTentacleLevelStatics} from 'services'
 
 export default create({
   data() {
@@ -141,7 +141,7 @@ export default create({
     this.curLevel = parseInt(this.$route.params.level)
     console.log('level:' + this.level);
     this.query()
-    queryTentacleLevelStatis().then(data=>{
+    queryTentacleLevelStatics().then(data=>{
       this.categories = data
     })
   },
