@@ -9,8 +9,8 @@
   </div>
   <div class="todo--right flex-1">
     <div v-if="task.isAccomplish == 0">
-      <div @click="accomplishTask" class="button--small bg-green">完成</div>
-      <div class="button--small bg-red" @click="closeTask">关闭</div>
+      <div @click.stop="accomplishTask" class="button--small bg-green">完成</div>
+      <div class="button--small bg-red" @click.stop="closeTask">关闭</div>
     </div>
       <div class="button--small bg-gray" v-if="task.isAccomplish == 1">已完成</div>
       <div class="button--small bg-gray" v-if="task.isAccomplish == 2">已关闭</div>

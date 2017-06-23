@@ -72,12 +72,13 @@ export default create({
 
       let {label, dormant} = this.$route.query
       const params = {}
-
+      params.page = this.pageNum
       if (this.curLevel === 6) {
         params.vip = 1
       } else if (this.curLevel !== 0) {
         params.level = parseInt(this.curLevel)
       }
+
       if (dormant) {
         params.dormant = 1
       } else {

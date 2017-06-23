@@ -8,7 +8,7 @@
   <CellGroup class="mt10">
     <Cell title="联系方式" class="info--title"></Cell>
     <Cell title="联系电话" :content="data.mobile"></Cell>
-    <Cell title="电子邮箱" content="192@qq.com"></Cell>
+    <!--<Cell title="电子邮箱" content="192@qq.com"></Cell>-->
     <Cell title="联系地址" :content="data.address"></Cell>
   </CellGroup>
 
