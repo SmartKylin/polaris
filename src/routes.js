@@ -64,7 +64,6 @@ export default [
   {
     // path: '/tentacle/detail/:datakey',
     path: '/tentacle/detail',
-    name: "detail",
     component: TentacleDetail,
     children: [
       {

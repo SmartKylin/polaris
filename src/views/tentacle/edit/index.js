@@ -64,6 +64,7 @@ export default create({
         if (res.retcode === 2000000) {
           console.log(res.msg);
           this.$dialog.alert('提示', '修改触点成功')
+          this.$router.back()
         }
       }).catch(err => {
         this.$dialog.alert('失败', err.message)

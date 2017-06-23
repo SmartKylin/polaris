@@ -21,6 +21,6 @@
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :datakey="tent.code"/>
   <Loadmore @reachBottom="loadmore" :allLoaded="allLoaded">
-    已经到底了，触点数不够？去看看"B-高"触点有没有新单吧！
+    亲，已经到底了~~
   </Loadmore>
 </div>

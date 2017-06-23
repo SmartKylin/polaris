@@ -4,7 +4,7 @@
     <div class="tab--item" data-key="operation">操作记录</div>
   </Tab>
   <!----------------------------拜访记录内容------------------->
-  <div class="visit--log" v-if="visitlogVisible">
+  <div class="visit--log" v-show="showWhich=='visit'">
     <!--触点待办事项列表-->
     <div class="visit--log--top pd10">
       <div class="todo--item" v-for="plan in data.backlog">
@@ -56,7 +56,7 @@
   </div>
 
   <!----------------------------操作记录内容--------------------->
-  <div class="operation--log" v-if="!visitlogVisible">
+  <div class="operation--log" v-show="showWhich=='operation'">
     <!--触点操作日志-->
     <div class="flex item--wrap" v-for="operation in operationList">
       <div class="log--left">

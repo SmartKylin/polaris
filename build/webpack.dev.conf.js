@@ -39,7 +39,7 @@ module.exports = webpackMerge(baseConfig, {
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: './index.html',
-			apiPath: '',
+			apiPath: 'https://dev.zhongfl.com',
       appVersion: package.version
 		}),
 

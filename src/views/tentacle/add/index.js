@@ -89,6 +89,7 @@ export default create({
       addTentacle({name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby}).then(res => {
         if (res.retcode === 2000000) {
           this.$dialog.alert('提示', '触点添加成功')
+          this.$router.back()
         }
       }).catch(err => {
         this.$dialog.alert('失败', err.message)
