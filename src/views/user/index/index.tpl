@@ -33,7 +33,5 @@
     <div class="user--bd--title">待办事项</div>
     <TodoItem v-for="task in taskList" :task="task"></TodoItem>
   </div>
-  <Loadmore @reachBottom="loadmore" :allLoaded="allLoaded">
-    已经到底了，亲~~
-  </Loadmore>
+  <Loadmore @reachBottom="loadmore" :visible="!allLoaded"></Loadmore>
 </div>

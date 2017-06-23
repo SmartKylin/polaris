@@ -36,16 +36,16 @@ require('es6-promise').polyfill()
  * 使用 sentry 监控异常
  * https://sentry.io
  */
-import Raven from 'raven-js'
-import RavenVue from 'raven-js/plugins/vue'
+// import Raven from 'raven-js'
+// import RavenVue from 'raven-js/plugins/vue'
 
-// 只在生产环境下使用
-if (process.env.NODE_ENV === 'production') {
-  Raven
-    .config('', {
-      release: __CONFIG__.version
-    }).addPlugin(RavenVue, Vue).install()
-}
+// // 只在生产环境下使用
+// if (process.env.NODE_ENV === 'production') {
+//   Raven
+//     .config('', {
+//       release: __CONFIG__.version
+//     }).addPlugin(RavenVue, Vue).install()
+// }
 
 
 
