@@ -147,9 +147,10 @@
   <Popup v-model="interviewVisible">
     <div class="clueDetail--interview">
       <Cell title="待办内容" content="预约面签"></Cell>
-      <Cell title="预约日期" arrow>
+      <Cell title="预约日期" arrow @click="openDatepicker" :content="interview.date"></Cell>
+      <!-- <Cell title="预约日期" arrow>
         <Datepicker slot="body" placeholder="请选择预约日期" v-model="interview.date"/>
-      </Cell>
+      </Cell> -->
       <div class="pt30 pl15 pr15">
         <div class="button--large" @click="save">提交</div>
       </div>

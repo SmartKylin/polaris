@@ -1,4 +1,5 @@
 import { queryClueByCode, makeInterview, editTodo } from 'services'
+import datepicker from '../../../helper/datepicker'
 import create from './index.tpl'
 import './index.styl'
 
@@ -32,9 +33,17 @@ export default create({
       this.$loading.hide()
       this.$dialog.alert('提示', err.message)
     })
+
+    datepicker.onselect(date => {
+      this.interview.date = date
+    })
   },
 
   methods: {
+    openDatepicker() {
+      datepicker.show()
+    },
+
     // 打开预约面签编辑页
     openInterviewPanel() {
       this.interviewVisible = true
