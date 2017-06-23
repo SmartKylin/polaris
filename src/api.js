@@ -14,11 +14,11 @@ export default (config => {
   // 个人中心目标
   "userAims": "/mizar/m/user/aims",
   // 触点统计数据
-  "tentacleStatis": "/mizar/m/channel/statis",
+  "tentacleStatics": "/mizar/m/channel/statis",
   // 触点查询
-  "tentaclelist": "/mizar/m/channel/list",
+  "tentacleList": "/mizar/m/channel/list",
   // 触点详情
-  "tentacledetail": "/mizar/m/channel/detail",
+  "tentacleDetail": "/mizar/m/channel/detail",
   // 触点新增
   "tentacleAdd": "/mizar/m/channel/add",
   // 触点修改

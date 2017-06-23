@@ -35,7 +35,8 @@ export default create({
     }
   },
   methods: {
-    // 点击添加拜访计划按钮，弹出相应弹出框
+    // 点击添加拜访计划按钮，弹出toast
+
     addPlan(position) {
       this.addTodo(position)
       this.visible1 = true
@@ -64,19 +65,16 @@ export default create({
       if (this.isFromSea) {
         return
       }
-      this.$router.push({path: '/tentacle/detail', params: {datakey: this.datakey}})
+      // this.$router.push({path: '/tentacle/detail', params: {datakey: this.datakey}})
+      this.$router.push({name: "tentacledetail", params: {datakey: this.datakey}})
+      // this.$router.push("/tentacle/detail/" + this.datakey)
     },
     // 弹出框中提交加入拜访计划
     addTodo(position) {
       const params = {}
-      /*params.title = this.title
-       params.content = this.content
        params.type = "1"
        params.flag = this.data.id
-       params.planTime = this.time*/
-      let now = new Date()
-      now.setDate(now.getDate() + 1)
-      params.planTime = now
+
       addTask(params).then(res => {
         console.log(res.msg);
         if (res.retcode === 2000000) {

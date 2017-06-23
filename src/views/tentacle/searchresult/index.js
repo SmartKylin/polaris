@@ -2,8 +2,8 @@ import create from './index.tpl'
 import './index.styl'
 import SearchBox from 'components/searchbar'
 import TentacleBar from 'components/tentaclebar'
-import http from '../../../http';
-import api from '../../../api';
+import {queryTentacle} from 'services'
+
 export default create({
   data() {
     return {
@@ -11,6 +11,9 @@ export default create({
         list: [],
       },
       search: '',
+      // 页码
+      page: 0,
+
     }
   },
   components: {
@@ -20,12 +23,12 @@ export default create({
   methods: {
     query() {
       console.log(this.search);
-      http.get(api.tentaclelist, {
-        search: this.search
-      }).then(data=>{
-        console.log(data);
-        this.data = data;
+      queryTentacle({search: this.search, page: this.page}).then(data => {
+        this.data = data
+      }).catch(err => {
+        this.$dialog.alert("提示", err.message)
       })
+
     }
   }
 })

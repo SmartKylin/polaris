@@ -12,7 +12,7 @@
         <div class="user--header--rt">
           <span>本{{showWeek ? "周" : "月"}}目标</span>
           <span>
-            <i>10</i>
+            <i>{{aims[showWhich].aims}}</i>
             单</span>
         </div>
 

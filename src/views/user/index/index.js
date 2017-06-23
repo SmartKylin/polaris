@@ -16,7 +16,7 @@ export default create({
         },
         month: {
           aims:'',
-          arryOutAims: '',
+          carryOutAims: '',
           remainDay: '',
           probability: ''
         }
