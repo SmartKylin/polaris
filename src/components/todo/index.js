@@ -32,6 +32,7 @@ export default create({
       this.visible = true
       this.accomplish = 2
     },
+    */
     postEditTask() {
       // 关闭弹出框
       this.visible = false
@@ -49,7 +50,6 @@ export default create({
         this.$dialog.alert("提示", err.message)
       })
     },
-     */
 
     // 跳转到触点或线索详情
     toTaskDetail() {

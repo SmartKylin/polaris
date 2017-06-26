@@ -1,4 +1,4 @@
-<div>
+<div class="userView">
   <div class="user--header">
     <Tab @change="handleChange">
       <div class="tab--item active" data-key="week">本周目标</div>
@@ -13,7 +13,8 @@
           <span>本{{showWeek ? "周" : "月"}}目标</span>
           <span>
             <i>{{aims[showWhich].aims}}</i>
-            单</span>
+            单
+          </span>
         </div>
 
         <div class="flex user--header-rb">
@@ -29,11 +30,12 @@
       </div>
     </div>
   </div>
+
+  <div class="section-title mt10">待办事项</div>
   <div class="user--bd">
-    <div class="user--bd--title">待办事项</div>
     <Tab @change="taskChange">
-      <div class="tab--item active" data-key="done">已完成</div>
-      <div class="tab--item" data-key="undo">未完成</div>
+      <div class="tab--item active" data-key="undo">未完成</div>
+      <div class="tab--item" data-key="done">已完成</div>
     </Tab>
     <TodoItem v-for="task in undoTaskList" :task="task" v-show="showTask == 'undo'"></TodoItem>
     <TodoItem v-for="task in doneTaskList" :task="task" v-show="showTask =='done'"></TodoItem>

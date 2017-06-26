@@ -26,7 +26,7 @@
     </div>
    -->
 
-    <Tab @change="queryWithStatus">
+    <Tab @change="queryWithStatus" v-if="categories.length > 0">
       <div class="tab--item" :data-key="data.id" v-for="(data, k) in categories" :class="{active: data.id == status}">
         <p class="clueView--tabItem--cont">{{data.val}}</p>
         <p class="clueView--tabItem--name">{{data.name}}</p>
