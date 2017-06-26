@@ -1,4 +1,5 @@
-<div class="pick-tentacle" ref="wrapper">
+<div class="pick-tentacle">
+
   <div class="pick-tentacle--hd">
     <div class="searchBarWrapper">
       <div class="searchBar">
@@ -13,13 +14,15 @@
     </div>
   </div>
 
-  <div>
-    <Cell
-      arrow
-      :title="`${data.name} -- ${data.channelInstitutionName}(${data.address}) ${data.mobile}`"
-      v-for="data in dataList"
-      @click="picker(data)"
-    >
-    </Cell>
+  <div ref="wrapper">
+    <div>
+      <Cell
+        arrow
+        :title="`${data.name} -- ${data.channelInstitutionName}(${data.address}) ${data.mobile}`"
+        v-for="data in dataList"
+        @click="picker(data)"
+      >
+      </Cell>
+    </div>
   </div>
 </div>

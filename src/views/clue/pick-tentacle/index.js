@@ -1,4 +1,4 @@
-import BScroll from 'better-scroll'
+// import BScroll from 'better-scroll'
 import { queryTentacle } from 'services'
 import bus from '../../../helper/bus'
 import create from './index.tpl'
@@ -37,7 +37,7 @@ export default create({
       queryTentacle(params).then(res => {
         this.dataList = res.list
         this.$loading.hide()
-        this.$nextTick(() => new BScroll(this.$refs.wrapper))
+        // this.$nextTick(() => new BScroll(this.$refs.wrapper))
       })
       .catch(err => {
         this.$loading.hide()
