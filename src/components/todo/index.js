@@ -49,6 +49,7 @@ export default create({
         this.$dialog.alert("提示", err.message)
       })
     },
+
     // 跳转到触点或线索详情
     routerToDetail() {
       // 如果点击了按钮，则不可跳转
@@ -61,6 +62,10 @@ export default create({
       } else if (this.task.type == 3) {
         this.$router.push('/clue/' + this.task.flag)
       }
+    },
+
+    openEditor() {
+      this.visible = true
     }
   }
 })

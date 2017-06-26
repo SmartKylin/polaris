@@ -20,8 +20,6 @@
     <div class="tab--item" data-key="dormant">休眠</div>
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :datakey="tent.code"/>
-  <Loadmore @reachBottom="loadmore" :allLoaded="allLoaded">
-    亲，已经到底了~~
-    <div v-if="allLoaded">已经没有更多的触点了~~</div>
-  </Loadmore>
+  <Loadmore @reachBottom="loadmore" :visible="!allLoaded"></Loadmore>
+  <div v-if="allLoaded">已经没有更多的触点了~~</div>
 </div>

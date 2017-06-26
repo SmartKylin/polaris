@@ -1,19 +1,21 @@
-<div class="todo--item" @click="routerToDetail">
-  <div class="todo--left flex-1">
+<div class="todo--item" @click="openEditor">
+  <div class="todo--item--bd">
     <div class="pb5 color-gray font-12" v-if="task.isRemind == 1">距离截止还有3天</div>
     <div class="pb5 color-gray font-12" v-if="task.isRemind == 0">{{task.planTime}}</div>
-    <div class="pb5 mt10">{{task.title}}{{task.content}}</div>
+    <div class="todo--item--title">{{task.title}}</div>
+    <div class="todo--item--cont">{{task.content}}</div>
     <div class="pb5 color-gray font-12 mt10">
       {{task.type == 1 ? "触点" : "面签"}}
     </div>
   </div>
-  <div class="todo--right flex-1">
-    <div v-if="task.isAccomplish == 0">
-      <div @click.stop="accomplishTask" class="button--small bg-green">完成</div>
-      <div class="button--small bg-red" @click.stop="closeTask">关闭</div>
-    </div>
-      <div class="button--small bg-gray" v-if="task.isAccomplish == 1">已完成</div>
-      <div class="button--small bg-gray" v-if="task.isAccomplish == 2">已关闭</div>
+
+  <div class="todo--item--ft">
+    <template v-if="task.isAccomplish == 0">
+      <div @click.stop="accomplishTask" class="ml5 button--small bg-green">完成</div>
+      <div class="ml5 button--small bg-red" @click.stop="closeTask">关闭</div>
+    </template>
+    <div class="ml5 button--small bg-gray" v-if="task.isAccomplish == 1">已完成</div>
+    <div class="ml5 button--small bg-gray" v-if="task.isAccomplish == 2">已关闭</div>
   </div>
  <!-- <Popup v-model="visible1">
     <div class="popup-plan popup&#45;&#45;layer">

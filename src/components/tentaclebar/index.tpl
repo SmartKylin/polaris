@@ -4,14 +4,14 @@
       <div class="flex">
         <div class="flex-1">
           <span>{{data.name}}</span>
-          <span>{{data.mobile}}</span>
         </div>
         <div class="flex-1">
-          <span v-for="l in data.label" class="tentacle--label">{{l}}</span>
+          <span v-for="l in data.label" class="ml5 tag--orange">{{l}}</span>
         </div>
       </div>
       <div>
-        {{data.channelInstitutionName}}（{{data.address}}）
+        {{data.channelInstitutionName}}
+        <div>地址：{{data.address}}</div>
       </div>
       <div class="tentacle--listItem--contract">
         <span>最近一次联系时间</span>
@@ -47,19 +47,22 @@
       <div class="button&#45;&#45;large" @click="addTodo">提交</div>
     </div>
   </Popup>-->
+
   <Popup v-model="visible2">
-    <div class="popup-logger popup--layer">
-      <Cell title="拜访时间">
-        <Datepicker slot="body" placeholder="请选择提醒时间" v-model="time"></Datepicker>
-      </Cell>
-      <textarea name="" id="" cols="30" rows="5" placeholder="拜访内容" class="text--area" v-model="content"></textarea>
-      <div class="button--large" @click="visitlog">提交</div>
+    <div class="tentcaleView--popup">
+      <Cell title="拜访时间" arrow @click="openDatepicker" :content="date"></Cell>
+      <div class="textareaBox">
+        <textarea placeholder="拜访内容" v-model="content"></textarea>
+      </div>
+      <div class="pl20 pr20 pt25 pb25">
+        <div class="button--large" @click="visitlog">提交</div>
+      </div>
     </div>
   </Popup>
+
   <Popup v-model="visible3">
     <div class="popup-deliver popup--layer">
-          <textarea name="" id="uri" cols="30" rows="5" placeholder="释放原因" class="text--area"
-                    v-model="content"></textarea>
+      <textarea name="" id="uri" cols="30" rows="5" placeholder="释放原因" class="text--area" v-model="content"></textarea>
       <div class="button--large mt20" @click="release">提交</div>
     </div>
   </Popup>

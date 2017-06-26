@@ -1,5 +1,5 @@
 import { addClue, editClue, queryClueByCode } from 'services'
-import { cloneDeep } from 'bali.js'
+import { cloneDeep, assignDeep } from 'bali.js'
 // import LoanSchemeView from '../loan-scheme'
 import bus from '../../../helper/bus'
 import createState from './state'
@@ -82,15 +82,20 @@ export default create({
       })
       .then(res => {
         // 删除多余字段
-        delete res.cityId
-        delete res.channelCode
-        delete res.businessCode
-        delete res.declarationTime
-        delete res.source
-        delete res.backlog
-        delete res.loanInfos
+        // delete res.cityId
+        // delete res.channelCode
+        // delete res.businessCode
+        // delete res.declarationTime
+        // delete res.source
+        // delete res.backlog
+        // delete res.loanInfos
 
-        this.model = res
+        Object.keys(this.model).forEach(name => {
+          if (res[name]) {
+            this.model[name] = res[name]
+          }
+        })
+
         this.$loading.hide()
       })
       .catch(err => {

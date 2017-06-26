@@ -1,3 +1,4 @@
+import datepicker from '../../helper/datepicker'
 import create from './index.tpl'
 import './index.styl'
 import {queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle, claimTentacle} from 'services'
@@ -31,7 +32,9 @@ export default create({
       // 是否来自公海
       isFromSea: false,
       // 是否来自触点详情页
-      isFromDetail: false
+      isFromDetail: false,
+      //
+      date: ''
     }
   },
   methods: {
@@ -76,7 +79,6 @@ export default create({
        params.flag = this.data.id
 
       addTask(params).then(res => {
-        console.log(res.msg);
         if (res.retcode === 2000000) {
           this.$toast.zIndex(8).show('添加成功~', position, function () {
             console.log(position)
@@ -93,11 +95,10 @@ export default create({
       params.visitTime = this.time
       params.channelCode = this.data.code
       params.content = this.content
+
       addVisitlog(params).then(res => {
-        console.log(res.msg);
-        if (res.retcode === 2000000) {
-          this.visible2 = false
-        }
+        this.$toast.show('操作成功')
+        this.visible2 = false
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
       })
@@ -127,9 +128,17 @@ export default create({
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
       })
-    }
+    },
+
+    openDatepicker() {
+      datepicker.show()
+    },
   },
   mounted() {
+    datepicker.onselect(date => {
+      this.date = date
+    })
+
     // 是否来自触点详情页
     if (this.$route.path.indexOf('/tentacle/detail') > -1) {
       this.isFromDetail = true

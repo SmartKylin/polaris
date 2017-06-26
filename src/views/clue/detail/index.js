@@ -46,7 +46,9 @@ export default create({
 
     // 打开预约面签编辑页
     openInterviewPanel() {
-      this.interviewVisible = true
+      if (this.model.status === 0) {
+        this.interviewVisible = true
+      }
     },
 
     // 关闭预约面签编辑页

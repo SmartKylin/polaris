@@ -85,8 +85,10 @@ export default create({
         params.label = label
       }
 
+      params.page = this.pageNum
+
       this.$loading.show()
-      console.log(params);
+
       queryTentacle(params).then(res => {
         const list = res.list
 
@@ -104,17 +106,15 @@ export default create({
         this.$loading.hide()
         this.fetching = false
       })
-        .catch(err => {
-          this.$loading.hide()
-          this.fetching = false
-          this.$dialog.alert('提示', err.message)
-        })
+      .catch(err => {
+        this.$loading.hide()
+        this.fetching = false
+        this.$dialog.alert('提示', err.message)
+      })
     },
 
     loadmore() {
       this.query()
-
-      // this.allLoaded = true
     }
   },
   created() {

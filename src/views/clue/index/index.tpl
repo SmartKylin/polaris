@@ -73,8 +73,38 @@
         </div>
 
         <div class="clueView--listItem--ft">
-          <a class="button--small mr10" :href="'#/clue/close/' + data.clueCode" @click.stop>关闭线索</a>
-          <a class="button--small" :href="'#/clue/' + data.clueCode" @click.stop>预约面签</a>
+<!--           <a
+            v-if="data.status === -1 || data.status === 10"
+            class="button--small mr10 disabled"
+            href="javascript:;"
+            @click.stop
+          >
+            关闭线索
+          </a>
+ -->          <a
+            class="button--small mr10"
+            :href="'#/clue/close/' + data.clueCode"
+            @click.stop
+          >
+            关闭线索
+          </a>
+
+          <a
+            v-if="data.status === 0"
+            class="button--small"
+            :href="'#/clue/' + data.clueCode"
+            @click.stop
+          >
+          预约面签
+          </a>
+          <a
+            v-else
+            class="button--small disabled"
+            href="javascript:;"
+            @click.stop
+          >
+          预约面签
+          </a>
         </div>
       </div>
     </div>
