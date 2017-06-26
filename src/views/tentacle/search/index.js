@@ -2,7 +2,6 @@ import create from './index.tpl'
 import './index.styl'
 import SearchBar from 'components/searchbar'
 import TentacleBar from 'components/tentaclebar'
-import LevelOverview from 'components/leveloverview'
 import { queryTentacle, queryTentacleLevelStatics} from 'services'
 
 export default create({
@@ -15,7 +14,6 @@ export default create({
       allLoaded: false,
       // 根据级别分类
       categories: [],
-
       // 标识是否正在请求数据
       fetching: false,
       // 当前级别
@@ -23,7 +21,7 @@ export default create({
       // 当前标签
       curLabel: "1,5",
       // 标签数组
-      labelAry: [1, 6],
+      labelAry: [1, 5],
       // 是否休眠
       dormant: 0,
      /* // 是否VIP
@@ -32,7 +30,6 @@ export default create({
   },
   components: {
     SearchBar,
-    LevelOverview,
     TentacleBar,
   },
   methods: {
@@ -69,7 +66,7 @@ export default create({
       this.pageNum += 1
 
       const params = {}
-      // params.status = this.status
+
       params.page = this.pageNum
 
       if (this.curLevel === 6) {
@@ -110,6 +107,7 @@ export default create({
     reQuery() {
       // 切换不同分类时要重置分页状态
       this.pageNum = 0
+      // 数据重置为未加载完
       this.allLoaded = false
       // 查询成功后清空 dataList
       this.query(() => {
