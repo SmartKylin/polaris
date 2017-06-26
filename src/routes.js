@@ -22,6 +22,8 @@ import PickTentacle from 'views/clue/pick-tentacle'
 import TodoDone from 'views/clue/todo-done'
 import UserIndex from 'views/user/index'
 
+import TaskDetail from 'views/user/task'
+
 export default [
   {
     path: '/',
@@ -140,7 +142,12 @@ export default [
     component: UserIndex
   },
   {
+    path: '/user/task/:flag/:id',
+    component: TaskDetail
+  },
+  {
     path: '/login',
     component: Login
-  },
+  }
+
 ]

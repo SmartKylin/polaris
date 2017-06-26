@@ -38,7 +38,7 @@ module.exports = webpackMerge(baseConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-			template: './index.html',
+			template: './detail.html',
 			apiPath: '',
       appVersion: package.version
 		}),

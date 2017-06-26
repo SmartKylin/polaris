@@ -17,7 +17,7 @@ function handler(req, res, next) {
     let datasource = utils.getValue(conf.response, conf.datasource)
     let page = req.query.pageNum || req.body.pageNum || 1
     utils.setValue(conf.response, conf.datasource, utils.paging(datasource, page, 3))
-  }
+}
 
   // get response
   const response = conf.response[responseName]

@@ -15,6 +15,8 @@ export default (config => {
   "userAims": "/mizar/m/user/aims",
   // 触点统计数据
   "tentacleStatics": "/mizar/m/channel/statis",
+  // 各类型触点级别数据统计
+  "tentacleGstatics": "/mizar/m/channel/gstatis",
   // 触点查询
   "tentacleList": "/mizar/m/channel/list",
   // 触点详情
@@ -57,6 +59,8 @@ export default (config => {
   "taskAdd": "/mizar/m/task/add",
   // 待办事项查询
   "taskList": "/mizar/m/task/list",
+  // 待办事项详情
+  "taskDetail": "/mizar/m/task/detail",
   // 修改待办事项
   "taskEdit": "/mizar/m/task/up",
   // 拜访日志新增
@@ -75,7 +79,13 @@ export default (config => {
   "todoEdit": "/mizar/m/task/up",
 })
 
-
+/*export default (config => {
+  let obj = {}
+  Object.keys(config).forEach(name => {
+    obj[name] = `${prefix}${config[name]}`
+  })
+  return obj
+})()*/
 
 
 

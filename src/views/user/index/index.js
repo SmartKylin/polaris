@@ -15,7 +15,7 @@ export default create({
           probability: ''
         },
         month: {
-          aims:'',
+          aims: '',
           carryOutAims: '',
           remainDay: '',
           probability: ''
@@ -23,6 +23,10 @@ export default create({
       },
       // 待办事项列表
       taskList: [],
+      // 未完成待办事项列表
+      undoTaskList: [],
+      // 已完成待办事项列表
+      doneTaskList: [],
       // 是否显示周目标
       showWeek: true,
       // 显示的是周目标
@@ -32,19 +36,23 @@ export default create({
       // 数据是否全部加载完
       allLoaded: false,
       // 是否正在加载数据
-      fetching: false
+      fetching: false,
+      // 当前显示的是已完成/未完成
+      showTask: "done"
     }
   },
   components: {
     TodoItem
   },
   methods: {
+    // 周和月切换显示
     handleChange(val) {
       this.showWeek = val === "week" ? true : false
       this.showWhich = val
     },
+    // 查询
     query(success) {
-      if(this.fetching) {
+      if (this.fetching) {
         return
       }
       this.fetching = true
@@ -61,7 +69,13 @@ export default create({
           success()
         }
         if (list.length > 0) {
-          this.taskList  = this.taskList.concat(list)
+          this.taskList = this.taskList.concat(list)
+          this.undoTaskList = this.taskList.filter(t => {
+            return t.isAccomplish == 0
+          })
+          this.doneTaskList = this.taskList.filter(t => {
+            return t.isAccomplish != 0
+          })
         } else {
           this.allLoaded = true
         }
@@ -73,16 +87,33 @@ export default create({
         this.$dialog.alert("提示", err.message)
       })
     },
+    // 加载更多
     loadmore() {
       this.query()
+    },
+    // 未完成和已完成切换显示
+    taskChange(val) {
+      this.showTask = val
+      console.log(this.showTask);
+    },
+
+    // 计算当前显示的列表
+    computeShowTask() {
+      this.undoTaskList = this.taskList.filter(t => {
+        return t.isAccomplish == 0
+      })
+      this.doneTaskList = this.taskList.filter(t => {
+        return t.isAccomplish != 0
+      })
     }
   },
-
   created() {
     queryUserAims().then(data => {
       this.aims = data
       console.log(this.aims);
     })
     this.query()
+
+    this.computeShowTask()
   }
 })

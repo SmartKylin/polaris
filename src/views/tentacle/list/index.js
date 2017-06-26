@@ -2,7 +2,7 @@ import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
 import LevelOverview from 'components/leveloverview'
-import { queryTentacle, queryTentacleLevelStatics } from 'services'
+import { queryTentacle, queryTentacleLevelStatics, queryTentacleLevelGStatics } from 'services'
 
 export default create({
   data() {
@@ -113,6 +113,14 @@ export default create({
       })
     },
 
+    // 查询统计数据
+    queryStatics(type){
+      queryTentacleLevelStatics({type}).then(data=>{
+        this.categories = data
+        this.total = data.reduce((pre,ten)=> (pre + ten.val), 0)
+      })
+    },
+
     loadmore() {
       this.query()
     }
@@ -121,10 +129,12 @@ export default create({
 
     if (!this.$route.query.hasOwnProperty("level")) {
       this.curLevel = 0
+
     }
     // 是否来自 1-A-高 tab
     if (this.$route.query.hasOwnProperty("level")) {
       this.isFromTabA = true
+      this.queryStatics("a")
     }
     // 是否来自 休眠选项 tab
     if (!this.$route.query.hasOwnProperty("dormant")) {
@@ -133,12 +143,16 @@ export default create({
     // 是否来自 B-高 tab
     if (this.$route.query.hasOwnProperty("label=2")) {
       this.isFromTabB = true
+      this.queryStatics("b")
+    }
+    // 是否来自 C-高 tab
+    if (this.$route.query.hasOwnProperty("label=2")) {
+      this.queryStatics("c")
     }
     this.query()
     // 查询触点统计数据
     queryTentacleLevelStatics().then(data=>{
-      this.categories = data
-      this.total = this.categories.reduce((pre,ten)=> (pre + ten.val), 0)
+      this.total = data.reduce((pre,ten)=> (pre + ten.val), 0)
     })
   },
 })

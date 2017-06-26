@@ -21,3 +21,10 @@ export function addTask(params) {
 export function updateTask(params) {
   return http.post(apis.taskEdit, params)
 }
+
+/**
+ * 待办事项详情
+ */
+export function queryTaskDetail(params) {
+  return http.get(apis.taskDetail, params)
+}
