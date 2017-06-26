@@ -28,7 +28,7 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.data.institutionId = parseInt(val)
-      queryInstitutionDetail({id: this.institutionId}).then(data => {
+      queryInstitutionDetail({id: this.data.institutionId}).then(data => {
         this.data.cityId = parseInt(data.cityId)
         this.data.areaId = parseInt(data.areaId)
         this.data.industry = parseInt(data.industry)
