@@ -89,7 +89,6 @@ export default create({
       this.isAccomplish = parseInt(val)
       this.reQuery()
     },
-
     // 重新查询
     reQuery() {
       this.page = 0

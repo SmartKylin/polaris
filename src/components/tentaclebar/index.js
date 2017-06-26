@@ -46,12 +46,14 @@ export default create({
   methods: {
     // 点击添加拜访计划按钮，弹出toast
     addPlan(position) {
+      this.content = ''
       this.addTodo(position)
       this.visible1 = true
     },
 
     // 点击写日志按钮，相应弹出框可见
     addLogger (event) {
+      this.content = ''
       this.visible2 = true
       event.stopPropagation()
     },
