@@ -25,9 +25,11 @@
     <!--如果触不是来自公海则显示以下按钮-->
     <div v-if="!isFromSea">
       <!--<div class="tentacle&#45;&#45;listItem&#45;&#45;btn" @click="addPlan($event)">加入拜访计划</div>-->
-      <a href="javascript:;" @click="addPlan('center')" class="button--small">加入拜访计划</a>
+      <a href="javascript:;" @click="addPlan('center')" class="button--small" v-if="!added">加入拜访计划</a>
+      <div class="button--small bg-gray" v-if="added">已加入拜访计划</div>
       <div class="tentacle--listItem--btn" @click="addLogger($event)">写日志</div>
-      <div class="tentacle--listItem--btn" @click="deliverTentacle($event)">释放触点</div>
+      <div class="tentacle--listItem--btn" @click="deliverTentacle($event)" v-if="!isReleased">释放触点</div>
+      <div class="tentacle--listItem--btn bg-gray" v-if="isReleased">已释放</div>
     </div>
     <!--如果触点来自公海则显示以下按钮-->
     <div v-if="isFromSea">
@@ -51,6 +53,12 @@
   <Popup v-model="visible2">
     <div class="tentcaleView--popup">
       <Cell title="拜访时间" arrow @click="openDatepicker" :content="date"></Cell>
+      <Cell title="拜访方式" arrow>
+        <Selector slot="body" @input="visitMethodChange">
+          <option :value="1">面聊</option>
+          <option :value="2">电聊</option>
+        </Selector>
+      </Cell>
       <div class="textareaBox">
         <textarea placeholder="拜访内容" v-model="content"></textarea>
       </div>

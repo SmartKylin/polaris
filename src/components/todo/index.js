@@ -1,6 +1,5 @@
 import create from './index.tpl'
 import './index.styl'
-import { updateTask } from 'services'
 
 export default create({
   props: {
@@ -19,6 +18,7 @@ export default create({
     }
   },
   methods: {
+    /*
     alert() {
       this.$dialog.alert('', '', [{title: '查看详情', onClick() {}}, {title: '返回首页', onClick() {}}])
     },
@@ -49,23 +49,23 @@ export default create({
         this.$dialog.alert("提示", err.message)
       })
     },
+     */
 
     // 跳转到触点或线索详情
-    routerToDetail() {
+    toTaskDetail() {
       // 如果点击了按钮，则不可跳转
       if (this.visible === true) {
         return
       }
-      // 跳转到触点或线索详情
+     /* // 跳转到触点或线索详情
       if (this.task.type == 1) {
         this.$router.push({path: '/tentacle/detail' ,params: {datakey: this.task.flag}})
       } else if (this.task.type == 3) {
         this.$router.push('/clue/' + this.task.flag)
-      }
-    },
-
-    openEditor() {
-      this.visible = true
+      }*/
+      // 跳转到任务详情
+      this.$router.push('/user/task/' + this.task.flag + '/' + this.task.type)
     }
+
   }
 })

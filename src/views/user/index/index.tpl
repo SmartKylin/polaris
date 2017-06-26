@@ -35,7 +35,8 @@
       <div class="tab--item active" data-key="done">已完成</div>
       <div class="tab--item" data-key="undo">未完成</div>
     </Tab>
-    <TodoItem v-for="task in taskList" :task="task"></TodoItem>
+    <TodoItem v-for="task in undoTaskList" :task="task" v-if="showTask == 'undo'"></TodoItem>
+    <TodoItem v-for="task in doneTaskList" :task="task" v-if="showTask =='done'"></TodoItem>
   </div>
   <Loadmore @reachBottom="loadmore" :visible="!allLoaded"></Loadmore>
 </div>

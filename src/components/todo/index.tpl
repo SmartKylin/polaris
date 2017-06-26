@@ -1,4 +1,4 @@
-<div class="todo--item" @click="openEditor">
+<div class="todo--item" @click="toTaskDetail">
   <div class="todo--item--bd">
     <div class="pb5 color-gray font-12" v-if="task.isRemind == 1">距离截止还有3天</div>
     <div class="pb5 color-gray font-12" v-if="task.isRemind == 0">{{task.planTime}}</div>
@@ -10,10 +10,11 @@
   </div>
 
   <div class="todo--item--ft">
-    <template v-if="task.isAccomplish == 0">
-      <div @click.stop="accomplishTask" class="ml5 button--small bg-green">完成</div>
-      <div class="ml5 button--small bg-red" @click.stop="closeTask">关闭</div>
-    </template>
+   <!-- <template v-if="task.isAccomplish == 0">
+      <div @click.stop="accomplishTask" class="ml5 button&#45;&#45;small bg-green">完成</div>
+      <div class="ml5 button&#45;&#45;small bg-red" @click.stop="closeTask">关闭</div>
+    </template>-->
+    <div class="ml5 button--small bg-gray" v-if="task.isAccomplish == 0">未完成</div>
     <div class="ml5 button--small bg-gray" v-if="task.isAccomplish == 1">已完成</div>
     <div class="ml5 button--small bg-gray" v-if="task.isAccomplish == 2">已关闭</div>
   </div>

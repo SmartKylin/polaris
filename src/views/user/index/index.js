@@ -15,7 +15,7 @@ export default create({
           probability: ''
         },
         month: {
-          aims:'',
+          aims: '',
           carryOutAims: '',
           remainDay: '',
           probability: ''
@@ -36,7 +36,9 @@ export default create({
       // 数据是否全部加载完
       allLoaded: false,
       // 是否正在加载数据
-      fetching: false
+      fetching: false,
+      // 当前显示的是已完成/未完成
+      showTask: "done"
     }
   },
   components: {
@@ -50,7 +52,7 @@ export default create({
     },
     // 查询
     query(success) {
-      if(this.fetching) {
+      if (this.fetching) {
         return
       }
       this.fetching = true
@@ -67,7 +69,13 @@ export default create({
           success()
         }
         if (list.length > 0) {
-          this.taskList  = this.taskList.concat(list)
+          this.taskList = this.taskList.concat(list)
+          this.undoTaskList = this.taskList.filter(t => {
+            return t.isAccomplish == 0
+          })
+          this.doneTaskList = this.taskList.filter(t => {
+            return t.isAccomplish != 0
+          })
         } else {
           this.allLoaded = true
         }
@@ -84,16 +92,28 @@ export default create({
       this.query()
     },
     // 未完成和已完成切换显示
-    taskChange() {
+    taskChange(val) {
+      this.showTask = val
+      console.log(this.showTask);
+    },
 
+    // 计算当前显示的列表
+    computeShowTask() {
+      this.undoTaskList = this.taskList.filter(t => {
+        return t.isAccomplish == 0
+      })
+      this.doneTaskList = this.taskList.filter(t => {
+        return t.isAccomplish != 0
+      })
     }
   },
-
   created() {
     queryUserAims().then(data => {
       this.aims = data
       console.log(this.aims);
     })
     this.query()
+
+    this.computeShowTask()
   }
 })
