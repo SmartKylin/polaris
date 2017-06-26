@@ -23,8 +23,7 @@ export default create({
       visible2: false,
       // 释放触点弹出框是否可见
       visible3: false,
-      // 是否可以跳转到详情页
-      time: '',
+
       // 任务标题
       title: '',
       // 任务内容/拜访内容
@@ -103,7 +102,8 @@ export default create({
     // 弹出框中提交增加日志
     visitlog() {
       const params = {}
-      params.visitTime = this.time
+
+      params.visitTime = this.date
       params.channelCode = this.data.code
       params.content = this.content
       params.type = this.visitType
@@ -157,7 +157,6 @@ export default create({
     datepicker.onselect(date => {
       this.date = date
     })
-
     // 是否来自触点详情页
     if (this.$route.path.indexOf('/tentacle/detail') > -1) {
       this.isFromDetail = true

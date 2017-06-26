@@ -8,7 +8,6 @@ export default create({
     return {
       task: {
         plan_time: '',
-        sketch: '',
       },
       // 修改后的状态
       isAccomplish: 0
