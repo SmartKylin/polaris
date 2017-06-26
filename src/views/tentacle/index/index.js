@@ -43,6 +43,5 @@ export default create({
       this.data = data;
     })
 
-    console.log('this is tentacle');
   }
 })

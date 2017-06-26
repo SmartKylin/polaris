@@ -68,7 +68,6 @@ export default create({
         }
         if (list.length > 0) {
           this.taskList = this.taskList.concat(list)
-          console.log(this.taskList);
         } else {
           this.allLoaded = true
         }
@@ -101,7 +100,6 @@ export default create({
   created() {
     queryUserAims().then(data => {
       this.aims = data
-      console.log(this.aims);
     })
     this.query()
   }

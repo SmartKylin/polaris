@@ -30,24 +30,4 @@
   <Field label="备注" placeholder="请输入备注" align="right" v-model="data.remark"></Field>
   <div class="button--large" @click="tentacleEdit">提交</div>
 
- <!-- &lt;!&ndash;选择机构弹出框&ndash;&gt;
-  <Popup v-model="visible" position="top">
-    <div class="popup&#45;&#45;layer">
-      <Cell title="城市" arrow v-if="visible">
-        <Selector slot="body" v-model="city" @input="cityChange">
-          <option v-for="city in cityList" :value="city.id">{{city.name}}</option>
-        </Selector>
-      </Cell>
-      <Cell title="区域" arrow v-if="areaSelectorVisible" @input="areaChange">
-        <Selector slot="body">
-          <option v-for="area in areaList" :value="area.id">{{area.name}}</option>
-        </Selector>
-      </Cell>
-      &lt;!&ndash;<Cell title="机构" arrow v-show="institutionSelectorVisible">
-        <Selector slot="body" v-model="institution" @input="institutionChange">
-          <option v-for="institution in institutionList" :value="institution.id">{{institution.name}}</option>
-        </Selector>&ndash;&gt;
-      </Cell>
-    </div>
-  </Popup>-->
 </div>

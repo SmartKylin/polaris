@@ -58,27 +58,21 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.institutionId = val
-      console.log(this.institutionId);
       queryInstitutionDetail({id: this.institutionId}).then(data => {
-        console.log(data);
         this.cityId = parseInt(data.cityId)
         this.areaId = parseInt(data.areaId)
         this.industry = parseInt(data.industry)
         this.channelInstitutionName = data.name
         this.address = data.address
-        console.log(this.areaId)
-        console.log(this.industry)
       })
     },
     // 关系标签改变
     relationChange(val) {
-      console.log(val);
       this.labelAry[0] = parseInt(val)
       this.label = this.labelAry.join(',')
     },
     // 产能标签改变
     capacityChange(val) {
-      console.log(val);
       this.labelAry[1] = parseInt(val)
       this.label = this.labelAry.join(',')
     },

@@ -7,7 +7,8 @@ export default create({
   data() {
     return {
       task: {
-        plan_time: ''
+        plan_time: '',
+        sketch: '',
       },
       // 修改后的状态
       isAccomplish: 0
@@ -62,7 +63,6 @@ export default create({
     // 获取任务详细数据
     let {flag, type} = this.$route.params
     queryTaskDetail({flag, type}).then(data => {
-      console.log(data);
       this.task = data
     })
 

@@ -28,24 +28,19 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.data.institutionId = parseInt(val)
-      console.log(this.data.institutionId);
       queryInstitutionDetail({id: this.institutionId}).then(data => {
         this.data.cityId = parseInt(data.cityId)
         this.data.areaId = parseInt(data.areaId)
         this.data.industry = parseInt(data.industry)
-        console.log(this.data.areaId)
-        console.log(this.data.industry)
       })
     },
     // 关系标签改变
     relationChange(val) {
-      console.log(val);
       this.labelAry[0] = parseInt(val)
       this.label = this.labelAry.join(',')
     },
     // 产能标签改变
     capacityChange(val) {
-      console.log(val);
       this.labelAry[1] = parseInt(val)
       this.label = this.labelAry.join(',')
     },
@@ -87,14 +82,11 @@ export default create({
     })
     // 获取详情页传过来的触点编码
     let id = this.$route.params.id
-    console.log('edit' + id);
     // 根据触点编码查询触点信息
-    queryTentacleDetail({channel_id: id}).then(data => {
+    queryTentacleDetail({channelId: id}).then(data => {
       this.data = data
-      console.log(this.data)
     })
     // 部分数据获取初始值
-    console.log('111' + this.data.channelInstitutionId);
     this.data.institutionId = this.data.channelInstitutionId
   }
 })
