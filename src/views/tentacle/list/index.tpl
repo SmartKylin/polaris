@@ -1,22 +1,15 @@
-<div>
-  <Tab @change="queryWithStatus" v-if="!isDormant">
-    <div class="tab--item" :data-key="0" :class="{active: curLevel == 0}">
-      <p class="tentacleView--tabItem--cont">{{total}}</p>
-      <p class="tentacleView--tabItem--name">全部</p>
-    </div>
-    <div class="tab--item" v-for="(level, i) in categories" :class="{active: (i+1 === curLevel)}" :data-key="(i+1)">
-      <p class="tentacleView--tabItem--cont">{{level.val}}</p>
-      <p class="tentacleView--tabItem--name">{{level.name}}</p>
+<div class="tentacleListView">
+  <Tab @change="queryWithLevel" v-if="!isDormant && categories.length > 0">
+    <div class="tab--item" v-for="cate in categories" :class="{active: cate.id === curLevel}" :data-key="cate.id">
+      <p class="tentacleView--tabItem--cont">{{cate.val}}</p>
+      <p class="tentacleView--tabItem--name">{{cate.name}}</p>
     </div>
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :datakey="tent.code"/>
-  <Loadmore @reachBottom="loadmore" :visible="!allLoaded">
-    <div v-if="allLoaded">
-      已经到底了，触点数不够？
-      <router-link to="/tentacle/list?label=2,6" :replace="true" tag="div"  v-if="isFromTabA">看看"B-高"触点有没有新单吧</router-link>
-      <router-link to="/tentacle/commonality" class="button--large" :replace="true" tag="div" v-if="isFromTabB">去公海认领触点</router-link>
-    </div>
-  </Loadmore>
-
-
+  <div class="bottom-notice">
+    已经到底了，触点数不够？
+    <router-link to="/tentacle/list?category=b&capacity=5" :replace="true"  v-if="category === 'a'">看看"B-高"触点有没有新单吧</router-link>
+    <router-link to="/tentacle/commonality" :replace="true" v-if="category === 'b'">去公海认领触点</router-link>
+  </div>
+  <Loadmore @reachBottom="loadmore" :visible="!allLoaded"></Loadmore>
 </div>

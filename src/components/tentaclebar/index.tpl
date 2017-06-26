@@ -28,8 +28,8 @@
       <a href="javascript:;" @click="addPlan('center')" class="button--small" v-if="task === 0">加入拜访计划</a>
       <div class="button--small bg-gray" v-if="task === 1">已加入拜访计划</div>
       <div class="tentacle--listItem--btn" @click="addLogger($event)">写日志</div>
-      <div class="tentacle--listItem--btn" @click="deliverTentacle($event)" v-if="!isReleased">释放触点</div>
-      <div class="tentacle--listItem--btn bg-gray" v-if="isReleased">已释放</div>
+      <div class="tentacle--listItem--btn" @click="deliverTentacle($event)" v-if="isReleased === '0'">释放触点</div>
+      <div class="tentacle--listItem--btn bg-gray" v-if="isReleased === '1'">已释放</div>
     </div>
     <!--如果触点来自公海则显示以下按钮-->
     <div v-if="isFromSea">
@@ -69,9 +69,13 @@
   </Popup>
 
   <Popup v-model="visible3">
-    <div class="popup-deliver popup--layer">
-      <textarea name="" id="uri" cols="30" rows="5" placeholder="释放原因" class="text--area" v-model="content"></textarea>
-      <div class="button--large mt20" @click="release">提交</div>
+    <div class="popup-deliver tentcaleView--popup">
+      <div class="textareaBox">
+        <textarea placeholder="释放原因" v-model="content"></textarea>
+      </div>
+      <div class="pl15 pr15 pt25 pb25">
+        <div class="button--large" @click="release">提交</div>
+      </div>
     </div>
   </Popup>
 </div>
