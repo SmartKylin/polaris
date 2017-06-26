@@ -79,6 +79,7 @@ export default create({
     queryInstitution().then(data => {
       this.institutionList = data.list
     })
+
     // 查询标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list

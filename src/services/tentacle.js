@@ -111,37 +111,37 @@ export function queryTentacleLevelGStatics() {
       {
         key: 'level',
         name: '一级触点',
-        val: data.level.one,
+        val: data.one,
         id: 1
       },
       {
         key: 'level',
         name: '二级触点',
-        val: data.level.two,
+        val: data.two,
         id: 2
       },
       {
         key: 'level',
         name: '三级触点',
-        val: data.level.three,
+        val: data.three,
         id: 3
       },
       {
         key: 'level',
         name: '四级触点',
-        val: data.level.four,
+        val: data.four,
         id: 4
       },
       {
         key: 'level',
         name: '五级触点',
-        val: data.level.five,
+        val: data.five,
         id: 5
       },
       {
         key: 'level',
         name: 'vip触点',
-        val: data.level.vip,
+        val: data.vip,
         id: 6
       },
     ]

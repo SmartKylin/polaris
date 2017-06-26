@@ -28,6 +28,7 @@ export default create({
       dormant: 0,*/
        // 是否VIP
       vip: 0,
+      // 各级别总数
       total: 0,
       // 是否查询休眠
       isDormant: false,
@@ -115,7 +116,7 @@ export default create({
 
     // 查询统计数据
     queryStatics(type){
-      queryTentacleLevelStatics({type}).then(data=>{
+      queryTentacleLevelGStatics({type}).then(data=>{
         this.categories = data
         this.total = data.reduce((pre,ten)=> (pre + ten.val), 0)
       })
@@ -131,22 +132,23 @@ export default create({
       this.curLevel = 0
 
     }
+    this.categories= []
     // 是否来自 1-A-高 tab
     if (this.$route.query.hasOwnProperty("level")) {
       this.isFromTabA = true
       this.queryStatics("a")
     }
     // 是否来自 休眠选项 tab
-    if (!this.$route.query.hasOwnProperty("dormant")) {
+    else if (this.$route.query.hasOwnProperty("dormant")) {
       this.isDormant = true
     }
     // 是否来自 B-高 tab
-    if (this.$route.query.hasOwnProperty("label=2")) {
+    else if (this.$route.query.hasOwnProperty("label=2")) {
       this.isFromTabB = true
-      this.queryStatics("b")
+      this.queryStatics("a")
     }
     // 是否来自 C-高 tab
-    if (this.$route.query.hasOwnProperty("label=2")) {
+    else if (this.$route.query.hasOwnProperty("label=2")) {
       this.queryStatics("c")
     }
     this.query()

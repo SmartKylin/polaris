@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import {queryTaskDetail} from 'services'
+import {queryTaskDetail, updateTask} from 'services'
 import datepicker from '../../../helper/datepicker'
 
 export default create({
@@ -9,14 +9,15 @@ export default create({
       task: {
 
       },
-
+      // 修改后的状态
+      isAccomplish: 0
     }
   },
   methods: {
     // 跳转到触点或者线索详情
     routerToDetail() {
       if (this.task.type == 1) {
-        this.$router.push({path: '/tentacle/detail' ,params: {datakey: this.task.flag}})
+        this.$router.push('/tentacle/detail/' + this.task.flag)
       } else if (this.task.type == 3) {
         this.$router.push('/clue/' + this.task.flag)
       }
@@ -24,8 +25,37 @@ export default create({
     // 打开时间选择器
     openDatepicker() {
       datepicker.show()
-    }
+    },
+    // 修改任务
+    taskUpdate(isAccom) {
+      const params = {}
+      params.isAccomplish = isAccom
+      params.id = this.task.id
+      params.planTime = this.task.plan_time
+      params.remark = this.task.remark
+      params.title = this.task.title
+      console.log(params);
+      updateTask(params).then(res => {
+        if (res.retcode == 2000000) {
+          console.log(res.msg);
+        }
+      }).catch(err => {
+        this.$dialog.alert("提示", err.message)
+      })
+    },
+    // 提交修改
+    postUndoTask() {
+      this.taskUpdate(0)
+    },
+    postDoneTask() {
+      this.taskUpdate(1)
+      this.isAccomplish = 1
+    },
+    postCloseTask() {
+      this.taskUpdate(2)
+      this.isAccomplish = 2
 
+    }
   },
 
   created() {

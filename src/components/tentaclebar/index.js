@@ -76,7 +76,8 @@ export default create({
       if (this.isFromSea) {
         return
       }
-      this.$router.push({name: "tentacledetail", params: {datakey: this.datakey}})
+      // this.$router.push({name: "tentacledetail", params: {datakey: this.datakey}})
+      this.$router.push('/tentacle/detail/' + this.data.id)
     },
     // 弹出框中提交加入拜访计划
     addTodo(position) {
