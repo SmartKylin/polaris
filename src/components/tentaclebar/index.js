@@ -91,7 +91,7 @@ export default create({
     visitlog() {
       const params = {}
       params.visitTime = this.time
-      params.channelCode = this.code
+      params.channelCode = this.data.code
       params.content = this.content
       addVisitlog(params).then(res => {
         console.log(res.msg);

@@ -23,6 +23,10 @@ export default create({
       },
       // 待办事项列表
       taskList: [],
+      // 未完成待办事项列表
+      undoTaskList: [],
+      // 已完成待办事项列表
+      doneTaskList: [],
       // 是否显示周目标
       showWeek: true,
       // 显示的是周目标
@@ -39,10 +43,12 @@ export default create({
     TodoItem
   },
   methods: {
+    // 周和月切换显示
     handleChange(val) {
       this.showWeek = val === "week" ? true : false
       this.showWhich = val
     },
+    // 查询
     query(success) {
       if(this.fetching) {
         return
@@ -73,8 +79,13 @@ export default create({
         this.$dialog.alert("提示", err.message)
       })
     },
+    // 加载更多
     loadmore() {
       this.query()
+    },
+    // 未完成和已完成切换显示
+    taskChange() {
+
     }
   },
 

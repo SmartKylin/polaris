@@ -75,7 +75,13 @@ export default (config => {
   "todoEdit": "/mizar/m/task/up",
 })
 
-
+/*export default (config => {
+  let obj = {}
+  Object.keys(config).forEach(name => {
+    obj[name] = `${prefix}${config[name]}`
+  })
+  return obj
+})()*/
 
 
 
