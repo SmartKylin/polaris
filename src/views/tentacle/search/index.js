@@ -18,43 +18,44 @@ export default create({
       fetching: false,
       // 当前级别
       curLevel: 1,
-      // 当前标签
-      curLabel: "1,5",
       // 标签数组
-      labelAry: [1, 5],
+      labels: [1, 5],
       // 是否休眠
-      dormant: 0,
-     /* // 是否VIP
-      vip: 0*/
+      isDormant: false,
     }
   },
+
   components: {
     SearchBar,
     TentacleBar
   },
+
   methods: {
     tosearch() {
-      this.$router.push('/tentacle/searchresult');
+      this.$router.push('/tentacle/searchresult')
     },
 
     // 级别改变,重新查询
     levelChange(val) {
-      this.dataList = []
       this.curLevel = parseInt(val)
       this.reQuery()
     },
-    // 标签改变
-    labelChange(val) {
-      this.dormant = 0
-      if (val === "dormant") {
-        this.dormant = 1
-      } else if (/^[1234]$/.test(val)) {
-        this.labelAry[0] = parseInt(val)
-      } else if ((/^[56]$/).test(val)) {
-        this.labelAry[1] = parseInt(val)
-      } else if (val === "all") {
-        this.labelAry[1] = null
+
+    // 切换产能分类
+    capacityChange(val) {
+      if (val === 'all') {
+        this.labels.length = 1
+      } else {
+        this.labels[1] = val
       }
+      this.reQuery()
+    },
+
+    // 切换分类
+    categoryChange(val) {
+      // 是否查询休眠触点
+      this.isDormant = val === 'dormant'
+      this.labels[0] = val
       this.reQuery()
     },
 
@@ -64,10 +65,9 @@ export default create({
       }
       this.fetching = true
 
-      this.pageNum += 1
-
       const params = {}
 
+      this.pageNum += 1
       params.page = this.pageNum
 
       if (this.curLevel == 6) {
@@ -75,28 +75,27 @@ export default create({
       } else {
         params.level = this.curLevel
       }
-      if (this.dormant == 1) {
+
+      if (this.isDormant) {
         params.dormant = 1
       } else {
-        params.label = this.labelAry.join(',')
+        params.label = this.labels.join(',')
       }
+
       this.$loading.show()
 
-      console.log(params);
       queryTentacle(params).then(res => {
         const list = res.list
-
+        if (onsuccess) {
+          onsuccess()
+        }
         if (list.length > 0) {
-          if (onsuccess) {
-            onsuccess()
-          }
           this.dataList = this.dataList.concat(list)
         }
         // 已加载完所有数据
         else {
           this.allLoaded = true
         }
-
         this.$loading.hide()
         this.fetching = false
       })
@@ -106,6 +105,7 @@ export default create({
         this.$dialog.alert('提示', err.message)
       })
     },
+
     reQuery() {
       // 切换不同分类时要重置分页状态
       this.pageNum = 0
@@ -116,6 +116,7 @@ export default create({
         this.dataList = []
       })
     },
+
     loadmore() {
       this.query()
     }
@@ -125,6 +126,7 @@ export default create({
     this.curLevel = parseInt(this.$route.params.level)
 
     this.query()
+
     queryTentacleLevelStatics().then(data=>{
       this.categories = data
     })
