@@ -60,6 +60,7 @@ export default create({
     save() {
       this.$loading.show()
       makeInterview({
+        taskTitle: this.model.taskTitle,
         clueCode: this.$route.params.code,
         appointmentTime: this.interview.date
       })
