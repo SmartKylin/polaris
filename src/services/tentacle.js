@@ -104,46 +104,47 @@ export function queryCommonality(params) {
 /**
  * 查询不同类型下各级别触点统计信息
  */
-export function queryTentacleLevelGStatics() {
+
+export function queryTentacleLevelGStatics(params) {
+
   function callback(data) {
     return [
       {
-        key: 'level',
+        name: '全部',
+        val: data.all,
+        id: 'all'
+      },
+      {
         name: '一级触点',
         val: data.one,
-        id: 1
+        id: '1'
       },
       {
-        key: 'level',
         name: '二级触点',
         val: data.two,
-        id: 2
+        id: '2'
       },
       {
-        key: 'level',
         name: '三级触点',
         val: data.three,
-        id: 3
+        id: '3'
       },
       {
-        key: 'level',
         name: '四级触点',
         val: data.four,
-        id: 4
+        id: '4'
       },
       {
-        key: 'level',
         name: '五级触点',
         val: data.five,
-        id: 5
+        id: '5'
       },
       {
-        key: 'level',
         name: 'vip触点',
         val: data.vip,
-        id: 6
+        id: 'vip'
       },
     ]
   }
-  return http.get(apis.tentacleGstatics).then(callback)
+  return http.get(apis.tentacleGstatics, params).then(callback)
 }

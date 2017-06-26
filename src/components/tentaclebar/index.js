@@ -37,7 +37,7 @@ export default create({
       // 触点是否已加入拜访计划
       task: this.data.task,
       // 触点是否被释放
-      isReleased: false,
+      isReleased: this.data.isRelease,
       // 拜访方式
       visitType: 1
     }
@@ -119,11 +119,9 @@ export default create({
       params.channel_id = this.data.id
       params.remark = this.content
       releaseTentacle(params).then(res => {
-        console.log(res.msg);
-        if (res.retcode === 2000000) {
-          this.visible3 = false
-          this.isReleased = true
-        }
+        this.visible3 = false
+        this.isReleased = "1"
+        this.$toast.show('操作成功')
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
       })
@@ -131,11 +129,8 @@ export default create({
     // 认领触点
     tentacleClaim() {
       claimTentacle({channel_id: this.data.id}).then(res => {
-        if (res.retcode == 2000000) {
-          console.log(res.msg);
-          this.data.isRelease = 0
-          this.$dialog.alert("提示", res.msg)
-        }
+        this.data.isRelease = 0
+        this.$dialog.alert("提示", '操作成功')
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
       })
