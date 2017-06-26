@@ -34,11 +34,10 @@
   <div class="section-title mt10">待办事项</div>
   <div class="user--bd">
     <Tab @change="taskChange">
-      <div class="tab--item active" data-key="undo">未完成</div>
-      <div class="tab--item" data-key="done">已完成</div>
+      <div class="tab--item active" :data-key="0">未完成</div>
+      <div class="tab--item" :data-key="1">已完成</div>
     </Tab>
-    <TodoItem v-for="task in undoTaskList" :task="task" v-show="showTask == 'undo'"></TodoItem>
-    <TodoItem v-for="task in doneTaskList" :task="task" v-show="showTask =='done'"></TodoItem>
+    <TodoItem v-for="task in taskList" :task="task"></TodoItem>
   </div>
   <Loadmore @reachBottom="loadmore" :visible="!allLoaded">
     到底了~~

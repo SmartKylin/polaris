@@ -23,10 +23,6 @@ export default create({
       },
       // 待办事项列表
       taskList: [],
-     /* // 未完成待办事项列表
-      undoTaskList: [],
-      // 已完成待办事项列表
-      doneTaskList: [],*/
       // 是否显示周目标
       showWeek: true,
       // 显示的是周目标
@@ -37,8 +33,8 @@ export default create({
       allLoaded: false,
       // 是否正在加载数据
       fetching: false,
-      // 当前显示的是已完成/未完成
-      showTask: "done"
+      // 当前列表类型
+      isAccomplish: 0
     }
   },
   components: {
@@ -61,21 +57,18 @@ export default create({
       const params = {}
       params.page = this.page
       params.size = 10
+      params.isAccomplish = this.isAccomplish
 
+      console.log(params);
       this.$loading.show()
       queryTask(params).then(data => {
         const list = data.list
-        if (typeof success == "function") {
+        if (success) {
           success()
         }
         if (list.length > 0) {
           this.taskList = this.taskList.concat(list)
-          /*this.undoTaskList = this.taskList.filter(t => {
-            return t.isAccomplish == 0
-          })
-          this.doneTaskList = this.taskList.filter(t => {
-            return t.isAccomplish != 0
-          })*/
+          console.log(this.taskList);
         } else {
           this.allLoaded = true
         }
@@ -93,25 +86,16 @@ export default create({
     },
     // 未完成和已完成切换显示
     taskChange(val) {
-      this.showTask = val
-      console.log(this.showTask);
+      this.isAccomplish = parseInt(val)
+      this.reQuery()
     },
 
-   /* // 计算当前显示的列表
-    computeShowTask() {
-      this.undoTaskList = this.taskList.filter(t => {
-        return t.isAccomplish == 0
-      })
-      this.doneTaskList = this.taskList.filter(t => {
-        return t.isAccomplish != 0
-      })
-    },*/
     // 重新查询
     reQuery() {
       this.page = 0
       this.allLoaded = false
       this.query(() => {
-        this.undoTaskList = []
+        this.taskList = []
       })
     }
   },
@@ -121,20 +105,5 @@ export default create({
       console.log(this.aims);
     })
     this.query()
-
-    // this.computeShowTask()
-  }
-  ,
-  computed: {
-    undoTaskList() {
-      return this.taskList.filter(t => {
-        return t.isAccomplish == 0
-      })
-    },
-    doneTaskList() {
-      return this.taskList.filter(t => {
-        return t.isAccomplish != 0
-      })
-    }
   }
 })
