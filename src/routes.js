@@ -47,8 +47,7 @@ export default [
     component: TentacleAdd
   },
   {
-    path: '/tentacle/edit',
-    name: "edittentacle",
+    path: '/tentacle/edit/:id',
     component: TentacleEdit
   },
   {

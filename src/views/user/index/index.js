@@ -23,10 +23,10 @@ export default create({
       },
       // 待办事项列表
       taskList: [],
-      // 未完成待办事项列表
+     /* // 未完成待办事项列表
       undoTaskList: [],
       // 已完成待办事项列表
-      doneTaskList: [],
+      doneTaskList: [],*/
       // 是否显示周目标
       showWeek: true,
       // 显示的是周目标
@@ -70,12 +70,12 @@ export default create({
         }
         if (list.length > 0) {
           this.taskList = this.taskList.concat(list)
-          this.undoTaskList = this.taskList.filter(t => {
+          /*this.undoTaskList = this.taskList.filter(t => {
             return t.isAccomplish == 0
           })
           this.doneTaskList = this.taskList.filter(t => {
             return t.isAccomplish != 0
-          })
+          })*/
         } else {
           this.allLoaded = true
         }
@@ -97,13 +97,21 @@ export default create({
       console.log(this.showTask);
     },
 
-    // 计算当前显示的列表
+   /* // 计算当前显示的列表
     computeShowTask() {
       this.undoTaskList = this.taskList.filter(t => {
         return t.isAccomplish == 0
       })
       this.doneTaskList = this.taskList.filter(t => {
         return t.isAccomplish != 0
+      })
+    },*/
+    // 重新查询
+    reQuery() {
+      this.page = 0
+      this.allLoaded = false
+      this.query(() => {
+        this.undoTaskList = []
       })
     }
   },
@@ -114,6 +122,19 @@ export default create({
     })
     this.query()
 
-    this.computeShowTask()
+    // this.computeShowTask()
+  }
+  ,
+  computed: {
+    undoTaskList() {
+      return this.taskList.filter(t => {
+        return t.isAccomplish == 0
+      })
+    },
+    doneTaskList() {
+      return this.taskList.filter(t => {
+        return t.isAccomplish != 0
+      })
+    }
   }
 })

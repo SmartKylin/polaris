@@ -23,11 +23,12 @@
       <div>查看详情</div>
       <div>返回首页</div>
     </div>
-  </Popup>-->
+  </Popup>
   <Popup v-model="visible">
     <div class="popup--layer">
       <textarea name="" id="" cols="30" rows="5" placeholder="备注" class="text--area" v-model="remark"></textarea>
     </div>
     <div class="button--large" @click="postEditTask">提交</div>
   </Popup>
+  -->
 </div>

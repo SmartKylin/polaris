@@ -86,9 +86,10 @@ export default create({
       this.labCapaList = data[2].list
     })
     // 获取详情页传过来的触点编码
-    let code = this.$route.params.channelCode
+    let id = this.$route.params.id
+    console.log('edit' + id);
     // 根据触点编码查询触点信息
-    queryTentacleDetail({code}).then(data => {
+    queryTentacleDetail({channel_id: id}).then(data => {
       this.data = data
       console.log(this.data)
     })
