@@ -21,21 +21,21 @@
   </div>
   <div class="index--overview">
     <div class="index--wrap">
-      <router-link to="/tentacle/list?level=1&label=1,6">
+      <router-link to="/tentacle/list?level=1&label=1,5">
         <div class="index--count">{{data.synthesize.ag1}}</div>
         <div class="index--label">"1-A-高"触点</div>
         <div class="index--reply">进行逼单，扩大战果</div>
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list?label=2,6">
+      <router-link to="/tentacle/list?label=2,5">
         <div class="index--count">{{data.synthesize.bg}}</div>
         <div class="index--label">"B-高"触点</div>
         <div class="index--reply">定期回访，升级关系</div>
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list?label=3,6">
+      <router-link to="/tentacle/list?label=3,5">
         <div class="index--count">{{data.synthesize.cg}}</div>
         <div class="index--label">"C-高"触点</div>
         <div class="index--reply">价值驱动，定点激活</div>
