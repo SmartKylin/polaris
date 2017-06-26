@@ -139,7 +139,7 @@ export default [
     component: UserIndex
   },
   {
-    path: '/user/task/:flag/:id',
+    path: '/user/task/:flag/:type',
     component: TaskDetail
   },
   {

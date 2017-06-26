@@ -146,6 +146,5 @@ export function queryTentacleLevelGStatics() {
       },
     ]
   }
-
   return http.get(apis.tentacleGstatics).then(callback)
 }
