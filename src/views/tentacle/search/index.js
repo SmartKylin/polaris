@@ -81,6 +81,7 @@ export default create({
       }
       this.$loading.show()
 
+      console.log(params);
       queryTentacle(params).then(res => {
         const list = res.list
 
