@@ -79,11 +79,11 @@ export default [
         component: TentacleDetailLogger
       },
       {
-        path: 'description',
+        path: 'description/:id',
         component: TentacleDetailDescription
       },
       {
-        path: 'info',
+        path: 'info/:id',
         component: TentacleDetailInfo
       }
     ]

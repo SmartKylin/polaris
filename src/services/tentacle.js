@@ -77,7 +77,7 @@ export function addTentacle(params) {
  * 查询触点详情
  */
 export function queryTentacleDetail(params) {
-  return http.post(apis.tentacleDetail, params)
+  return http.get(apis.tentacleDetail, params)
 }
 
 /**
@@ -105,7 +105,6 @@ export function queryCommonality(params) {
  * 查询不同类型下各级别触点统计信息
  */
 export function queryTentacleLevelGStatics() {
-
   function callback(data) {
     return [
       {

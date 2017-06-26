@@ -10,7 +10,9 @@ export default create({
         plan_time: '',
       },
       // 修改后的状态
-      isAccomplish: 0
+      isAccomplish: 0,
+      // 计划时间
+      plan_time: '',
     }
   },
   methods: {
@@ -31,7 +33,7 @@ export default create({
       const params = {}
       params.isAccomplish = isAccom
       params.id = this.task.id
-      params.planTime = this.task.plan_time
+      params.planTime = this.plan_time
       params.remark = this.task.remark
       params.title = this.task.title
       console.log(params);
@@ -54,7 +56,6 @@ export default create({
     postCloseTask() {
       this.taskUpdate(2)
       this.isAccomplish = 2
-
     }
   },
 
@@ -68,7 +69,7 @@ export default create({
     })
     // 将任务中的计划是设置为选中时间
     datepicker.onselect(date => {
-      this.task.plan_time = date
+      this.plan_time = date
     })
   }
 })

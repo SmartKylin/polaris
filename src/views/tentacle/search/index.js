@@ -30,7 +30,7 @@ export default create({
   },
   components: {
     SearchBar,
-    TentacleBar,
+    TentacleBar
   },
   methods: {
     tosearch() {
@@ -39,17 +39,18 @@ export default create({
 
     // 级别改变,重新查询
     levelChange(val) {
-      this.curLevel = val
+      this.dataList = []
+      this.curLevel = parseInt(val)
       this.reQuery()
     },
     // 标签改变
     labelChange(val) {
+      this.dormant = 0
       if (val === "dormant") {
         this.dormant = 1
       } else if (/^[1234]$/.test(val)) {
-        this.labelAry[0] = val
+        this.labelAry[0] = parseInt(val)
       } else if ((/^[56]$/).test(val)) {
-        this.dormant = 0
         this.labelAry[1] = parseInt(val)
       } else if (val === "all") {
         this.labelAry[1] = null
@@ -68,7 +69,7 @@ export default create({
       const params = {}
 
       params.page = this.pageNum
-      // 此处不能用恒等
+
       if (this.curLevel == 6) {
         params.vip = 1
       } else {
@@ -131,4 +132,3 @@ export default create({
 })
 
 
-// 1、触点默认高产、A类但不显示信息列表需要点击下高产、A类才能展示；触点点击低产显示的还是高产的信息，同样点击了D类、休眠后再点击其他类信息不变（错乱）

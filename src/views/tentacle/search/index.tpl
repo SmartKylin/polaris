@@ -21,5 +21,4 @@
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :datakey="tent.code"/>
   <Loadmore @reachBottom="loadmore" :visible="!allLoaded"></Loadmore>
-  <div v-if="allLoaded">已经没有更多的触点了~~</div>
 </div>
