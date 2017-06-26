@@ -49,7 +49,6 @@ export default create({
 
     // 查询为指定状态分类下的线索
     queryWithStatus(status) {
-      console.log(status);
       if (/^[0-6]$/.test(status)) {
         this.curLevel = parseInt(status)
       }

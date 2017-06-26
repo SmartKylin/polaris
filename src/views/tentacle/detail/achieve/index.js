@@ -6,8 +6,5 @@ export default create({
     data: {
       type: Object
     }
-  },
-  mounted() {
-    console.log(this.data);
   }
 })

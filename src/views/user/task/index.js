@@ -63,7 +63,6 @@ export default create({
     // 获取任务详细数据
     let {flag, type} = this.$route.params
     queryTaskDetail({flag, type}).then(data => {
-      console.log(data);
       this.task = data
     })
 

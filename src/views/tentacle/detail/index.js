@@ -15,7 +15,6 @@ export default create({
   },
   mounted() {
     this.id = this.$route.params.id;
-    console.log('detail' + this.id);
     this.$loading.show()
     queryTentacleDetail({channelId: this.id}).then(data => {
       this.$loading.hide()

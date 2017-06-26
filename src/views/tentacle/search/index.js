@@ -123,7 +123,6 @@ export default create({
 
   created() {
     this.curLevel = parseInt(this.$route.params.level)
-    console.log('level:' + this.level);
 
     this.query()
     queryTentacleLevelStatics().then(data=>{

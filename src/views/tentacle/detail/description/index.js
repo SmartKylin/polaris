@@ -46,7 +46,6 @@ export default create({
           this.labelAry[1] = parseInt(status)
         }
         this.label = this.labelAry.join(',')
-        console.log(this.label);
       }
     },
     tentacleEdit() {
