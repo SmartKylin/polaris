@@ -2,7 +2,7 @@
   <div class="todo--item--bd">
     <div class="pb5 color-gray font-12" v-if="task.isRemind == 0">{{task.planTime}}</div>
     <div class="todo--item--title">{{task.title}}</div>
-    <div class="todo--item--cont">{{task.brief}}</div>
+    <div class="todo--item--cont font-12">{{task.brief}}</div>
   </div>
 
   <!--<div class="todo&#45;&#45;item&#45;&#45;ft">

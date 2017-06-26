@@ -50,12 +50,13 @@ export default create({
         this.$dialog.alert('信息不全')
         return
       }*/
-      let {name, mobile, institutionId, position, cityId, areaId, industry, remark, hobby, channelInstitutionId} = this.data
+      let {name, mobile, position, cityId, areaId, industry, remark, hobby, channelInstitutionId, address} = this.data
       let label = this.label
-      let channel_id = this.data.id
+      let channelId = this.data.id
+      let institutionId = this.data.channelInstitutionId
 
-      console.log(name, mobile, {institutionId: channelInstitutionId}, institutionId, position, cityId, areaId, industry, remark, label, hobby, channel_id)
-      editTentacle({name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby, channel_id}).then(res => {
+      console.log(name, mobile,  institutionId, position, cityId, areaId, industry, remark, label, hobby, channelId, address)
+      editTentacle({name, mobile, institutionId, cityId, areaId, industry, remark, label, hobby, channelId, address}).then(res => {
         if (res.retcode === 2000000) {
           console.log(res.msg);
           this.$dialog.alert('提示', '修改触点成功')
