@@ -4,6 +4,7 @@ var config = require('./webpack.dev.conf')
 var utils = require('./utils')
 
 var localIP = utils.getIP()
+
 // 本地开发服务
 var localServer = 'http://'+ localIP +':8080'
 
