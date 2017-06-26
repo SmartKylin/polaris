@@ -77,7 +77,7 @@ export function addTentacle(params) {
  * 查询触点详情
  */
 export function queryTentacleDetail(params) {
-  return http.post(apis.tentacleDetail, params)
+  return http.get(apis.tentacleDetail, params)
 }
 
 /**

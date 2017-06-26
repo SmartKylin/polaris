@@ -1,15 +1,12 @@
 import create from './index.tpl'
 import './index.styl'
-import { editTentacle ,queryLabel} from 'services'
+import { editTentacle ,queryLabel, queryTentacleDetail} from 'services'
 
 export default create({
-  props: {
-    data: {
-      type: Object
-    }
-  },
   data() {
     return {
+      // data触点数据
+      data: {},
       // 选中的关系标签
       curRela: '',
       // 选中的产能标签
@@ -50,7 +47,7 @@ export default create({
     },
     tentacleEdit() {
       const params = {}
-      params.channel_id = parseInt(this.data.id)
+      params.channelId = parseInt(this.data.id)
       params.hobby = this.data.hobby
       params.remark = this.data.remark
       if (this.labelAry.length > 0) {
@@ -67,6 +64,18 @@ export default create({
     }
   },
   mounted() {
+    this.id = this.$route.params.id;
+    this.$loading.show()
+    queryTentacleDetail({channelId: this.id}).then(data => {
+      this.$loading.hide()
+      this.data = data
+      this.labelAry = data.labelId || []
+      console.log(this.labelAry);
+    }).catch(err => {
+      this.$dialog.hide()
+      this.$dialog.alert('提示', err.message)
+    })
+
     queryLabel().then(data => {
       this.labRelaList = data[1].list
       this.labCapaList = data[2].list

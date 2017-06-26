@@ -10,11 +10,7 @@
         产能标签
         <span v-for="cap in labCapaList" :class="{active: cap.name === data.label[1]}" :data-key="cap.id" v-if="!!data.label">{{cap.name}}</span>
       </div>
-    <!--  <div>
-        其他描述
-        <span class="active">递单快</span>
-        <span>熟悉行业</span>
-      </div>-->
+
     </div>
   </div>
   <div>

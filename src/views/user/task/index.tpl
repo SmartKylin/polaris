@@ -3,7 +3,7 @@
     <Cell v-if="task.sketch" :title="task.sketch" content="查看触点信息" @click="routerToDetail" arrow>
     </Cell>
     <Field label="任务标题" type="text" align="right" v-model="task.title" placeholder="输入标题"></Field>
-    <Cell title="任务时间" arrow @click="openDatepicker" :content="task.plan_time"></Cell>
+    <Cell title="任务时间" arrow @click="openDatepicker" :content="plan_time"></Cell>
     <div class="textareaBox">
       <textarea placeholder="备注" v-model="task.remark"></textarea>
     </div>

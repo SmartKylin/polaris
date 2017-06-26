@@ -13,10 +13,11 @@ export default create({
   components: {
     TentacleBar
   },
-  mounted() {
+  created() {
     this.id = this.$route.params.id;
     this.$loading.show()
     queryTentacleDetail({channelId: this.id}).then(data => {
+
       this.$loading.hide()
       this.data = data
     }).catch(err => {

@@ -30,7 +30,7 @@ export default create({
   },
   components: {
     SearchBar,
-    TentacleBar,
+    TentacleBar
   },
   methods: {
     tosearch() {
@@ -39,17 +39,18 @@ export default create({
 
     // 级别改变,重新查询
     levelChange(val) {
-      this.curLevel = val
+      this.dataList = []
+      this.curLevel = parseInt(val)
       this.reQuery()
     },
     // 标签改变
     labelChange(val) {
+      this.dormant = 0
       if (val === "dormant") {
         this.dormant = 1
       } else if (/^[1234]$/.test(val)) {
-        this.labelAry[0] = val
+        this.labelAry[0] = parseInt(val)
       } else if ((/^[56]$/).test(val)) {
-        this.dormant = 0
         this.labelAry[1] = parseInt(val)
       } else if (val === "all") {
         this.labelAry[1] = null
@@ -69,7 +70,7 @@ export default create({
 
       params.page = this.pageNum
 
-      if (this.curLevel === 6) {
+      if (this.curLevel == 6) {
         params.vip = 1
       } else {
         params.level = this.curLevel
@@ -129,4 +130,5 @@ export default create({
     })
   },
 })
+
 
