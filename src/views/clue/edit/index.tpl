@@ -22,11 +22,13 @@
   </div>
   <CellGroup :hasBorder="false">
     <Cell
-      title="关联触点"
       arrow
       :to="`/clue/edit/${model.clueCode || '_'}/pick-tentacle`"
     >
-      <p v-show="model.channel.channelCode" class="clueEdit--tentacle" slot="body">{{model.channel.name}} | {{model.channel.channelInstitutionName}}({{model.channel.address}}) | {{model.channel.mobile}}</p>
+      <div slot="header" class="flex-1">
+        <div>关联触点</div>
+        <p v-show="model.channel.channelCode" class="clueEdit--tentacle">{{model.channel.name}} | {{model.channel.channelInstitutionName}}({{model.channel.address}}) | {{model.channel.mobile}}</p>
+      </div>
     </Cell>
   </CellGroup>
 
