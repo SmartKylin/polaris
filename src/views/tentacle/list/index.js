@@ -21,7 +21,7 @@ export default create({
       // 当前级别
       curLevel: 1,
       // 当前标签
-      curLabel: "1,6",
+      curLabel: "1,5",
      /* // 标签数组
       labelAry: [101, 206],
       // 是否休眠
@@ -127,7 +127,6 @@ export default create({
     }
   },
   created() {
-
     if (!this.$route.query.hasOwnProperty("level")) {
       this.curLevel = 0
 
