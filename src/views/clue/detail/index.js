@@ -20,19 +20,7 @@ export default create({
   },
 
   created() {
-    this.$loading.show('数据加载中...')
-    queryClueByCode({
-      clueCode: this.$route.params.code
-    })
-    .then(res => {
-      this.inited = true
-      this.model = res
-      this.$loading.hide()
-    })
-    .catch(err => {
-      this.$loading.hide()
-      this.$dialog.alert('提示', err.message)
-    })
+    this.query()
 
     datepicker.onselect(date => {
       this.interview.date = date
@@ -56,6 +44,22 @@ export default create({
       this.interviewVisible = false
     },
 
+    query() {
+      this.$loading.show('数据加载中...')
+      queryClueByCode({
+        clueCode: this.$route.params.code
+      })
+      .then(res => {
+        this.inited = true
+        this.model = res
+        this.$loading.hide()
+      })
+      .catch(err => {
+        this.$loading.hide()
+        this.$dialog.alert('提示', err.message)
+      })
+    },
+
     // 提交预约面签
     save() {
       this.$loading.show()
@@ -66,6 +70,7 @@ export default create({
       })
       .then(res => {
         this.$loading.hide()
+        this.query()
         this.$toast.show('操作成功')
         this.closeInterviewPanel()
       })
