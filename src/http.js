@@ -1,9 +1,10 @@
 import axios from 'axios'
 import qs from 'qs'
 
-
-// 允许跨域情况下携带cookie
-axios.defaults.withCredentials = true
+if (process.env.NODE_ENV === 'production') {
+  // 允许跨域情况下携带cookie
+  axios.defaults.withCredentials = true
+}
 // 设置超时时间
 axios.defaults.timeout = 100000
 // 标识这是一个 ajax 请求
