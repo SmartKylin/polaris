@@ -38,8 +38,8 @@ module.exports = webpackMerge(baseConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-			template: './detail.html',
-			apiPath: '',
+			template: './index.html',
+			apiPath: 'https://dev.zhongfl.com',
       appVersion: package.version
 		}),
 
