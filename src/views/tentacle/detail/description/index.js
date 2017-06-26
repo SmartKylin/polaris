@@ -42,7 +42,7 @@ export default create({
 
         if ((/^[1234]$/).test(status)) {
           this.labelAry[0] = parseInt(status)
-        } else if ((/^[67]$/).test(status)) {
+        } else if ((/^[56]$/).test(status)) {
           this.labelAry[1] = parseInt(status)
         }
         this.label = this.labelAry.join(',')
