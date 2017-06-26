@@ -14,12 +14,12 @@
   <CellGroup class="mt10">
     <Cell title="画像" class="info--title"></Cell>
     <Cell title="关系标签" arrow @click="">
-      <Selector slot="body" @input="relationChange" v-if="labRelaList.length > 0" v-model="data.label[0]">
+      <Selector slot="body" @input="relationChange" v-if="labRelaList.length > 0">
         <option :value="item.id" v-for="item in labRelaList">{{item.name}}</option>
       </Selector>
     </Cell>
     <Cell title="产能标签" arrow>
-      <Selector slot="body" @input="capacityChange" v-if="labCapaList.length > 0" v-model="data.label[1]">
+      <Selector slot="body" @input="capacityChange" v-if="labCapaList.length > 0">
         <option :value="item.id" v-for="item in labCapaList">{{item.name}}</option>
       </Selector>
     </Cell>

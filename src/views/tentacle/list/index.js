@@ -21,9 +21,12 @@ export default create({
       // 当前级别
       curLevel: 1,
       // 当前标签
-      curLabel: "1,6",
-
-      // 是否VIP
+      curLabel: "1,5",
+     /* // 标签数组
+      labelAry: [101, 206],
+      // 是否休眠
+      dormant: 0,*/
+       // 是否VIP
       vip: 0,
       // 各级别总数
       total: 0,

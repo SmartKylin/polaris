@@ -35,7 +35,7 @@ export default create({
       //
       date: '',
       // 触点是否已加入拜访计划
-      added: false,
+      task: this.data.task,
       // 触点是否被释放
       isReleased: false,
       // 拜访方式
@@ -86,13 +86,11 @@ export default create({
       params.type = "1"
       params.flag = this.data.id
       params.title = this.data.taskTitle
-      console.log(params);
+
       addTask(params).then(res => {
         if (res.retcode === 2000000) {
-          this.$toast.zIndex(8).show('添加成功~', position, function () {
-            console.log(position)
-          })
-          this.added = true
+          this.$toast.zIndex(8).show('添加成功~', position)
+          this.task = 1
         }
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
