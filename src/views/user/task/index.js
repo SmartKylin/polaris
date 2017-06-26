@@ -37,7 +37,7 @@ export default create({
       console.log(params);
       updateTask(params).then(res => {
         if (res.retcode == 2000000) {
-          console.log(res.msg);
+          // console.log(res.msg);
         }
       }).catch(err => {
         this.$dialog.alert("提示", err.message)
@@ -61,10 +61,11 @@ export default create({
   created() {
     // 获取任务详细数据
     let {flag, type} = this.$route.params
+    console.log(flag);
+    console.log(type);
     queryTaskDetail({flag, type}).then(data => {
       this.task = data
     })
-
     // 将任务中的计划是设置为选中时间
     datepicker.onselect(date => {
       this.task.plan_time = date

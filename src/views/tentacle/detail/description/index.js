@@ -50,7 +50,7 @@ export default create({
     },
     tentacleEdit() {
       const params = {}
-      params.channel_id = parseInt(this.data.id)
+      params.channelId = parseInt(this.data.id)
       params.hobby = this.data.hobby
       params.remark = this.data.remark
       if (this.labelAry.length > 0) {

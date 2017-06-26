@@ -68,8 +68,8 @@ export default create({
       const params = {}
 
       params.page = this.pageNum
-
-      if (this.curLevel === 6) {
+      // 此处不能用恒等
+      if (this.curLevel == 6) {
         params.vip = 1
       } else {
         params.level = this.curLevel
@@ -130,3 +130,5 @@ export default create({
   },
 })
 
+
+// 1、触点默认高产、A类但不显示信息列表需要点击下高产、A类才能展示；触点点击低产显示的还是高产的信息，同样点击了D类、休眠后再点击其他类信息不变（错乱）

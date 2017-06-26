@@ -135,7 +135,7 @@ export default create({
     // 是否来自 B-高 tab
     else if (this.$route.query.label.indexOf(2) > -1) {
       this.isFromTabB = true
-      this.queryStatics("a")
+      this.queryStatics("b")
     }
     // 是否来自 C-高 tab
     else if (this.$route.query.label.indexOf(3) > -1) {

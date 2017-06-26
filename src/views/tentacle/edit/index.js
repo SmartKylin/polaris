@@ -87,8 +87,6 @@ export default create({
     queryTentacleDetail({channelId: id}).then(data => {
       this.data = data
     })
-    // 部分数据获取初始值
-    this.data.institutionId = this.data.channelInstitutionId
   }
 })
 
