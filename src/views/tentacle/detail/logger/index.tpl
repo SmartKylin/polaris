@@ -7,7 +7,7 @@
   <div class="visit--log" v-show="showWhich=='visit'">
     <!--触点待办事项列表-->
     <div class="visit--log--top pd10">
-      <div class="todo--item" v-for="plan in data.backlog">
+      <div class="todo--item flex" v-for="plan in data.backlog">
         <div class="todo--left">
           <div class="pb5 color-gray font-12">{{plan.planTime}}</div>
           <div class="pb5 mt10">{{plan.content}}</div>
@@ -42,12 +42,12 @@
     <!--拜访日志-->
     <div class="visit--log--bottom">
       <div class="flex item--wrap" v-for="visit in visitList">
-        <div class="log--left">
+        <div class="log--left ml20">
           <span class="time--span">{{visit.localDate}}</span>
           <span class="boll"></span>
           <span class="time--span">{{visit.localTime}}</span>
         </div>
-        <div class="log--right ml20">
+        <div class="log--right ml20 flex-1">
           <div>{{visit.staffName}},第{{visit.id}}次拜访</div>
           <div class="log--right--remark mt10">备注：{{visit.content}}</div>
         </div>

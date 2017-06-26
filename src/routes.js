@@ -47,8 +47,7 @@ export default [
     component: TentacleAdd
   },
   {
-    path: '/tentacle/edit',
-    name: "edittentacle",
+    path: '/tentacle/edit/:id',
     component: TentacleEdit
   },
   {
@@ -64,9 +63,7 @@ export default [
     component: TentacleSearchResult
   },
   {
-    // path: '/tentacle/detail/:datakey',
-    path: '/tentacle/detail',
-    name: 'tentacledetail',
+    path: '/tentacle/detail/:id',
     component: TentacleDetail,
     children: [
       {
@@ -74,7 +71,7 @@ export default [
         redirect: 'achieve'
       },
       {
-        path: '/tentacle/detail/achieve',
+        path: 'achieve',
         component: TentacleDetailAchieve
       },
       {

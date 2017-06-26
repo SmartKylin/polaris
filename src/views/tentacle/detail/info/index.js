@@ -14,7 +14,8 @@ export default create({
   },
   methods: {
     toEditTentacle() {
-      this.$router.push({name: 'edittentacle', params: {channelCode: this.data.code}})
+      // this.$router.push({name: 'edittentacle', params: {channelCode: this.data.code}})
+      this.$router.push('/tentacle/edit/' + this.data.id)
     }
   }
 })

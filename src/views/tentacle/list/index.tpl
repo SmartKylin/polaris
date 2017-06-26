@@ -1,5 +1,5 @@
 <div>
-  <Tab @change="queryWithStatus" v-if="isDormant">
+  <Tab @change="queryWithStatus" v-if="!isDormant">
     <div class="tab--item" :data-key="0" :class="{active: curLevel == 0}">
       <p class="tentacleView--tabItem--cont">{{total}}</p>
       <p class="tentacleView--tabItem--name">全部</p>
