@@ -70,7 +70,6 @@ export default create({
       this.$loading.hide()
       this.data = data
       this.labelAry = data.labelId || []
-      console.log(this.labelAry);
     }).catch(err => {
       this.$dialog.hide()
       this.$dialog.alert('提示', err.message)
