@@ -13,7 +13,7 @@ export default create({
       // 标识是否已加载完所有数据
       allLoaded: false,
       // 当前状态分类
-      status: 0,
+      status: 1,
       // 根据状态分类
       categories: [],
       // 标识是否正在请求数据
