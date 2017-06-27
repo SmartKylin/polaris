@@ -51,6 +51,9 @@ export default create({
       })
       .then(res => {
         this.inited = true
+        if (!res.expect) {
+          res.expect = {}
+        }
         this.model = res
         this.$loading.hide()
       })
