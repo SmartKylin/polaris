@@ -63,7 +63,7 @@ export default create({
         this.$router.push('/clue/' + this.task.flag)
       }*/
       // 跳转到任务详情
-      this.$router.push('/user/task/' + this.task.flag + '/' + this.task.type)
+      this.$router.push('/user/task/' + this.task.id + '/' + this.task.type)
     }
 
   }

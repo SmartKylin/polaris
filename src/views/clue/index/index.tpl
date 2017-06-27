@@ -60,8 +60,9 @@
           <div class="clueView--listItem--syn">
             <div>
               <span>{{data.userName}}</span>
-              <span>{{data.expectAmount | formatMoney}}万</span>
-              <span>{{data.expectTerm}}个月</span>
+              <span v-if="data.expectAmount">{{data.expectAmount | formatMoney}}万</span>
+              <span v-else>0万</span>
+              <span>{{data.expectTerm || 0}}个月</span>
             </div>
 <!--             <div>
               <span>招商银行</span>

@@ -9,7 +9,7 @@
     </div>
   </CellGroup>
   <div>
-    <div v-if="isAccomplish == 0" class="footer--btn--group" >
+    <div v-if="isAccomplish == 0" class="footer--btn--group">
       <div class="button--small" @click="postUndoTask">保存修改</div>
       <div class="button--small" @click="postDoneTask">任务完成</div>
       <div class="button--small" @click="postCloseTask">关闭任务</div>

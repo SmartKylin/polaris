@@ -62,9 +62,8 @@ export default create({
   created() {
     // 获取任务详细数据
     let {flag, type} = this.$route.params
-    console.log(flag);
-    console.log(type);
-    queryTaskDetail({flag, type}).then(data => {
+
+    queryTaskDetail({id: flag, type}).then(data => {
       this.task = data
     })
     // 将任务中的计划是设置为选中时间
