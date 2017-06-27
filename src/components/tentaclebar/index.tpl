@@ -15,7 +15,7 @@
       </div>
       <div class="tentacle--listItem--contract" v-if="data.recentRelationTime">
         <span>最近一次联系时间</span>
-        <span>{{data.recentRelationTime}}，电话/面访</span>
+        <span>{{data.recentRelationTime}}，{{data.typeName}}</span>
       </div>
     </div>
     <a class="call-up-ctrl" :href="'tel:' + data.mobile" @click.stop></a>

@@ -62,6 +62,7 @@ export default create({
       this.operationList = []
       this.$loading.show()
       queryVisitlog({channelCode: this.data.code}).then(res => {
+        console.log('visit日志拿到了')
         this.$loading.hide()
         this.visitList = res;
         this.visitList = this.visitList.map(l => {
@@ -103,7 +104,7 @@ export default create({
   components: {
     TodoItem
   },
-  mounted() {
+  created() {
     this.queryVis()
     this.queryOper()
   }

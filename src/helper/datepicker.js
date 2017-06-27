@@ -7,6 +7,17 @@ const hours = []
 const minutes = []
 const seconds = []
 
+// const now = new Date()
+
+/*const defaultIndex = [
+  years.indexOf(now.getFullYear()),
+  months.indexOf(now.getMonth() + 1),
+  days.indexOf(now.getDate()),
+  hours.indexOf(now.getHours()),
+  minutes.indexOf(now.getMinutes()),
+  seconds.indexOf(now.getSeconds())
+  ]*/
+
 ;(function() {
   for (let i = 2017; i < 2039; i++) {
     // 年
@@ -37,6 +48,7 @@ const seconds = []
 
 const picker = new Picker({
   data: [ years, months, days, hours, minutes ],
+  // selectedIndex: [1, 3, 4, 5, 6]
   title: '日期时间选择'
 })
 
@@ -56,4 +68,5 @@ export default {
       callback(`${values[0]}-${values[1]}-${values[2]} ${values[3]}:${values[4]}`)
     })
   }
+
 }

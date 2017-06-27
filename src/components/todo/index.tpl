@@ -2,6 +2,7 @@
   <div class="todo--item--bd flex-2">
     <div class="pb5 color-gray font-12">{{task.planTime}}</div>
     <div class="todo--item--title mt5">{{task.title}}</div>
+    <!--<div class="mt10 font-12 color-gray">{{task.typeName}}</div>-->
     <div class="todo--item--cont font-12 color-gray mt10">{{task.brief}}</div>
   </div>
 

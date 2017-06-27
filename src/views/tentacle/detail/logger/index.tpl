@@ -41,6 +41,7 @@
           <div class="log--right ml20 flex-1">
             <div class="font-12 color-gray">{{visit.visitTime}}</div>
             <div class="mt10">{{visit.staffName}}</div>
+            <div class="mt10 color-gray font-12">{{visit.typeName}}</div>
             <div class="log--right--remark mt10">备注：{{visit.content}}</div>
           </div>
         </div>
