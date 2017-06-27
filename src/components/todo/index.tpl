@@ -6,8 +6,10 @@
   </div>
 
   <div class="todo--item--ft flex-1" v-if="!fromUserpage">
-    <div class="ml5 button--small" v-if="task.isAccomplish == 0" @click="accomplishTaskHandler(task.id)">完成</div>
-    <div class="ml5 button--small bg-gray" v-if="task.isAccomplish == 1">已完成</div>
+    <div v-if="task.isAccomplish == 0">
+      <div class="ml5 button--small" @click="accomplishTaskHandler" v-if="!done">完成</div>
+      <div class="ml5 button--small bg-gray" v-if="done">已完成</div>
+    </div>
   </div>
 
   <Popup v-model="visible">

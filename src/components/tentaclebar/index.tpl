@@ -13,7 +13,7 @@
         {{data.channelInstitutionName}}
         <div>地址：{{data.address}}</div>
       </div>
-      <div class="tentacle--listItem--contract">
+      <div class="tentacle--listItem--contract" v-if="data.recentRelationTime">
         <span>最近一次联系时间</span>
         <span>{{data.recentRelationTime}}，电话/面访</span>
       </div>

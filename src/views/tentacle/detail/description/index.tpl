@@ -3,14 +3,13 @@
     <div class="descrip--title">评价标签</div>
     <div class="descrip--bd" @click="selectLabel($event)">
       <div class="flex">
-        关系标签
+        <div class="label--desc">关系标签</div>
         <span v-for="rela in labRelaList" :class="{active: rela.name === data.label[0]}" :data-key="rela.id" v-if="!!data.label">{{rela.name}}</span>
       </div>
       <div class="flex">
-        产能标签
+        <div class="label--desc">产能标签</div>
         <span v-for="cap in labCapaList" :class="{active: cap.name === data.label[1]}" :data-key="cap.id" v-if="!!data.label">{{cap.name}}</span>
       </div>
-
     </div>
   </div>
   <div>

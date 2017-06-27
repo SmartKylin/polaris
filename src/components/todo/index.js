@@ -30,9 +30,8 @@ export default create({
       this.$router.push('/user/task/' + this.task.id + '/' + this.task.type)
     },
     // 待办事项完成按钮点击处理函数
-    accomplishTaskHandler(id) {
+    accomplishTaskHandler() {
       this.visible = true
-      this.taskId = parseInt(id)
     },
     // 提交修改待办事项
     postTodoEdit() {

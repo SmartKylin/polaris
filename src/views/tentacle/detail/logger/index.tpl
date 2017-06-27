@@ -33,13 +33,14 @@
       <!--拜访日志-->
       <div class="visit--log--bottom">
         <div class="flex item--wrap" v-for="visit in visitList">
-          <div class="log--left ml20">
-            <span class="time--span">{{visit.localDate}}</span>
+         <!-- <div class="log&#45;&#45;left ml20">
+            <span class="time&#45;&#45;span">{{visit.localDate}}</span>
             <span class="boll"></span>
-            <span class="time--span">{{visit.localTime}}</span>
-          </div>
+            <span class="time&#45;&#45;span">{{visit.localTime}}</span>
+          </div>-->
           <div class="log--right ml20 flex-1">
-            <div>{{visit.staffName}},第{{visit.id}}次拜访</div>
+            <div class="font-12 color-gray">{{visit.visitTime}}</div>
+            <div class="mt10">{{visit.staffName}}</div>
             <div class="log--right--remark mt10">备注：{{visit.content}}</div>
           </div>
         </div>
