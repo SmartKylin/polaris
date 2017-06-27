@@ -1,7 +1,6 @@
 <div>
   <div class="achieve--history ">
     <div class="achieve--title">历史业绩</div>
-
     <div class="tentacleDetail--tab mt10">
       <div class="tentacleDetail--tabItem">
         <p class="tentacleDetail--tabItem--cont">{{data.deliveryNum}}</p>
@@ -39,18 +38,18 @@
       </div>
     </div>-->
   </div>
-  <div class="achieve--exchange ">
+  <div class="achieve--exchange">
     <div class="achieve--title">最近交易</div>
     <div class="exchange--bd">
-      <div>
+      <div v-if="data.recentDeliveryClueTime">
         <span>最近一次递单时间:</span>
         <span>{{data.recentDeliveryClueTime}}</span>
-        <router-link v-if="data.recentDeliveryClueId" :to="'/clue/' + data.recentDeliveryClueId">查询线索详情</router-link>
+        <router-link :to="'/clue/' + data.recentDeliveryClueId">查询线索详情</router-link>
       </div>
-      <div>
+      <div v-if="data.recentBargainClueTime">
         <span>最近一次成单时间:</span>
         <span>{{data.recentBargainClueTime}}</span>
-        <router-link v-if="data.recentBargainClueId" :to="'/clue/' + data.recentBargainClueId">查询线索详情</router-link>
+        <router-link :to="'/clue/' + data.recentBargainClueId">查询线索详情</router-link>
       </div>
     </div>
   </div>
