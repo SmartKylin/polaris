@@ -2,6 +2,9 @@
  * 集中管理整个应用要用到的所有接口地址：
  *   1. 整个应用用到了哪些接口一目了然
  *   2. 接口地址很可能会发生格式变化，集中起来方便修改
+ *
+ * 文档地址：
+ *   https://dev.zhongfl.com/mizar/static/wiki/index.html
  */
 
 const prefix = window.__CONFIG__.apiPath
@@ -77,15 +80,19 @@ export default (config => {
   "makeInterview": "/mizar/m/clue/interview",
   // 待办事项
   "todoEdit": "/mizar/m/task/up",
+
+
+  /**
+   * 用户相关
+   * ============================================== */
+
+  // 发送短信验证码
+  "sendcode": "/mizar/m/tool/sendcode",
+  // 用户登录
+  "login": ":/mizar/m/user/bind",
 })
 
-/*export default (config => {
-  let obj = {}
-  Object.keys(config).forEach(name => {
-    obj[name] = `${prefix}${config[name]}`
-  })
-  return obj
-})()*/
+
 
 
 
