@@ -19,7 +19,7 @@
         "flag": "20",
         "plan_time": "2017-06-24 08:30:00",
         "is_remind": "0",
-        "is_accomplish": "2",
+        "isAccomplish": "1",
         "remark": "会计课",
         "sketch": "触点：张三 （一级-A类-高产）"
       }

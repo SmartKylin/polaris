@@ -7,7 +7,6 @@ export default create({
   data() {
     return {
       task: {
-        plan_time: '',
       },
       // 修改后的状态
       isAccomplish: 0,
@@ -65,6 +64,11 @@ export default create({
 
     queryTaskDetail({id: flag, type}).then(data => {
       this.task = data
+      this.isAccomplish = data.isAccomplish
+      this.plan_time = data.planTime
+      console.log(this.plan_time);
+      console.log(this.isAccomplish)
+
     })
     // 将任务中的计划是设置为选中时间
     datepicker.onselect(date => {

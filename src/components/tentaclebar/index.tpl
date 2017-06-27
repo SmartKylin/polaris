@@ -3,7 +3,7 @@
     <div class="tentacle--listItem--syn">
       <div class="flex">
         <div class="flex-1">
-          <span>{{data.name}}</span>
+          <span class="syn--name">{{data.name}}</span>
         </div>
         <div class="flex-1">
           <span v-for="l in data.label" class="ml5 tag--orange">{{l}}</span>

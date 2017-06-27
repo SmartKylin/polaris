@@ -40,6 +40,7 @@ module.exports = webpackMerge(baseConfig, {
 			filename: 'index.html',
 			template: './index.html',
 			apiPath: 'https://dev.zhongfl.com',
+			// apiPath: '',
       appVersion: package.version
 		}),
 

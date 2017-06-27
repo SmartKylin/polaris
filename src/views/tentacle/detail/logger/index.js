@@ -29,7 +29,6 @@ export default create({
     // 拜访记录和操作记录子页面切换
     handleChange(val) {
       this.showWhich = val
-      console.log(this.showWhich);
       if (this.showWhich == "visit") {
         this.queryVis()
       } else {
@@ -51,7 +50,6 @@ export default create({
           return {...l, localDate, localTime}
         })
         this.visitlogVisible = true
-        console.log(this.operationList);
 
       }).catch(err => {
         this.$loading.hide()
@@ -73,14 +71,14 @@ export default create({
           return {...l, localDate, localTime}
         })
         this.visitlogVisible = false
-        console.log(this.visitList);
 
       }).catch(err => {
         this.$loading.hide()
         this.$dialog.alert('提示', err.message)
       })
     },
-    // 待办事项完成按钮点击处理函数
+
+   /* // 待办事项完成按钮点击处理函数
     accomplishTaskHandler(id) {
       this.visible1 = true
       this.taskId = parseInt(id)
@@ -95,18 +93,18 @@ export default create({
         if (res.retcode == 2000000) {
           console.log(res.msg)
           this.visible1 = false
+          // this.plan.isAccomplish
         }
       }).catch(err => {
         this.$dialog.alert('修改待办事项失败', err.message)
       })
-    }
+    }*/
   },
   components: {
-    TodoItem,
+    TodoItem
   },
   mounted() {
     this.queryVis()
     this.queryOper()
-    console.log(this.showWhich);
   }
 })

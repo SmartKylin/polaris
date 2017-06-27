@@ -89,7 +89,7 @@ export default (config => {
   // 发送短信验证码
   "sendcode": "/mizar/m/tool/sendcode",
   // 用户登录
-  "login": ":/mizar/m/user/bind",
+  "login": "/mizar/m/user/bind",
 })
 
 

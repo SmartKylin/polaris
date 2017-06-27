@@ -69,7 +69,7 @@ export default create({
       if (this.isFromDetail) {
         return
       }
-      // 如果有弹出框出现则不跳转
+      // 如果有弹出框出现则不跳转,或者正在发送请求不可跳转
       if (this.visible1 || this.visible2 || this.visible3) {
         return
       }
@@ -89,6 +89,7 @@ export default create({
 
       addTask(params).then(res => {
         if (res.retcode === 2000000) {
+          this.visible1 = false
           this.$toast.zIndex(8).show('添加成功~', position)
           this.task = 1
         }
