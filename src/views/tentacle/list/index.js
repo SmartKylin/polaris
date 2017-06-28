@@ -138,7 +138,12 @@ export default create({
 
       // todo
       // 设置页面 title
-
+      if (this.category) {
+        document.title = `${this.category.toUpperCase()}-高 触点`
+      }
+      else if (this.isDormant) {
+        document.title = '休眠触点'
+      }
 
 
       // 查询各分类下的触点数量，

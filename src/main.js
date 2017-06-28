@@ -61,7 +61,12 @@ FastClick.attach(document.body)
  * 创建 router
  */
 import routes from './routes'
+import getTitle from './titles'
 const router = new Router({ routes })
+
+router.afterEach((to, from) => {
+  document.title = getTitle(to.path)
+})
 
 
 
