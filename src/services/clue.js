@@ -43,15 +43,15 @@ export function queryClueStatis() {
         id: 3
       },
       {
-        key: 'loan',
-        name: '已放款',
-        val: data.loan,
-        id: 4
-      },
-      {
         key: 'waitEndOrder',
         name: '待结单',
         val: data.waitEndOrder,
+        id: 4
+      },
+      {
+        key: 'success',
+        name: '已完成',
+        val: data.success,
         id: 5
       },
     ]
