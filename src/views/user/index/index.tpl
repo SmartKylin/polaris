@@ -40,7 +40,5 @@
     <TodoItem v-for="task in taskList" :task="task"></TodoItem>
   </div>
   <Loadmore @reachBottom="loadmore" :visible="!allLoaded">
-    到底了~~
   </Loadmore>
-  <div v-if="allLoaded">已经没有数据了，亲！！</div>
 </div>

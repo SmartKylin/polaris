@@ -1,7 +1,7 @@
 import datepicker from '../../helper/datepicker'
 import create from './index.tpl'
 import './index.styl'
-import {queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle, claimTentacle} from 'services'
+import {queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle, claimTentacle, queryTentacleDetail} from 'services'
 
 export default create({
   props: {
@@ -9,10 +9,9 @@ export default create({
     data: {
       type: Object
     },
-    // 触点编码
-    datakey: {
-      type: String,
-      default: '',
+    // 触点
+    channelId: {
+      type: Number
     }
   },
   data() {
@@ -77,7 +76,6 @@ export default create({
       if (this.isFromSea) {
         return
       }
-      // this.$router.push({name: "tentacledetail", params: {datakey: this.datakey}})
       this.$router.push('/tentacle/detail/' + this.data.id)
     },
     // 弹出框中提交加入拜访计划
@@ -122,7 +120,8 @@ export default create({
       releaseTentacle(params).then(res => {
         this.visible3 = false
         this.isReleased = "1"
-        this.$toast.show('操作成功')
+        this.$toast.show('触点释放成功')
+        this.$router.replace(this.$route.path)
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
       })
@@ -137,7 +136,7 @@ export default create({
       })
     },
 
-    //
+    // 时间选取控件
     openDatepicker() {
       datepicker.show()
     },
@@ -159,5 +158,17 @@ export default create({
     if (this.$route.path.indexOf('commonality') > -1) {
       this.isFromSea = true
     }
+
+    console.log(this.channelId);
+    /*  this.id = this.$route.params.id;
+    this.$loading.show()
+
+   queryTentacleDetail({channelId: this.id}).then(data => {
+      this.$loading.hide()
+      this.data = data
+    }).catch(err => {
+      this.$dialog.hide()
+      this.$dialog.alert('提示', err.message)
+    })*/
   }
 })

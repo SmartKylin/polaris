@@ -18,6 +18,6 @@
     <div class="tab--item" data-key="4">D类</div>
     <div class="tab--item" data-key="dormant">休眠</div>
   </Tab>
-  <TentacleBar v-for="tent in dataList" :data="tent" :datakey="tent.code"/>
+  <TentacleBar v-for="tent in dataList" :data="tent" :channelId="tent.id"/>
   <Loadmore @reachBottom="loadmore" :visible="!allLoaded"></Loadmore>
 </div>

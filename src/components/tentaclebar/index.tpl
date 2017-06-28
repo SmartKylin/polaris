@@ -37,7 +37,6 @@
       <div v-if="data.isRelease == 0" class="button--small bg-gray">已被认领</div>
     </div>
   </div>
-
   <!--  拜访计划弹出框
   <Popup v-model="visible1">
     <div class="popup-plan popup&#45;&#45;layer">

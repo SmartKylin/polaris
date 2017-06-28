@@ -7,7 +7,7 @@
     </div>
     <div class="tentacleView--query" @click="reQuery">查询</div>
   </div>
-  <TentacleBar v-for="tent in dataList" :data="tent"/>
+  <TentacleBar v-for="tent in dataList" :data="tent" :channelId="ten.id"/>
   <Loadmore @reachBottom="loadmore" :visible="!allLoaded">
     加载中...
   </Loadmore>

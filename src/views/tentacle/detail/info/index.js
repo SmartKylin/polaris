@@ -20,8 +20,6 @@ export default create({
     this.$loading.show()
     queryTentacleDetail({channelId: id}).then(data => {
       this.$loading.hide()
-      console.log(data);
-      console.log(data.channelInstitutionName);
       this.data = data
     }).catch(err => {
       this.$dialog.hide()

@@ -25,6 +25,9 @@ export default create({
     datepicker.onselect(date => {
       this.interview.date = date
     })
+
+    // 面签预约默认时间
+    this.interview.date = this.getNextTime()
   },
 
   methods: {
@@ -81,6 +84,16 @@ export default create({
         this.$loading.hide()
         this.$dialog.alert('提示', err.message)
       })
+    },
+
+    // 获取次日8点半
+    getNextTime() {
+      let now = new Date()
+      let y = now.getFullYear()
+      let m = now.getMonth() + 1
+      let d = now.getDate() + 1
+      let t = y + '-' + m + '-' + d + ' ' + '08:30:00'
+      return t
     }
   }
 })

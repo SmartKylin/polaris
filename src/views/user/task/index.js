@@ -39,6 +39,8 @@ export default create({
       updateTask(params).then(res => {
         if (res.retcode == 2000000) {
           // console.log(res.msg);
+          this.$dialog.alert("提示", res.msg)
+          this.$router.back()
         }
       }).catch(err => {
         this.$dialog.alert("提示", err.message)

@@ -68,14 +68,14 @@ export default [
     children: [
       {
         path: '/',
-        redirect: 'achieve'
+        redirect: 'achieve/:id'
       },
       {
-        path: 'achieve',
+        path: 'achieve/:id',
         component: TentacleDetailAchieve
       },
       {
-        path: 'logger',
+        path: 'logger/:id',
         component: TentacleDetailLogger
       },
       {
@@ -88,7 +88,6 @@ export default [
       }
     ]
   },
-
 
   /**
    * 线索

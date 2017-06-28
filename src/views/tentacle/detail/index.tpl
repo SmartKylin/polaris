@@ -1,8 +1,8 @@
 <div>
-  <TentacleBar :data="data" v-if="data"/>
+  <TentacleBar :data="data" v-if="data" :channelId="data.id"/>
   <div class="detail--group">
-    <router-link :to="'/tentacle/detail/' + id +'/achieve'" :replace="true">业绩数据</router-link>
-    <router-link :to="'/tentacle/detail/' + id +'/logger'" :replace="true">管理日志</router-link>
+    <router-link :to="'/tentacle/detail/' + id +'/achieve/' + id" :replace="true">业绩数据</router-link>
+    <router-link :to="'/tentacle/detail/' + id +'/logger/' + id" :replace="true">管理日志</router-link>
     <router-link :to="'/tentacle/detail/' + id +'/description/' + id" :replace="true">触点画像</router-link>
     <router-link :to="'/tentacle/detail/' + id +'/info/' + id" :replace="true">基本信息</router-link>
   </div>

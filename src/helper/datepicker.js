@@ -38,6 +38,7 @@ const secondAry = []
       hours.push({text: i + '时', value: i})
       hoursAry.push(i)
     }
+
     // 分
     if (i < 61) {
       minutes.push({text: i + '分', value: i})
@@ -55,6 +56,7 @@ const defaultIndex = [
   monthAry.indexOf(now.getMonth() + 1),
   dayAry.indexOf(now.getDate()),
   hoursAry.indexOf(now.getHours()),
+
   minuteAry.indexOf(now.getMinutes()),
   secondAry.indexOf(now.getSeconds())
 ]
