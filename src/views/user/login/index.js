@@ -22,7 +22,7 @@ export default create({
         return
       }
 
-      let time = 5
+      let time = 60
       this.notice = `${time}秒后重试`
       const timer = setInterval(() => {
         time -= 1
