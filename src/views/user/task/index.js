@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import {queryTaskDetail, updateTask} from 'services'
-import datepicker from '../../../helper/datepicker'
+import datepicker from '../../clue/detail/datepicker'
 
 export default create({
   data() {
@@ -35,7 +35,7 @@ export default create({
       params.planTime = this.plan_time
       params.remark = this.task.remark
       params.title = this.task.title
-      console.log(params);
+
       updateTask(params).then(res => {
         if (res.retcode == 2000000) {
           // console.log(res.msg);
@@ -68,9 +68,6 @@ export default create({
       this.task = data
       this.isAccomplish = data.isAccomplish
       this.plan_time = data.planTime
-      console.log(this.plan_time);
-      console.log(this.isAccomplish)
-
     })
     // 将任务中的计划是设置为选中时间
     datepicker.onselect(date => {
