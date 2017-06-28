@@ -1,6 +1,6 @@
 <div>
   <SearchBox/>
-  <div class="tentacleView--tab mt10">
+  <div class="tentacleView--tab">
     <div class="tentacleView--tabItem">
       <p class="tentacleView--tabItem--cont">{{data.total.channel}}</p>
       <p class="tentacleView--tabItem--name">触点总量</p>
