@@ -4,11 +4,11 @@
   </div>
 
   <div class="loginView--ipt">
-    <input type="text" placeholder="您的手机号码" v-model="mobile">
+    <input type="tel" placeholder="您的手机号码" v-model="mobile">
   </div>
   <div class="loginView--sms">
     <div class="loginView--ipt">
-      <input type="text" placeholder="验证码" v-model="vcode">
+      <input type="tel" placeholder="验证码" v-model="vcode">
     </div>
     <div class="loginView--sms--btn" :class="{disabled: notice}" @click="sendCode">
       {{notice ? notice : '获取验证码'}}
