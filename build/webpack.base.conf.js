@@ -18,8 +18,8 @@ module.exports = {
       'qs',
       'smart-ui',
       'es6-promise',
-      'raven-js',
-      'raven-js/plugins/vue'
+      // 'raven-js',
+      // 'raven-js/plugins/vue'
     ],
   },
 

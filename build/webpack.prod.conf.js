@@ -15,7 +15,8 @@ module.exports = webpackMerge(baseConfig, {
 
   output: {
     filename: 'js/[name].[chunkhash].js',
-    chunkFilename: 'js/[id].[chunkhash].js'
+    chunkFilename: 'js/[id].[chunkhash].js',
+    publicPath: '/mizar/static'
   },
 
   module: {
