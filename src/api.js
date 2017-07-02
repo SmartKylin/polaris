@@ -43,7 +43,7 @@ export default (config => {
   // 城市列表
   "cityList": "/mizar/m/tool/citylist",
   // 区域列表
-  "areaList": "mizar/m/tool/arealist",
+  "areaList": "/mizar/m/tool/arealist",
   // 查询线索
   "clueList": "/mizar/m/clue/list",
   // 编辑线索
