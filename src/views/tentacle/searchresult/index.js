@@ -1,6 +1,5 @@
 import create from './index.tpl'
 import './index.styl'
-import SearchBox from 'components/searchbar'
 import TentacleBar from 'components/tentaclebar'
 import {queryTentacle} from 'services'
 
@@ -21,7 +20,6 @@ export default create({
     }
   },
   components: {
-    SearchBox,
     TentacleBar
   },
   methods: {
@@ -30,12 +28,11 @@ export default create({
         return
       }
       this.searching = true
-      console.log(this.search);
-
       const params = {}
       this.page += 1
       params.page = this.page
       params.search = this.search
+
       this.$loading.show()
       queryTentacle(params).then(data => {
         this.$loading.hide()
@@ -55,6 +52,7 @@ export default create({
         this.searching = false
       })
     },
+
     reQuery() {
       this.dataList = []
       this.allLoaded = false

@@ -77,7 +77,7 @@
             "staffCode":"666666",
             "planTime":"12017-06-17 21:29:16",
             "isRemind":"0",
-            "isAccomplish":"1"
+            "isAccomplish":"0"
           },
           {
             "id":"2",
@@ -89,7 +89,7 @@
             "staffCode":"666666",
             "planTime":"12017-06-17 21:29:16",
             "isRemind":"0",
-            "isAccomplish":"2"
+            "isAccomplish":"0"
           }
         ]
       }

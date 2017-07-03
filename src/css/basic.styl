@@ -58,12 +58,9 @@ for num in 5 10 15 20 25 30 35 40
 
 /* font size
 ======================================== */
-.font-12 {
-  font-size: 12px
-}
-.font-18 {
-  font-size: 12px
-}
+for num in 12 14 16 18 24 26 30
+  .font-{num}
+    font-size: num px
 
 /* font color
 ======================================== */
@@ -113,6 +110,9 @@ body {
   .bg-red {
     background-color: color-red;
   }
+  .bg-white {
+    background-color: #fff;
+  }
 }
 
 /* clear
@@ -137,6 +137,13 @@ body {
    */
 .box-shadow {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+}
+
+  /**
+   * 下边框
+   */
+.border-bottom {
+  border-bottom: 1px solid #e0e0e0
 }
 
 /**

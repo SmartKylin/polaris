@@ -76,6 +76,7 @@ export default create({
         params.level = this.curLevel
       }
 
+      // 如果查询休眠则不传label，不传高产低产
       if (this.isDormant) {
         params.dormant = 1
       } else {
@@ -108,6 +109,7 @@ export default create({
 
     reQuery() {
       // 切换不同分类时要重置分页状态
+      this.dataList = []
       this.pageNum = 0
       // 数据重置为未加载完
       this.allLoaded = false

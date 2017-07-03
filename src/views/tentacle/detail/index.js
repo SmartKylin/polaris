@@ -10,20 +10,27 @@ export default create({
       id: 0
     }
   },
+  methods: {
+    queryDetail(params) {
+      this.$loading.show()
+      queryTentacleDetail({channelId: params.id}).then(data => {
+        this.$loading.hide()
+        this.data = data
+      }).catch(err => {
+        this.$dialog.hide()
+        this.$dialog.alert('提示', err.message)
+      })
+    }
+  },
   components: {
     TentacleBar
   },
+  beforeRouteUpdate(to, from, next) {
+    this.queryDetail(to.params)
+    next()
+  },
   created() {
-    this.id = this.$route.params.id;
-    this.$loading.show()
-
-    queryTentacleDetail({channelId: this.id}).then(data => {
-      this.$loading.hide()
-      this.data = data
-    }).catch(err => {
-      this.$dialog.hide()
-      this.$dialog.alert('提示', err.message)
-    })
+    this.queryDetail(this.$route.params)
   }
 })
 

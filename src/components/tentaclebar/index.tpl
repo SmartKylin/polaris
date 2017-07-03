@@ -11,7 +11,7 @@
       </div>
       <div>
         {{data.channelInstitutionName}}
-        <div>地址：{{data.address}}</div>
+        <div class="mt5">地址：{{data.address}}</div>
       </div>
       <div class="tentacle--listItem--contract" v-if="data.recentRelationTime">
         <span>最近一次联系时间</span>
@@ -27,9 +27,9 @@
       <!--<div class="tentacle&#45;&#45;listItem&#45;&#45;btn" @click="addPlan($event)">加入拜访计划</div>-->
       <a href="javascript:;" @click="addPlan('center')" class="button--small" v-if="task === 0">加入拜访计划</a>
       <div class="button--small bg-gray" v-if="task === 1">已加入拜访计划</div>
-      <div class="tentacle--listItem--btn" @click="addLogger($event)">写日志</div>
-      <div class="tentacle--listItem--btn" @click="deliverTentacle($event)" v-if="isReleased === '0'">释放触点</div>
-      <div class="tentacle--listItem--btn bg-gray" v-if="isReleased === '1'">已释放</div>
+      <div class="button--small ml10" @click="addLogger($event)">写日志</div>
+      <div class="button--small ml10" @click="deliverTentacle($event)" v-if="isReleased === '0'">释放触点</div>
+      <div class="button--small bg-gray ml10" v-if="isReleased === '1'">已释放</div>
     </div>
     <!--如果触点来自公海则显示以下按钮-->
     <div v-if="isFromSea">
@@ -50,7 +50,7 @@
   </Popup>-->
 
   <Popup v-model="visible2">
-    <div class="tentcaleView--popup">
+    <div class="tentacleView--popup">
       <Cell title="拜访时间" arrow @click="openDatepicker" :content="date"></Cell>
       <Cell title="拜访方式" arrow>
         <Selector slot="body" @input="visitMethodChange">

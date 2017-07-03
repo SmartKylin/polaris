@@ -2,8 +2,8 @@ import create from './index.tpl'
 import './index.styl'
 
 function find(node) {
-  while (node) {
-    if (node.classList.contains('tab--item')) {
+  while (node && node.nodeType === 1) {
+    if (node.nodeType == 1 && node.classList.contains('tab--item')) {
       return node
     } else {
       node = node.parentNode

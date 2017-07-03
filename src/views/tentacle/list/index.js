@@ -1,7 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import LevelOverview from 'components/leveloverview'
 import {queryTentacle, queryTentacleLevelGStatics} from 'services'
 
 // 意向分类
@@ -14,18 +13,19 @@ const categories = {
 export default create({
   data() {
     return {
+      // 触点列表
       dataList: [],
       // 分页信息
       pageNum: 0,
       // 标识是否已加载完所有数据
       allLoaded: false,
-      // 根据级别分类
+      // 各级别统计数据
       categories: [],
       // 标识是否正在请求数据
       fetching: false,
-      // 当前页面所属分类（A, B, C）
+      // 当前页面所属分类（A, B, C）/ 此页面不变
       category: '',
-      // 当前页面所属产能分类 (高，低)
+      // 当前页面所属产能分类 (高，低)/ 此页面不变
       capacity: '',
       // 当前级别
       curLevel: 'all',
@@ -35,18 +35,18 @@ export default create({
   },
 
   components: {
-    LevelOverview,
     TentacleBar,
   },
 
   methods: {
-    // 查询为指定分类下的触点
-    queryWithLevel(category) {
-      this.curLevel = category
+    // 查询指定分类下的触点
+    queryWithLevel(level) {
+      this.curLevel = level
       // 切换不同分类时要重置分页状态
       this.pageNum = 0
       this.allLoaded = false
       // 查询成功后清空 dataList
+      this.dataList = []
       this.query(() => {
         this.dataList = []
       })
@@ -71,7 +71,7 @@ export default create({
       else {
         // 等级
         if (curLevel === 'vip') {
-          params.vip = 1
+            params.vip = 1
         }
         else if (curLevel !== 'all') {
           params.level = curLevel
@@ -146,8 +146,8 @@ export default create({
       }
 
 
-      // 查询各分类下的触点数量，
-      // 如果是查询休眠触点则不需要查询
+      // 查询各分类下的各级别触点统计数据，
+      // 如果是查询休眠触点则不需要此统计数据
       if (!this.isDormant) {
         queryTentacleLevelGStatics({
           type: this.category
@@ -159,7 +159,6 @@ export default create({
           this.$dialog.alert('提示', err.message)
         })
       }
-
 
       // 查询触点
       this.query()

@@ -1,6 +1,6 @@
 <div>
   <SearchBox/>
-  <div class="tentacleView--tab">
+  <div class="tentacleView--tab" v-if="data.total">
     <div class="tentacleView--tabItem">
       <p class="tentacleView--tabItem--cont">{{data.total.channel}}</p>
       <p class="tentacleView--tabItem--name">触点总量</p>
@@ -19,7 +19,7 @@
     </div>
 
   </div>
-  <div class="index--overview">
+  <div class="index--overview" v-if="data.synthesize">
     <div class="index--wrap">
       <router-link to="/tentacle/list?level=1&category=a&capacity=5">
         <div class="index--count">{{data.synthesize.ag1}}</div>
@@ -28,14 +28,14 @@
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list?&category=b&capacity=5">
+      <router-link to="/tentacle/list?category=b&capacity=5">
         <div class="index--count">{{data.synthesize.bg}}</div>
         <div class="index--label">"B-高"触点</div>
         <div class="index--reply">定期回访，升级关系</div>
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list?&category=c&capacity=5">
+      <router-link to="/tentacle/list?category=c&capacity=5">
         <div class="index--count">{{data.synthesize.cg}}</div>
         <div class="index--label">"C-高"触点</div>
         <div class="index--reply">价值驱动，定点激活</div>
@@ -49,7 +49,8 @@
       </router-link>
     </div>
   </div>
-  <CellGroup class="index--cellgroup">
+
+  <CellGroup class="index--cellgroup" v-if="data.level">
     <Cell title="一级触点" arrow class="index--cell" to="/tentacle/search/1" :content="data.level.one">
     </Cell>
     <Cell title="二级触点" arrow class="index--cell" to="/tentacle/search/2" :content="data.level.two">

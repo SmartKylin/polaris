@@ -1,4 +1,49 @@
-.tentacle--label {
+.tentacle--listItem {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+  background-color: #fff;
+  .tentacle--listItem--bd {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    .tentacle--listItem--syn {
+      flex: 1;
+      padding-left: 15px;
+      font-size: 14px;
+      color: #8492A6;
+      > div {
+        padding: 3px 0;
+      }
+      .syn--name {
+        font-size: 16px;
+        color: #000;
+      }
+      .tentacle--listItem--contract {
+        margin-top 15px;
+      }
+    }
+  }
+  .tentacle--listItem--ft {
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+    text-align: right
+    .button--small {
+      color: #fff
+    }
+  }
+  .tentacleView--popup {
+    background-color: #f5f5f5;
+  }
+
+}
+
+.tentacle--listItem:last-child {
+  margin-bottom: 0;
+}
+
+/*.tentacle--label {
   background #c2d352;
   overflow hidden;
   font-size 12px;
@@ -16,26 +61,6 @@
     color #000
   }
 }
-
-.tentacle--listItem {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
-  background-color: #fff;
-}
-
-.tentacle--listItem:last-child {
-  margin-bottom: 0;
-}
-
-.tentacle--listItem--hd {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 20px;
-}
-
 .tentacle--listItem--tag {
   height: 20px;
   font-size: 0;
@@ -50,65 +75,18 @@
     font-size: 12px;
   }
 }
-
-.tentacle--listItem--bd {
-  display: flex;
-  align-items: center;
-  padding: 5px 0;
-}
-
-
-.tentacle--listItem--syn {
-  flex: 1;
-  padding-left: 15px;
-  font-size: 14px;
-  color: #8492A6;
-  > div {
-    padding: 3px 0;
-  }
-}
-
-.tentacle--listItem--ft {
-  padding-top: 15px;
-  border-top: 1px solid #e0e0e0;
-  text-align: right
-  .button--small {
-    color: #fff
-  }
-}
-
-.tentacle--listItem--btn {
-  display: inline-block;
-  min-width: 50px;
-  margin-left: 10px;
-  padding: 6px 10px;
-  border-radius: 2px;
-  text-align: center;
-  font-size: 12px;
-  color: #fff;
-  background-color: #20A0FF;
-}
-
-.tentacle--listItem--contract {
-  margin-top 15px;
-}
-
-.popup--layer {
-  background-color: #f5f5f5;
-}
+*/
 
 .text--area {
   width 98%;
   border 1px solid blue;
 }
 
-.tentcaleView--popup {
-  background-color: #f5f5f5;
-}
 
 .textareaBox {
   padding: 15px;
   background-color: #fff;
+
   textarea {
     outline: none;
     resize: none;
@@ -122,6 +100,3 @@
   }
 }
 
-  .syn--name {
-    font-size: 18px;
-  }

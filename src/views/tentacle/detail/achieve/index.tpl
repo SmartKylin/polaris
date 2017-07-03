@@ -1,7 +1,8 @@
 <div>
-  <div class="achieve--history ">
-    <div class="achieve--title">历史业绩</div>
-    <div class="tentacleDetail--tab mt10">
+  <div class="achieve--history achieve--bd-item">
+    <div class="achieve--title border-bottom">历史业绩</div>
+    <!--<Cell title="历史业绩" class="cell&#45;&#45;title"></Cell>-->
+    <div class="tentacleDetail--tab pl10 pr10">
       <div class="tentacleDetail--tabItem">
         <p class="tentacleDetail--tabItem--cont">{{data.deliveryNum}}</p>
         <p class="tentacleDetail--tabItem--name">历史订单</p>
@@ -38,17 +39,18 @@
       </div>
     </div>-->
   </div>
-  <div class="achieve--exchange">
-    <div class="achieve--title">最近交易</div>
+  <div class="achieve--exchange achieve-bd-item">
+    <div class="achieve--title border-bottom">最近交易</div>
+    <!--<Cell title="最近交易" class="cell&#45;&#45;title"></Cell>-->
     <div class="exchange--bd">
       <div v-if="data.recentDeliveryClueTime">
-        <span>最近一次递单时间:</span>
-        <span>{{data.recentDeliveryClueTime}}</span>
+        <span class="color-gray mr10">最近一次递单时间:</span>
+        <span class="color-red font-18">{{data.recentDeliveryClueTime}}</span>
         <router-link :to="'/clue/' + data.recentDeliveryClueId">查询线索详情</router-link>
       </div>
       <div v-if="data.recentBargainClueTime">
-        <span>最近一次成单时间:</span>
-        <span>{{data.recentBargainClueTime}}</span>
+        <span class="color-gray mr10">最近一次成单时间:</span>
+        <span class="color-red font-18">{{data.recentBargainClueTime}}</span>
         <router-link :to="'/clue/' + data.recentBargainClueId">查询线索详情</router-link>
       </div>
     </div>

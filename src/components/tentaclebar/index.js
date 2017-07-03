@@ -11,7 +11,7 @@ export default create({
     },
     // 触点
     channelId: {
-      type: Number
+      type: String
     }
   },
   data() {
