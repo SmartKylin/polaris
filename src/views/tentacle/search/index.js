@@ -2,7 +2,7 @@ import create from './index.tpl'
 import './index.styl'
 import SearchBar from 'components/searchbar'
 import TentacleBar from 'components/tentaclebar'
-import { queryTentacle, queryTentacleLevelStatics} from 'services'
+import { queryTentacle, queryTentacleLevelStatics, queryLabel} from 'services'
 
 export default create({
   data() {
@@ -19,9 +19,13 @@ export default create({
       // 当前级别
       curLevel: 1,
       // 标签数组
-      labels: [1, 5],
+      // labels: [1, 5],
+      // 删除了高低分类
+      labels: [1],
       // 是否休眠
       isDormant: false,
+      // 关系标签列表
+      labRelaList: []
     }
   },
 
@@ -131,6 +135,15 @@ export default create({
 
     queryTentacleLevelStatics().then(data=>{
       this.categories = data
+    })
+    // 获取关系标签列表
+    queryLabel().then(data => {
+      this.labRelaList = data[1].list
+      console.log(this.labRelaList);
+      // 产能标签暂时关闭
+      // this.labCapaList = data[2].list
+    }).catch(err => {
+      this.$dialog.alert("提示", err.message)
     })
   },
 })

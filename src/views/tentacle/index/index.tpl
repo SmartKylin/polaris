@@ -20,24 +20,52 @@
 
   </div>
   <div class="index--overview" v-if="data.synthesize">
+   <!-- <div class="index&#45;&#45;wrap">
+    <router-link to="/tentacle/list?level=1&category=a&capacity=5">
+      <div class="index&#45;&#45;count">{{data.synthesize.ag1}}</div>
+      <div class="index&#45;&#45;label">"1-A-高"触点</div>
+      <div class="index&#45;&#45;reply">进行逼单，扩大战果</div>
+    </router-link>
+  </div>
+    <div class="index&#45;&#45;wrap">
+      <router-link to="/tentacle/list?category=b&capacity=5">
+        <div class="index&#45;&#45;count">{{data.synthesize.bg}}</div>
+        <div class="index&#45;&#45;label">"B-高"触点</div>
+        <div class="index&#45;&#45;reply">定期回访，升级关系</div>
+      </router-link>
+    </div>
+    <div class="index&#45;&#45;wrap">
+      <router-link to="/tentacle/list?category=c&capacity=5">
+        <div class="index&#45;&#45;count">{{data.synthesize.cg}}</div>
+        <div class="index&#45;&#45;label">"C-高"触点</div>
+        <div class="index&#45;&#45;reply">价值驱动，定点激活</div>
+      </router-link>
+    </div>
+    <div class="index&#45;&#45;wrap">
+      <router-link to="/tentacle/list?isDormant=true">
+        <div class="index&#45;&#45;count">{{data.synthesize.dormant}}</div>
+        <div class="index&#45;&#45;label">VIP->5级、2级以上长期休眠</div>
+        <div class="index&#45;&#45;reply">危机公关，快速反应</div>
+      </router-link>
+    </div>-->
     <div class="index--wrap">
-      <router-link to="/tentacle/list?level=1&category=a&capacity=5">
+      <router-link to="/tentacle/list?level=1&category=a">
         <div class="index--count">{{data.synthesize.ag1}}</div>
-        <div class="index--label">"1-A-高"触点</div>
+        <div class="index--label">"1-A"触点</div>
         <div class="index--reply">进行逼单，扩大战果</div>
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list?category=b&capacity=5">
+      <router-link to="/tentacle/list?category=b">
         <div class="index--count">{{data.synthesize.bg}}</div>
-        <div class="index--label">"B-高"触点</div>
+        <div class="index--label">"B"触点</div>
         <div class="index--reply">定期回访，升级关系</div>
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list?category=c&capacity=5">
+      <router-link to="/tentacle/list?category=c">
         <div class="index--count">{{data.synthesize.cg}}</div>
-        <div class="index--label">"C-高"触点</div>
+        <div class="index--label">"C"触点</div>
         <div class="index--reply">价值驱动，定点激活</div>
       </router-link>
     </div>

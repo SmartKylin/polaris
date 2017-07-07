@@ -41,6 +41,8 @@ export default create({
       mobile: '',
       // 职位
       position: '',
+      // 街区
+      block: '',
       // 标签
       label: '',
       // 标签数组
@@ -48,7 +50,7 @@ export default create({
       // 兴趣爱好
       hobby: '',
       // 备注
-      remark: ""
+      remark: ''
     }
   },
   components: {
@@ -82,9 +84,8 @@ export default create({
         this.$dialog.alert('信息不全')
         return
       }
-      let {name, mobile, institutionId,channelInstitutionName, position, cityId, areaId, industry, remark, label, hobby, address} = this
-      console.log(name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby, address, channelInstitutionName)
-      addTentacle({name, mobile, institutionId, position, cityId, areaId, industry, remark, label, hobby, address, channelInstitutionName}).then(res => {
+      let {name, mobile, institutionId,channelInstitutionName, position, block, cityId, areaId, industry, remark, label, hobby, address} = this
+      addTentacle({name, mobile, institutionId, position, block, cityId, areaId, industry, remark, label, hobby, address, channelInstitutionName}).then(res => {
         if (res.retcode === 2000000) {
           this.$dialog.alert('提示', '触点添加成功')
           this.$router.back()

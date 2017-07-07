@@ -23,6 +23,7 @@ export default create({
       categories: [],
       // 标识是否正在请求数据
       fetching: false,
+
       // 当前页面所属分类（A, B, C）/ 此页面不变
       category: '',
       // 当前页面所属产能分类 (高，低)/ 此页面不变
@@ -139,7 +140,8 @@ export default create({
       // todo
       // 设置页面 title
       if (this.category) {
-        document.title = `${this.category.toUpperCase()}-高 触点`
+        // document.title = `${this.category.toUpperCase()}-高 触点`
+        document.title = `${this.category.toUpperCase()} 触点`
       }
       else if (this.isDormant) {
         document.title = '休眠触点'

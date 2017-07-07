@@ -37,7 +37,7 @@ module.exports = webpackMerge(baseConfig, {
 
     // https://github.com/ampedandwired/html-webpack-plugin
 		new HtmlWebpackPlugin({
-      filename: 'Index.phtml',
+      filename: 'index.html',
       template: './index.html',
 			// apiPath: 'https://dev.zhongfl.com',
 			apiPath: '',

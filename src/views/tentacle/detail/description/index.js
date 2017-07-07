@@ -37,7 +37,7 @@ export default create({
 
         let status = src.getAttribute("data-key")
 
-        if ((/^[1234]$/).test(status)) {
+        if ((/^[123478]$/).test(status)) {
           this.labelAry[0] = parseInt(status)
         } else if ((/^[56]$/).test(status)) {
           this.labelAry[1] = parseInt(status)
@@ -77,7 +77,8 @@ export default create({
 
     queryLabel().then(data => {
       this.labRelaList = data[1].list
-      this.labCapaList = data[2].list
+      // 产能标签暂时关闭
+      // this.labCapaList = data[2].list
     }).catch(err => {
       this.$dialog.alert("提示", err.message)
     })
