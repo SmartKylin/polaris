@@ -19,7 +19,7 @@
     "babel-preset-latest": "^6.24.1",
     "body-parser": "^1.17.1",
     "css-loader": "^0.28.1",
-    "deploy-kit": "^1.0.3",
+    "deploy-kit": "^2.1.2",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.11.1",
     "ftp": "^0.3.10",
