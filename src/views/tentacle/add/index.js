@@ -50,7 +50,9 @@ export default create({
       // 兴趣爱好
       hobby: '',
       // 备注
-      remark: ''
+      remark: '',
+      // 当前选中的机构
+      curInstitution: ''
     }
   },
   components: {
@@ -60,13 +62,16 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.institutionId = val
-      queryInstitutionDetail({id: this.institutionId}).then(data => {
+      this.curInstitution = this.institutionList.find(i => i.id == val)
+      /*queryInstitutionDetail({id: this.institutionId}).then(data => {
         this.cityId = parseInt(data.cityId)
         this.areaId = parseInt(data.areaId)
         this.industry = parseInt(data.industry)
         this.channelInstitutionName = data.name
         this.address = data.address
-      })
+        this.block = data.block
+      })*/
+
     },
     // 关系标签改变
     relationChange(val) {
@@ -106,7 +111,8 @@ export default create({
     // 查询标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list
-      this.labCapaList = data[2].list
+      // 产能标签删除
+      // this.labCapaList = data[2].list
     })
   }
 })

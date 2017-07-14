@@ -18,7 +18,7 @@
     <div class="tab&#45;&#45;item" data-key="3">C类</div>
     <div class="tab&#45;&#45;item" data-key="4">D类</div>-->
 
-    <div class="tab--item" v-for="rela in labRelaList" :data-key="rela.id">{{rela.name}}</div>
+    <div class="tab--item" v-for="rela in labRelaList" :data-key="rela.id" :class="{active: rela.name == 'A类'}">{{rela.name}}</div>
     <div class="tab--item" data-key="dormant">休眠</div>
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :channelId="tent.id"/>

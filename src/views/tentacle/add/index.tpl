@@ -8,7 +8,7 @@
         <option v-for="institution in institutionList" :value="institution.id">{{institution.name}}</option>
       </Selector>
     </Cell>
-    <Field label="街区" placeholder="请输入街区名称" align="right" v-model="block"></Field>
+    <Field label="街区" placeholder="请输入街区名称" align="right" v-model="curInstitution.block"></Field>
     <Field label="职位" placeholder="请输入职位名称" align="right" v-model="position"></Field>
   </CellGroup>
 

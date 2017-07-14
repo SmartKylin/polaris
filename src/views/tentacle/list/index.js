@@ -5,9 +5,9 @@ import {queryTentacle, queryTentacleLevelGStatics} from 'services'
 
 // 意向分类
 const categories = {
-  a: 1,
-  b: 2,
-  c: 3,
+  a: 'A',
+  b: 'B',
+  c: 'C',
 }
 
 export default create({
@@ -79,7 +79,8 @@ export default create({
         }
         // label
         if (category && capacity) {
-          params.label = `${categories[category]},${capacity}`
+          // params.label = `${categories[category]},${capacity}`
+          params.label = `${categories[category]}`
         }
       }
 
