@@ -16,6 +16,7 @@ export default create({
       queryTentacleDetail({channelId: params.id}).then(data => {
         this.$loading.hide()
         this.data = data
+        this.id = data.id
       }).catch(err => {
         this.$dialog.hide()
         this.$dialog.alert('提示', err.message)
@@ -26,7 +27,7 @@ export default create({
     TentacleBar
   },
   beforeRouteUpdate(to, from, next) {
-    this.queryDetail(to.params)
+    // this.queryDetail(to.params)
     next()
   },
   created() {

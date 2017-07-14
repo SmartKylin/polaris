@@ -3,6 +3,9 @@ import './index.styl'
 import { editTentacle ,queryLabel, queryTentacleDetail} from 'services'
 
 export default create({
+ /* props: {
+    data: Object
+  },*/
   data() {
     return {
       // data触点数据
@@ -37,12 +40,16 @@ export default create({
 
         let status = src.getAttribute("data-key")
 
+        /*
         if ((/^[123478]$/).test(status)) {
           this.labelAry[0] = parseInt(status)
         } else if ((/^[56]$/).test(status)) {
           this.labelAry[1] = parseInt(status)
         }
         this.label = this.labelAry.join(',')
+        */
+        // 关系标签： A， B1， B2，
+        this.label = status
       }
     },
     tentacleEdit() {
@@ -50,10 +57,11 @@ export default create({
       params.channelId = parseInt(this.data.id)
       params.hobby = this.data.hobby
       params.remark = this.data.remark
-      if (this.labelAry.length > 0) {
+     /* if (this.labelAry.length > 0) {
         params.label = this.labelAry.join(',')
-      }
-      console.log(params);
+      }*/
+      params.label = this.label
+      console.log(params.label);
       editTentacle(params).then(res => {
         if (res.retcode === 2000000) {
           this.$dialog.alert('提示', '触点画像编辑成功')
@@ -64,9 +72,10 @@ export default create({
     }
   },
   mounted() {
-    this.id = this.$route.params.id;
+    let id = this.$route.params.id;
+    console.log(id);
     this.$loading.show()
-    queryTentacleDetail({channelId: this.id}).then(data => {
+    queryTentacleDetail({channelId: id}).then(data => {
       this.$loading.hide()
       this.data = data
       this.labelAry = data.labelId || []

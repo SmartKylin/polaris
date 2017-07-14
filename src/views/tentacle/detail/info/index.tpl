@@ -1,4 +1,4 @@
-<div class="detail--info" v-if="data.address">
+<div class="detail--info" v-if="data.id">
   <CellGroup class="mt10">
     <div class="info--item--title">机构信息</div>
     <!--<Cell title="机构信息" class="info&#45;&#45;title"></Cell>-->

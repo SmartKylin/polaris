@@ -6,8 +6,8 @@ import {queryTentacle, queryTentacleLevelGStatics} from 'services'
 // 意向分类
 const categories = {
   a: 'A',
-  b: 'B',
-  c: 'C',
+  b1: 'B1',
+  b2: 'B2',
 }
 
 export default create({
@@ -80,7 +80,7 @@ export default create({
         // label
         if (category && capacity) {
           // params.label = `${categories[category]},${capacity}`
-          params.label = `${categories[category]}`
+          params.label = categories[category]
         }
       }
 
@@ -151,8 +151,9 @@ export default create({
 
       // 查询各分类下的各级别触点统计数据，
       // 如果是查询休眠触点则不需要此统计数据
-      if (!this.isDormant) {
+      if (this.category == 'a') {
         queryTentacleLevelGStatics({
+          // type: `${categories[this.category]}`
           type: this.category
         })
         .then(res => {

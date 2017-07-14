@@ -33,7 +33,7 @@
     </div>
     <!--如果触点来自公海则显示以下按钮-->
     <div v-if="isFromSea">
-      <div v-if="data.isRelease == 1" class="tentacle--listItem--btn" @click="tentacleClaim">认领触点</div>
+      <div v-if="data.isRelease == 1" class="button--small" @click="tentacleClaim">认领触点</div>
       <div v-if="data.isRelease == 0" class="button--small bg-gray">已被认领</div>
     </div>
   </div>

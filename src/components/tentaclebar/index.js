@@ -159,7 +159,6 @@ export default create({
       this.isFromSea = true
     }
 
-    console.log(this.channelId);
     /*  this.id = this.$route.params.id;
     this.$loading.show()
 

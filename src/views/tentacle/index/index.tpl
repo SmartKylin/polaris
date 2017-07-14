@@ -56,16 +56,16 @@
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list?category=b">
+      <router-link to="/tentacle/list?category=b1">
         <div class="index--count">{{data.synthesize.bg}}</div>
-        <div class="index--label">"B"触点</div>
+        <div class="index--label">"B1"触点</div>
         <div class="index--reply">定期回访，升级关系</div>
       </router-link>
     </div>
     <div class="index--wrap">
-      <router-link to="/tentacle/list?category=c">
+      <router-link to="/tentacle/list?category=b2">
         <div class="index--count">{{data.synthesize.cg}}</div>
-        <div class="index--label">"C"触点</div>
+        <div class="index--label">"B2"触点</div>
         <div class="index--reply">价值驱动，定点激活</div>
       </router-link>
     </div>
