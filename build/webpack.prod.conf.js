@@ -52,7 +52,7 @@ module.exports = webpackMerge(baseConfig, {
 
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: 'Index.phtml',
+      filename: 'Index.html',
       template: './index.html',
       // more options:
       // https://github.com/kangax/html-minifier#options-quick-reference

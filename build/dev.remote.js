@@ -2,21 +2,13 @@ require('shelljs/global')
 env.NODE_ENV = 'production'
 
 var webpack = require('webpack')
-var DeployPlugin = require('deploy-kit/plugins/ftp-webpack-plugin')
+var DeployPlugin = require('deploy-kit/plugins/webpack-plugin')
+var deployClient = require('./deploy')
 var config = require('./webpack.prod.conf')
 
 config.output.publicPath = '/mizar/static'
 
-config.plugins.push(
-  new DeployPlugin({
-    username: 'xiaofeng',
-    password: 'xiaofeng',
-    hostname: '10.13.3.4'
-  }, [
-    {reg: /.phtml*$/, to: '/data1/htdocs/mizar/app/views/M'},
-    {reg: /.+/, to: '/data1/htdocs/mizar/public/static'}
-  ])
-)
+config.plugins.push(new DeployPlugin(deployClient))
 
 webpack(config).watch({}, function(err, stats) {
   if (err) throw err
