@@ -1,5 +1,7 @@
 .detail--desc {
   .text--wrap {
+    padding: 20px;
+    background: #fff
     .text--area {
       resize none;
       border-radius 8px;
@@ -7,66 +9,50 @@
       outline none;
     }
   }
-  .descrip--bd {
-    .labels-wrap {
-      display: flex;
-      justify-content: flex-start;
-     /* span {
-        font-size: 12px;
-        text-align center;
-        display inline-block;
-      //width 40px;
-        background #e0e0e0;
-        margin 0 5px;
-        padding 5px;
-        &.active {
-          background #c2d352
-          color: #fff
-        }
-      }*/
-    }
-  }
-}
 
-.descrip--title {
-  width 100%
-  padding 10px 20px;
-  box-sizing border-box
-  background-color #fff
+
+  .descrip--title {
+    width 100%
+    padding 10px 20px;
+    box-sizing border-box
+    background-color #fff
   //font-size 18px
-  text-align center
-  border-bottom 1px solid #e0e0e0
-}
+    text-align center
+    border-bottom 1px solid #e0e0e0
+  }
+  .descrip--bd {
+    background #fff;
+    padding: 10px;
+    > div {
+      margin 10px 0;
+      align-items: center;
+      justify-content: space-around;
 
-.descrip--bd {
-  background #fff;
-  padding: 10px 20px;
-  > div {
-    margin 10px 0;
-    align-items: center;
-    justify-content: flex-start;
-    span {
-      font-size: 12px;
-      text-align center;
-      display inline-block;
-      width 30px;
-      background #e0e0e0;
-      margin 0 5px;
-      padding 5px;
-      &.active {
-        background #c2d352
-        color: #fff
+      .labels--wrap {
+        display: flex;
+        justify-content: space-around;
+        span {
+          font-size: 12px;
+          text-align center;
+          display inline-block;
+          width 30px;
+          background #e0e0e0;
+          margin 0 5px;
+          padding 5px 3px;
+          &.active {
+            background #c2d352
+            color: #fff
+          }
+        }
+      }
+      .label--desc {
+        width: 20%;
       }
     }
   }
 }
 
-.text--wrap {
-  padding: 20px;
-  background: #fff
-}
 
-  .label--desc {
-    width: 58px;
-  }
+
+
 

@@ -3,22 +3,28 @@
     <Cell title="基本信息" class="info--title"></Cell>
     <Field label="姓名" type="text" placeholder="请输入姓名" align="right" v-model="name"></Field>
     <Field label="电话" type="tel" placeholder="请输入电话" align="right" v-model="mobile"></Field>
-    <Cell title="所属机构/公司" arrow>
+  <!--  <Cell title="所属机构/公司" arrow>
       <Selector slot="body" @input="institutionChange" v-if="institutionList.length>0">
         <option v-for="institution in institutionList" :value="institution.id">{{institution.name}}</option>
       </Selector>
-    </Cell>
+    </Cell>-->
+    <Selector title="所属机构/公司" @input="institutionChange" v-if="institutionList.length" :placeholder="curInstitution.name">
+      <SelectorOption v-for="institution in institutionList" :text="institution.name" :value="institution.id"></SelectorOption>
+    </Selector>
     <Field label="街区" placeholder="请输入街区名称" align="right" v-model="curInstitution.block"></Field>
     <Field label="职位" placeholder="请输入职位名称" align="right" v-model="position"></Field>
   </CellGroup>
 
   <CellGroup class="mt10">
     <Cell title="画像" class="info--title"></Cell>
-    <Cell title="关系标签" arrow @click="">
+    <!--<Cell title="关系标签" arrow @click="">
       <Selector slot="body" @input="relationChange" v-if="labRelaList.length > 0">
         <option :value="item.id" v-for="item in labRelaList">{{item.name}}</option>
       </Selector>
-    </Cell>
+    </Cell>-->
+    <Selector title="关系标签" @input="relationChange" v-if="labRelaList.length" :placeholder="label">
+      <SelectorOption v-for="lab in labRelaList" :text="lab.name" :value="lab.id"></SelectorOption>
+    </Selector>
    <!-- <Cell title="产能标签" arrow>
       <Selector slot="body" @input="capacityChange" v-if="labCapaList.length > 0">
         <option :value="item.id" v-for="item in labCapaList">{{item.name}}</option>

@@ -17,8 +17,7 @@ export default create({
       curInstitution: {},
       // 当前标签
       label: '',
-
-      labelO: {}
+      // 当前机构ID
     }
   },
   components: {
@@ -28,24 +27,17 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.curInstitution = this.institutionList.find(i => i.id == val)
-      console.log(this.curInstitution);
     },
     // 关系标签改变
     relationChange(val) {
-      console.log(this.label)
-      console.log(this.labelO.id)
-
+      this.label = val
     },
-   /* // 产能标签改变
-    capacityChange(val) {
-      this.labelAry[1] = parseInt(val)
-      this.label = this.labelAry.join(',')
-    },*/
+
     // 提交触点
     tentacleEdit() {
       let {name, mobile, position, remark, hobby, channelInstitutionId} = this.data
-      let {cityId, areaId, industry, address, block} = this.curInstitution
-      let label = this.label
+      let {cityId, areaId, industry, address} = this.curInstitution
+      let {label, block} = this
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
@@ -64,35 +56,45 @@ export default create({
   },
   created() {
     // 获取详情页传过来的触点编码
+    console.log('label' + this.label);
     let id = this.$route.params.id
+   /* queryTentacleDetail({channelId: id}).then(data => {
+      this.label = data.label[0]
+    })*/
 
     queryInstitution().then(data => {
       this.institutionList = data.list
       // 根据触点编码查询触点信息
       queryTentacleDetail({channelId: id}).then(data => {
         this.data = data
+        // this.institutionId = data.channelInstitutionId
         this.label = data.labelId[0]
         console.log('111' + this.label);
         // 初始化当前机构,如果在机构列表中未找到，则直接取触点里的初始值
         this.curInstitution = this.institutionList.find(i => i.id == this.data.channelInstitutionId) || {
-            id: this.data.channelInstitutionId,
-            name: this.data.channelInstitutionName,
-            cityId: this.data.cityId,
-            areaId: this.data.areaId
-          }
+         id: this.data.channelInstitutionId,
+         name: this.data.channelInstitutionName,
+         cityId: this.data.cityId,
+         areaId: this.data.areaId
+         }
+
+        console.log(this.curInstitution.name);
       })
     })
 
     // 查询标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list
-      /*queryTentacleDetail({channelId: id}).then(data => {
-        this.labelO = this.labRelaList.find(l => l.name == data.labelId[0]) || {
-            id: data.label[0].slice(0, -1),
+      queryTentacleDetail({channelId: id}).then(data => {
+        this.labelO = this.labRelaList.find(l => l.id == data.labelId[0]) || {
+            id: data.labelId[0],
             name: data.label[0],
           }
-      })*/
+      })
     })
+
+
+
   }
 })
 

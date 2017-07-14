@@ -52,12 +52,10 @@
   <Popup v-model="visible2">
     <div class="tentacleView--popup">
       <Cell title="拜访时间" arrow @click="openDatepicker" :content="date"></Cell>
-      <Cell title="拜访方式" arrow>
-        <Selector slot="body" @input="visitMethodChange">
-          <option :value="1">面聊</option>
-          <option :value="2">电聊</option>
-        </Selector>
-      </Cell>
+      <Selector title="拜访方式" @input="visitMethodChange">
+        <SelectorOption :value="1">面聊</SelectorOption>
+        <SelectorOption :value="2">电聊</SelectorOption>
+      </Selector>
       <div class="textareaBox">
         <textarea placeholder="拜访内容" v-model="content"></textarea>
       </div>

@@ -54,19 +54,9 @@ export default create({
     institutionChange(val) {
       this.institutionId = val
       this.curInstitution = this.institutionList.find(i => i.id == val)
-      /*queryInstitutionDetail({id: this.institutionId}).then(data => {
-        this.cityId = parseInt(data.cityId)
-        this.areaId = parseInt(data.areaId)
-        this.industry = parseInt(data.industry)
-        this.channelInstitutionName = data.name
-        this.address = data.address
-        this.block = data.block
-      })*/
     },
     // 关系标签改变
     relationChange(val) {
-     /* this.labelAry[0] = parseInt(val)
-      this.label = this.labelAry.join(',')*/
       this.label = val
     },
 

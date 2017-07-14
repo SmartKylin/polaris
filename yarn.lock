@@ -3610,9 +3610,9 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/slash/download/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
-smart-ui@^2.1.9:
-  version "2.1.9"
-  resolved "http://registry.npm.taobao.org/smart-ui/download/smart-ui-2.1.9.tgz#b7bb8303ef88a9b101b378413a67068b8b766859"
+smart-ui@^2.2.2:
+  version "2.2.2"
+  resolved "http://registry.npm.taobao.org/smart-ui/download/smart-ui-2.2.2.tgz#01554bd30219b7e8fce15f8c130dd45e64ca947c"
 
 sntp@1.x.x:
   version "1.0.9"
