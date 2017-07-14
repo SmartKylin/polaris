@@ -21,7 +21,7 @@ export default create({
       // 标签数组
       // labels: [1, 5],
       // 删除了高低分类
-      labels: [1],
+      labels: ['A'],
       // 是否休眠
       isDormant: false,
       // 关系标签列表
@@ -45,7 +45,8 @@ export default create({
       this.reQuery()
     },
 
-    // 切换产能分类
+   /*  产能分类暂时删除
+   // 切换产能分类
     capacityChange(val) {
       if (val === 'all') {
         this.labels.length = 1
@@ -53,7 +54,7 @@ export default create({
         this.labels[1] = val
       }
       this.reQuery()
-    },
+    },*/
 
     // 切换分类
     categoryChange(val) {
@@ -139,7 +140,6 @@ export default create({
     // 获取关系标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list
-      console.log(this.labRelaList);
       // 产能标签暂时关闭
       // this.labCapaList = data[2].list
     }).catch(err => {
