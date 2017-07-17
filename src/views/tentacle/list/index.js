@@ -78,7 +78,7 @@ export default create({
           params.level = curLevel
         }
         // label
-        if (category && capacity) {
+        if (category) {
           // params.label = `${categories[category]},${capacity}`
           params.label = categories[category]
         }
