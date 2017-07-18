@@ -143,7 +143,7 @@ export default create({
 
     // 写日志->拜访方式改变
     visitMethodChange(val) {
-      this.visitType = parseInt(val)
+      this.visitType = val
     }
   },
   mounted() {
