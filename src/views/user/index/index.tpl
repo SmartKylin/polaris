@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div class="section-title mt10">待办事项</div>
+  <div class="section-title">待办事项</div>
   <div class="user--bd">
     <Tab @change="taskChange">
       <div class="tab--item active" :data-key="0">未完成</div>
