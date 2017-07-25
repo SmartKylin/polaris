@@ -39,8 +39,8 @@ export default create({
     // 提交触点
     tentacleEdit() {
       let {mobile, position, remark, hobby, channelInstitutionId} = this.data
-      let {cityId, areaId, industry, address} = this.curInstitution
-      let {label, block, name} = this
+      let {cityId, areaId, industry, address, block} = this.curInstitution
+      let {label, name} = this
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
