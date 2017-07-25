@@ -12,12 +12,14 @@ export default create({
       institutionList: [],
       // 关系标签列表
       labRelaList: [],
-
+      
       // 当前选择的机构
       curInstitution: {},
       // 当前标签
       label: '',
       // 当前机构ID
+      name: '',
+      block: ''
     }
   },
   components: {
@@ -27,23 +29,39 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.curInstitution = this.institutionList.find(i => i.id == val)
+      this.block = this.curInstitution.block
     },
     // 关系标签改变
     relationChange(val) {
       this.label = val
     },
-
+    
     // 提交触点
     tentacleEdit() {
-      let {name, mobile, position, remark, hobby, channelInstitutionId} = this.data
+      let {mobile, position, remark, hobby, channelInstitutionId} = this.data
       let {cityId, areaId, industry, address} = this.curInstitution
-      let {label, block} = this
+      let {label, block, name} = this
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
-
-      console.log(name, mobile,  institutionId, block, position, cityId, areaId, industry, remark, label, hobby, channelId, address, channelInstitutionName)
-      editTentacle({name, mobile, institutionId, cityId, areaId, industry, position, block, remark, label, hobby, channelId, address, channelInstitutionName}).then(res => {
+      
+      console.log(name, mobile, institutionId, block, position, cityId, areaId, industry, remark, label, hobby, channelId, address, channelInstitutionName)
+      editTentacle({
+        name,
+        mobile,
+        institutionId,
+        cityId,
+        areaId,
+        industry,
+        position,
+        block,
+        remark,
+        label,
+        hobby,
+        channelId,
+        address,
+        channelInstitutionName
+      }).then(res => {
         if (res.retcode === 2000000) {
           console.log(res.msg);
           this.$dialog.alert('提示', '修改触点成功')
@@ -58,43 +76,47 @@ export default create({
     // 获取详情页传过来的触点编码
     console.log('label' + this.label);
     let id = this.$route.params.id
-   /* queryTentacleDetail({channelId: id}).then(data => {
+  
+    queryTentacleDetail({channelId: id}).then(data => {
+      this.data = data
+      this.name = data.name
+      this.block = data.block
       this.label = data.label[0]
-    })*/
-
+    })
     queryInstitution().then(data => {
       this.institutionList = data.list
       // 根据触点编码查询触点信息
       queryTentacleDetail({channelId: id}).then(data => {
         this.data = data
         // this.institutionId = data.channelInstitutionId
-        this.label = data.labelId[0]
+        data.labelId && (this.label = data.labelId[0])
         console.log('111' + this.label);
         // 初始化当前机构,如果在机构列表中未找到，则直接取触点里的初始值
         this.curInstitution = this.institutionList.find(i => i.id == this.data.channelInstitutionId) || {
-         id: this.data.channelInstitutionId,
-         name: this.data.channelInstitutionName,
-         cityId: this.data.cityId,
-         areaId: this.data.areaId
-         }
-
+          id: this.data.channelInstitutionId,
+          name: this.data.channelInstitutionName,
+          cityId: this.data.cityId,
+          areaId: this.data.areaId
+        }
+        
         console.log(this.curInstitution.name);
       })
+      
+     
     })
-
+    
     // 查询标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list
-      queryTentacleDetail({channelId: id}).then(data => {
-        this.labelO = this.labRelaList.find(l => l.id == data.labelId[0]) || {
-            id: data.labelId[0],
-            name: data.label[0],
-          }
-      })
+      /*queryTentacleDetail({channelId: id}).then(data => {
+        data.labelId && (this.label = this.labRelaList.find(l => l.id == data.labelId[0]) || {
+          id: data.labelId[0],
+          name: data.label[0],
+        })
+      })*/
     })
-
-
-
+    
+    
   }
 })
 

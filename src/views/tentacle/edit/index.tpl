@@ -1,7 +1,7 @@
 <div v-if="data.name">
   <CellGroup>
     <Cell title="基本信息" class="info--title"></Cell>
-    <Field label="姓名" type="text" placeholder="请输入姓名" align="right" v-model="data.name"></Field>
+    <Field label="姓名" type="text" placeholder="请输入姓名" align="right" v-model="name"></Field>
     <Field label="电话" type="tel" placeholder="请输入电话" align="right" v-model="data.mobile"></Field>
     <Selector title="所属机构/公司" @input="institutionChange" :placeholder="curInstitution.name">
       <SelectorOption v-for="institution in institutionList" :text="institution.name" :value="institution.id">{{institution.name}}</SelectorOption>

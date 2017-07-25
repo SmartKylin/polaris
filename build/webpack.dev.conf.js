@@ -39,10 +39,10 @@ module.exports = webpackMerge(baseConfig, {
 		new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './index.html',
-			// apiPath: 'https://dev.zhongfl.com',
-			apiPath: '',
+      // apiPath: 'https://dev.zhongfl.com',
+      apiPath: '',
       appVersion: package.version
-		}),
+    }),
 
 		// 报错但不退出webpack进程
 		new webpack.NoEmitOnErrorsPlugin(),
