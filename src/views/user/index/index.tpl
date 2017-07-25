@@ -16,7 +16,6 @@
             单
           </span>
         </div>
-
         <div class="flex user--header-rb">
           <div class="list--item flex-1">
             <div class="list--item--count">{{aims[showWhich].carryOutAims || 0}}</div>

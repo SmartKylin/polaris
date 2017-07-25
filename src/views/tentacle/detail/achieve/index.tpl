@@ -44,14 +44,14 @@
     <!--<Cell title="最近交易" class="cell&#45;&#45;title"></Cell>-->
     <div class="exchange--bd">
       <div v-if="data.recentDeliveryClueTime">
-        <span class="color-gray mr10">最近一次递单时间:</span>
-        <span class="color-red font-18">{{data.recentDeliveryClueTime}}</span>
-        <router-link :to="'/clue/' + data.recentDeliveryClueId">查询线索详情</router-link>
+        <span class="color-gray mr10 font-12">最近一次递单时间:</span>
+        <span class="color-red font-15">{{data.recentDeliveryClueTime}}</span>
+        <router-link :to="'/clue/' + data.recentDeliveryClueId">查看详情</router-link>
       </div>
       <div v-if="data.recentBargainClueTime">
-        <span class="color-gray mr10">最近一次成单时间:</span>
-        <span class="color-red font-18">{{data.recentBargainClueTime}}</span>
-        <router-link :to="'/clue/' + data.recentBargainClueId">查询线索详情</router-link>
+        <span class="color-gray mr10 font-12">最近一次成单时间:</span>
+        <span class="color-red font-15">{{data.recentBargainClueTime}}</span>
+        <router-link :to="'/clue/' + data.recentBargainClueId">查看详情</router-link>
       </div>
     </div>
   </div>

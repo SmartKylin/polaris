@@ -42,7 +42,7 @@ export default create({
     },
     // 发起查询操作日志列表请求
     queryOper() {
-      this.visitList = []
+      this.operationList = []
       this.$loading.show()
       queryOperationlog({channelCode: this.data.code}).then(res => {
         this.$loading.hide()
@@ -64,7 +64,7 @@ export default create({
     },
     // 发起拜访记录列表请求
     queryVis() {
-      this.operationList = []
+      this.visitList = []
       this.$loading.show()
       queryVisitlog({channelCode: this.data.code}).then(res => {
         this.$loading.hide()
