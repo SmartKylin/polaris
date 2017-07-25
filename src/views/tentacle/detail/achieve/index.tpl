@@ -43,12 +43,12 @@
     <div class="achieve--title border-bottom">最近交易</div>
     <!--<Cell title="最近交易" class="cell&#45;&#45;title"></Cell>-->
     <div class="exchange--bd">
-      <div v-if="data.recentDeliveryClueTime">
+      <div v-if="data.recentDeliveryClueId">
         <span class="color-gray mr10 font-12">最近一次递单时间:</span>
         <span class="color-red font-15">{{data.recentDeliveryClueTime}}</span>
         <router-link :to="'/clue/' + data.recentDeliveryClueId">查看详情</router-link>
       </div>
-      <div v-if="data.recentBargainClueTime">
+      <div v-if="data.recentBargainClueId">
         <span class="color-gray mr10 font-12">最近一次成单时间:</span>
         <span class="color-red font-15">{{data.recentBargainClueTime}}</span>
         <router-link :to="'/clue/' + data.recentBargainClueId">查看详情</router-link>
