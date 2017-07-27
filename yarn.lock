@@ -1066,6 +1066,10 @@ commander@2.9.x, commander@^2.9.0, commander@~2.9.0:
   dependencies:
     graceful-readlink ">= 1.0.0"
 
+commander@^2.11.0:
+  version "2.11.0"
+  resolved "http://registry.npm.taobao.org/commander/download/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
+
 commondir@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/commondir/download/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
@@ -1362,12 +1366,13 @@ depd@1.1.0, depd@~1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/depd/download/depd-1.1.0.tgz#e1bd82c6aab6ced965b97b88b17ed3e528ca18c3"
 
-deploy-kit@^2.1.2:
-  version "2.1.2"
-  resolved "http://registry.npm.taobao.org/deploy-kit/download/deploy-kit-2.1.2.tgz#0cea4b2735713fa14c5b8e851272dc3b5a12fff6"
+deploy-kit@^3.2.1:
+  version "3.2.1"
+  resolved "http://registry.npm.taobao.org/deploy-kit/download/deploy-kit-3.2.1.tgz#c371b9d3b5f90d6d675ae26de4ded97c03a9d6f9"
   dependencies:
     async "^2.5.0"
     chalk "^2.0.1"
+    commander "^2.11.0"
     ftp "^0.3.10"
     glob "^7.1.2"
     minimatch "^3.0.4"
