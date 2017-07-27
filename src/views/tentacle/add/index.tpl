@@ -23,7 +23,7 @@
       </Selector>
     </Cell>-->
     <Selector title="关系标签" @input="relationChange" v-if="labRelaList.length" :placeholder="label">
-      <SelectorOption v-for="lab in labRelaList" :text="lab.name" :value="lab.id"></SelectorOption>
+      <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
     </Selector>
    <!-- <Cell title="产能标签" arrow>
       <Selector slot="body" @input="capacityChange" v-if="labCapaList.length > 0">
