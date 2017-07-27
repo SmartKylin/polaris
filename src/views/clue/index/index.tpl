@@ -74,15 +74,16 @@
         </div>
 
         <div class="clueView--listItem--ft">
-<!--           <a
-            v-if="data.status === -1 || data.status === 10"
+          <a
+            v-if="data.status === -1"
             class="button--small mr10 disabled"
             href="javascript:;"
             @click.stop
           >
-            关闭线索
+            已关闭
           </a>
- -->          <a
+          <a
+            v-else
             class="button--small mr10"
             :href="'#/clue/close/' + data.clueCode"
             @click.stop
