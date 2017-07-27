@@ -21,7 +21,7 @@
             "cityId": 21,
             "channelCode": "21",
             "businessCode": "1497343287480340",
-            "status": 0,
+            "status": -1,
             "statusName": "待签约",
             "loanStatusName": "未收款",
             "source": 1,
