@@ -22,7 +22,7 @@
         <option :value="item.id" v-for="item in labRelaList">{{item.name}}</option>
       </Selector>
     </Cell>-->
-    <Selector title="关系标签" @input="relationChange" v-if="labRelaList.length" :placeholder="label">
+    <Selector title="关系标签" @input="relationChange" v-if="labRelaList.length" v-model="label" placeholder="请选择">
       <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
     </Selector>
    <!-- <Cell title="产能标签" arrow>
