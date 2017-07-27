@@ -9,7 +9,7 @@
     "deploy": "deploy-sftp",
     "sentry": "node sentry.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "cp dist/Index.phtml ../backend/app/views/M/ && cp -r dist/js dist/css ../backend/public/static/"
+    "release": "cp dist/Index.html ../backend/app/views/M/Index.phtml && cp -r dist/js dist/css ../backend/public/static/"
   },
   "license": "MIT",
   "devDependencies": {
