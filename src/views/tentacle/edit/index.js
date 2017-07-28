@@ -12,7 +12,7 @@ export default create({
       institutionList: [],
       // 关系标签列表
       labRelaList: [],
-      
+
       // 当前选择的机构
       curInstitution: {},
       // 当前标签
@@ -35,7 +35,7 @@ export default create({
     relationChange(val) {
       this.label = val
     },
-    
+
     // 提交触点
     tentacleEdit() {
       let {mobile, position, remark, hobby, channelInstitutionId} = this.data
@@ -44,7 +44,7 @@ export default create({
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
-      
+
       console.log(name, mobile, institutionId, block, position, cityId, areaId, industry, remark, label, hobby, channelId, address, channelInstitutionName)
       editTentacle({
         name,
@@ -76,18 +76,21 @@ export default create({
     // 获取详情页传过来的触点编码
     console.log('label' + this.label);
     let id = this.$route.params.id
-  
+
     queryTentacleDetail({channelId: id}).then(data => {
       this.data = data
       this.name = data.name
-      this.block = data.block
       this.label = data.label[0]
+      this.curInstitution = {
+        block: data.block
+      }
     })
     queryInstitution().then(data => {
       this.institutionList = data.list
       // 根据触点编码查询触点信息
       queryTentacleDetail({channelId: id}).then(data => {
         this.data = data
+        console.log(data)
         // this.institutionId = data.channelInstitutionId
         data.labelId && (this.label = data.labelId[0])
         console.log('111' + this.label);
@@ -96,15 +99,16 @@ export default create({
           id: this.data.channelInstitutionId,
           name: this.data.channelInstitutionName,
           cityId: this.data.cityId,
-          areaId: this.data.areaId
+          areaId: this.data.areaId,
+          block: this.data.block
         }
-        
+
         console.log(this.curInstitution.name);
       })
-      
-     
+
+
     })
-    
+
     // 查询标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list
@@ -115,8 +119,8 @@ export default create({
         })
       })*/
     })
-    
-    
+
+
   }
 })
 

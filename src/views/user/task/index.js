@@ -19,7 +19,7 @@ export default create({
     routerToDetail() {
       if (this.task.type == 1) {
         this.$router.push('/tentacle/detail/' + this.task.flag)
-      } else if (this.task.type == 3) {
+      } else if (this.task.type == 2) {
         this.$router.push('/clue/' + this.task.flag)
       }
     },

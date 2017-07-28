@@ -1,6 +1,6 @@
 <div>
   <CellGroup>
-    <Cell :title="task.brief" content="查看触点信息" @click="routerToDetail" arrow>
+    <Cell :title="task.brief" :content="'查看' + (task.type == 1 ? '触点' : '线索') + '信息'" @click="routerToDetail" arrow>
     </Cell>
     <Field label="任务标题" type="text" align="right" v-model="task.title" placeholder="输入标题"></Field>
     <Cell title="任务时间" arrow @click="openDatepicker" :content="plan_time"></Cell>
