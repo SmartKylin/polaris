@@ -102,7 +102,7 @@ export default create({
       this.isSearch = true
       this.pageNum = 0
       this.allLoaded = false
-      this.status = 1
+      this.status = 0
       this.query(() => {
         this.dataList = []
       })
