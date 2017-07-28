@@ -17,9 +17,7 @@ export default create({
       // 当前标签
       label: '',
       // 当前机构ID
-      name: '',
-      // 街区
-      block: ''
+      name: ''
     }
   },
   components: {
@@ -30,6 +28,7 @@ export default create({
     institutionChange(val) {
       this.curInstitution = this.institutionList.find(i => i.id == val)
       this.block = this.curInstitution.block
+      this.channelInstitutionName = this.curInstitution.channelInstitutionName
     },
     // 关系标签改变
     relationChange(val) {
@@ -43,7 +42,7 @@ export default create({
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
-      
+
       console.log(name, mobile, institutionId, block, position, cityId, areaId, industry, remark, label, hobby, channelId, address, channelInstitutionName)
       editTentacle({
         name,
@@ -74,20 +73,25 @@ export default create({
   created() {
     // 获取详情页传过来的触点编码
     console.log('label' + this.label);
+    
     let id = this.$route.params.id
-  
+
     queryTentacleDetail({channelId: id}).then(data => {
       this.data = data
       this.name = data.name
-      this.block = data.block
       this.label = data.label[0]
+      this.curInstitution = {
+        block: data.block,
+        name: data.channelInstitutionName
+      }
     })
     
     queryInstitution().then(data => {
       this.institutionList = data.list
       // 根据触点编码查询触点信息
-      queryTentacleDetail({channelId: id}).then(data => {
+      /*queryTentacleDetail({channelId: id}).then(data => {
         this.data = data
+        console.log(data)
         // this.institutionId = data.channelInstitutionId
         data.labelId && (this.label = data.labelId[0])
         console.log('111' + this.label);
@@ -96,20 +100,15 @@ export default create({
           id: this.data.channelInstitutionId,
           name: this.data.channelInstitutionName,
           cityId: this.data.cityId,
-          areaId: this.data.areaId
+          areaId: this.data.areaId,
+          block: this.data.block
         }
-      })
+      })*/
     })
     
     // 查询标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list
-      /*queryTentacleDetail({channelId: id}).then(data => {
-        data.labelId && (this.label = this.labRelaList.find(l => l.id == data.labelId[0]) || {
-          id: data.labelId[0],
-          name: data.label[0],
-        })
-      })*/
     })
   }
 })
