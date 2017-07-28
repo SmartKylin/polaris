@@ -14,7 +14,7 @@
   <CellGroup class="mt10">
     <Cell title="画像" class="info--title"></Cell>
     <Selector title="关系标签" @input="relationChange" v-if="labRelaList.length > 0" :placeholder="label">
-      <SelectorOption v-for="lab in labRelaList" :text="`${label.name}(${label.explain})`" :value="lab.id"></SelectorOption>
+      <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
     </Selector>
   </CellGroup>
   <div class="edit--textarea--wrap">
