@@ -139,15 +139,16 @@
   </div>
  -->
   <div class="clueDetail--operation">
-    <a class="clueDetail--operation-btn" :href="'#/clue/close/' + model.clueCode">关闭</a>
-    <a class="clueDetail--operation-btn" :href="'#/clue/edit/' + model.clueCode">编辑</a>
-    <div
-      class="clueDetail--operation-btn"
-      :class="{'bg-gray': model.status !== 0}"
-      @click="openInterviewPanel"
-    >
-      预约面签
-    </div>
+    <template v-if="model.status === -1">
+      <a class="clueDetail--operation-btn bg-gray" href="javascript:;">已关闭</a>
+      <a class="clueDetail--operation-btn bg-gray" href="javascript:;">编辑</a>
+      <a class="clueDetail--operation-btn bg-gray" href="javascript:;">预约面签</a>
+    </template>
+    <template v-else>
+      <a class="clueDetail--operation-btn" :href="'#/clue/close/' + model.clueCode">关闭</a>
+      <a class="clueDetail--operation-btn" :href="'#/clue/edit/' + model.clueCode">编辑</a>
+      <div class="clueDetail--operation-btn" :class="{'bg-gray': model.status !== 0}" @click="openInterviewPanel">预约面签</div>
+    </template>
   </div>
 
   <Popup v-model="interviewVisible">
