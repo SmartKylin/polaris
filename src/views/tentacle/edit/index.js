@@ -12,13 +12,13 @@ export default create({
       institutionList: [],
       // 关系标签列表
       labRelaList: [],
-      
       // 当前选择的机构
       curInstitution: {},
       // 当前标签
       label: '',
       // 当前机构ID
       name: '',
+      // 街区
       block: ''
     }
   },
@@ -35,7 +35,6 @@ export default create({
     relationChange(val) {
       this.label = val
     },
-    
     // 提交触点
     tentacleEdit() {
       let {mobile, position, remark, hobby, channelInstitutionId} = this.data
@@ -83,6 +82,7 @@ export default create({
       this.block = data.block
       this.label = data.label[0]
     })
+    
     queryInstitution().then(data => {
       this.institutionList = data.list
       // 根据触点编码查询触点信息
@@ -98,11 +98,7 @@ export default create({
           cityId: this.data.cityId,
           areaId: this.data.areaId
         }
-        
-        console.log(this.curInstitution.name);
       })
-      
-     
     })
     
     // 查询标签列表
@@ -115,8 +111,6 @@ export default create({
         })
       })*/
     })
-    
-    
   }
 })
 

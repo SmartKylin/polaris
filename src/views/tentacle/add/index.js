@@ -25,11 +25,9 @@ export default create({
       // 机构所处产业
       industry: 1,
       // 触点地址*/
-
       address: '',
       // 触点姓名
       name: '',
-
       // 触点电话
       mobile: '',
       // 职位
@@ -59,12 +57,12 @@ export default create({
     relationChange(val) {
       this.label = val
     },
-
    /* // 产能标签改变
     capacityChange(val) {
       this.labelAry[1] = parseInt(val)
       this.label = this.labelAry.join(',')
     },*/
+   
     // 提交触点
     tentacleAdd() {
       if (!this.name || !this.mobile || !this.position) {
@@ -85,7 +83,7 @@ export default create({
       })
     },
     institutionHandler() {
-
+    
     }
   },
   mounted() {

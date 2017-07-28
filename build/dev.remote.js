@@ -3,7 +3,6 @@ env.NODE_ENV = 'production'
 
 var webpack = require('webpack')
 var DeployPlugin = require('deploy-kit/plugins/sftp-webpack-plugin')
-var deployClient = require('./deploy')
 var config = require('./webpack.prod.conf')
 
 config.output.publicPath = '/mizar/static'

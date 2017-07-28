@@ -8,12 +8,6 @@
           <span v-for="rela in labRelaList" :class="{active: rela.name === data.label[0]}" :data-key="rela.id" v-if="!!data.label">{{rela.name}}</span>
         </div>
       </div>
-     <!-- <div class="flex">
-        <div class="label&#45;&#45;desc flex-1">产能标签</div>
-        <div class="flex-3 labels&#45;&#45;wrap">
-          <span v-for="cap in labCapaList" :class="{active: cap.name === data.label[1]}" :data-key="cap.id" v-if="!!data.label">{{cap.name}}</span>
-        </div>
-      </div>-->
     </div>
   </div>
   <div class="mb10">
