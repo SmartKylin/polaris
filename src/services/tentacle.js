@@ -12,7 +12,6 @@ export function queryTentacle(params) {
  * 查询触点统计信息
  */
 export function queryTentacleLevelStatics() {
-
   function callback(data) {
     return [
       {
@@ -44,7 +43,7 @@ export function queryTentacleLevelStatics() {
         name: 'vip触点',
         val: data.level.vip,
         id: 6
-      },
+      }
     ]
   }
 
@@ -58,14 +57,12 @@ export function editTentacle(params) {
   return http.post(apis.tentacleEditor, params)
 }
 
-
 /**
  * 添加触点
  */
 export function addTentacle(params) {
   return http.post(apis.tentacleAdd, params)
 }
-
 
 /**
  * 查询触点详情
@@ -100,7 +97,6 @@ export function queryCommonality(params) {
  */
 
 export function queryTentacleLevelGStatics(params) {
-
   function callback(data) {
     return [
       {
@@ -137,7 +133,7 @@ export function queryTentacleLevelGStatics(params) {
         name: 'vip触点',
         val: data.vip,
         id: 'vip'
-      },
+      }
     ]
   }
   return http.get(apis.tentacleGstatics, params).then(callback)

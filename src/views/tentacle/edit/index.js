@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import {queryInstitution, queryInstitutionDetail, queryLabel, queryTentacleDetail, editTentacle} from 'services'
+import { queryInstitution, queryInstitutionDetail, queryLabel, queryTentacleDetail, editTentacle } from 'services'
 
 export default create({
   data() {
@@ -21,7 +21,7 @@ export default create({
       // 街区
       block: '',
       // 地址
-      address: '',
+      address: ''
     }
   },
   components: {
@@ -39,10 +39,10 @@ export default create({
     },
     // 提交触点
     tentacleEdit() {
-      console.log(this.data.address);
-      let {mobile, position, remark, hobby, channelInstitutionId} = this.data
-      let {cityId, areaId, industry} = this.curInstitution
-      let {label, name, address, block} = this
+      console.log(this.data.address)
+      let { mobile, position, remark, hobby, channelInstitutionId } = this.data
+      let { cityId, areaId, industry } = this.curInstitution
+      let { label, name, address, block } = this
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
@@ -65,22 +65,22 @@ export default create({
         channelInstitutionName
       }).then(res => {
         if (res.retcode === 2000000) {
-          console.log(res.msg);
+          console.log(res.msg)
           this.$dialog.alert('提示', '修改触点成功')
           this.$router.back()
         }
       }).catch(err => {
         this.$dialog.alert('失败', err.message)
       })
-    },
+    }
   },
   created() {
     // 获取详情页传过来的触点编码
     // console.log('label' + this.label);
-    
+
     let id = this.$route.params.id
 
-    queryTentacleDetail({channelId: id}).then(data => {
+    queryTentacleDetail({ channelId: id }).then(data => {
       this.data = data
       this.name = data.name
       this.label = data.label[0]
@@ -91,11 +91,11 @@ export default create({
         name: data.channelInstitutionName
       }
     })
-    
+
     queryInstitution().then(data => {
       this.institutionList = data.list
       // 根据触点编码查询触点信息
-      /*queryTentacleDetail({channelId: id}).then(data => {
+      /* queryTentacleDetail({channelId: id}).then(data => {
         this.data = data
         console.log(data)
         // this.institutionId = data.channelInstitutionId
@@ -109,13 +109,12 @@ export default create({
           areaId: this.data.areaId,
           block: this.data.block
         }
-      })*/
+      }) */
     })
-    
+
     // 查询标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list
     })
   }
 })
-

@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import {queryTaskDetail, updateTask} from 'services'
+import { queryTaskDetail, updateTask } from 'services'
 import datepicker from '../../clue/detail/datepicker'
 
 export default create({
@@ -11,7 +11,7 @@ export default create({
       // 修改后的状态
       isAccomplish: 0,
       // 计划时间
-      plan_time: '',
+      plan_time: ''
     }
   },
   methods: {
@@ -39,11 +39,11 @@ export default create({
       updateTask(params).then(res => {
         if (res.retcode == 2000000) {
           // console.log(res.msg);
-          this.$dialog.alert("提示", res.msg)
+          this.$dialog.alert('提示', res.msg)
           this.$router.back()
         }
       }).catch(err => {
-        this.$dialog.alert("提示", err.message)
+        this.$dialog.alert('提示', err.message)
       })
     },
     // 提交修改
@@ -62,9 +62,9 @@ export default create({
 
   created() {
     // 获取任务详细数据
-    let {flag, type} = this.$route.params
+    let { flag, type } = this.$route.params
 
-    queryTaskDetail({id: flag, type}).then(data => {
+    queryTaskDetail({ id: flag, type }).then(data => {
       this.task = data
       this.isAccomplish = data.isAccomplish
       this.plan_time = data.planTime

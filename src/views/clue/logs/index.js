@@ -15,7 +15,6 @@ export default create({
       clueCode: this.$route.params.code
     })
     .then(res => {
-      console.log(res)
       this.$loading.hide()
       this.dataList = res
     })

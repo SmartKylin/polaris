@@ -20,21 +20,19 @@ function forEach(start, end, callback) {
 
 // 年
 forEach(thisYear, thisYear + 1, i => {
-  years.push({text: i + '年', value: i})
+  years.push({ text: i + '年', value: i })
 })
-
 
 forEach(1, 31, i => {
   // 月
   if (i <= 12) {
-    months.push({text: i + '月', value: i})
+    months.push({ text: i + '月', value: i })
   }
   // 日
   if (i <= 31) {
-    days.push({text: i + '日', value: i})
+    days.push({ text: i + '日', value: i })
   }
 })
-
 
 const picker = new Picker({
   data: [years, months, days],

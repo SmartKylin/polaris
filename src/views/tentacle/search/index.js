@@ -2,7 +2,7 @@ import create from './index.tpl'
 import './index.styl'
 import SearchBar from 'components/searchbar'
 import TentacleBar from 'components/tentaclebar'
-import { queryTentacle, queryTentacleLevelStatics, queryLabel} from 'services'
+import { queryTentacle, queryTentacleLevelStatics, queryLabel } from 'services'
 
 export default create({
   data() {
@@ -45,7 +45,7 @@ export default create({
       this.reQuery()
     },
 
-   /*  产能分类暂时删除
+    /*  产能分类暂时删除
    // 切换产能分类
     capacityChange(val) {
       if (val === 'all') {
@@ -54,7 +54,7 @@ export default create({
         this.labels[1] = val
       }
       this.reQuery()
-    },*/
+    }, */
 
     // 切换分类
     categoryChange(val) {
@@ -134,7 +134,7 @@ export default create({
 
     this.query()
 
-    queryTentacleLevelStatics().then(data=>{
+    queryTentacleLevelStatics().then(data => {
       this.categories = data
     })
     // 获取关系标签列表
@@ -143,9 +143,7 @@ export default create({
       // 产能标签暂时关闭
       // this.labCapaList = data[2].list
     }).catch(err => {
-      this.$dialog.alert("提示", err.message)
+      this.$dialog.alert('提示', err.message)
     })
-  },
+  }
 })
-
-

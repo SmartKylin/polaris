@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TodoItem from 'components/todo'
-import {queryTask, queryUserAims} from 'services'
+import { queryTask, queryUserAims } from 'services'
 
 export default create({
   data() {
@@ -26,7 +26,7 @@ export default create({
       // 是否显示周目标
       showWeek: true,
       // 显示的是周目标
-      showWhich: "week",
+      showWhich: 'week',
       // 页码
       page: 0,
       // 数据是否全部加载完
@@ -43,7 +43,7 @@ export default create({
   methods: {
     // 周和月切换显示
     handleChange(val) {
-      this.showWeek = val === "week" ? true : false
+      this.showWeek = val === 'week'
       this.showWhich = val
     },
     // 查询
@@ -59,7 +59,7 @@ export default create({
       params.size = 10
       params.isAccomplish = this.isAccomplish
 
-      console.log(params);
+      console.log(params)
       this.$loading.show()
       queryTask(params).then(data => {
         const list = data.list
@@ -76,7 +76,7 @@ export default create({
       }).catch(err => {
         this.$loading.hide()
         this.fetching = false
-        this.$dialog.alert("提示", err.message)
+        this.$dialog.alert('提示', err.message)
       })
     },
     // 加载更多

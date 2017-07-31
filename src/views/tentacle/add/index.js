@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import {queryInstitution, queryInstitutionDetail, addTentacle, queryLabel} from 'services'
+import { queryInstitution, queryInstitutionDetail, addTentacle, queryLabel } from 'services'
 
 export default create({
   data() {
@@ -11,10 +11,10 @@ export default create({
       // 关系标签列表
       labRelaList: [],
 
-     /* // 产能标签列表
-      labCapaList: [],*/
+      /* // 产能标签列表
+      labCapaList: [], */
 
-     /* // 目标机构对应城市ID
+      /* // 目标机构对应城市ID
        cityId: 21,
       // 目标机构ID
       institutionId: 15,
@@ -24,7 +24,7 @@ export default create({
       areaId: 27,
       // 机构所处产业
       industry: 1,
-      // 触点地址*/
+      // 触点地址 */
       address: '',
       // 触点姓名
       name: '',
@@ -59,23 +59,23 @@ export default create({
     relationChange(val) {
       this.label = val
     },
-   /* // 产能标签改变
+    /* // 产能标签改变
     capacityChange(val) {
       this.labelAry[1] = parseInt(val)
       this.label = this.labelAry.join(',')
-    },*/
-   
+    }, */
+
     // 提交触点
     tentacleAdd() {
       if (!this.name || !this.mobile || !this.position) {
         this.$dialog.alert('信息不全')
         return
       }
-      let {name, mobile , position, remark, label, hobby, address, block} = this
-      let {cityId, areaId, industry} = this.curInstitution
+      let { name, mobile, position, remark, label, hobby, address, block } = this
+      let { cityId, areaId, industry } = this.curInstitution
       let institutionId = this.curInstitution.id
       let channelInstitutionName = this.curInstitution.name
-      addTentacle({name, mobile, institutionId, position, block, cityId, areaId, industry, remark, label, hobby, address, channelInstitutionName}).then(res => {
+      addTentacle({ name, mobile, institutionId, position, block, cityId, areaId, industry, remark, label, hobby, address, channelInstitutionName }).then(res => {
         if (res.retcode === 2000000) {
           this.$dialog.alert('提示', '触点添加成功')
           this.$router.back()
@@ -85,7 +85,7 @@ export default create({
       })
     },
     institutionHandler() {
-    
+
     }
   },
   mounted() {
@@ -101,4 +101,3 @@ export default create({
     })
   }
 })
-

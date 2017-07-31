@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import {queryTentacleDetail } from 'services'
+import { queryTentacleDetail } from 'services'
 
 export default create({
   data() {
@@ -13,7 +13,7 @@ export default create({
   methods: {
     queryDetail(params) {
       this.$loading.show()
-      queryTentacleDetail({channelId: params.id}).then(data => {
+      queryTentacleDetail({ channelId: params.id }).then(data => {
         this.$loading.hide()
         this.data = data
         this.id = data.id
@@ -34,4 +34,3 @@ export default create({
     this.queryDetail(this.$route.params)
   }
 })
-

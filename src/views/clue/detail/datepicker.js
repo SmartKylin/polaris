@@ -10,7 +10,6 @@ const date = new Date()
 const thisYear = date.getFullYear()
 const thisMonth = date.getMonth() + 1
 const today = date.getDate()
-const thisHours = date.getHours()
 
 function forEach(start, end, callback) {
   for (let i = start; i <= end; i++) {
@@ -20,29 +19,27 @@ function forEach(start, end, callback) {
 
 // 年
 forEach(thisYear, thisYear + 1, i => {
-  years.push({text: i + '年', value: i})
+  years.push({ text: i + '年', value: i })
 })
-
 
 forEach(1, 31, i => {
   // 月
   if (i <= 12) {
-    months.push({text: i + '月', value: i})
+    months.push({ text: i + '月', value: i })
   }
   // 日
   if (i <= 31) {
-    days.push({text: i + '日', value: i})
+    days.push({ text: i + '日', value: i })
   }
   // 时
   if (i >= 8 && i <= 20) {
-    hours.push({text: i + '时', value: i})
+    hours.push({ text: i + '时', value: i })
   }
 })
 
 // 分
-minutes.push({text: '0分', value: 0})
-minutes.push({text: '30分', value: 30})
-
+minutes.push({ text: '0分', value: 0 })
+minutes.push({ text: '30分', value: 30 })
 
 const picker = new Picker({
   data: [years, months, days, hours, minutes],

@@ -15,8 +15,8 @@ export default create({
     SearchBox
   },
   mounted() {
-    http.get(api.tentacleStatics).then(data=> {
-      this.data = data;
+    http.get(api.tentacleStatics).then(data => {
+      this.data = data
     })
   }
 })

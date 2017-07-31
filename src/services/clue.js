@@ -10,12 +10,10 @@ export function queryClues(params) {
   return http.get(apis.clueList, params)
 }
 
-
 /**
  * 查询触点统计信息
  */
 export function queryClueStatis() {
-
   function callback(data) {
     return [
       {
@@ -53,13 +51,12 @@ export function queryClueStatis() {
         name: '已完成',
         val: data.success,
         id: 5
-      },
+      }
     ]
   }
 
   return http.get(apis.clueStatis).then(callback)
 }
-
 
 /**
  * 关闭线索
@@ -68,12 +65,10 @@ export function closeClue(params) {
   return http.post(apis.clueClose, params)
 }
 
-
 /**
  * 保存触点信息前处理单位，删除多余字段
  */
 function beforeSaveClue(params) {
-  console.log(params)
   // 删除多余字段
   delete params.status
   delete params.statusName
@@ -84,7 +79,6 @@ function beforeSaveClue(params) {
   params.houses.assessedValue = params.houses.assessedValue * 10000
 }
 
-
 /**
  * 添加线索
  */
@@ -92,7 +86,6 @@ export function addClue(params) {
   beforeSaveClue(params)
   return http.post(apis.clueAdd, params)
 }
-
 
 /**
  * 编辑线索
@@ -102,7 +95,6 @@ export function editClue(params) {
   return http.post(apis.clueEdit, params)
 }
 
-
 /**
  * 添加金融方案
  */
@@ -110,14 +102,12 @@ export function addLoanScheme(params) {
   return http.post(apis.addLoanScheme, params)
 }
 
-
 /**
  * 修改金融方案
  */
 export function editLoanScheme(params) {
   return http.post(apis.editLoanScheme, params)
 }
-
 
 /**
  * 查询指定线索信息
@@ -134,17 +124,16 @@ export function queryClueByCode(params) {
     }
     if (!res.serviceInfo) {
       res.serviceInfo = {
-        "contractNo": "",
-        "chargesAmount": 0,
-        "deposit": 0,
-        "serviceCharge": 0,
-        "about": ""
+        'contractNo': '',
+        'chargesAmount': 0,
+        'deposit': 0,
+        'serviceCharge': 0,
+        'about': ''
       }
     }
     return res
   })
 }
-
 
 /**
  * 预约面签
@@ -153,7 +142,6 @@ export function makeInterview(params) {
   return http.post(apis.makeInterview, params)
 }
 
-
 /**
  * 编辑待办事项
  */
@@ -161,12 +149,9 @@ export function editTodo(params) {
   return http.post(apis.todoEdit, params)
 }
 
-
 /**
  * 查询线索操作日志
  */
 export function queryClueLogs(params) {
   return http.post(apis.clueLogs, params)
 }
-
-

@@ -1,13 +1,13 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import {queryTentacle, queryTentacleLevelGStatics} from 'services'
+import { queryTentacle, queryTentacleLevelGStatics } from 'services'
 
 // 意向分类
 const categories = {
   a: 'A',
   b1: 'B1',
-  b2: 'B2',
+  b2: 'B2'
 }
 
 export default create({
@@ -36,7 +36,7 @@ export default create({
   },
 
   components: {
-    TentacleBar,
+    TentacleBar
   },
 
   methods: {
@@ -60,7 +60,7 @@ export default create({
       this.fetching = true
 
       const params = {}
-      const {curLevel, category, capacity} = this
+      const { curLevel, category, capacity } = this
 
       this.pageNum += 1
       params.page = this.pageNum
@@ -68,13 +68,11 @@ export default create({
       // 查询休眠触点
       if (this.isDormant) {
         params.dormant = 1
-      }
-      else {
+      } else {
         // 等级
         if (curLevel === 'vip') {
-            params.vip = 1
-        }
-        else if (curLevel !== 'all') {
+          params.vip = 1
+        } else if (curLevel !== 'all') {
           params.level = curLevel
         }
         // label
@@ -136,18 +134,14 @@ export default create({
       // 是否查询休眠触点
       this.isDormant = !!query.isDormant
 
-
-
       // todo
       // 设置页面 title
       if (this.category) {
         // document.title = `${this.category.toUpperCase()}-高 触点`
         document.title = `${this.category.toUpperCase()} 触点`
-      }
-      else if (this.isDormant) {
+      } else if (this.isDormant) {
         document.title = '休眠触点'
       }
-
 
       // 查询各分类下的各级别触点统计数据，
       // 如果是查询休眠触点则不需要此统计数据
@@ -178,4 +172,3 @@ export default create({
     this.init(this.$route.query)
   }
 })
-

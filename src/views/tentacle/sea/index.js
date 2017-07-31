@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import {queryCommonality} from 'services'
+import { queryCommonality } from 'services'
 
 export default create({
   data() {
@@ -15,13 +15,13 @@ export default create({
       // 当前状态分类
       status: 0,
       // 标识是否正在请求数据
-      fetching: false,
+      fetching: false
     }
   },
   mounted() {
     // 查询触点
     this.query()
-    console.log('sea ');
+    console.log('sea ')
   },
   components: {
     TentacleBar
@@ -54,18 +54,16 @@ export default create({
 
         this.$loading.hide()
         this.fetching = false
-
       }).catch(err => {
-          this.$loading.hide()
-          this.fetching = false
-          this.$dialog.alert('提示', err.message)
-        })
+        this.$loading.hide()
+        this.fetching = false
+        this.$dialog.alert('提示', err.message)
+      })
     },
     // 加载更多
     loadmore() {
       this.query()
-      console.log(this.tentacleList);
+      console.log(this.tentacleList)
     }
   }
 })
-

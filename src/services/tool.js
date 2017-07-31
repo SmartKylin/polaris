@@ -28,4 +28,3 @@ export function queryLabel(params) {
 export function queryUserAims(params) {
   return http.get(apis.userAims, params)
 }
-

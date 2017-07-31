@@ -1,4 +1,4 @@
-import { queryClueByCode, makeInterview, editTodo } from 'services'
+import { queryClueByCode, makeInterview } from 'services'
 // import datepicker from '../../../helper/datepicker'
 import datepicker from './datepicker'
 import create from './index.tpl'
@@ -16,7 +16,7 @@ export default create({
       // 面签信息
       interview: {
         date: ''
-      },
+      }
     }
   },
 

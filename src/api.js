@@ -15,88 +15,78 @@ export default (config => {
   }, {})
 })({
   // 个人中心目标
-  "userAims": "/mizar/m/user/aims",
+  'userAims': '/mizar/m/user/aims',
   // 触点统计数据
-  "tentacleStatics": "/mizar/m/channel/statis",
+  'tentacleStatics': '/mizar/m/channel/statis',
   // 各类型触点级别数据统计
-  "tentacleGstatics": "/mizar/m/channel/gstatis",
+  'tentacleGstatics': '/mizar/m/channel/gstatis',
   // 触点查询
-  "tentacleList": "/mizar/m/channel/list",
+  'tentacleList': '/mizar/m/channel/list',
   // 触点详情
-  "tentacleDetail": "/mizar/m/channel/detail",
+  'tentacleDetail': '/mizar/m/channel/detail',
   // 触点新增
-  "tentacleAdd": "/mizar/m/channel/add",
+  'tentacleAdd': '/mizar/m/channel/add',
   // 触点修改
-  "tentacleEditor": "/mizar/m/channel/editor",
+  'tentacleEditor': '/mizar/m/channel/editor',
   // 触点释放
-  "tentacleRelease": "/mizar/m/channel/commonality/release",
+  'tentacleRelease': '/mizar/m/channel/commonality/release',
   // 查询公海
-  "commonalityList": "/mizar/m/channel/commonality/list",
+  'commonalityList': '/mizar/m/channel/commonality/list',
   // 认领触点
-  "tentacleClaim": "/mizar/m/channel/commonality/claim",
+  'tentacleClaim': '/mizar/m/channel/commonality/claim',
   // 查询机构
-  "institutionList": "/mizar/m/channel/institution/list",
+  'institutionList': '/mizar/m/channel/institution/list',
   // 查询机构详情
-  "institutionDetail": "/mizar/m/channel/institution/detail",
+  'institutionDetail': '/mizar/m/channel/institution/detail',
   // 查询标签
-  "labelList": "/mizar/m/channel/label/list",
+  'labelList': '/mizar/m/channel/label/list',
   // 城市列表
-  "cityList": "/mizar/m/tool/citylist",
+  'cityList': '/mizar/m/tool/citylist',
   // 区域列表
-  "areaList": "/mizar/m/tool/arealist",
+  'areaList': '/mizar/m/tool/arealist',
   // 查询线索
-  "clueList": "/mizar/m/clue/list",
+  'clueList': '/mizar/m/clue/list',
   // 编辑线索
-  "clueEdit": "/mizar/m/clue/editor",
+  'clueEdit': '/mizar/m/clue/editor',
   // 关闭线索
-  "clueClose": "/mizar/m/clue/close",
+  'clueClose': '/mizar/m/clue/close',
   // 线索详情
-  "clueDetail": "/mizar/m/clue/detail",
+  'clueDetail': '/mizar/m/clue/detail',
   // 线索操作日志
-  "clueLogs": "/mizar/m/clue/log",
+  'clueLogs': '/mizar/m/clue/log',
   // 添加线索
-  "clueAdd": "/mizar/m/clue/add",
+  'clueAdd': '/mizar/m/clue/add',
   // 线索统计数据
-  "clueStatis": "/mizar/m/clue/statis",
+  'clueStatis': '/mizar/m/clue/statis',
   // 待办事项新增
-  "taskAdd": "/mizar/m/task/add",
+  'taskAdd': '/mizar/m/task/add',
   // 待办事项查询
-  "taskList": "/mizar/m/task/list",
+  'taskList': '/mizar/m/task/list',
   // 待办事项详情
-  "taskDetail": "/mizar/m/task/detail",
+  'taskDetail': '/mizar/m/task/detail',
   // 修改待办事项
-  "taskEdit": "/mizar/m/task/up",
+  'taskEdit': '/mizar/m/task/up',
   // 拜访日志新增
-  "visitlogAdd": "/mizar/m/channel/visitlog/add",
+  'visitlogAdd': '/mizar/m/channel/visitlog/add',
   // 拜访日志查询
-  "visilogList": "/mizar/m/channel/visitlog/list",
+  'visilogList': '/mizar/m/channel/visitlog/list',
   // 触点操作日志查询
-  "operationlog": "/mizar/m/channel/operationlog",
+  'operationlog': '/mizar/m/channel/operationlog',
   // 添加金融方案
-  "addLoanScheme": "/mizar/m/clue/solutions/add",
+  'addLoanScheme': '/mizar/m/clue/solutions/add',
   // 修改金融方案
-  "editLoanScheme": "/mizar/m/clue/solutions/editor",
+  'editLoanScheme': '/mizar/m/clue/solutions/editor',
   // 预约面签
-  "makeInterview": "/mizar/m/clue/interview",
+  'makeInterview': '/mizar/m/clue/interview',
   // 待办事项
-  "todoEdit": "/mizar/m/task/up",
-
+  'todoEdit': '/mizar/m/task/up',
 
   /**
    * 用户相关
    * ============================================== */
 
   // 发送短信验证码
-  "sendcode": "/mizar/m/tool/sendcode",
+  'sendcode': '/mizar/m/tool/sendcode',
   // 用户登录
-  "login": "/mizar/m/user/bind",
+  'login': '/mizar/m/user/bind'
 })
-
-
-
-
-
-
-
-
-

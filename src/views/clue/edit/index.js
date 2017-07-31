@@ -1,11 +1,10 @@
 import { addClue, editClue, queryClueByCode } from 'services'
-import { cloneDeep, assignDeep } from 'bali.js'
+import { cloneDeep } from 'bali.js'
 // import LoanSchemeView from '../loan-scheme'
 import bus from '../../../helper/bus'
 import createState from './state'
 import create from './index.tpl'
 import './index.styl'
-
 
 export default create({
   data() {

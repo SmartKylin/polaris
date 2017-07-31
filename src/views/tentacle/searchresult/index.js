@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import {queryTentacle} from 'services'
+import { queryTentacle } from 'services'
 
 export default create({
   data() {
@@ -48,7 +48,7 @@ export default create({
         this.searching = false
       }).catch(err => {
         this.$loading.hide()
-        this.$dialog.alert("提示", err.message)
+        this.$dialog.alert('提示', err.message)
         this.searching = false
       })
     },

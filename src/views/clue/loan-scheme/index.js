@@ -37,7 +37,7 @@ export default create({
             name: this.model.name,
             bank: this.model.bank,
             type: this.model.type,
-            about: this.model.about,
+            about: this.model.about
           })
           this.closeLoanSchemeEditor()
         })

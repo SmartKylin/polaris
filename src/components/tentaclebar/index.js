@@ -1,7 +1,7 @@
 import datepicker from '../../helper/datepicker'
 import create from './index.tpl'
 import './index.styl'
-import {queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle, claimTentacle, queryTentacleDetail} from 'services'
+import { queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle, claimTentacle, queryTentacleDetail } from 'services'
 
 export default create({
   props: {
@@ -16,8 +16,8 @@ export default create({
   },
   data() {
     return {
-      /*// 拜访计划弹出框是否可见
-       visible1: false,*/
+      /* // 拜访计划弹出框是否可见
+       visible1: false, */
       // 写日志弹出框是否可见
       visible2: false,
       // 释放触点弹出框是否可见
@@ -81,7 +81,7 @@ export default create({
     // 弹出框中提交加入拜访计划
     addTodo(position) {
       const params = {}
-      params.type = "1"
+      params.type = '1'
       params.flag = this.data.id
       params.title = this.data.taskTitle
 
@@ -119,7 +119,7 @@ export default create({
       params.remark = this.content
       releaseTentacle(params).then(res => {
         this.visible3 = false
-        this.isReleased = "1"
+        this.isReleased = '1'
         this.$toast.show('触点释放成功')
         this.$router.replace(this.$route.path)
       }).catch(err => {
@@ -128,9 +128,9 @@ export default create({
     },
     // 认领触点
     tentacleClaim() {
-      claimTentacle({channel_id: this.data.id}).then(res => {
+      claimTentacle({ channel_id: this.data.id }).then(res => {
         this.data.isRelease = 0
-        this.$dialog.alert("提示", '操作成功')
+        this.$dialog.alert('提示', '操作成功')
       }).catch(err => {
         this.$dialog.alert('提示', err.message)
       })
@@ -168,6 +168,6 @@ export default create({
     }).catch(err => {
       this.$dialog.hide()
       this.$dialog.alert('提示', err.message)
-    })*/
+    }) */
   }
 })

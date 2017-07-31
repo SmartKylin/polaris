@@ -23,7 +23,7 @@ export default create({
     // 跳转到触点或线索详情
     toTaskDetail() {
       // 如果不是来自用户页面则不跳转
-      if(!this.fromUserpage) {
+      if (!this.fromUserpage) {
         return
       }
       // 跳转到任务详情
@@ -40,7 +40,7 @@ export default create({
       params.id = this.task.id
       params.isAccomplish = 1
       params.remark = this.remark
-      updateTask(params).then(res=> {
+      updateTask(params).then(res => {
         if (res.retcode == 2000000) {
           console.log(res.msg)
           this.visible = false

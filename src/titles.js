@@ -17,7 +17,7 @@ const conf = {
   '^/clue/logs/\\w+$': '线索日志',
   '^/user$': '个人中心',
   '^/user/task/\\w+': '任务详情',
-  '^/login$': '登录',
+  '^/login$': '登录'
 }
 
 export default function(path) {

@@ -14,7 +14,7 @@ export default create({
       const base = window.location.href.split('#')[0]
       window.location.replace(`${base}#${path}`)
     })
-    .catch(err => {
+    .catch(() => {
       window.app.$loading.hide()
       this.$toast.show('服务异常，请重试', () => {
         this.$router.back()

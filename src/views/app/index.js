@@ -10,11 +10,10 @@ const rootPaths = [
 export default create({
   computed: {
     route() {
-      return this.$route.path;
+      return this.$route.path
     },
     visible() {
       return rootPaths.indexOf(this.$route.path) > -1
     }
   }
 })
-

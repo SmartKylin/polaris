@@ -44,7 +44,7 @@ export default [
    */
   {
     path: '/tentacle',
-    component: Tentacle,
+    component: Tentacle
   },
   {
     path: '/tentacle/commonality',
@@ -135,7 +135,6 @@ export default [
     path: '/todo/close/:id',
     component: TodoDone
   },
-
 
   /**
    * 用户中心

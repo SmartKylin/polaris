@@ -14,23 +14,17 @@ Vue.use(Router)
 Vue.use(SmartUI)
 initHelper(Vue)
 
-
-
 /**
  * 注册通用全局组件
  */
 import Tab from 'components/tab'
 Vue.component('Tab', Tab)
 
-
-
 /**
  * 有些浏览器还不支持 Promise
  * https://github.com/stefanpenner/es6-promise
  */
 require('es6-promise').polyfill()
-
-
 
 /**
  * 使用 sentry 监控异常
@@ -47,15 +41,11 @@ require('es6-promise').polyfill()
 //     }).addPlugin(RavenVue, Vue).install()
 // }
 
-
-
 /**
  * 解决移动端点击300秒延迟问题
  */
 import FastClick from 'fastclick'
 FastClick.attach(document.body)
-
-
 
 /**
  * 创建 router
@@ -68,8 +58,6 @@ router.afterEach((to, from) => {
   document.title = getTitle(to.path)
 })
 
-
-
 /**
  * 实例化 app
  */
@@ -77,6 +65,3 @@ import App from 'views/app'
 import './css/index.styl'
 
 window.app = new Vue({ el: '#app', router, ...App })
-
-
-
