@@ -39,9 +39,10 @@ export default create({
     },
     // 提交触点
     tentacleEdit() {
-      let {mobile, position, remark, hobby, channelInstitutionId, address, block} = this.data
+      console.log(this.data.address);
+      let {mobile, position, remark, hobby, channelInstitutionId} = this.data
       let {cityId, areaId, industry} = this.curInstitution
-      let {label, name} = this
+      let {label, name, address, block} = this
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
@@ -75,7 +76,7 @@ export default create({
   },
   created() {
     // 获取详情页传过来的触点编码
-    console.log('label' + this.label);
+    // console.log('label' + this.label);
     
     let id = this.$route.params.id
 
