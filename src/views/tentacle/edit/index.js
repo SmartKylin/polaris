@@ -12,14 +12,16 @@ export default create({
       institutionList: [],
       // 关系标签列表
       labRelaList: [],
-
       // 当前选择的机构
       curInstitution: {},
       // 当前标签
       label: '',
       // 当前机构ID
       name: '',
-      block: ''
+      // 街区
+      block: '',
+      // 地址
+      address: '',
     }
   },
   components: {
@@ -29,18 +31,18 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.curInstitution = this.institutionList.find(i => i.id == val)
-      this.block = this.curInstitution.block
+      // this.block = this.curInstitution.block
     },
     // 关系标签改变
     relationChange(val) {
       this.label = val
     },
-
     // 提交触点
     tentacleEdit() {
+      console.log(this.data.address);
       let {mobile, position, remark, hobby, channelInstitutionId} = this.data
-      let {cityId, areaId, industry, address, block} = this.curInstitution
-      let {label, name} = this
+      let {cityId, areaId, industry} = this.curInstitution
+      let {label, name, address, block} = this
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
@@ -74,21 +76,26 @@ export default create({
   },
   created() {
     // 获取详情页传过来的触点编码
-    console.log('label' + this.label);
+    // console.log('label' + this.label);
+    
     let id = this.$route.params.id
 
     queryTentacleDetail({channelId: id}).then(data => {
       this.data = data
       this.name = data.name
       this.label = data.label[0]
+      this.block = data.block
+      this.address = data.address
       this.curInstitution = {
-        block: data.block
+        block: data.block,
+        name: data.channelInstitutionName
       }
     })
+    
     queryInstitution().then(data => {
       this.institutionList = data.list
       // 根据触点编码查询触点信息
-      queryTentacleDetail({channelId: id}).then(data => {
+      /*queryTentacleDetail({channelId: id}).then(data => {
         this.data = data
         console.log(data)
         // this.institutionId = data.channelInstitutionId
@@ -102,25 +109,13 @@ export default create({
           areaId: this.data.areaId,
           block: this.data.block
         }
-
-        console.log(this.curInstitution.name);
-      })
-
-
+      })*/
     })
-
+    
     // 查询标签列表
     queryLabel().then(data => {
       this.labRelaList = data[1].list
-      /*queryTentacleDetail({channelId: id}).then(data => {
-        data.labelId && (this.label = this.labRelaList.find(l => l.id == data.labelId[0]) || {
-          id: data.labelId[0],
-          name: data.label[0],
-        })
-      })*/
     })
-
-
   }
 })
 

@@ -6,7 +6,8 @@
     <Selector title="所属机构/公司" @input="institutionChange" :placeholder="curInstitution.name">
       <SelectorOption v-for="institution in institutionList" :text="institution.name" :value="institution.id">{{institution.name}}</SelectorOption>
     </Selector>
-    <Field label="街区" placeholder="请输入街区名称" align="right" v-model="curInstitution.block"></Field>
+    <Field label="街区" placeholder="请输入街区名称" align="right" v-model="block"></Field>
+    <Field label="地址" placeholder="请输入地址" align="right" v-model="address"></Field>
     <!--<Field label="职位" placeholder="请输入职位名称" align="right" v-model="curInstitution.position"></Field>-->
     <Field label="职位" placeholder="请输入职位名称" align="right" v-model="data.position"></Field>
   </CellGroup>
@@ -14,7 +15,7 @@
   <CellGroup class="mt10">
     <Cell title="画像" class="info--title"></Cell>
     <Selector title="关系标签" @input="relationChange" v-if="labRelaList.length > 0" :placeholder="label">
-      <SelectorOption v-for="lab in labRelaList" :text="lab.name" :value="lab.id"></SelectorOption>
+      <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
     </Selector>
   </CellGroup>
   <div class="edit--textarea--wrap">

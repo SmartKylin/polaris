@@ -11,7 +11,8 @@
     <Selector title="所属机构/公司" @input="institutionChange" v-if="institutionList.length" :placeholder="curInstitution.name">
       <SelectorOption v-for="institution in institutionList" :text="institution.name" :value="institution.id"></SelectorOption>
     </Selector>
-    <Field label="街区" placeholder="请输入街区名称" align="right" v-model="curInstitution.block"></Field>
+    <Field label="街区" placeholder="请输入街区名称" align="right" v-model="block"></Field>
+    <Field label="地址" placeholder="请输入地址" align="right" v-model="address"></Field>
     <Field label="职位" placeholder="请输入职位名称" align="right" v-model="position"></Field>
   </CellGroup>
 
@@ -22,7 +23,7 @@
         <option :value="item.id" v-for="item in labRelaList">{{item.name}}</option>
       </Selector>
     </Cell>-->
-    <Selector title="关系标签" @input="relationChange" v-if="labRelaList.length" v-model="label" placeholder="请选择">
+    <Selector title="关系标签" @input="relationChange" v-model="label" placeholder="请选择">
       <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
     </Selector>
    <!-- <Cell title="产能标签" arrow>

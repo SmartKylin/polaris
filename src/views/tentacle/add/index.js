@@ -25,11 +25,9 @@ export default create({
       // 机构所处产业
       industry: 1,
       // 触点地址*/
-
       address: '',
       // 触点姓名
       name: '',
-
       // 触点电话
       mobile: '',
       // 职位
@@ -43,7 +41,9 @@ export default create({
       // 备注
       remark: '',
       // 当前选中的机构
-      curInstitution: ''
+      curInstitution: '',
+      // 街区
+      block: ''
     }
   },
   components: {
@@ -59,20 +59,20 @@ export default create({
     relationChange(val) {
       this.label = val
     },
-
    /* // 产能标签改变
     capacityChange(val) {
       this.labelAry[1] = parseInt(val)
       this.label = this.labelAry.join(',')
     },*/
+   
     // 提交触点
     tentacleAdd() {
       if (!this.name || !this.mobile || !this.position) {
         this.$dialog.alert('信息不全')
         return
       }
-      let {name, mobile , position, remark, label, hobby} = this
-      let {block, cityId, areaId, industry, address} = this.curInstitution
+      let {name, mobile , position, remark, label, hobby, address, block} = this
+      let {cityId, areaId, industry} = this.curInstitution
       let institutionId = this.curInstitution.id
       let channelInstitutionName = this.curInstitution.name
       addTentacle({name, mobile, institutionId, position, block, cityId, areaId, industry, remark, label, hobby, address, channelInstitutionName}).then(res => {
@@ -85,7 +85,7 @@ export default create({
       })
     },
     institutionHandler() {
-
+    
     }
   },
   mounted() {
