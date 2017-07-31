@@ -17,7 +17,11 @@ export default create({
       // 当前标签
       label: '',
       // 当前机构ID
-      name: ''
+      name: '',
+      // 街区
+      block: '',
+      // 地址
+      address: '',
     }
   },
   components: {
@@ -27,8 +31,7 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.curInstitution = this.institutionList.find(i => i.id == val)
-      this.block = this.curInstitution.block
-      this.channelInstitutionName = this.curInstitution.channelInstitutionName
+      // this.block = this.curInstitution.block
     },
     // 关系标签改变
     relationChange(val) {
@@ -36,8 +39,8 @@ export default create({
     },
     // 提交触点
     tentacleEdit() {
-      let {mobile, position, remark, hobby, channelInstitutionId} = this.data
-      let {cityId, areaId, industry, address, block} = this.curInstitution
+      let {mobile, position, remark, hobby, channelInstitutionId, address, block} = this.data
+      let {cityId, areaId, industry} = this.curInstitution
       let {label, name} = this
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
@@ -80,6 +83,8 @@ export default create({
       this.data = data
       this.name = data.name
       this.label = data.label[0]
+      this.block = data.block
+      this.address = data.address
       this.curInstitution = {
         block: data.block,
         name: data.channelInstitutionName

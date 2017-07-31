@@ -42,7 +42,7 @@ var server = new WebpackDevServer(webpack(config), {
 })
 
 server.listen(8080, function() {
-	console.log('\n ==> '+ localServer +' \n')
+  console.log('\n ==> '+ localServer +' \n')
 })
 
 // start mock server

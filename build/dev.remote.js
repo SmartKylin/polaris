@@ -7,7 +7,9 @@ var config = require('./webpack.prod.conf')
 
 config.output.publicPath = '/mizar/static'
 
-config.plugins.push(new DeployPlugin())
+config.plugins.push(
+  new DeployPlugin()
+)
 
 webpack(config).watch({}, function(err, stats) {
   if (err) throw err
