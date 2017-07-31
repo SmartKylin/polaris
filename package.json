@@ -12,6 +12,9 @@
     "release": "cp dist/Index.html ../backend/app/views/M/Index.phtml && cp -r dist/js dist/css ../backend/public/static/",
     "lint": "eslint ./src --ext .js"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -33,6 +36,7 @@
     "html-webpack-plugin": "^2.28.0",
     "inline-manifest-webpack-plugin": "^3.0.1",
     "ora": "^1.2.0",
+    "pre-commit": "^1.2.2",
     "shelljs": "^0.7.7",
     "style-loader": "^0.17.0",
     "stylus": "^0.54.5",
