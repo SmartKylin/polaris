@@ -6,13 +6,13 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
+import FastClick from 'fastclick'
 import SmartUI from 'smart-ui'
 import 'smart-ui/lib/smart-ui.css'
-import initHelper from './helper'
 import Tab from 'components/tab'
-import FastClick from 'fastclick'
 import routes from './routes'
 import getTitle from './titles'
+import initHelper from './helper'
 import App from 'views/app'
 import './css/index.styl'
 
@@ -23,7 +23,6 @@ initHelper(Vue)
 /**
  * 注册通用全局组件
  */
-
 Vue.component('Tab', Tab)
 
 /**
@@ -57,7 +56,6 @@ FastClick.attach(document.body)
  */
 
 const router = new Router({ routes })
-
 router.afterEach((to, from) => {
   document.title = getTitle(to.path)
 })
