@@ -60,7 +60,7 @@ export default create({
       this.fetching = true
 
       const params = {}
-      const { curLevel, category, capacity } = this
+      const { curLevel, category } = this
 
       this.pageNum += 1
       params.page = this.pageNum
@@ -145,7 +145,7 @@ export default create({
 
       // 查询各分类下的各级别触点统计数据，
       // 如果是查询休眠触点则不需要此统计数据
-      if (this.category == 'a') {
+      if (this.category === 'a') {
         queryTentacleLevelGStatics({
           // type: `${categories[this.category]}`
           type: this.category

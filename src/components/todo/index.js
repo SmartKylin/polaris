@@ -41,8 +41,7 @@ export default create({
       params.isAccomplish = 1
       params.remark = this.remark
       updateTask(params).then(res => {
-        if (res.retcode == 2000000) {
-          console.log(res.msg)
+        if (res.retcode === 2000000) {
           this.visible = false
           this.done = true
         }

@@ -3,14 +3,11 @@ import Picker from 'better-picker'
 const years = []
 const months = []
 const days = []
-const hours = []
-const minutes = []
 
 const date = new Date()
 const thisYear = date.getFullYear()
 const thisMonth = date.getMonth() + 1
 const today = date.getDate()
-const thisHours = date.getHours()
 
 function forEach(start, end, callback) {
   for (let i = start; i <= end; i++) {

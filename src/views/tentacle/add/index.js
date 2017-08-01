@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import { queryInstitution, queryInstitutionDetail, addTentacle, queryLabel } from 'services'
+import { queryInstitution, addTentacle, queryLabel } from 'services'
 
 export default create({
   data() {
@@ -53,7 +53,7 @@ export default create({
     //  机构改变
     institutionChange(val) {
       this.institutionId = val
-      this.curInstitution = this.institutionList.find(i => i.id == val)
+      this.curInstitution = this.institutionList.find(i => i.id === val)
     },
     // 关系标签改变
     relationChange(val) {
@@ -83,9 +83,6 @@ export default create({
       }).catch(err => {
         this.$dialog.alert('失败', err.message)
       })
-    },
-    institutionHandler() {
-
     }
   },
   mounted() {

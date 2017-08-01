@@ -75,7 +75,7 @@ export default create({
       this.pageNum += 1
       params.page = this.pageNum
 
-      if (this.curLevel == 6) {
+      if (this.curLevel === 6) {
         params.vip = 1
       } else {
         params.level = this.curLevel

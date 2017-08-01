@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import { queryInstitution, queryInstitutionDetail, queryLabel, queryTentacleDetail, editTentacle } from 'services'
+import { queryInstitution, queryLabel, queryTentacleDetail, editTentacle } from 'services'
 
 export default create({
   data() {
@@ -30,7 +30,7 @@ export default create({
   methods: {
     //  机构改变
     institutionChange(val) {
-      this.curInstitution = this.institutionList.find(i => i.id == val)
+      this.curInstitution = this.institutionList.find(i => i.id === val)
       // this.block = this.curInstitution.block
     },
     // 关系标签改变
@@ -39,15 +39,13 @@ export default create({
     },
     // 提交触点
     tentacleEdit() {
-      console.log(this.data.address)
-      let { mobile, position, remark, hobby, channelInstitutionId } = this.data
+      let { mobile, position, remark, hobby } = this.data
       let { cityId, areaId, industry } = this.curInstitution
       let { label, name, address, block } = this
       let channelId = this.data.id
       let channelInstitutionName = this.curInstitution.name
       let institutionId = this.curInstitution.id
 
-      console.log(name, mobile, institutionId, block, position, cityId, areaId, industry, remark, label, hobby, channelId, address, channelInstitutionName)
       editTentacle({
         name,
         mobile,
@@ -65,7 +63,6 @@ export default create({
         channelInstitutionName
       }).then(res => {
         if (res.retcode === 2000000) {
-          console.log(res.msg)
           this.$dialog.alert('提示', '修改触点成功')
           this.$router.back()
         }

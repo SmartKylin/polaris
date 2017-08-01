@@ -27,7 +27,6 @@ export default function(path) {
       const pattern = new RegExp(name)
       if (pattern.test(path)) {
         title = conf[name]
-        console.log(name, path)
         return true
       }
     })

@@ -21,7 +21,6 @@ export default create({
   mounted() {
     // 查询触点
     this.query()
-    console.log('sea ')
   },
   components: {
     TentacleBar
@@ -63,7 +62,6 @@ export default create({
     // 加载更多
     loadmore() {
       this.query()
-      console.log(this.tentacleList)
     }
   }
 })

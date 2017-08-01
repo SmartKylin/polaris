@@ -1,5 +1,5 @@
 import Login from 'views/user/login'
-import TentacleIndex from 'views/tentacle/index'
+// import TentacleIndex from 'views/tentacle/index'
 import TentacleList from 'views/tentacle/list'
 import TentacleSearch from 'views/tentacle/search'
 import TentacleSearchResult from 'views/tentacle/searchresult'

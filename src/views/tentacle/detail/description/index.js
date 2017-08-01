@@ -61,7 +61,6 @@ export default create({
         params.label = this.labelAry.join(',')
       } */
       params.label = this.label
-      console.log(params.label)
       editTentacle(params).then(res => {
         if (res.retcode === 2000000) {
           this.$dialog.alert('提示', '触点画像编辑成功')
@@ -73,7 +72,6 @@ export default create({
   },
   mounted() {
     let id = this.$route.params.id
-    console.log(id)
     this.$loading.show()
     queryTentacleDetail({ channelId: id }).then(data => {
       this.$loading.hide()

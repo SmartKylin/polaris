@@ -58,8 +58,6 @@ export default create({
       params.page = this.page
       params.size = 10
       params.isAccomplish = this.isAccomplish
-
-      console.log(params)
       this.$loading.show()
       queryTask(params).then(data => {
         const list = data.list

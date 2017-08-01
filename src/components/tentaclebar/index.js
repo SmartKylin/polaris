@@ -1,7 +1,7 @@
 import datepicker from '../../helper/datepicker'
 import create from './index.tpl'
 import './index.styl'
-import { queryTask, addTask, queryVisitlog, addVisitlog, releaseTentacle, claimTentacle, queryTentacleDetail } from 'services'
+import { addTask, addVisitlog, releaseTentacle, claimTentacle } from 'services'
 
 export default create({
   props: {

@@ -17,9 +17,9 @@ export default create({
   methods: {
     // 跳转到触点或者线索详情
     routerToDetail() {
-      if (this.task.type == 1) {
+      if (parseInt(this.task.type) === 1) {
         this.$router.push('/tentacle/detail/' + this.task.flag)
-      } else if (this.task.type == 2) {
+      } else if (parseInt(this.task.type) === 2) {
         this.$router.push('/clue/' + this.task.flag)
       }
     },
@@ -37,7 +37,7 @@ export default create({
       params.title = this.task.title
 
       updateTask(params).then(res => {
-        if (res.retcode == 2000000) {
+        if (res.retcode === 2000000) {
           // console.log(res.msg);
           this.$dialog.alert('提示', res.msg)
           this.$router.back()

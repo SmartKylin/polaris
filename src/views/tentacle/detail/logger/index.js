@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TodoItem from 'components/todo'
-import { queryOperationlog, queryVisitlog, updateTask, queryTentacleDetail } from 'services'
+import { queryOperationlog, queryVisitlog, queryTentacleDetail } from 'services'
 
 export default create({
   /* props: {
@@ -34,7 +34,7 @@ export default create({
     // 拜访记录和操作记录子页面切换
     handleChange(val) {
       this.showWhich = val
-      if (this.showWhich == 'visit') {
+      if (this.showWhich === 'visit') {
         this.queryVis()
       } else {
         this.queryOper()
