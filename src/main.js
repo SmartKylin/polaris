@@ -6,9 +6,15 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
+import FastClick from 'fastclick'
 import SmartUI from 'smart-ui'
 import 'smart-ui/lib/smart-ui.css'
+import Tab from 'components/tab'
+import routes from './routes'
+import getTitle from './titles'
 import initHelper from './helper'
+import App from 'views/app'
+import './css/index.styl'
 
 Vue.use(Router)
 Vue.use(SmartUI)
@@ -17,7 +23,6 @@ initHelper(Vue)
 /**
  * 注册通用全局组件
  */
-import Tab from 'components/tab'
 Vue.component('Tab', Tab)
 
 /**
@@ -44,16 +49,12 @@ require('es6-promise').polyfill()
 /**
  * 解决移动端点击300秒延迟问题
  */
-import FastClick from 'fastclick'
 FastClick.attach(document.body)
 
 /**
  * 创建 router
  */
-import routes from './routes'
-import getTitle from './titles'
 const router = new Router({ routes })
-
 router.afterEach((to, from) => {
   document.title = getTitle(to.path)
 })
@@ -61,7 +62,4 @@ router.afterEach((to, from) => {
 /**
  * 实例化 app
  */
-import App from 'views/app'
-import './css/index.styl'
-
 window.app = new Vue({ el: '#app', router, ...App })

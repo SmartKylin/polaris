@@ -37,9 +37,6 @@ export default create({
       sendsms({
         mobile: this.mobile
       })
-      .then(res => {
-
-      })
       .catch(err => {
         clearInterval(timer)
         this.notice = ''
