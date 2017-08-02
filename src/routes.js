@@ -12,6 +12,10 @@ import TentacleDetailDescription from 'views/tentacle/detail/description'
 import TentacleDetailLogger from 'views/tentacle/detail/logger'
 import TentacleDetailInfo from 'views/tentacle/detail/info'
 
+import OrganIndex from 'views/organ/index'
+import OrganAdd from 'views/organ/add'
+import OrganBranch from 'views/organ/branch'
+
 import ClueIndex from 'views/clue/index'
 import ClueDetail from 'views/clue/detail'
 import ClueAdd from 'views/clue/add'
@@ -95,6 +99,22 @@ export default [
         component: TentacleDetailInfo
       }
     ]
+  },
+  /**
+   * 机构
+   * ==========================
+   */
+  {
+    path: '/organ',
+    component: OrganIndex
+  },
+  {
+    path: '/organ/add',
+    component: OrganAdd
+  },
+  {
+    path: '/organ/branch',
+    component: OrganBranch
   },
 
   /**

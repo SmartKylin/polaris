@@ -1,3 +1,4 @@
+@import "../../../css/basic.styl"
 .detail--group {
   display flex
   justify-content space-between
@@ -26,18 +27,50 @@
 .add--textarea--wrap {
   background: #fff;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-around;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 0 15px;
+  margin: 10px 0;
+  font-size: 15px;
   .add--text--area {
     outline: none;
     resize: none;
-    width: 90%;
-    border: 1px solid #e0e0e0;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 8px;
+    //border: 1px solid #e0e0e0;
+    line-height: 20px;
+    font-size: 15px;
   }
+  .textarea--title {
+    padding-top: 15px;
+    //padding-bottom: 5px;
+  }
+  .textarea--length {
+    text-align: right;
+    padding: 10px 0;
+  }
+
 }
 
+.tentadd {
+  .tentadd--norperson {
+    .Cell--bd {
+      color: #333;
+    }
+  }
+  .Selector--values {
+    color: #333;
+  }
+  .btn--addtent {
+    height: 45px;
+    margin: 20px 15px 15px 15px;
+    background-color: #ccc;
+    border-radius: 3px;
+    font-size: 15px;
+    color: #fff;
+    line-height: 45px;
+    text-align: center;
+    &.active {
+      background: color-blue
+    }
+  }
+}
 

@@ -15,6 +15,7 @@ import getTitle from './titles'
 import initHelper from './helper'
 import App from 'views/app'
 import './css/index.styl'
+import { store } from './store'
 
 Vue.use(Router)
 Vue.use(SmartUI)
@@ -64,4 +65,4 @@ router.afterEach((to, from) => {
  * 实例化 app
  */
 
-window.app = new Vue({ el: '#app', router, ...App })
+window.app = new Vue({ el: '#app', router, ...App, store })

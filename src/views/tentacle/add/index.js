@@ -10,18 +10,21 @@ export default create({
       institutionList: [],
       // 关系标签列表
       labRelaList: [],
-
-      /* // 产能标签列表
-      labCapaList: [], */
-
-      /* // 目标机构对应城市ID
-       cityId: 21,
-      // 目标机构ID
-      institutionId: 15,
-      // 目标机构名称
-      channelInstitutionName: '',
-      // 目标机构的区域ID
-      areaId: 27,
+      // 行业类型列表
+      industryList: [
+        {
+          id: 1,
+          name: '房产中介'
+        },
+        {
+          id: 2,
+          name: '银行客户经理'
+        },
+        {
+          id: 3,
+          name: '个人'
+        }
+      ],
       // 机构所处产业
       industry: 1,
       // 触点地址 */
@@ -43,7 +46,13 @@ export default create({
       // 当前选中的机构
       curInstitution: '',
       // 街区
-      block: ''
+      block: '',
+      branchStore: '霍营店',
+      organ: '链家地产',
+      // 关系标签对象
+      labelObj: {
+        name: ''
+      }
     }
   },
   components: {
@@ -58,23 +67,23 @@ export default create({
     // 关系标签改变
     relationChange(val) {
       this.label = val
+      this.labelObj = this.labRelaList.find(l => l.id === val)
     },
-    /* // 产能标签改变
-    capacityChange(val) {
-      this.labelAry[1] = parseInt(val)
-      this.label = this.labelAry.join(',')
-    }, */
 
     // 提交触点
     tentacleAdd() {
-      if (!this.name || !this.mobile || !this.position) {
-        this.$dialog.alert('信息不全')
+      if (!this.btnSubmitActive) {
         return
       }
-      let { name, mobile, position, remark, label, hobby, address, block } = this
+      if (!this.mobileRight) {
+        this.$toast.show('手机号格式有误')
+        return
+      }
+      let { name, mobile, position, remark, hobby, address, block } = this
       let { cityId, areaId, industry } = this.curInstitution
       let institutionId = this.curInstitution.id
       let channelInstitutionName = this.curInstitution.name
+      let label = this.labelObj.name
       addTentacle({ name, mobile, institutionId, position, block, cityId, areaId, industry, remark, label, hobby, address, channelInstitutionName }).then(res => {
         if (res.retcode === 2000000) {
           this.$dialog.alert('提示', '触点添加成功')
@@ -96,5 +105,21 @@ export default create({
       // 产能标签删除
       // this.labCapaList = data[2].list
     })
+  },
+  computed: {
+    mobileRight () {
+      if (/^1[3|4|5|7|8][0-9]{9}$/.test(this.mobile)) {
+        return true
+      }
+      return false
+    },
+    btnSubmitActive () {
+      let { name, mobile, industry, address, position, organ, labelObj, branchStore } = this
+      let labelname = this.labelObj.name
+      if (industry === 3) {
+        return !!name.length && !!mobile.length && !!address.length && !!labelObj.name.length
+      }
+      return !!name.length && !!mobile.length && !!organ.length && !!branchStore.length && !!position.length && !!labelname
+    }
   }
 })

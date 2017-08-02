@@ -1,61 +1,35 @@
-<div>
-  <CellGroup>
-    <Cell title="基本信息" class="info--title"></Cell>
-    <Field label="姓名" type="text" placeholder="请输入姓名" align="right" v-model="name"></Field>
-    <Field label="电话" type="tel" placeholder="请输入电话" align="right" v-model="mobile"></Field>
-  <!--  <Cell title="所属机构/公司" arrow>
-      <Selector slot="body" @input="institutionChange" v-if="institutionList.length>0">
-        <option v-for="institution in institutionList" :value="institution.id">{{institution.name}}</option>
-      </Selector>
-    </Cell>-->
-    <Selector title="所属机构/公司" @input="institutionChange" v-if="institutionList.length" :placeholder="curInstitution.name">
-      <SelectorOption v-for="institution in institutionList" :text="institution.name" :value="institution.id"></SelectorOption>
+<div class="tentadd">
+  <CellGroup class="mt15 mb10">
+    <!--<Cell title="基本信息" class="info&#45;&#45;title"></Cell>-->
+    <Field label="*姓名" type="text" placeholder="请输入姓名" align="right" v-model="name"></Field>
+    <Field label="*电话" type="tel" placeholder="请输入电话" align="right" v-model="mobile"></Field>
+    <Selector title="*行业类型" @input="industryChange" v-model="industry">
+      <SelectorOption v-for="indus in industryList" :text="indus.name" :value="indus.id"></SelectorOption>
     </Selector>
-    <Field label="街区" placeholder="请输入街区名称" align="right" v-model="block"></Field>
-    <Field label="地址" placeholder="请输入地址" align="right" v-model="address"></Field>
-    <Field label="职位" placeholder="请输入职位名称" align="right" v-model="position"></Field>
-  </CellGroup>
-
-  <CellGroup class="mt10">
-    <Cell title="画像" class="info--title"></Cell>
-    <!--<Cell title="关系标签" arrow @click="">
-      <Selector slot="body" @input="relationChange" v-if="labRelaList.length > 0">
-        <option :value="item.id" v-for="item in labRelaList">{{item.name}}</option>
-      </Selector>
-    </Cell>-->
-    <Selector title="关系标签" @input="relationChange" v-model="label" placeholder="请选择">
-      <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
-    </Selector>
-   <!-- <Cell title="产能标签" arrow>
-      <Selector slot="body" @input="capacityChange" v-if="labCapaList.length > 0">
-        <option :value="item.id" v-for="item in labCapaList">{{item.name}}</option>
-      </Selector>
-    </Cell>-->
-  </CellGroup>
-  <div class="add--textarea--wrap">
-    <textarea name="" id="" cols="3" rows="5" class="add--text--area" placeholder="兴趣爱好" v-model="hobby"></textarea>
-  </div>
-  <Field label="备注" placeholder="请输入备注" align="right" v-model="remark"></Field>
-  <div class="button--large" @click="tentacleAdd">提交</div>
-
- <!-- &lt;!&ndash;选择机构弹出框&ndash;&gt;
-  <Popup v-model="visible" position="top">
-    <div class="popup&#45;&#45;layer">
-      <Cell title="城市" arrow v-if="visible">
-        <Selector slot="body" v-model="city" @input="cityChange">
-          <option v-for="city in cityList" :value="city.id">{{city.name}}</option>
-        </Selector>
-      </Cell>
-      <Cell title="区域" arrow v-if="areaSelectorVisible" @input="areaChange">
-        <Selector slot="body">
-          <option v-for="area in areaList" :value="area.id">{{area.name}}</option>
-        </Selector>
-      </Cell>
-      &lt;!&ndash;<Cell title="机构" arrow v-show="institutionSelectorVisible">
-        <Selector slot="body" v-model="institution" @input="institutionChange">
-          <option v-for="institution in institutionList" :value="institution.id">{{institution.name}}</option>
-        </Selector>&ndash;&gt;
-      </Cell>
+    
+    <div v-show="industry==3">
+      <Field label="*地址" placeholder="请输入地址" align="right" v-model="address"></Field>
     </div>
-  </Popup>-->
+    <div v-show="industry!=3" class="tentadd--norperson">
+      <Cell title="*所属机构" arrow :content="organ" to="/organ"></Cell>
+      <Cell title="*所在分店" arrow :content="branchStore" to="/organ/branch"></Cell>
+      <Field label="*职位" placeholder="请输入职位" align="right" v-model="position"></Field>
+    </div>
+  </CellGroup>
+
+  <!--<Cell title="画像" class="info&#45;&#45;title"></Cell>-->
+  <Selector title="*关系标签" @input="relationChange" :placeholder="labelObj.name">
+    <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
+  </Selector>
+  <div class="add--textarea--wrap">
+    <div class="textarea--title">兴趣爱好</div>
+    <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="200个字以内(选填)" maxlength="200" v-model="hobby"></textarea>
+    <div class="textarea--length">{{hobby.length}}/200</div>
+  </div>
+  <div class="add--textarea--wrap">
+    <div class="textarea--title">备注</div>
+    <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="100个字以内(选填)" maxlength="100" v-model="remark"></textarea>
+    <div class="textarea--length">{{remark.length}}/200</div>
+  </div>
+  <div class="btn--addtent " :class="{'active': btnSubmitActive}" @click="tentacleAdd">提交</div>
 </div>
