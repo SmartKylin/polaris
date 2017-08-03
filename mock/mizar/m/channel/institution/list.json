@@ -11,69 +11,29 @@
       "retcode": 2000000,
       "msg": "成功",
       "data": {
-        "count": 8,
-        "page": 1,
-        "size": 20,
         "list": [
           {
-            "id": "15",
-            "name": "链家地产",
-            "address": "北京市朝阳区四惠东大厦",
-            "industry": "1",
-            "status": "1",
-            "parentName": "链家地产",
-            "industryName": "房产中介",
-            "cityName": "北京市",
-            "areaName": "东城区",
-            "cityId": "21",
-            "areaId": "27",
-            "parentId": "1",
-            "staffCode": "666666",
-            "staffName": "郑麒麟",
-            "createdTime": "2017-06-18 12:12:17",
-            "block": "123"
+            "id": "380",
+            "name": "麦田"
           },
           {
-            "id": "14",
-            "name": "麦田房产",
-            "address": "北京市朝阳区四惠东大厦",
-            "industry": "1",
-            "status": "1",
-            "parentName": "链家地产",
-            "industryName": "房产中介",
-            "cityName": "北京市",
-            "areaName": "东城区",
-            "cityId": "21",
-            "areaId": "27",
-            "parentId": "1",
-            "staffCode": "666666",
-            "staffName": "牛牛",
-            "createdTime": "2017-06-16 17:12:53",
-            "block": "322"
+            "id": "254",
+            "name": "链家地产"
           },
           {
-            "id": "7",
-            "name": "自如友家",
-            "address": "北京市朝阳区四惠东大厦",
-            "industry": "1",
-            "status": "1",
-            "parentName": "链家地产",
-            "industryName": "房产中介",
-            "cityName": "北京市",
-            "areaName": "东城区",
-            "cityId": "21",
-            "areaId": "27",
-            "parentId": "1",
-            "staffCode": "666666",
-            "staffName": "萌黄",
-            "createdTime": "2017-06-16 14:15:12"
+            "id": "12",
+            "name": "我爱我家"
           }
-        ]
+        ],
+        "count": 11,
+        "page": 1,
+        "size": 100
       }
-    },
-    "failure": {
-      "retcode": "201",
-      "msg": "服务异常"
     }
+  },
+  "failure": {
+    "retcode": "201",
+    "msg": "服务异常"
   }
+}
 }

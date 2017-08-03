@@ -64,5 +64,7 @@ router.afterEach((to, from) => {
 /**
  * 实例化 app
  */
+window.cityId = document.getElementById('app').getAttribute('title')
 
 window.app = new Vue({ el: '#app', router, ...App, store })
+

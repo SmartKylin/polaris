@@ -100,6 +100,9 @@ export default create({
     if (this.$route.query.institution) {
       this.organ = this.$route.query.institution
     }
+    // 城市ID
+    console.log(window.cityId)
+    this.$toast.show(window.cityId)
   },
   computed: {
     mobileRight () {
