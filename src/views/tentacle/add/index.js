@@ -6,8 +6,6 @@ import { queryIndustry, addTentacle, queryLabel } from 'services'
 export default create({
   data() {
     return {
-      // 机构列表
-      institutionList: [],
       // 关系标签列表
       labRelaList: [],
       // 行业类型列表
@@ -24,22 +22,21 @@ export default create({
       position: '',
       // 标签
       label: '',
-      // 标签数组
-      labelAry: [],
       // 兴趣爱好
       hobby: '',
       // 备注
       remark: '',
       // 当前选中的机构
       curInstitution: '',
-      // 街区
-      block: '',
-      branchStore: '',
+      // 分店名
+      branchstoreName: '',
       organ: '',
       // 关系标签对象
       labelObj: {
         name: ''
-      }
+      },
+      institutionId: '',
+      institutionName: ''
     }
   },
   components: {
@@ -66,12 +63,10 @@ export default create({
         this.$toast.show('手机号格式有误')
         return
       }
-      let { name, mobile, position, remark, hobby, address, block } = this
-      let { cityId, areaId, industry } = this.curInstitution
-      let institutionId = this.curInstitution.id
-      let channelInstitutionName = this.curInstitution.name
-      let label = this.labelObj.name
-      addTentacle({ name, mobile, institutionId, position, block, cityId, areaId, industry, remark, label, hobby, address, channelInstitutionName }).then(res => {
+      let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId } = this
+      let cityId = window.cityId
+      let institutionName = this.organ
+      addTentacle({ name, mobile, industry, cityId, institutionId, institutionName, branchstoreName, address, position, label, hobby, remark }).then(res => {
         if (res.retcode === 2000000) {
           this.$dialog.alert('提示', '触点添加成功')
           this.$router.back()
@@ -100,9 +95,9 @@ export default create({
     if (this.$route.query.institution) {
       this.organ = this.$route.query.institution
     }
-    // 城市ID
-    console.log(window.cityId)
-    this.$toast.show(window.cityId)
+    if (this.$route.query.id) {
+      this.institutionId = this.$route.query.id
+    }
   },
   computed: {
     mobileRight () {
@@ -114,7 +109,7 @@ export default create({
     btnSubmitActive () {
       let { name, mobile, industry, address, position, organ, labelObj } = this
       let common = !!name.length && !!mobile.length && !!address.length && !!labelObj.name.length
-      if (industry === 3) {
+      if (industry === 4) {
         return common
       }
       return common && !!organ.length && !!position.length

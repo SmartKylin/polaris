@@ -16,10 +16,8 @@ export default create({
       }
       // 添加机构
       addInstitution({ name: this.organ, industry: this.industry }).then(res => {
-        if (res.retcode === 2000000) {
-          this.$toast.show('机构添加成功')
-          this.$router.replace('/organ')
-        }
+        this.$toast.show('机构添加成功')
+        this.$router.replace('/tentacle/add?institution=' + this.organ + '&id=' + res.id)
       }).catch(err => {
         this.$toast.show(err)
       })

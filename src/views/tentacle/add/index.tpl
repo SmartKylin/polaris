@@ -19,11 +19,10 @@
     <Selector title="*行业类型" @input="industryChange" v-model="industry" :placeholder="industryList[industry]">
       <SelectorOption v-for="(val, key) in industryList" :text="val" :value="key"></SelectorOption>
     </Selector>
-    <div v-show="industry!=3" class="tentadd--norperson">
-      <Cell title="*所属机构" arrow :content="organ" @click="handlePush"></Cell>
-      <Field label="所在分店" placeholder="请输入分店名称" v-model="branchStore" align="right"></Field>
-      <Field label="*职位" placeholder="请输入职位" align="right" v-model="position"></Field>
-    </div>
+    <!--field连续才会有border-bottom，所以此处每个组件分别添加v-show-->
+    <Cell v-show="industry!=4" title="*所属机构" arrow :content="organ" @click="handlePush"></Cell>
+    <Field v-show="industry!=4" label="所在分店" placeholder="请输入分店名称" v-model="branchstoreName" align="right"></Field>
+    <Field v-show="industry!=4" label="*职位" placeholder="请输入职位" align="right" v-model="position"></Field>
     <Field label="*地址" placeholder="请输入地址" align="right" v-model="address"></Field>
   </CellGroup>
 

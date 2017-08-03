@@ -61,10 +61,9 @@ router.afterEach((to, from) => {
   document.title = getTitle(to.path)
 })
 
+// 通过html解析php，从后台拿到的城市ID
+window.cityId = document.getElementById('app').getAttribute('title')
 /**
  * 实例化 app
  */
-window.cityId = document.getElementById('app').getAttribute('title')
-
 window.app = new Vue({ el: '#app', router, ...App, store })
-

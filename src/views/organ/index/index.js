@@ -1,31 +1,74 @@
 import create from './index.tpl'
 import './index.styl'
-import Search from '../../../components/organsearch'
+import { queryInstitution } from '../../../services/institution'
 
+const DELAY = 600
 export default create({
   data() {
     return {
-      institutionList: [1, 2, 3, 4],
-      // institutionList: [],
-      institution: '',
-      industry: ''
+      institutionList: [],
+      // institution: '',
+      industry: '',
+      // 搜索框名称
+      keyword: '',
+      // 是否有查到机构
+      noResultShow: false,
+      // 上一次机构输入时间
+      oldTime: '',
+      // 定时器
+      timer: ''
     }
-  },
-  components: {
-    Search
   },
   created () {
     if (this.$route.query.industry) {
-      this.industry = this.$route.query.industry
+      this.industry = parseInt(this.$route.query.industry)
     }
   },
   methods: {
     handleSelect (i) {
       this.institution = i
-      // this.$router.replace('/tentacle/add', this.institution)
       window.setTimeout(() => {
-        this.$router.replace('/tentacle/add?institution=' + this.institution)
+        this.$router.replace('/tentacle/add?institution=' + i.name + '&id=' + i.id)
       }, 100)
+    },
+    checkInput() {
+      if (this.keyword === '') this.institutionList = []
+    },
+    query(keyword) {
+      if (!keyword) {
+        this.institutionList = []
+        return
+      }
+      queryInstitution({
+        seach: keyword,
+        industry: this.industry
+      }).then(res => {
+        if (res.list.length === 0) {
+          this.industryList = []
+          this.noResultShow = true
+        } else {
+          this.institutionList = res.list
+          this.noResultShow = false
+        }
+      })
+    }
+  },
+  watch: {
+    keyword(val) {
+      // 函数节流
+      this.timer && clearTimeout(this.timer)
+      let curTime = +new Date()
+      let that = this
+      if (curTime - this.oldTime >= DELAY) {
+        this.oldTime = curTime
+        this.checkInput()
+        this.query(val)
+      } else {
+        this.timer = setTimeout(function() {
+          that.checkInput()
+          that.query(val)
+        }, DELAY)
+      }
     }
   }
 })

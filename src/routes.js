@@ -1,5 +1,5 @@
 import Login from 'views/user/login'
-// import TentacleIndex from 'views/tentacle/index'
+import TentacleIndex from 'views/tentacle/index'
 import TentacleList from 'views/tentacle/list'
 import TentacleSearch from 'views/tentacle/search'
 import TentacleSearchResult from 'views/tentacle/searchresult'
@@ -28,13 +28,13 @@ import UserIndex from 'views/user/index'
 
 import TaskDetail from 'views/user/task'
 
-const Tentacle = resolve => {
+/* const Tentacle = resolve => {
   // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
   // （代码分块）
   require.ensure(['views/tentacle/index'], () => {
     resolve(require('views/tentacle/index').default)
   })
-}
+} */
 
 export default [
   {
@@ -48,7 +48,7 @@ export default [
    */
   {
     path: '/tentacle',
-    component: Tentacle
+    component: TentacleIndex
   },
   {
     path: '/tentacle/commonality',
