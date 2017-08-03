@@ -96,6 +96,7 @@ export default create({
       // 产能标签删除
       // this.labCapaList = data[2].list
     })
+    // 机构搜索页传来的机构名称
     if (this.$route.query.institution) {
       this.organ = this.$route.query.institution
     }
