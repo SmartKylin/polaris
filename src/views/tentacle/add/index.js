@@ -47,8 +47,8 @@ export default create({
       curInstitution: '',
       // 街区
       block: '',
-      branchStore: '霍营店',
-      organ: '链家地产',
+      branchStore: '',
+      organ: '',
       // 关系标签对象
       labelObj: {
         name: ''
@@ -59,17 +59,22 @@ export default create({
     TentacleBar
   },
   methods: {
-    //  机构改变
+    /* //  机构改变
     institutionChange(val) {
       this.institutionId = val
       this.curInstitution = this.institutionList.find(i => i.id === val)
-    },
+    }, */
     // 关系标签改变
     relationChange(val) {
       this.label = val
       this.labelObj = this.labRelaList.find(l => l.id === val)
     },
-
+    // 电话输入框失焦，检查手机号
+    checkMobile() {
+      if (!this.mobileRight) {
+        this.$toast.show('请输入正确的手机号')
+      }
+    },
     // 提交触点
     tentacleAdd() {
       if (!this.btnSubmitActive) {
@@ -92,7 +97,14 @@ export default create({
       }).catch(err => {
         this.$dialog.alert('失败', err.message)
       })
+    },
+    // 点击跳转到机构列表页
+    handlePush() {
+      this.$router.replace('/organ?industry=' + this.industry)
     }
+    /* clear() {
+      this.val = ''
+    } */
   },
   mounted() {
     // 查询机构列表
@@ -105,6 +117,9 @@ export default create({
       // 产能标签删除
       // this.labCapaList = data[2].list
     })
+    if (this.$route.query.institution) {
+      this.organ = this.$route.query.institution
+    }
   },
   computed: {
     mobileRight () {
@@ -114,12 +129,12 @@ export default create({
       return false
     },
     btnSubmitActive () {
-      let { name, mobile, industry, address, position, organ, labelObj, branchStore } = this
-      let labelname = this.labelObj.name
+      let { name, mobile, industry, address, position, organ, labelObj } = this
+      let common = !!name.length && !!mobile.length && !!address.length && !!labelObj.name.length
       if (industry === 3) {
-        return !!name.length && !!mobile.length && !!address.length && !!labelObj.name.length
+        return common
       }
-      return !!name.length && !!mobile.length && !!organ.length && !!branchStore.length && !!position.length && !!labelname
+      return common && !!organ.length && !!position.length
     }
   }
 })

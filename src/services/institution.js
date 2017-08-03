@@ -14,3 +14,10 @@ export function queryInstitution(params) {
 export function queryInstitutionDetail(params) {
   return http.get(apis.institutionDetail, params)
 }
+
+/**
+ * 添加机构
+ */
+export function addInstitution(params) {
+  return http.post(apis.institutionAdd, params)
+}

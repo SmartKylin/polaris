@@ -36,6 +36,8 @@ export default (config => {
   'tentacleClaim': '/mizar/m/channel/commonality/claim',
   // 查询机构
   'institutionList': '/mizar/m/channel/institution/list',
+  // 添加机构
+  'institutionAdd': '/mizar/m/channel/institution/add',
   // 查询机构详情
   'institutionDetail': '/mizar/m/channel/institution/detail',
   // 查询标签
