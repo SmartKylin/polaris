@@ -21,3 +21,10 @@ export function queryInstitutionDetail(params) {
 export function addInstitution(params) {
   return http.post(apis.institutionAdd, params)
 }
+
+/**
+ * 查询业务类型列表
+ */
+export function queryIndustry() {
+  return http.get(apis.industryList)
+}

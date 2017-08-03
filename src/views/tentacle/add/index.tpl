@@ -17,7 +17,7 @@
     </Cell>-->
     
     <Selector title="*行业类型" @input="industryChange" v-model="industry">
-      <SelectorOption v-for="indus in industryList" :text="indus.name" :value="indus.id"></SelectorOption>
+      <SelectorOption v-for="(val, key) in industryList" :text="val" :value="key"></SelectorOption>
     </Selector>
     <div v-show="industry!=3" class="tentadd--norperson">
       <Cell title="*所属机构" arrow :content="organ" @click="handlePush"></Cell>

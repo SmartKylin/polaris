@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import { queryInstitution, addTentacle, queryLabel } from 'services'
+import { queryIndustry, addTentacle, queryLabel } from 'services'
 
 export default create({
   data() {
@@ -11,20 +11,7 @@ export default create({
       // 关系标签列表
       labRelaList: [],
       // 行业类型列表
-      industryList: [
-        {
-          id: 1,
-          name: '房产中介'
-        },
-        {
-          id: 2,
-          name: '银行客户经理'
-        },
-        {
-          id: 3,
-          name: '个人'
-        }
-      ],
+      industryList: {},
       // 机构所处产业
       industry: 1,
       // 触点地址 */
@@ -59,11 +46,6 @@ export default create({
     TentacleBar
   },
   methods: {
-    /* //  机构改变
-    institutionChange(val) {
-      this.institutionId = val
-      this.curInstitution = this.institutionList.find(i => i.id === val)
-    }, */
     // 关系标签改变
     relationChange(val) {
       this.label = val
@@ -102,14 +84,11 @@ export default create({
     handlePush() {
       this.$router.replace('/organ?industry=' + this.industry)
     }
-    /* clear() {
-      this.val = ''
-    } */
   },
   mounted() {
-    // 查询机构列表
-    queryInstitution().then(data => {
-      this.institutionList = data.list
+    // 查询行业类型列表
+    queryIndustry().then(data => {
+      this.industryList = data
     })
     // 查询标签列表
     queryLabel().then(data => {

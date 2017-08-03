@@ -40,6 +40,8 @@ export default (config => {
   'institutionAdd': '/mizar/m/channel/institution/add',
   // 查询机构详情
   'institutionDetail': '/mizar/m/channel/institution/detail',
+  // 查询业务类型
+  'industryList': '/mizar/m/channel/industry/list',
   // 查询标签
   'labelList': '/mizar/m/channel/label/list',
   // 城市列表
