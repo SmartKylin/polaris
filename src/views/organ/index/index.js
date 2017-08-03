@@ -34,13 +34,20 @@ export default create({
     checkInput() {
       if (this.keyword === '') this.institutionList = []
     },
-    query(keyword) {
-      if (!keyword) {
+    checkInstitutionLen() {
+      if (this.institutionList.length === 0) {
+        this.noResultShow = true
+      } else {
+        this.noResultShow = false
+      }
+    },
+    query() {
+      if (!this.keyword) {
         this.institutionList = []
         return
       }
       queryInstitution({
-        seach: keyword,
+        seach: this.keyword,
         industry: this.industry
       }).then(res => {
         if (res.list.length === 0) {
@@ -61,12 +68,14 @@ export default create({
       let that = this
       if (curTime - this.oldTime >= DELAY) {
         this.oldTime = curTime
-        this.checkInput()
-        this.query(val)
+        // this.checkInput()
+        this.query()
+        // this.checkInstitutionLen()
       } else {
         this.timer = setTimeout(function() {
           that.checkInput()
-          that.query(val)
+          that.query()
+          that.checkInstitutionLen()
         }, DELAY)
       }
     }

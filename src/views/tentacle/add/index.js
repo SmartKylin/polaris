@@ -36,7 +36,9 @@ export default create({
         name: ''
       },
       institutionId: '',
-      institutionName: ''
+      institutionName: '',
+      // 是否正在提交数据
+      isPosting: false
     }
   },
   components: {
@@ -63,15 +65,21 @@ export default create({
         this.$toast.show('手机号格式有误')
         return
       }
+      if (this.isPosting) {
+        return
+      }
       let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId } = this
       let cityId = window.cityId
       let institutionName = this.organ
+      this.isPosting = true
       addTentacle({ name, mobile, industry, cityId, institutionId, institutionName, branchstoreName, address, position, label, hobby, remark }).then(res => {
         if (res.retcode === 2000000) {
+          this.isPosting = false
           this.$dialog.alert('提示', '触点添加成功')
           this.$router.back()
         }
       }).catch(err => {
+        this.isPosting = false
         this.$dialog.alert('失败', err.message)
       })
     },
