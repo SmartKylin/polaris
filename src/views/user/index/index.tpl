@@ -1,4 +1,4 @@
-<div class="userView">
+<div class="user--view">
   <div class="user--header">
     <Tab @change="handleChange">
       <div class="tab--item active" data-key="week">本周目标</div>
