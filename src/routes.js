@@ -75,27 +75,27 @@ export default [
     component: TentacleSearchResult
   },
   {
-    path: '/tentacle/detail/:id?',
+    path: '/tentacle/detail/:id',
     component: TentacleDetail,
     children: [
       {
         path: '/',
-        redirect: 'achieve/:id'
+        redirect: 'achieve'
       },
       {
-        path: 'achieve/:id',
+        path: 'achieve',
         component: TentacleDetailAchieve
       },
       {
-        path: 'logger/:id',
+        path: 'logger',
         component: TentacleDetailLogger
       },
       {
-        path: 'description/:id',
+        path: 'description',
         component: TentacleDetailDescription
       },
       {
-        path: 'info/:id',
+        path: 'info',
         component: TentacleDetailInfo
       }
     ]
