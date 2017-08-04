@@ -85,7 +85,7 @@ export default create({
     },
     // 点击跳转到机构列表页
     handlePush() {
-      this.$router.push('/organ?industry=' + this.industry)
+      this.$router.replace('/organ?industry=' + this.industry)
     }
   },
   mounted() {
@@ -129,9 +129,6 @@ export default create({
     let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId } = this
     let cityId = window.cityId
     let institutionName = this.organ
-    if (from.path === '/organ' && to.path === '/organ') {
-      this.$router.replace('/organ?industry=' + this.industry)
-    }
     if (to.path === '/organ') {
       localStorage.setItem('tentacle', JSON.stringify({ name, mobile, industry, cityId, institutionId, institutionName, branchstoreName, address, position, label, hobby, remark }))
     } else {

@@ -6,7 +6,7 @@
     </div>
   </Tab>
   <TentacleBar v-for="tent in dataList" :data="tent" :channelId="tent.id"/>
-  <div class="bottom-notice">
+  <div class="bottom-notice" v-show="allLoaded">
     没有更多触点了
     <!--<router-link to="/tentacle/list?category=b&capacity=5" :replace="true"  v-if="category === 'a'">看看"B高"触点有没有新单吧</router-link>-->
     <router-link to="/tentacle/list?category=b" :replace="true"  v-if="category === 'a'">看看"B"触点有没有新单吧</router-link>
