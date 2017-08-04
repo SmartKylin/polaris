@@ -27,20 +27,24 @@
   </CellGroup>
 
   <!--<Cell title="画像" class="info&#45;&#45;title"></Cell>-->
-  <div class="relasel--wrap">
-    <Selector title="关系标签" @input="relationChange" :placeholder="labelObj.name">
+  <CellGroup>
+    <Selector title="关系标签" @input="relationChange" :placeholder="labelObj.name" class="relasel--wrap">
       <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
     </Selector>
-  </div>
-  <div class="add--textarea--wrap">
-    <div class="textarea--title">兴趣爱好</div>
-    <textarea name="" cols="3" rows="4" class="add--text--area" placeholder="200个字以内(选填)" maxlength="200" v-model="hobby"></textarea>
-    <div class="textarea--length">{{hobby.length}}/200</div>
-  </div>
-  <div class="add--textarea--wrap">
-    <div class="textarea--title">备注</div>
-    <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="100个字以内(选填)" maxlength="100" v-model="remark"></textarea>
-    <div class="textarea--length">{{remark.length}}/100</div>
-  </div>
+  </CellGroup>
+  <CellGroup>
+    <div class="add--textarea--wrap">
+      <div class="textarea--title">兴趣爱好</div>
+      <textarea name="" cols="3" rows="4" class="add--text--area" placeholder="200个字以内(选填)" maxlength="200" v-model="hobby"></textarea>
+      <div class="textarea--length">{{hobby.length}}/200</div>
+    </div>
+  </CellGroup>
+  <CellGroup>
+    <div class="add--textarea--wrap">
+      <div class="textarea--title">备注</div>
+      <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="100个字以内(选填)" maxlength="100" v-model="remark"></textarea>
+      <div class="textarea--length">{{remark.length}}/100</div>
+    </div>
+  </CellGroup>
   <div class="btn--addtent " :class="{'active': btnSubmitActive}" @click="tentacleAdd">提交</div>
 </div>

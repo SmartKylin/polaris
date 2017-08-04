@@ -33,8 +33,6 @@
   padding: 0 15px;
   margin: 10px 0;
   font-size: 15px;
-  border-top: 1px solid rgb(232, 232, 235);
-  border-bottom: 1px solid rgb(232, 232, 235);
   .add--text--area {
     outline: none;
     resize: none;
@@ -52,10 +50,6 @@
     padding: 10px 0;
   }
 
-}
-
-.relasel--wrap {
-  border-top: 1px solid rgb(232, 232, 235);
 }
 
 .tentadd {
@@ -78,6 +72,14 @@
     text-align: center;
     &.active {
       background: color-blue;
+    }
+  }
+  .Cell--bd {
+    color: #333;
+  }
+  .relasel--wrap {
+    .smart-border-bottom:after {
+      border: none;
     }
   }
 
