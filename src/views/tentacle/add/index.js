@@ -45,6 +45,12 @@ export default create({
     TentacleBar
   },
   methods: {
+    // 行业类型改变,清空机构名，分店名，职位
+    industryChange () {
+      this.organ = ''
+      this.branchstoreName = ''
+      this.position = ''
+    },
     // 关系标签改变
     relationChange(val) {
       this.label = val

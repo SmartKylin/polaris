@@ -32,7 +32,7 @@
   </Selector>
   <div class="add--textarea--wrap">
     <div class="textarea--title">兴趣爱好</div>
-    <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="200个字以内(选填)" maxlength="200" v-model="hobby"></textarea>
+    <textarea name="" cols="3" rows="4" class="add--text--area" placeholder="200个字以内(选填)" maxlength="200" v-model="hobby"></textarea>
     <div class="textarea--length">{{hobby.length}}/200</div>
   </div>
   <div class="add--textarea--wrap">
