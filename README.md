@@ -1,22 +1,29 @@
 # polaris
 
-> 房联铁军
+房联铁军
 
-## Build Setup
+* 开发
 
-``` bash
-# install dependencies
-yarn install
-
-# serve with hot reload at localhost:8080
-yarn run dev
-
-# build for production with minification
-yarn run build
-
-# release for production
-./release.js
 ```
+yarn run dev
+```
+
+* 生产环境打包
+
+```
+yarn run build
+```
+
+* 发布到测试环境
+
+```
+yarn run deploy
+```
+
+## 公众号
+
+* 房联铁军 fangliantiejun
+* 京房联测试 jingfanglian_test
 
 ## 主题颜色
 
