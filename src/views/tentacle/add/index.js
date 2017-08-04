@@ -125,7 +125,7 @@ export default create({
     btnSubmitActive () {
       let { name, mobile, industry, address, position, organ, labelObj } = this
       let common = !!name.length && !!mobile.length && !!address.length && !!labelObj.name.length
-      if (industry === 4) {
+      if (parseInt(industry) === 4) {
         return common
       }
       return common && !!organ.length && !!position.length
