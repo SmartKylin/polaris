@@ -85,7 +85,7 @@ export default create({
     },
     // 点击跳转到机构列表页
     handlePush() {
-      this.$router.replace('/organ?industry=' + this.industry)
+      this.$router.push('/organ?industry=' + this.industry)
     }
   },
   mounted() {
@@ -99,6 +99,8 @@ export default create({
       // 产能标签删除
       // this.labCapaList = data[2].list
     })
+    // 加载localStorage中的数据
+    Object.assign(this, JSON.parse(localStorage.getItem('tentacle')))
     // 机构搜索页传来的机构名称
     if (this.$route.query.institution) {
       this.organ = this.$route.query.institution
@@ -122,5 +124,19 @@ export default create({
       }
       return common && !!organ.length && !!position.length
     }
+  },
+  beforeRouteLeave (to, from, next) {
+    let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId } = this
+    let cityId = window.cityId
+    let institutionName = this.organ
+    if (from.path === '/organ' && to.path === '/organ') {
+      this.$router.replace('/organ?industry=' + this.industry)
+    }
+    if (to.path === '/organ') {
+      localStorage.setItem('tentacle', JSON.stringify({ name, mobile, industry, cityId, institutionId, institutionName, branchstoreName, address, position, label, hobby, remark }))
+    } else {
+      localStorage.removeItem('tentacle')
+    }
+    next()
   }
 })
