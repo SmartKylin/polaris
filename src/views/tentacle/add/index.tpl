@@ -27,9 +27,11 @@
   </CellGroup>
 
   <!--<Cell title="画像" class="info&#45;&#45;title"></Cell>-->
-  <Selector title="*关系标签" @input="relationChange" :placeholder="labelObj.name">
-    <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
-  </Selector>
+  <div class="relasel--wrap">
+    <Selector title="*关系标签" @input="relationChange" :placeholder="labelObj.name">
+      <SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id"></SelectorOption>
+    </Selector>
+  </div>
   <div class="add--textarea--wrap">
     <div class="textarea--title">兴趣爱好</div>
     <textarea name="" cols="3" rows="4" class="add--text--area" placeholder="200个字以内(选填)" maxlength="200" v-model="hobby"></textarea>
