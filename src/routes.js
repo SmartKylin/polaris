@@ -75,7 +75,7 @@ export default [
     component: TentacleSearchResult
   },
   {
-    path: '/tentacle/detail/:id',
+    path: '/tentacle/detail/:id?',
     component: TentacleDetail,
     children: [
       {
