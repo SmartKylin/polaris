@@ -15,7 +15,8 @@
       <img v-show="institution === i" src="../../../images/institution/btn_sel.png" alt="">
     </div>
   </div>
-  <div class="no--search--result" v-show="!institutionList.length && keyword">
+  <!-- '暂无结果'背景显示的条件是：1.机构列表为空  2.输入框有值 2.输入框的值已经固定-->
+  <div class="no--search--result" v-show="!institutionList.length && keyword && !isSearching">
     <img src="../../../images/institution/background_search_wu.png" alt="" class="organ--body--bg">
     <div class="organ--txt">暂无搜索结果</div>
     <div class="organ--txt">您可点击右上角“+”创建</div>

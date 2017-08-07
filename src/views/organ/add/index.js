@@ -19,7 +19,8 @@ export default create({
         this.$toast.show('机构添加成功')
         this.$router.replace('/tentacle/add?institution=' + this.organ + '&id=' + res.id)
       }).catch(err => {
-        this.$toast.show(err)
+        // this.$toast.show(err.message)
+        this.$dialog.alert('提示', err.message)
       })
     }
   },

@@ -16,7 +16,8 @@ export default create({
       // 上一次机构输入时间
       oldTime: '',
       // 定时器
-      timer: ''
+      timer: '',
+      isSearching: false
     }
   },
   created () {
@@ -27,20 +28,13 @@ export default create({
   methods: {
     handleSelect (i) {
       this.institution = i
-      window.setTimeout(() => {
+      setTimeout(() => {
         this.$router.replace('/tentacle/add?institution=' + i.name + '&id=' + i.id)
-      }, 100)
+      }, 300)
     },
     checkInput() {
       if (this.keyword === '') this.institutionList = []
     },
-    /* checkInstitutionLen() {
-      if (this.institutionList.length === 0) {
-        this.noResultShow = true
-      } else {
-        this.noResultShow = false
-      }
-    }, */
     query() {
       if (!this.keyword) {
         this.institutionList = []
@@ -55,26 +49,26 @@ export default create({
         } else {
           this.noResultShow = false
         }
+        this.isSearching = false
         this.institutionList = res.list
+      }).catch(err => {
+        this.$toast.show(err.message)
       })
     }
   },
   watch: {
     keyword(val) {
+      this.isSearching = true
       // 函数节流
       this.timer && clearTimeout(this.timer)
       let curTime = +new Date()
-      let that = this
       if (curTime - this.oldTime >= DELAY) {
         this.oldTime = curTime
-        this.checkInput()
         this.query()
-        // this.checkInstitutionLen()
       } else {
-        this.timer = setTimeout(function() {
-          that.checkInput()
-          that.query()
-          // that.checkInstitutionLen()
+        this.timer = setTimeout(() => {
+          // that.checkInput()
+          this.query()
         }, DELAY)
       }
     }

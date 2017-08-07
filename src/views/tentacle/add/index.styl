@@ -53,13 +53,11 @@
 }
 
 .tentadd {
-  .tentadd--norperson {
-    .Cell--bd {
-      color: #333;
-    }
-  }
-  .Selector--values {
-    color: #333;
+  // selector的placeholder颜色
+  .Selector--values-shallow
+  .field--placeholder{
+    color: #ccc
+    font-size: 15px;
   }
   .btn--addtent {
     height: 45px;
@@ -74,22 +72,24 @@
       background: color-blue;
     }
   }
-  .Cell--bd {
+  /*.Cell--bd {
     color: #333;
-  }
+  }*/
   .relasel--wrap {
     .smart-border-bottom:after {
       border: none;
     }
   }
 
-  /*
   //加红色星号
-  .Field--label:before {
-    content: ' *';
-    color: red;
-    font-size: 150%;
-  } */
+  /*.required--field {
+    .Field--label:before,
+    .Cell--title:before {
+      content: ' *';
+      color: red;
+      font-size: 20px;
+    }
+  }*/
 
   /*.smart-border-bottom:after {
     content: "";
