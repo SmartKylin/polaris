@@ -15,7 +15,6 @@ import getTitle from './titles'
 import initHelper from './helper'
 import App from 'views/app'
 import './css/index.styl'
-import { store } from './store'
 
 Vue.use(Router)
 Vue.use(SmartUI)
@@ -61,9 +60,7 @@ router.afterEach((to, from) => {
   document.title = getTitle(to.path)
 })
 
-// 通过html解析php，从后台拿到的城市ID
-window.cityId = document.getElementById('app').getAttribute('title')
 /**
  * 实例化 app
  */
-window.app = new Vue({ el: '#app', router, ...App, store })
+window.app = new Vue({ el: '#app', router, ...App })

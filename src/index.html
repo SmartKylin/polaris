@@ -9,10 +9,11 @@
     var __CONFIG__ = {}
     __CONFIG__.apiPath = '<%=htmlWebpackPlugin.options.apiPath%>'
     __CONFIG__.version = '<%=htmlWebpackPlugin.options.appVersion%>'
+    cityId = '<?php echo $city_id;?>'
   </script>
   <%=htmlWebpackPlugin.files.webpackManifest%>
 </head>
 <body>
-  <div id="app" title="<?php echo $city_id;?>"></div>
+  <div id="app"></div>
 </body>
 </html>
