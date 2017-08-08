@@ -25,6 +25,9 @@ export default create({
     if (this.$route.query.industry) {
       this.industry = parseInt(this.$route.query.industry)
     }
+    if (this.$route.query.institutionId) {
+      this.institutionId = this.$route.query.institutionId
+    }
     this.initialQuery()
   },
   methods: {
@@ -34,6 +37,7 @@ export default create({
       }).then(res => {
         this.isSearching = false
         this.institutionList = res.list
+        this.institution = res.list.find(i => i.id === this.institutionId)
       }).catch(err => {
         this.isSearching = false
         this.$toast.show(err.message)

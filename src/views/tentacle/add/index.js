@@ -27,8 +27,6 @@ export default create({
       hobby: '',
       // 备注
       remark: '',
-      // 当前选中的机构
-      curInstitution: '',
       // 分店名
       branchstoreName: '',
       organ: '',
@@ -121,7 +119,7 @@ export default create({
         this.$toast.show('请先选择行业类型')
         return
       }
-      this.$router.push('/organ?industry=' + this.industry)
+      this.$router.push('/organ?industry=' + this.industry + '&institutionId=' + this.institutionId)
     }
   },
   mounted() {
