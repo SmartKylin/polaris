@@ -43,5 +43,7 @@
       <div class="textarea--length">{{remark.length}}/100</div>
     </div>
   </CellGroup>
-  <div class="btn--addtent " :class="{'active': btnSubmitActive}" @click="tentacleAdd">提交</div>
+  <div class="btn--wrap">
+    <div class="btn--addtent " :class="{'active': btnSubmitActive}" @click="tentacleAdd">提交</div>
+  </div>
 </div>

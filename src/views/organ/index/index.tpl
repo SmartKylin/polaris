@@ -10,15 +10,15 @@
   </header>
   <div class="search--result" >
     <div v-show="!keyword">
-      <div class="hot---institution">
-        <p class="hot--title">热门机构</p>
+      <div class="hot---institution" v-if="hotInstitutionList && hotInstitutionList.length">
+        <p class="hot--title">常用机构</p>
         <div class="organ--item flex" v-for="i in hotInstitutionList" @click="handleSelect(i)">
           <div>{{i.name}}</div>
           <img v-show="institution !== i" src="../../../images/institution/btn_nor.png" alt="">
           <img v-show="institution === i" src="../../../images/institution/btn_sel.png" alt="">
         </div>
       </div>
-      <div class="allins--list">
+      <div class="allins--list" v-if="institutionList && institutionList.length">
         <p class="hot--title">所有机构</p>
         <div v-for="ins in institutionList">
            <div class="institution--letter">{{ins.letter}}</div>
@@ -30,14 +30,19 @@
          </div>
       </div>
     </div>
-    <div v-show="institutionList.length" class="organ--item flex" v-for="i in institutionList" @click="handleSelect(i)">
+    <div v-show="keyword" class="organ--item flex" v-for="i in institutionList" @click="handleSelect(i)">
       <div>{{i.name}}</div>
       <img v-show="institution !== i" src="../../../images/institution/btn_nor.png" alt="">
       <img v-show="institution === i" src="../../../images/institution/btn_sel.png" alt="">
     </div>
   </div>
+  <div class="no--search--result" v-show="industry === 2">
+    <img src="../../../images/institution/background_search_wu.png" alt="" class="organ--body--bg">
+    <div v-show="industry === 2" class="organ--txt">暂无机构数据</div>
+    <div class="organ--txt">您可点击右上角“+”创建</div>
+  </div>
   <!-- '暂无结果'背景显示的条件是：1.机构列表为空  2.输入框有值 2.输入框的值已经固定-->
-  <div class="no--search--result" v-show="!institutionList.length && keyword && !isSearching">
+  <div class="no--search--result" v-show="industry !== 2 && institutionList.length == 0 && keyword && !isSearching">
     <img src="../../../images/institution/background_search_wu.png" alt="" class="organ--body--bg">
     <div class="organ--txt">暂无搜索结果</div>
     <div class="organ--txt">您可点击右上角“+”创建</div>
