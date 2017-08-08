@@ -1,5 +1,7 @@
 <div>
-  <SearchBox/>
+  <div class="tent--index--header">
+    <SearchBox/>
+  </div>
   <div class="tentacleView--tab" v-if="data.total">
     <div class="tentacleView--tabItem">
       <p class="tentacleView--tabItem--cont">{{data.total.channel}}</p>
@@ -17,7 +19,6 @@
       <p class="tentacleView--tabItem--cont">{{data.total.bargain_clue}}</p>
       <p class="tentacleView--tabItem--name">有成单记录</p>
     </div>
-
   </div>
   <div class="index--overview" v-if="data.synthesize">
    <!-- <div class="index&#45;&#45;wrap">

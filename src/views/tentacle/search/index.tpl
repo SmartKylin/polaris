@@ -1,5 +1,5 @@
 <div>
-  <div class="tent--search--header">
+  <div class="tent--search--header" v-if="categories.length && labRelaList.length">
     <SearchBar></SearchBar>
     <Tab @change="levelChange">
       <div class="tab--item" v-for="level in categories" :class="{active: curLevel === level.id}" :data-key="level.id">
@@ -7,7 +7,7 @@
         <p class="tentacleView--tabItem--name">{{level.name}}</p>
       </div>
     </Tab>
-    <Tab @change="categoryChange" v-if="labRelaList.length">
+    <Tab @change="categoryChange">
       <div class="tab--item" v-for="rela in labRelaList" :data-key="rela.id" :class="{active: rela.name == 'A类'}">{{rela.name}}</div>
       <div class="tab--item" data-key="dormant">休眠</div>
     </Tab>
