@@ -48,6 +48,11 @@ export default create({
       this.label = val
       this.labelObj = this.labRelaList.find(l => l.id === val)
     }, */
+    industryChange() {
+      this.organ = ''
+      this.branchstoreName = ''
+      this.position = ''
+    },
     // 电话输入框失焦，检查手机号
     checkMobile() {
       if (!this.mobileRight) {
@@ -101,14 +106,14 @@ export default create({
       this.$router.push('/organ?industry=' + this.industry)
     }
   },
-  watch: {
-    industry(v) {
-      // 行业类型改变,清空机构名，分店名，职位
-      this.organ = ''
-      this.branchstoreName = ''
-      this.position = ''
-    }
-  },
+  /* watch: {
+      industry(v) {
+        // 行业类型改变,清空机构名，分店名，职位
+        this.organ = ''
+        this.branchstoreName = ''
+        this.position = ''
+      }
+  }, */
   mounted() {
     // 查询行业类型列表
     queryIndustry().then(data => {

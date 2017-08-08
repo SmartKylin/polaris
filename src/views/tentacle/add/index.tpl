@@ -16,13 +16,15 @@
       </div>
     </Cell>-->
     
-    <Selector title="行业类型" v-model="industry" placeholder="请选择行业类型" class="required--field" :options="industryList">
+    <Selector title="行业类型" v-model="industry" placeholder="请选择行业类型" @input="industryChange" class="required--field" :options="industryList">
     </Selector>
     <!--field连续才会有border-bottom，所以此处每个组件分别添加v-show-->
     <!--<Cell v-show="industry!=4" title="所属机构" :to="`/organ?industry=${industry}`">-->
     <Cell v-show="industry!=4" title="所属机构" arrow @click="linkToOrgan" class="required--field">
-      <span v-show="!organ" slot="body" class="field--placeholder">请选择所属机构</span>
-      <span slot="body">{{organ}}</span>
+      <div slot="body">
+        <span v-show="!organ" slot="body" class="field--placeholder">请选择所属机构</span>
+        <span slot="body">{{organ}}</span>
+      </div>
     </Cell>
     <Field v-show="industry!=4" label="所在分店" placeholder="请输入分店名(选填)" v-model="branchstoreName" align="right"></Field>
     <Field label="地址" placeholder="请输入地址" align="right" v-model="address" class="required--field"></Field>
