@@ -2,7 +2,7 @@ import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
 import { queryIndustry, addTentacle, queryLabel } from 'services'
-// import storage from '../../../helper/storage'
+import storage from '../../../helper/storage'
 
 export default create({
   data() {
@@ -130,8 +130,8 @@ export default create({
     // 查询标签列表
     this.queryLab()
     // 加载localStorage中的数据
-    if (localStorage.getItem && localStorage.getItem('tentacle')) {
-      Object.assign(this, JSON.parse(localStorage.getItem('tentacle')))
+    if (storage.get('tentacle')) {
+      Object.assign(this, storage.get('tentacle'))
     }
     // 机构搜索页传来的机构名称
     if (this.$route.query.institution) {
@@ -156,7 +156,7 @@ export default create({
   },
   beforeRouteEnter(to, from, next) {
     if (!(from.path === '/organ' || from.path === '/organ/add')) {
-      localStorage.removeItem('tentacle')
+      storage.remove('tentacle')
     }
     next()
   },
@@ -165,7 +165,7 @@ export default create({
     let cityId = window.cityId
     let institutionName = this.organ
     if (to.path === '/organ') {
-      localStorage.setItem('tentacle', JSON.stringify({
+      storage.set('tentacle', {
         name,
         mobile,
         industry,
@@ -178,9 +178,9 @@ export default create({
         label,
         hobby,
         remark
-      }))
+      })
     } else {
-      localStorage.removeItem('tentacle')
+      storage.remove('tentacle')
     }
     next()
   }
