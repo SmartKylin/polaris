@@ -7,7 +7,8 @@ export default create({
   data() {
     return {
       institutionList: [],
-      // institution: '',
+      // 机构名
+      institution: '',
       industry: '',
       // 搜索框名称
       keyword: '',
@@ -24,22 +25,31 @@ export default create({
     if (this.$route.query.industry) {
       this.industry = parseInt(this.$route.query.industry)
     }
+    this.initialQuery()
   },
   methods: {
+    initialQuery() {
+      queryInstitution({
+        industry: this.industry
+      }).then(res => {
+        this.isSearching = false
+        this.institutionList = res.list
+      }).catch(err => {
+        this.isSearching = false
+        this.$toast.show(err.message)
+      })
+    },
     handleSelect (i) {
       this.institution = i
       setTimeout(() => {
         this.$router.replace('/tentacle/add?institution=' + i.name + '&id=' + i.id)
       }, 300)
     },
-    checkInput() {
-      if (this.keyword === '') this.institutionList = []
-    },
     query() {
-      if (!this.keyword) {
+      /* if (!this.keyword) {
         this.institutionList = []
         return
-      }
+      } */
       queryInstitution({
         seach: this.keyword,
         industry: this.industry
@@ -52,6 +62,7 @@ export default create({
         this.isSearching = false
         this.institutionList = res.list
       }).catch(err => {
+        this.isSearching = false
         this.$toast.show(err.message)
       })
     }
@@ -67,7 +78,6 @@ export default create({
         this.query()
       } else {
         this.timer = setTimeout(() => {
-          // that.checkInput()
           this.query()
         }, DELAY)
       }

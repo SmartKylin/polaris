@@ -8,7 +8,7 @@
       <img src="../../../images/institution/btn_add.png" alt="" class="add--organ--icon">
     </router-link>
   </header>
-  <div class="search--result" v-show="institutionList.length && keyword">
+  <div class="search--result" v-show="institutionList.length">
     <div class="organ--item flex" v-for="i in institutionList" @click="handleSelect(i)">
       <div>{{i.name}}</div>
       <img v-show="institution !== i" src="../../../images/institution/btn_nor.png" alt="">
