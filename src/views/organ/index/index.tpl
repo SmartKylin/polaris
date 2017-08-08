@@ -8,8 +8,29 @@
       <img src="../../../images/institution/btn_add.png" alt="" class="add--organ--icon">
     </router-link>
   </header>
-  <div class="search--result" v-show="institutionList.length">
-    <div class="organ--item flex" v-for="i in institutionList" @click="handleSelect(i)">
+  <div class="search--result" >
+    <div v-show="!keyword">
+      <div class="hot---institution">
+        <p class="hot--title">热门机构</p>
+        <div class="organ--item flex" v-for="i in hotInstitutionList" @click="handleSelect(i)">
+          <div>{{i.name}}</div>
+          <img v-show="institution !== i" src="../../../images/institution/btn_nor.png" alt="">
+          <img v-show="institution === i" src="../../../images/institution/btn_sel.png" alt="">
+        </div>
+      </div>
+      <div class="allins--list">
+        <p class="hot--title">所有机构</p>
+        <div v-for="ins in institutionList">
+           <div class="institution--letter">{{ins.letter}}</div>
+           <div class="organ--item flex" v-for="i in ins.list" @click="handleSelect(i)">
+             <div>{{i.name}}</div>
+             <img v-show="institution !== i" src="../../../images/institution/btn_nor.png" alt="">
+             <img v-show="institution === i" src="../../../images/institution/btn_sel.png" alt="">
+           </div>
+         </div>
+      </div>
+    </div>
+    <div v-show="institutionList.length" class="organ--item flex" v-for="i in institutionList" @click="handleSelect(i)">
       <div>{{i.name}}</div>
       <img v-show="institution !== i" src="../../../images/institution/btn_nor.png" alt="">
       <img v-show="institution === i" src="../../../images/institution/btn_sel.png" alt="">

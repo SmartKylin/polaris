@@ -7,6 +7,8 @@ export default create({
   data() {
     return {
       institutionList: [],
+      // 热门机构列表
+      hotInstitutionList: [],
       // 机构名
       institution: '',
       industry: '',
@@ -36,8 +38,9 @@ export default create({
         industry: this.industry
       }).then(res => {
         this.isSearching = false
+        this.hotInstitutionList = res.hot
         this.institutionList = res.list
-        this.institution = res.list.find(i => i.id === this.institutionId)
+        // this.institution = res.list.find(i => i.id === this.institutionId)
       }).catch(err => {
         this.isSearching = false
         this.$toast.show(err.message)
