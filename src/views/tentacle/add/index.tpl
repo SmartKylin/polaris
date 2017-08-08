@@ -1,21 +1,8 @@
-<div class="tentadd">
+<div class="tentadd" v-if="labRelaList.length">
   <CellGroup class="mt15 mb10">
     <!--<Cell title="基本信息" class="info&#45;&#45;title"></Cell>-->
     <Field label="姓名" type="text" placeholder="请输入姓名" align="right" v-model="name" class="required--field"></Field>
     <Field label="电话" type="tel" placeholder="请输入电话" align="right" v-model="mobile" @blur="checkMobile" class="required--field"></Field>
-  
-    <!--<Cell>
-      <div class="Field&#45;&#45;label" slot="header">*电话</div>
-      <div class="Field&#45;&#45;bd" slot="body">
-        <div class="Field&#45;&#45;input">
-          <input type="tel" style="text-align: right" v-model="value" placeholder="请输入电话"  @blur="checkMobile">
-        </div>
-        <div class="Field&#45;&#45;delBox" v-show="mobile.length" @click="clear">
-          <div class="Field&#45;&#45;del"></div>
-        </div>
-      </div>
-    </Cell>-->
-    
     <Selector title="行业类型" v-model="industry" placeholder="请选择行业类型" @input="industryChange" class="required--field" :options="industryList">
     </Selector>
     <!--field连续才会有border-bottom，所以此处每个组件分别添加v-show-->
@@ -50,7 +37,7 @@
     </div>
   </CellGroup>
   <CellGroup>
-    <div class="add--textarea--wrap">
+    <div class="add--textarea--wrap mb70">
       <div class="textarea--title">备注</div>
       <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="(选填)" maxlength="100" v-model="remark"></textarea>
       <div class="textarea--length">{{remark.length}}/100</div>

@@ -48,6 +48,24 @@ export default create({
       this.label = val
       this.labelObj = this.labRelaList.find(l => l.id === val)
     }, */
+    // 查询标签列表
+    queryLab() {
+      queryLabel().then(data => {
+        this.labRelaList = data[1].list
+        // 产能标签删除
+        // this.labCapaList = data[2].list
+      })
+    },
+    // 查询标签列表
+    queryIndus() {
+      queryIndustry().then(data => {
+        let list = []
+        for (let key in data) {
+          list.push({ text: data[key], value: key })
+        }
+        this.industryList = list
+      })
+    },
     industryChange() {
       this.organ = ''
       this.branchstoreName = ''
@@ -106,29 +124,11 @@ export default create({
       this.$router.push('/organ?industry=' + this.industry)
     }
   },
-  /* watch: {
-      industry(v) {
-        // 行业类型改变,清空机构名，分店名，职位
-        this.organ = ''
-        this.branchstoreName = ''
-        this.position = ''
-      }
-  }, */
   mounted() {
     // 查询行业类型列表
-    queryIndustry().then(data => {
-      let list = []
-      for (let key in data) {
-        list.push({ text: data[key], value: key })
-      }
-      this.industryList = list
-    })
+    this.queryIndus()
     // 查询标签列表
-    queryLabel().then(data => {
-      this.labRelaList = data[1].list
-      // 产能标签删除
-      // this.labCapaList = data[2].list
-    })
+    this.queryLab()
     // 加载localStorage中的数据
     if (localStorage.getItem && localStorage.getItem('tentacle')) {
       Object.assign(this, JSON.parse(localStorage.getItem('tentacle')))
