@@ -1,10 +1,13 @@
 <div class="tentacleListView">
-  <Tab @change="queryWithLevel" v-if="!isDormant && categories.length > 0">
-    <div class="tab--item" v-for="cate in categories" :class="{active: cate.id === curLevel}" :data-key="cate.id">
-      <p class="tentacleView--tabItem--cont">{{cate.val}}</p>
-      <p class="tentacleView--tabItem--name">{{cate.name}}</p>
-    </div>
-  </Tab>
+  <div class="tent--list--filterbar">
+    <Tab @change="queryWithLevel" v-if="!isDormant && categories.length > 0">
+      <div class="tab--item" v-for="cate in categories" :class="{active: cate.id === curLevel}" :data-key="cate.id">
+        <p class="tentacleView--tabItem--cont">{{cate.val}}</p>
+        <p class="tentacleView--tabItem--name">{{cate.name}}</p>
+      </div>
+    </Tab>
+  </div>
+  <div class="tent--list--list" v-if="!isDormant && categories.length > 0"></div>
   <TentacleBar v-for="tent in dataList" :data="tent" :channelId="tent.id"/>
   <div class="bottom-notice" v-show="allLoaded">
     没有更多触点了
