@@ -69,7 +69,6 @@ export default create({
       this.institutionName = ''
       this.branchstoreName = ''
       this.position = ''
-      storage.remove('tentacle')
     },
     // 电话输入框失焦，检查手机号
     checkMobile() {
@@ -120,13 +119,7 @@ export default create({
         this.$toast.show('请先选择行业类型')
         return
       }
-      /* let url = '/organ?industry=' + this.industry
-      if (this.industry !== 2) {
-        url += '&institutionId=' + this.institutionId
-      } else {
-        url = '/organ?industry=' + this.industry
-      } */
-      this.$router.push('/organ?industry=' + this.industry + '&institutionId=' + this.institutionId)
+      this.$router.push('/organ?industry=' + this.industry)
     }
   },
   mounted() {

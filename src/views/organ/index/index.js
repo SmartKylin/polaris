@@ -62,8 +62,8 @@ export default create({
       tent.institutionName = i.name
       storage.set('tentacle', tent)
       setTimeout(() => {
-        this.$router.replace('/tentacle/add?institution=' + i.name + '&id=' + i.id)
-      }, 300)
+        this.$router.replace('/tentacle/add')
+      }, 100)
     },
     query() {
       /* if (!this.keyword) {

@@ -1,23 +1,28 @@
 import create from './index.tpl'
 import './index.styl'
 import { addInstitution } from '../../../services/institution'
+import storage from '../../../helper/storage'
 
 export default create({
   data() {
     return {
-      organ: '',
+      institutionName: '',
       industry: ''
     }
   },
   methods: {
     organAdd() {
-      if (!this.organ) {
+      if (!this.institutionName) {
         return
       }
       // 添加机构
-      addInstitution({ name: this.organ, industry: this.industry }).then(res => {
+      addInstitution({ name: this.institutionName, industry: this.industry }).then(res => {
         this.$toast.show('机构添加成功')
-        this.$router.replace('/tentacle/add?institution=' + this.organ + '&id=' + res.id)
+        let tent = storage.get('tentacle')
+        tent.institutionId = res.id
+        tent.institutionName = this.institutionName
+        storage.set('tentacle', tent)
+        this.$router.replace('/tentacle/add')
       }).catch(err => {
         // this.$toast.show(err.message)
         this.$dialog.alert('提示', err.message)
@@ -26,7 +31,7 @@ export default create({
   },
   computed: {
     btnSubmitActive() {
-      return !!this.organ.length
+      return !!this.institutionName.length
     }
   },
   created() {
