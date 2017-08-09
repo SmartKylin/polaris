@@ -26,7 +26,7 @@ export default create({
         tent.institutionId = res.id
         tent.institutionName = this.institutionName
         storage.set('tentacle', tent)
-        this.$router.replace('/tentacle/add')
+        this.$router.replace('/tentacle/edit')
       }).catch(err => {
         // this.$toast.show(err.message)
         this.$dialog.alert('提示', err.message)

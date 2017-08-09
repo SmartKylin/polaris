@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
-import { queryIndustry, addTentacle, queryLabel } from 'services'
+import { queryIndustry, addTentacle, queryLabel, queryTentacleDetail, editTentacle } from 'services'
 import storage from '../../../helper/storage'
 
 export default create({
@@ -33,18 +33,31 @@ export default create({
       institutionId: '',
       institutionName: '',
       // 是否正在提交数据
-      isPosting: false
+      isPosting: false,
+      // 触点id
+      channelId: ''
     }
   },
   components: {
     TentacleBar
   },
   methods: {
-    /* // 关系标签改变
-    relationChange(val) {
-      this.label = val
-      this.labelObj = this.labRelaList.find(l => l.id === val)
-    }, */
+    // 查询触点详情
+    queryTent(channelId) {
+      queryTentacleDetail({ channelId }).then(data => {
+        this.industry = data.industry
+        this.name = data.name
+        this.label = data.labelId[0]
+        this.address = data.address
+        this.mobile = data.mobile
+        this.position = data.position
+        this.hobby = data.hobby
+        this.remark = data.remark
+        this.branchstoreName = data.branchstore_name
+        this.institutionName = data.channelInstitutionName
+        this.institutionId = data.channelInstitutionId
+      })
+    },
     // 查询标签列表
     queryLab() {
       queryLabel().then(data => {
@@ -76,18 +89,36 @@ export default create({
         this.$toast.show('请输入正确的手机号')
       }
     },
-    // 提交触点
+    // 编辑触点
+    tentacleEdit() {
+      let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName, channelId } = this
+      let cityId = window.cityId
+      this.isPosting = true
+      editTentacle({
+        channelId,
+        name,
+        mobile,
+        industry,
+        cityId,
+        institutionId,
+        institutionName,
+        branchstoreName,
+        address,
+        position,
+        label,
+        hobby,
+        remark
+      }).then(res => {
+        this.isPosting = false
+        this.$dialog.alert('提示', '编辑触点成功')
+        this.$router.push('/tentacle/detail/' + this.channelId + '/info')
+      }).catch(err => {
+        this.isPosting = false
+        this.$dialog.alert('失败', err.message)
+      })
+    },
+    // 增加触点
     tentacleAdd() {
-      if (!this.btnSubmitActive) {
-        return
-      }
-      if (!this.mobileRight) {
-        this.$toast.show('手机号格式有误')
-        return
-      }
-      if (this.isPosting) {
-        return
-      }
       let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName } = this
       let cityId = window.cityId
       this.isPosting = true
@@ -120,9 +151,32 @@ export default create({
         return
       }
       this.$router.push('/organ')
+    },
+    // 提交触点按钮，根据有无ID调用不同接口
+    handlePostBtn() {
+      if (!this.btnSubmitActive) {
+        return
+      }
+      if (!this.mobileRight) {
+        this.$toast.show('手机号格式有误')
+        return
+      }
+      if (this.isPosting) {
+        return
+      }
+      if (this.isEditPage) {
+        this.tentacleEdit()
+      } else {
+        this.tentacleAdd()
+      }
     }
   },
   mounted() {
+    // 如果是编辑页
+    if (this.isEditPage) {
+      this.channelId = this.$route.params.id
+      this.queryTent(this.channelId)
+    }
     // 查询行业类型列表
     this.queryIndus()
     // 查询标签列表
@@ -133,6 +187,10 @@ export default create({
     }
   },
   computed: {
+    // 是否边界页
+    isEditPage() {
+      return !!this.$route.params.id
+    },
     mobileRight() {
       return (/^1[3|4|5|7|8][0-9]{9}$/.test(this.mobile))
     },

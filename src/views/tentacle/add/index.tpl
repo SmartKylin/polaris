@@ -44,6 +44,6 @@
     </div>
   </CellGroup>
   <div class="btn--wrap">
-    <div class="btn--addtent " :class="{'active': btnSubmitActive && !isPosting}" @click="tentacleAdd">提交</div>
+    <div class="btn--addtent " :class="{'active': btnSubmitActive && !isPosting}" @click="handlePostBtn">提交</div>
   </div>
 </div>

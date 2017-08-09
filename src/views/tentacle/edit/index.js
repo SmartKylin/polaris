@@ -91,22 +91,6 @@ export default create({
 
     queryInstitution().then(data => {
       this.institutionList = data.list
-      // 根据触点编码查询触点信息
-      /* queryTentacleDetail({channelId: id}).then(data => {
-        this.data = data
-        console.log(data)
-        // this.institutionId = data.channelInstitutionId
-        data.labelId && (this.label = data.labelId[0])
-        console.log('111' + this.label);
-        // 初始化当前机构,如果在机构列表中未找到，则直接取触点里的初始值
-        this.curInstitution = this.institutionList.find(i => i.id == this.data.channelInstitutionId) || {
-          id: this.data.channelInstitutionId,
-          name: this.data.channelInstitutionName,
-          cityId: this.data.cityId,
-          areaId: this.data.areaId,
-          block: this.data.block
-        }
-      }) */
     })
 
     // 查询标签列表

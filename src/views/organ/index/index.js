@@ -60,7 +60,7 @@ export default create({
       tent.institutionName = i.name
       storage.set('tentacle', tent)
       setTimeout(() => {
-        this.$router.replace('/tentacle/add')
+        this.$router.replace('/tentacle/edit')
       }, 100)
     },
     query() {
