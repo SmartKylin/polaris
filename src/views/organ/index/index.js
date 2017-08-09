@@ -43,9 +43,9 @@ export default create({
         this.institutionList = res.list
         let institution = null
         if (res.hot.find(i => i.id === this.institutionId)) {
-          institution = res.hot.find(i => i.id === this.institutionId)
+          institution = res.hot.find(i => parseInt(i.id) === parseInt(this.institutionId))
         } else if (res.list.length) {
-          res.list.find(i => (institution = i.list.find(l => l.id === this.institutionId)))
+          res.list.find(i => (institution = i.list.find(l => parseInt(l.id) === parseInt(this.institutionId))))
         }
         this.institution = institution
       }).catch(err => {
