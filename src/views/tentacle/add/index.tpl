@@ -9,8 +9,8 @@
     <!--<Cell v-show="industry!=4" title="所属机构" :to="`/organ?industry=${industry}`">-->
     <Cell v-show="industry!=4" title="所属机构" arrow @click="linkToOrgan" class="required--field">
       <div slot="body">
-        <span v-show="!organ" slot="body" class="field--placeholder">请选择所属机构</span>
-        <span slot="body">{{organ}}</span>
+        <span v-show="!institutionName" slot="body" class="field--placeholder">请选择所属机构</span>
+        <span slot="body">{{institutionName}}</span>
       </div>
     </Cell>
     <Field v-show="industry!=4" label="所在分店" placeholder="请输入分店名(选填)" v-model="branchstoreName" align="right"></Field>

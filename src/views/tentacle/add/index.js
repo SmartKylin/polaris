@@ -29,7 +29,6 @@ export default create({
       remark: '',
       // 分店名
       branchstoreName: '',
-      organ: '',
       // 行业类型ID
       institutionId: '',
       institutionName: '',
@@ -67,9 +66,10 @@ export default create({
     industryChange() {
       // 机构ID必须置空
       this.institutionId = ''
-      this.organ = ''
+      this.institutionName = ''
       this.branchstoreName = ''
       this.position = ''
+      storage.remove('tentacle')
     },
     // 电话输入框失焦，检查手机号
     checkMobile() {
@@ -89,9 +89,8 @@ export default create({
       if (this.isPosting) {
         return
       }
-      let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId } = this
+      let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName } = this
       let cityId = window.cityId
-      let institutionName = this.organ
       this.isPosting = true
       addTentacle({
         name,
@@ -121,13 +120,13 @@ export default create({
         this.$toast.show('请先选择行业类型')
         return
       }
-      let url = '/organ?industry=' + this.industry
+      /* let url = '/organ?industry=' + this.industry
       if (this.industry !== 2) {
         url += '&institutionId=' + this.institutionId
       } else {
         url = '/organ?industry=' + this.industry
-      }
-      this.$router.push(url)
+      } */
+      this.$router.push('/organ?industry=' + this.industry + '&institutionId=' + this.institutionId)
     }
   },
   mounted() {
@@ -139,25 +138,18 @@ export default create({
     if (storage.get('tentacle')) {
       Object.assign(this, storage.get('tentacle'))
     }
-    // 机构搜索页传来的机构名称
-    if (this.$route.query.institution) {
-      this.organ = this.$route.query.institution
-    }
-    if (this.$route.query.id) {
-      this.institutionId = this.$route.query.id
-    }
   },
   computed: {
     mobileRight() {
       return (/^1[3|4|5|7|8][0-9]{9}$/.test(this.mobile))
     },
     btnSubmitActive() {
-      let { name, mobile, industry, address, position, organ, label } = this
+      let { name, mobile, industry, address, position, institutionName, label } = this
       let common = !!name.length && !!mobile.length && !!address.length && !!label.length
       if (parseInt(industry) === 4) {
         return common
       }
-      return common && !!organ.length && !!position.length
+      return common && !!institutionName.length && !!position.length
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -167,9 +159,8 @@ export default create({
     next()
   },
   beforeRouteLeave(to, from, next) {
-    let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId } = this
+    let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName } = this
     let cityId = window.cityId
-    let institutionName = this.organ
     if (to.path === '/organ') {
       storage.set('tentacle', {
         name,

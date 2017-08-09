@@ -1,6 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import { queryInstitution } from '../../../services/institution'
+import storage from '../../../helper/storage'
 
 const DELAY = 600
 export default create({
@@ -40,7 +41,15 @@ export default create({
         this.isSearching = false
         this.hotInstitutionList = res.hot
         this.institutionList = res.list
-        // this.institution = res.list.find(i => i.id === this.institutionId)
+        /* let institution = null
+        if (res.hot.find(i => i.id === this.institutionId)) {
+          institution = res.hot.find(i => i.id === this.institutionId)
+        } else if (res.list){
+          res.list.map(i => {
+            institution = i.list.find(l => l.id === this.institutionId)
+          })
+        }
+        this.institution = institution */
       }).catch(err => {
         this.isSearching = false
         this.$toast.show(err.message)
@@ -48,6 +57,10 @@ export default create({
     },
     handleSelect (i) {
       this.institution = i
+      let tent = storage.get('tentacle')
+      tent.institutionId = i.id
+      tent.institutionName = i.name
+      storage.set('tentacle', tent)
       setTimeout(() => {
         this.$router.replace('/tentacle/add?institution=' + i.name + '&id=' + i.id)
       }, 300)
