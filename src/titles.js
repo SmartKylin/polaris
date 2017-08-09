@@ -19,7 +19,8 @@ const conf = {
   '^/user/task/\\w+': '任务详情',
   '^/login$': '登录',
   '^/organ$': '所属机构',
-  '^/organ/branch': '所在分店'
+  '^/organ/branch$': '所在分店',
+  '^/organ/add$': '添加机构'
 }
 
 export default function(path) {
