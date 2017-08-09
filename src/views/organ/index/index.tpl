@@ -4,7 +4,7 @@
       <img src="../../../images/institution/icon_search.png" alt="">
       <input placeholder="输入机构名称进行查找"  v-model="keyword">
     </div>
-    <router-link :to="'/organ/add?industry=' + industry">
+    <router-link to='/organ/add'>
       <img src="../../../images/institution/btn_add.png" alt="" class="add--organ--icon">
     </router-link>
   </header>

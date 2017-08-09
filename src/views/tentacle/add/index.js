@@ -119,7 +119,7 @@ export default create({
         this.$toast.show('请先选择行业类型')
         return
       }
-      this.$router.push('/organ?industry=' + this.industry)
+      this.$router.push('/organ')
     }
   },
   mounted() {

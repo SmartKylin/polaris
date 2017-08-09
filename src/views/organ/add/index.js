@@ -11,6 +11,10 @@ export default create({
     }
   },
   methods: {
+    initialData() {
+      let tent = storage.get('tentacle')
+      this.industry = tent.industry
+    },
     organAdd() {
       if (!this.institutionName) {
         return
@@ -35,8 +39,6 @@ export default create({
     }
   },
   created() {
-    if (this.$route.query.industry) {
-      this.industry = parseInt(this.$route.query.industry)
-    }
+    this.initialData()
   }
 })

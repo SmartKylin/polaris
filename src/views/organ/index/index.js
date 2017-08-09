@@ -25,15 +25,15 @@ export default create({
     }
   },
   created () {
-    if (this.$route.query.industry) {
-      this.industry = parseInt(this.$route.query.industry)
-    }
-    if (this.$route.query.institutionId) {
-      this.institutionId = this.$route.query.institutionId
-    }
+    this.initialData()
     this.initialQuery()
   },
   methods: {
+    initialData() {
+      let tent = storage.get('tentacle')
+      this.industry = tent.industry
+      this.institutionId = tent.institutionId
+    },
     initialQuery() {
       queryInstitution({
         industry: this.industry
