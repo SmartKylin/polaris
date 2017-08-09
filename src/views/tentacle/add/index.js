@@ -65,6 +65,8 @@ export default create({
       })
     },
     industryChange() {
+      // 机构ID必须置空
+      this.institutionId = ''
       this.organ = ''
       this.branchstoreName = ''
       this.position = ''
@@ -107,7 +109,7 @@ export default create({
       }).then(res => {
         this.isPosting = false
         this.$dialog.alert('提示', '触点添加成功')
-        this.$router.back()
+        this.$router.push('/tentacle')
       }).catch(err => {
         this.isPosting = false
         this.$dialog.alert('失败', err.message)
@@ -119,7 +121,13 @@ export default create({
         this.$toast.show('请先选择行业类型')
         return
       }
-      this.$router.push('/organ?industry=' + this.industry + '&institutionId=' + this.institutionId)
+      let url = '/organ?industry=' + this.industry
+      if (this.industry !== 2) {
+        url += '&institutionId=' + this.institutionId
+      } else {
+        url = '/organ?industry=' + this.industry
+      }
+      this.$router.push(url)
     }
   },
   mounted() {

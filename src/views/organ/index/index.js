@@ -76,6 +76,10 @@ export default create({
   },
   watch: {
     keyword(val) {
+      if (val === '') {
+        this.initialQuery()
+        return
+      }
       this.isSearching = true
       // 函数节流
       this.timer && clearTimeout(this.timer)
