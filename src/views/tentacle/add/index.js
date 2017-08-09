@@ -29,6 +29,8 @@ export default create({
       remark: '',
       // 分店名
       branchstoreName: '',
+      // 分店ID
+      branchstoreId: '',
       // 行业类型ID
       institutionId: '',
       institutionName: '',
@@ -54,6 +56,7 @@ export default create({
         this.hobby = data.hobby
         this.remark = data.remark
         this.branchstoreName = data.branchstore_name
+        this.branchstoreId = data.branchstore_id
         this.institutionName = data.channelInstitutionName
         this.institutionId = data.channelInstitutionId
       })
@@ -91,7 +94,7 @@ export default create({
     },
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName, channelId } = this
+      let { name, mobile, industry, position, remark, hobby, address, branchstoreName, branchstoreId, label, institutionId, institutionName, channelId } = this
       let cityId = window.cityId
       this.isPosting = true
       editTentacle({
@@ -103,6 +106,7 @@ export default create({
         institutionId,
         institutionName,
         branchstoreName,
+        branchstoreId,
         address,
         position,
         label,

@@ -3,9 +3,6 @@ import './index.styl'
 import { editTentacle, queryLabel, queryTentacleDetail } from 'services'
 
 export default create({
-  /* props: {
-    data: Object
-  }, */
   data() {
     return {
       // data触点数据
@@ -22,13 +19,55 @@ export default create({
       label: '',
       // 标签数组
       labelAry: [],
+      // 行业类型列表
+      industryList: [],
+      // 机构所处产业
+      industry: '',
+      // 触点地址 */
+      address: '',
+      // 触点姓名
+      name: '',
+      // 触点电话
+      mobile: '',
+      // 职位
+      position: '',
       // 兴趣爱好
       hobby: '',
       // 备注
-      remark: ''
+      remark: '',
+      // 分店名
+      branchstoreName: '',
+      // 分店ID
+      branchstoreId: '',
+      // 行业类型ID
+      institutionId: '',
+      institutionName: '',
+      // 是否正在提交数据
+      isPosting: false,
+      // 触点id
+      channelId: ''
     }
   },
   methods: {
+    // 查询触点信息
+    queryTent(channelId) {
+      queryTentacleDetail({ channelId }).then(data => {
+        this.data = data
+        this.industry = data.industry
+        this.name = data.name
+        this.label = data.labelId[0]
+        this.address = data.address
+        this.mobile = data.mobile
+        this.position = data.position
+        this.hobby = data.hobby
+        this.remark = data.remark
+        this.branchstoreName = data.branchstore_name
+        this.branchstoreId = data.branchstoreId
+        this.institutionName = data.channelInstitutionName
+        this.institutionId = data.channelInstitutionId
+      })
+    },
+    // 选择标签
     selectLabel (event) {
       let src = event.target
       if (src.tagName.toLowerCase() === 'span') {
@@ -39,7 +78,6 @@ export default create({
         src.className += 'active'
 
         let status = src.getAttribute('data-key')
-
         /*
         if ((/^[123478]$/).test(status)) {
           this.labelAry[0] = parseInt(status)
@@ -52,26 +90,40 @@ export default create({
         this.label = status
       }
     },
+    // 编辑触点
     tentacleEdit() {
-      const params = {}
-      params.channelId = parseInt(this.data.id)
-      params.hobby = this.data.hobby
-      params.remark = this.data.remark
-      /* if (this.labelAry.length > 0) {
-        params.label = this.labelAry.join(',')
-      } */
-      params.label = this.label
-      editTentacle(params).then(res => {
-        if (res.retcode === 2000000) {
-          this.$dialog.alert('提示', '触点画像编辑成功')
-        }
+      let { name, mobile, industry, position, address, branchstoreName, branchstoreId, label, institutionId, institutionName, channelId } = this
+      let cityId = window.cityId
+      let { remark, hobby } = this.data
+      this.isPosting = true
+      editTentacle({
+        channelId,
+        name,
+        mobile,
+        industry,
+        cityId,
+        institutionId,
+        institutionName,
+        branchstoreName,
+        branchstoreId,
+        address,
+        position,
+        label,
+        hobby,
+        remark
+      }).then(res => {
+        this.isPosting = false
+        this.$dialog.alert('提示', '编辑触点成功')
+        this.$router.push('/tentacle/detail/' + this.channelId + '/decription')
       }).catch(err => {
-        this.$dialog.alert('提示', err.message)
+        this.isPosting = false
+        this.$dialog.alert('失败', err.message)
       })
     }
   },
   mounted() {
-    let id = this.$route.params.id
+    this.channelId = this.$route.params.id
+    /* let id = this.$route.params.id
     this.$loading.show()
     queryTentacleDetail({ channelId: id }).then(data => {
       this.$loading.hide()
@@ -80,8 +132,8 @@ export default create({
     }).catch(err => {
       this.$dialog.hide()
       this.$dialog.alert('提示', err.message)
-    })
-
+    }) */
+    this.queryTent(this.channelId)
     queryLabel().then(data => {
       this.labRelaList = data[1].list
       // 产能标签暂时关闭

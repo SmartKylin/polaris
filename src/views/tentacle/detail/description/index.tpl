@@ -17,11 +17,11 @@
     </textarea>
     </div>
   </div>
-  <div>
+  <div class="descrip--wrap">
     <div class="descrip--title">备注</div>
     <div class="text--wrap">
       <textarea name="" cols="30" rows="5" class="text--area" v-model="data.remark" placeholder="请输入备注信息"></textarea>
     </div>
   </div>
-  <div class="button--large" @click="tentacleEdit">提交</div>
+  <div class="button--large btn--fixed" @click="tentacleEdit">提交</div>
 </div>
