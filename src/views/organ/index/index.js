@@ -10,7 +10,7 @@ export default create({
       institutionList: [],
       // 热门机构列表
       hotInstitutionList: [],
-      // 机构名
+      // 机构对象
       institution: '',
       industry: '',
       // 搜索框名称
@@ -41,15 +41,13 @@ export default create({
         this.isSearching = false
         this.hotInstitutionList = res.hot
         this.institutionList = res.list
-        /* let institution = null
+        let institution = null
         if (res.hot.find(i => i.id === this.institutionId)) {
           institution = res.hot.find(i => i.id === this.institutionId)
-        } else if (res.list){
-          res.list.map(i => {
-            institution = i.list.find(l => l.id === this.institutionId)
-          })
+        } else if (res.list.length) {
+          res.list.find(i => (institution = i.list.find(l => l.id === this.institutionId)))
         }
-        this.institution = institution */
+        this.institution = institution
       }).catch(err => {
         this.isSearching = false
         this.$toast.show(err.message)
