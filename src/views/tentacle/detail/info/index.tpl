@@ -3,9 +3,9 @@
     <div class="info--item--title">{{data.industry == 4 ? '个人' : '机构'}}信息</div>
     <!--<Cell title="机构信息" class="info&#45;&#45;title"></Cell>-->
     <Cell title="所属行业" :content="industryNames[data.industry]"></Cell>
-    <Cell title="关联机构" :content="data.channelInstitutionName" v-if="data.industry!=4"></Cell>
-    <Cell title="所在分店" :content="data.branchstore_name" v-if="data.industry!=4"></Cell>
-    <Cell title="职位" :content="data.position"  v-if="data.industry!=4"></Cell>
+    <Cell title="关联机构" :content="data.channelInstitutionName" v-if="data.industry != 4 && data.channelInstitutionName"></Cell>
+    <Cell title="所在分店" :content="data.branchstore_name" v-if="data.industry != 4 && data.branchstore_name"></Cell>
+    <Cell title="职位" :content="data.position"  v-if="data.industry != 4 && data.position"></Cell>
   </CellGroup>
   <CellGroup class="mt10 last--cell">
     <div class="info--item--title">联系方式</div>

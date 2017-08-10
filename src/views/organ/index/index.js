@@ -33,6 +33,7 @@ export default create({
       let tent = storage.get('tentacle')
       this.industry = tent.industry
       this.institutionId = tent.institutionId
+      this.channelId = tent.channelId
     },
     initialQuery() {
       queryInstitution({
@@ -60,7 +61,9 @@ export default create({
       tent.institutionName = i.name
       storage.set('tentacle', tent)
       setTimeout(() => {
-        this.$router.replace('/tentacle/edit')
+        // 不需要请求触点数据
+        window.norQueryTent = true
+        this.$router.replace('/tentacle/edit/' + this.channelId)
       }, 100)
     },
     query() {
