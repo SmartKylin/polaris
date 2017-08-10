@@ -197,6 +197,9 @@ export default create({
       Object.assign(this, storage.get('tentacle'))
     }
   },
+  beforeDestroy() {
+    window.norQueryTent = false
+  },
   computed: {
     // 是否编辑页
     isEditPage() {
