@@ -43,6 +43,8 @@ export default () => ({
       mobile: '',
       address: ''
     },
+    // 备注
+    about: '',
     //
     serviceInfo: {
       chargesAmount: 0,

@@ -30,19 +30,19 @@
 }
 
 .required--item:before {
-  content: '*';
+  content: '* ';
   color: red;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 25px;
+  position: relative;
+  top: 8px;
 }
 
-.required--field {
-  .Field--label:before {
-    content: '*';
-    color: red;
-    font-size: 20px;
-    font-weight: bold;
-  }
+.start--flag {
+  position: relative;
+  color: #ff4d5e;
+  font-weight: bold;
+  font-size: 18px;
+  top: 3px;
 }
 
 .btn--large--gray {
@@ -53,4 +53,10 @@
   font-size: 14px;
   color: #fff;
   background-color: #ccc;
+}
+
+.clue--edit {
+  .add--textarea--wrap {
+    margin-bottom: 0;
+  }
 }

@@ -17,7 +17,6 @@
     <Field label="地址" placeholder="请输入地址" align="right" v-model="address"></Field>
     <Field v-show="industry!=4" label="职位" placeholder="请输入职位" align="right" v-model="position"></Field>
   </CellGroup>
-
   <!--<Cell title="画像" class="info&#45;&#45;title"></Cell>-->
   <CellGroup>
     <Selector title="关系标签" @input="relationChange" class="relasel--wrap" placeholder="请选择关系标签" v-model="label">
