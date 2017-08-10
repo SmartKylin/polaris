@@ -1,4 +1,4 @@
-<div v-if="isAdd || model.clueCode">
+<div v-if="isAdd || model.clueCode" class="clue--edit">
   <div class="mb10 clueEdit--card" v-if="!isAdd">
     <div class="clueEdit--card--hd">
       <span class="mr10">编号：{{model.clueCode}}</span>
@@ -46,6 +46,14 @@
   <CellGroup :hasBorder="false" class="mt10">
     <Field label="拟借款金额(万)" align="right" placeholder="输入借款金额" v-model="model.expect.amount"></Field>
     <Field label="借款周期(月)" align="right" placeholder="输入借款周期" v-model="model.expect.term"></Field>
+  </CellGroup>
+
+  <CellGroup>
+    <div class="add--textarea--wrap">
+      <div class="textarea--title">备注</div>
+      <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="(选填)" maxlength="100" v-model="model.about"></textarea>
+      <div class="textarea--length">{{model.about.length}}/100</div>
+    </div>
   </CellGroup>
 
   <p class="section-title">成单概率能帮助你更好的管理时间</p>

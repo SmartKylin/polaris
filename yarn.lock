@@ -4113,9 +4113,9 @@ slice-ansi@0.0.4:
   version "0.0.4"
   resolved "http://registry.npm.taobao.org/slice-ansi/download/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
 
-smart-ui@^2.3.2:
-  version "2.3.2"
-  resolved "http://registry.npm.taobao.org/smart-ui/download/smart-ui-2.3.2.tgz#ad75191f3472fec45d106cd563df915f6ae93ea2"
+smart-ui@^2.5.0:
+  version "2.5.0"
+  resolved "http://registry.npm.taobao.org/smart-ui/download/smart-ui-2.5.0.tgz#196b81bf0a7bab29623ba8bfee5439729363c79f"
 
 sntp@1.x.x:
   version "1.0.9"
