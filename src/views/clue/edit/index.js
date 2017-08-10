@@ -37,6 +37,10 @@ export default create({
 
   methods: {
     save() {
+      // 按钮不可用
+      if (!this.submitBtnActive) {
+        return
+      }
       const data = cloneDeep(this.model)
       if (this.isAdd) {
         this.createClue(data)
@@ -101,6 +105,11 @@ export default create({
         this.$loading.hide()
         this.$dialog.alert('提示', err.message)
       })
+    }
+  },
+  computed: {
+    submitBtnActive() {
+      return this.model.channel.name && this.model.probability
     }
   }
 })

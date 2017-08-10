@@ -1,9 +1,7 @@
 <div>
   <div class="tentacleView--top for--fixed">
     <div class="tentacleView--search">
-      <router-link to="/tentacle/searchresult">
-        <input class="tentacleView--search--ipt" type="text" placeholder="输入姓名，手机号，机构名称等搜索触点" v-model="search">
-      </router-link>
+      <input class="tentacleView--search--ipt" type="text" placeholder="输入姓名，手机号，机构名称等搜索触点" v-model="search" autofocus>
     </div>
     <div class="tentacleView--query" @click="reQuery">查询</div>
   </div>

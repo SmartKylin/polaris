@@ -1,6 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import { editTentacle, queryLabel, queryTentacleDetail } from 'services'
+import bus from '../../../../helper/bus'
 
 export default create({
   data() {
@@ -78,14 +79,6 @@ export default create({
         src.className += 'active'
 
         let status = src.getAttribute('data-key')
-        /*
-        if ((/^[123478]$/).test(status)) {
-          this.labelAry[0] = parseInt(status)
-        } else if ((/^[56]$/).test(status)) {
-          this.labelAry[1] = parseInt(status)
-        }
-        this.label = this.labelAry.join(',')
-        */
         // 关系标签： A， B1， B2，
         this.label = status
       }
@@ -114,6 +107,7 @@ export default create({
       }).then(res => {
         this.isPosting = false
         this.$dialog.alert('提示', '编辑触点成功')
+        bus.$emit('refresh-tentdata')
         this.$router.push('/tentacle/detail/' + this.channelId + '/description')
       }).catch(err => {
         this.isPosting = false

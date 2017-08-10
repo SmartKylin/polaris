@@ -14,6 +14,7 @@ export default create({
     initialData() {
       let tent = storage.get('tentacle')
       this.industry = tent.industry
+      this.channelId = tent.channelId
     },
     organAdd() {
       if (!this.institutionName) {
@@ -26,7 +27,10 @@ export default create({
         tent.institutionId = res.id
         tent.institutionName = this.institutionName
         storage.set('tentacle', tent)
-        this.$router.replace('/tentacle/edit')
+        // 不需要请求触点数据
+        window.norQueryTent = true
+        let url = this.channelId ? '/tentacle/edit/' + this.channelId : '/tentacle/edit'
+        this.$router.replace(url)
       }).catch(err => {
         // this.$toast.show(err.message)
         this.$dialog.alert('提示', err.message)

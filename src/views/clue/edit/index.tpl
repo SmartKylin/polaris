@@ -26,7 +26,7 @@
       :to="`/clue/edit/${model.clueCode || '_'}/pick-tentacle`"
     >
       <div slot="header" class="flex-1">
-        <div>关联触点</div>
+        <div class="required--item">关联触点</div>
         <p v-show="model.channel.channelCode" class="clueEdit--tentacle">{{model.channel.name}} | {{model.channel.channelInstitutionName}}({{model.channel.address}}) | {{model.channel.mobile}}</p>
       </div>
     </Cell>
@@ -50,14 +50,14 @@
 
   <p class="section-title">成单概率能帮助你更好的管理时间</p>
   <CellGroup :hasBorder="false">
-    <Field label="成单概率(%)" align="right" placeholder="请输入成单概率" v-model="model.probability"></Field>
+    <Field label="成单概率(%)" align="right" placeholder="请输入成单概率" v-model="model.probability" class="required--field"></Field>
   </CellGroup>
 
   <!-- <p class="clueAdd--notice">意向融资方案（非必填）</p>
   <LoanSchemeView /> -->
 
   <div class="mt30 pl20 pr20 pb30">
-    <div class="button--large" @click="save">{{isAdd ? '生成线索' : '保存修改'}}</div>
+    <div class="btn--large--gray" :class="{'button--large': submitBtnActive}" @click="save">{{isAdd ? '生成线索' : '保存修改'}}</div>
   </div>
 
   <router-view></router-view>

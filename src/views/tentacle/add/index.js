@@ -69,7 +69,7 @@ export default create({
         // this.labCapaList = data[2].list
       })
     },
-    // 查询标签列表
+    // 查询行业类型列表
     queryIndus() {
       queryIndustry().then(data => {
         let list = []
@@ -85,6 +85,13 @@ export default create({
       this.institutionName = ''
       this.branchstoreName = ''
       this.position = ''
+      /* let tent = {}
+      tent.industry = this.industry
+      tent.institutionId = ''
+      tent.branchstoreName = ''
+      tent.institutionName = ''
+      tent.position = ''
+      storage.set('tentacle', tent) */
     },
     // 电话输入框失焦，检查手机号
     checkMobile() {
@@ -177,8 +184,8 @@ export default create({
   },
   mounted() {
     // 如果是编辑页
-    if (this.isEditPage) {
-      this.channelId = this.$route.params.id
+    this.channelId = this.$route.params.id
+    if (this.isEditPage && !window.norQueryTent) {
       this.queryTent(this.channelId)
     }
     // 查询行业类型列表
@@ -190,8 +197,11 @@ export default create({
       Object.assign(this, storage.get('tentacle'))
     }
   },
+  beforeDestroy() {
+    window.norQueryTent = false
+  },
   computed: {
-    // 是否边界页
+    // 是否编辑页
     isEditPage() {
       return !!this.$route.params.id
     },
@@ -214,7 +224,7 @@ export default create({
     next()
   },
   beforeRouteLeave(to, from, next) {
-    let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName } = this
+    let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName, channelId } = this
     let cityId = window.cityId
     if (to.path === '/organ') {
       storage.set('tentacle', {
@@ -229,7 +239,8 @@ export default create({
         position,
         label,
         hobby,
-        remark
+        remark,
+        channelId
       })
     } else {
       storage.remove('tentacle')
