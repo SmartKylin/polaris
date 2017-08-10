@@ -79,14 +79,6 @@ export default create({
         src.className += 'active'
 
         let status = src.getAttribute('data-key')
-        /*
-        if ((/^[123478]$/).test(status)) {
-          this.labelAry[0] = parseInt(status)
-        } else if ((/^[56]$/).test(status)) {
-          this.labelAry[1] = parseInt(status)
-        }
-        this.label = this.labelAry.join(',')
-        */
         // 关系标签： A， B1， B2，
         this.label = status
       }

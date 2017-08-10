@@ -43,5 +43,8 @@ export default create({
   },
   created() {
     this.initialData()
+  },
+  beforeUnMount() {
+    window.norQueryTent = false
   }
 })
