@@ -1,8 +1,7 @@
 const conf = {
   '^/tentacle$': '我的触点',
   '^/tentacle/commonality$': '触点公海池',
-  '^/tentacle/add$': '添加新触点',
-  '^tentacle/edit$': '添加触点',
+  '^/tentacle/edit$': '添加触点',
   '^/tentacle/edit/\\w+$': '编辑触点',
   '^/tentacle/list$': '我的触点',
   '^/tentacle/search': '触点查询',

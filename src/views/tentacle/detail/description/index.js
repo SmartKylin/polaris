@@ -1,6 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import { editTentacle, queryLabel, queryTentacleDetail } from 'services'
+import bus from '../../../../helper/bus'
 
 export default create({
   data() {
@@ -114,6 +115,7 @@ export default create({
       }).then(res => {
         this.isPosting = false
         this.$dialog.alert('提示', '编辑触点成功')
+        bus.$emit('refresh-tentdata')
         this.$router.push('/tentacle/detail/' + this.channelId + '/description')
       }).catch(err => {
         this.isPosting = false

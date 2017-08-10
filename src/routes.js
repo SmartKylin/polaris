@@ -54,10 +54,6 @@ export default [
     path: '/tentacle/commonality',
     component: TentacleSea
   },
-  /* {
-    path: '/tentacle/add',
-    component: TentacleAdd
-  }, */
   {
     path: '/tentacle/edit/:id?',
     component: TentacleEdit

@@ -2,6 +2,7 @@ import create from './index.tpl'
 import './index.styl'
 import TentacleBar from 'components/tentaclebar'
 import { queryTentacleDetail } from 'services'
+import bus from '../../../helper/bus'
 
 export default create({
   data() {
@@ -32,5 +33,8 @@ export default create({
   },
   created() {
     this.queryDetail(this.$route.params)
+    bus.$on('refresh-tentdata', () => {
+      this.queryDetail(this.$route.params)
+    })
   }
 })
