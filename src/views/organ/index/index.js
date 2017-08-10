@@ -63,7 +63,8 @@ export default create({
       setTimeout(() => {
         // 不需要请求触点数据
         window.norQueryTent = true
-        this.$router.replace('/tentacle/edit/' + this.channelId)
+        let url = this.channelId ? '/tentacle/edit/' + this.channelId : '/tentacle/edit'
+        this.$router.replace(url)
       }, 100)
     },
     query() {

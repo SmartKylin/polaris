@@ -29,7 +29,8 @@ export default create({
         storage.set('tentacle', tent)
         // 不需要请求触点数据
         window.norQueryTent = true
-        this.$router.replace('/tentacle/edit/' + this.channelId)
+        let url = this.channelId ? '/tentacle/edit/' + this.channelId : '/tentacle/edit'
+        this.$router.replace(url)
       }).catch(err => {
         // this.$toast.show(err.message)
         this.$dialog.alert('提示', err.message)
