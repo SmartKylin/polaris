@@ -138,7 +138,7 @@ export default create({
       // 设置页面 title
       if (this.category) {
         // document.title = `${this.category.toUpperCase()}-高 触点`
-        document.title = `${this.category.toUpperCase()} 触点`
+        document.title = `${this.category.toUpperCase()}类触点`
       } else if (this.isDormant) {
         document.title = '休眠触点'
       }
