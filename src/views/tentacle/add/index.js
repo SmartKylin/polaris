@@ -69,7 +69,7 @@ export default create({
         // this.labCapaList = data[2].list
       })
     },
-    // 查询标签列表
+    // 查询行业类型列表
     queryIndus() {
       queryIndustry().then(data => {
         let list = []
