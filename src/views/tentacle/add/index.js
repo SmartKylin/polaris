@@ -121,8 +121,9 @@ export default create({
         remark
       }).then(res => {
         this.isPosting = false
-        this.$dialog.alert('提示', '编辑触点成功')
-        this.$router.push('/tentacle/detail/' + this.channelId + '/info')
+        this.$toast.show('编辑触点成功', () => {
+          this.$router.push('/tentacle/detail/' + this.channelId + '/info')
+        })
       }).catch(err => {
         this.isPosting = false
         this.$dialog.alert('失败', err.message)
