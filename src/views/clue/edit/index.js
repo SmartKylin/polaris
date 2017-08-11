@@ -94,11 +94,11 @@ export default create({
         // delete res.loanInfos
 
         Object.keys(this.model).forEach(name => {
-          if (res[name]) {
+          // 概率为0需要展示
+          if (res[name] || parseInt(res[name]) === 0) {
             this.model[name] = res[name]
           }
         })
-
         this.$loading.hide()
       })
       .catch(err => {
@@ -109,7 +109,7 @@ export default create({
   },
   computed: {
     submitBtnActive() {
-      return this.model.channel.name && this.model.probability
+      return this.model.channel.name && (this.model.probability || (this.model.probability === 0))
     }
   }
 })

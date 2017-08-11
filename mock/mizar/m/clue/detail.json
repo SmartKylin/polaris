@@ -21,6 +21,7 @@
         "source": 1,
         "declarationTime": "2017-06-19 19:31:34",
         "probability": 100,
+        "about": "备注",
         "users": {
           "id": 12,
           "clueCode": "CU21170619763051",

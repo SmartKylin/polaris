@@ -58,7 +58,7 @@
 
   <p class="section-title">成单概率能帮助你更好的管理时间</p>
   <CellGroup :hasBorder="false">
-    <Field align="right" placeholder="请输入成单概率" v-model="model.probability" class="required--field">
+    <Field align="right" placeholder="请输入成单概率" v-model="model.probability" :value="model.probability" class="required--field">
       <span slot="label">
         <span class="start--flag">*</span>
         <span>成单概率(%)</span>

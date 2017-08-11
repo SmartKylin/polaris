@@ -105,27 +105,29 @@
       <div>{{model.loanInfos.loanStatusName}}</div>
     </div>
  -->  </div>
-
-  <div class="clueDetail--card mt10" v-if="model.backlog">
-    <div class="clueDetail--card--hd">
+ 
+<!--  待办事项
+  <div class="clueDetail&#45;&#45;card mt10" v-if="model.backlog">
+    <div class="clueDetail&#45;&#45;card&#45;&#45;hd">
       <span>待办事项</span>
     </div>
     <div class="todos pl15 pr15" v-for="todo in model.backlog">
-      <div class="todos--title">{{todo.title}}</div>
+      <div class="todos&#45;&#45;title">{{todo.title}}</div>
       <div class="flex pt10 pb10 vertical-center">
-        <div class="todos--time flex-1">{{todo.planTime}}</div>
+        <div class="todos&#45;&#45;time flex-1">{{todo.planTime}}</div>
         <div class="clear-gap">
-          <!-- <div class="button--small bg-red mr10">未完成</div> -->
-          <a v-if="todo.isAccomplish == 0" class="button--small bg-green" :href="'#/todo/close/' + todo.id">完成</a>
-          <div v-if="todo.isAccomplish == 1" class="button--small bg-gray">已完成</div>
-          <div v-if="todo.isAccomplish == 2" class="button--small bg-gray">已关闭</div>
+          &lt;!&ndash; <div class="button&#45;&#45;small bg-red mr10">未完成</div> &ndash;&gt;
+          <a v-if="todo.isAccomplish == 0" class="button&#45;&#45;small bg-green" :href="'#/todo/close/' + todo.id">完成</a>
+          <div v-if="todo.isAccomplish == 1" class="button&#45;&#45;small bg-gray">已完成</div>
+          <div v-if="todo.isAccomplish == 2" class="button&#45;&#45;small bg-gray">已关闭</div>
         </div>
       </div>
-      <!-- <div class="todos--cont">
+      &lt;!&ndash; <div class="todos&#45;&#45;cont">
         线索：张三 18692120886 待面聊
-      </div> -->
+      </div> &ndash;&gt;
     </div>
   </div>
+-->
 
 <!--   <div class="clueDetail--card mt10">
     <div class="clueDetail--card--hd">
@@ -138,6 +140,14 @@
     </div>
   </div>
  -->
+  <CellGroup>
+    <div class="add--textarea--wrap remark--area">
+      <div class="textarea--title">备注</div>
+        <textarea name="" id="" cols="3" rows="4" class="add--text--area" maxlength="100" :value="model.about" disabled></textarea>
+      <!-- <div class="textarea--length">{{model.about.length}}/100</div> -->
+    </div>
+  </CellGroup>
+
   <div class="clueDetail--operation">
     <template v-if="model.status === -1">
       <a class="clueDetail--operation-btn bg-gray" href="javascript:;">已关闭</a>
