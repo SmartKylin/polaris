@@ -60,7 +60,7 @@
   <CellGroup :hasBorder="false">
     <Field align="right" placeholder="请输入成单概率" v-model="model.probability" :value="model.probability" class="required--field">
       <span slot="label">
-        <span class="start--flag">*</span>
+        <!--<span class="start&#45;&#45;flag">*</span>-->
         <span>成单概率(%)</span>
       </span>
     </Field>

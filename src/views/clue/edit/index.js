@@ -54,7 +54,9 @@ export default create({
       this.$loading.show()
       editClue(data).then(res => {
         this.$loading.hide()
-        this.$toast.show('操作成功')
+        this.$toast.show('操作成功', () => {
+          this.$router.back()
+        })
       })
       .catch(err => {
         this.$loading.hide()
@@ -109,7 +111,8 @@ export default create({
   },
   computed: {
     submitBtnActive() {
-      return this.model.channel.name && (this.model.probability || (this.model.probability === 0))
+      // return this.model.channel.name && (this.model.probability || (this.model.probability === 0))
+      return this.model.channel.name
     }
   }
 })
