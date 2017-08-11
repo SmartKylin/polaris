@@ -65,6 +65,9 @@ export default create({
         this.$loading.hide()
         this.$toast.show('登录成功', () => {
           this.$router.replace('/')
+          this.$nextTick(() => {
+            window.location.reload()
+          })
         })
       })
       .catch(err => {
