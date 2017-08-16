@@ -85,9 +85,9 @@ export default create({
     },
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, address, branchstoreName, branchstoreId, label, institutionId, institutionName, channelId } = this
+      let { name, mobile, industry, position, address, branchstoreName, branchstoreId, label, institutionId, institutionName, channelId, remark, hobby } = this
       let cityId = window.cityId
-      let { remark, hobby } = this.data
+      // let { remark, hobby } = this.data
       this.isPosting = true
       editTentacle({
         channelId,

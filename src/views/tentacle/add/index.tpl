@@ -22,7 +22,7 @@
   </CellGroup>
   <!--<Cell title="画像" class="info&#45;&#45;title"></Cell>-->
   <CellGroup>
-    <Selector title="关系标签" @input="relationChange" class="relasel--wrap" placeholder="请选择关系标签" v-model="label">
+    <Selector title="触点评估" @input="relationChange" class="relasel--wrap" placeholder="请选择关系标签" v-model="label">
       <!--<SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id">-->
       <SelectorOption v-for="lab in labRelaList" :value="lab.id" :text="lab.name">
         <div>
@@ -31,20 +31,22 @@
       </SelectorOption>
     </Selector>
   </CellGroup>
+  
+  <!-- 兴趣爱好
   <CellGroup>
-    <div class="add--textarea--wrap">
-      <div class="textarea--title">兴趣爱好</div>
-      <textarea name="" cols="3" rows="4" class="add--text--area" placeholder="(选填)" maxlength="200" v-model="hobby"></textarea>
-      <div class="textarea--length">{{hobby.length}}/200</div>
+    <div class="add&#45;&#45;textarea&#45;&#45;wrap">
+      <div class="textarea&#45;&#45;title">兴趣爱好</div>
+      <textarea name="" cols="3" rows="4" class="add&#45;&#45;text&#45;&#45;area" placeholder="(选填)" maxlength="200" v-model="hobby"></textarea>
+      <div class="textarea&#45;&#45;length">{{hobby.length}}/200</div>
     </div>
   </CellGroup>
   <CellGroup>
-    <div class="add--textarea--wrap mb70">
-      <div class="textarea--title">备注</div>
-      <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="(选填)" maxlength="100" v-model="remark"></textarea>
-      <div class="textarea--length">{{remark.length}}/100</div>
+    <div class="add&#45;&#45;textarea&#45;&#45;wrap mb70">
+      <div class="textarea&#45;&#45;title">备注</div>
+      <textarea name="" id="" cols="3" rows="4" class="add&#45;&#45;text&#45;&#45;area" placeholder="(选填)" maxlength="100" v-model="remark"></textarea>
+      <div class="textarea&#45;&#45;length">{{remark.length}}/100</div>
     </div>
-  </CellGroup>
+  </CellGroup>-->
   <div class="btn--wrap">
     <div class="btn--addtent " :class="{'active': btnSubmitActive && !isPosting}" @click="handlePostBtn">提交</div>
   </div>
