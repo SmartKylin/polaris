@@ -37,7 +37,8 @@ export default create({
       // 是否正在提交数据
       isPosting: false,
       // 触点id
-      channelId: ''
+      channelId: '',
+      isFromScan: false
     }
   },
   components: {
@@ -197,6 +198,10 @@ export default create({
     // 加载localStorage中的数据
     if (storage.get('tentacle')) {
       Object.assign(this, storage.get('tentacle'))
+    }
+    // 判断是否来自拍摄
+    if (this.$route.query.scan) {
+      this.isFromScan = true
     }
   },
   beforeDestroy() {

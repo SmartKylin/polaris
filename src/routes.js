@@ -5,6 +5,7 @@ import TentacleSearch from 'views/tentacle/search'
 import TentacleSearchResult from 'views/tentacle/searchresult'
 import TentacleDetail from 'views/tentacle/detail'
 import TentacleEdit from 'views/tentacle/add'
+import TentacleEditSelector from 'views/tentacle/editselector'
 // import TentacleEdit from 'views/tentacle/edit'
 import TentacleSea from 'views/tentacle/sea'
 import TentacleDetailAchieve from 'views/tentacle/detail/achieve'
@@ -49,6 +50,10 @@ export default [
   {
     path: '/tentacle/edit/:id?',
     component: TentacleEdit
+  },
+  {
+    path: '/tentacle/editselector',
+    component: TentacleEditSelector
   },
   {
     path: '/tentacle/list',

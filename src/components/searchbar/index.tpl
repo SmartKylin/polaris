@@ -4,7 +4,7 @@
       <input class="tentacleView--search--ipt" type="text" placeholder="输入姓名、手机号、机构名称等搜索触点">
     </router-link>
   </div>
-  <router-link to="/tentacle/edit">
+  <router-link to="/tentacle/editselector">
     <div class="tentacleView--add"></div>
   </router-link>
 </div>

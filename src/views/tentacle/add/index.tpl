@@ -7,12 +7,15 @@
     </Selector>
     <!--field连续才会有border-bottom，所以此处每个组件分别添加v-show-->
     <!--<Cell v-show="industry!=4" title="所属机构" :to="`/organ?industry=${industry}`">-->
-    <Cell v-show="industry!=4" title="所属机构" arrow @click="linkToOrgan">
-      <div slot="body">
-        <span v-show="!institutionName" slot="body" class="field--placeholder">请选择所属机构</span>
-        <span slot="body">{{institutionName}}</span>
-      </div>
-    </Cell>
+    <div v-show="industry!=4">
+      <Cell v-show="!isFromScan" title="所属机构" arrow @click="linkToOrgan">
+        <div slot="body">
+          <span v-show="!institutionName" slot="body" class="field--placeholder">请选择所属机构</span>
+          <span slot="body">{{institutionName}}</span>
+        </div>
+      </Cell>
+      <Field v-show="isFromScan" label="所属机构" placeholder="请输入所属机构" v-model="institutionName" align="right"></Field>
+    </div>
     <Field v-show="industry!=4" label="所在分店" placeholder="请输入分店名(选填)" v-model="branchstoreName" align="right"></Field>
     <Field label="地址" placeholder="请输入地址" align="right" v-model="address"></Field>
     <Field v-show="industry!=4" label="职位" placeholder="请输入职位" align="right" v-model="position"></Field>
