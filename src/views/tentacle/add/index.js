@@ -38,6 +38,11 @@ export default create({
       isPosting: false,
       // 触点id
       channelId: '',
+      // 拜访日志
+      visitLog: '',
+      // 日志延迟
+      logDelay: false,
+      // 是否从扫描页跳转过来
       isFromScan: false
     }
   },
@@ -99,6 +104,15 @@ export default create({
       if (!this.mobileRight) {
         this.$toast.show('请输入正确的手机号')
       }
+    },
+    logDelayHandle() {
+      if (this.logDelay === true) {
+        return
+      }
+      this.logDelay = true
+      this.$dialog.alert('已为您设置20:00的拜访提醒', '记得补写拜访日志哦~', [{
+        title: '我知道了'
+      }])
     },
     // 编辑触点
     tentacleEdit() {
@@ -216,8 +230,9 @@ export default create({
       return (/^1[3|4|5|7|8][0-9]{9}$/.test(this.mobile))
     },
     btnSubmitActive() {
-      let { name, mobile, industry, address, position, institutionName, label } = this
-      let common = !!name.length && !!mobile.length && !!address.length && !!label.length
+      let { name, mobile, industry, address, position, institutionName, label, visitLog } = this
+      let common = name.length && mobile.length && address.length && label.length
+      common = this.logDelay ? common : common && visitLog.length
       if (parseInt(industry) === 4) {
         return common
       }

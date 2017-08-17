@@ -42,8 +42,9 @@
     font-size: 15px;
   }
   .textarea--title {
-    padding-top: 15px;
-  //padding-bottom: 5px;
+    // padding-top: 15px;
+    // padding-bottom: 5px;
+    height: 48px;
   }
   .textarea--length {
     text-align: right;
@@ -90,6 +91,16 @@
     }
   }
 
+  .textarea--title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // 日志稍后再写点击后按钮置灰
+  .btn--delay--write {
+    background-color: #ccc!important;
+  }
   //加红色星号
   /*.required--field {
     .Field--label:before,

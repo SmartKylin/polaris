@@ -47,6 +47,17 @@
       <div class="textarea&#45;&#45;length">{{remark.length}}/100</div>
     </div>
   </CellGroup>-->
+
+  <CellGroup>
+    <div class="add--textarea--wrap mb90">
+      <div class="textarea--title">
+        <div>拜访日志</div>
+        <div class="button--small" :class="{'btn--delay--write': logDelay}" @click="logDelayHandle">稍后再写</div>
+      </div>
+      <textarea v-show="!logDelay" name="" cols="3" rows="4" class="add--text--area" placeholder="聊得怎么样？记录一下吧~" maxlength="500" v-model="visitLog"></textarea>
+      <div v-show="!logDelay" class="textarea--length">{{visitLog.length}}/500</div>
+    </div>
+  </CellGroup>
   <div class="btn--wrap">
     <div class="btn--addtent " :class="{'active': btnSubmitActive && !isPosting}" @click="handlePostBtn">提交</div>
   </div>
