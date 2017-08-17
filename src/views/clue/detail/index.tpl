@@ -104,7 +104,8 @@
       <div>{{model.loanInfos.bank}} - {{model.loanInfos.name}}</div>
       <div>{{model.loanInfos.loanStatusName}}</div>
     </div>
- -->  </div>
+ -->
+  </div>
  
 <!--  待办事项
   <div class="clueDetail&#45;&#45;card mt10" v-if="model.backlog">
