@@ -28,3 +28,24 @@ export function queryLabel(params) {
 export function queryUserAims(params) {
   return http.get(apis.userAims, params)
 }
+
+/**
+ * 获取微信配置
+ */
+export function getWeixinConfig(url) {
+  return http.post(apis.weixinConfig, { url })
+}
+
+/**
+ * 获取图片识别结果
+ */
+export function getCardResult(serverId) {
+  return http.post(apis.cardResult, { serverId })
+}
+
+/**
+ * 上传图片
+ */
+export function uploadPhoto(serverId) {
+  return http.post(apis.photoUpload, { serverId })
+}

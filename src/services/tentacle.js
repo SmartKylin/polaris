@@ -138,3 +138,10 @@ export function queryTentacleLevelGStatics(params) {
   }
   return http.get(apis.tentacleGstatics, params).then(callback)
 }
+
+/**
+ * 上传并识别图片
+ */
+export function identifyPhoto(serverId) {
+  return http.post(apis.cardIdentify, { serverId })
+}
