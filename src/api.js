@@ -16,6 +16,9 @@ export default (config => {
 })({
   // 个人中心目标
   'userAims': '/mizar/m/user/aims',
+  /**
+   * 触点相关
+   * ============================================== */
   // 触点统计数据
   'tentacleStatics': '/mizar/m/channel/statis',
   // 各类型触点级别数据统计
@@ -92,5 +95,16 @@ export default (config => {
   // 发送短信验证码
   'sendcode': '/mizar/m/tool/sendcode',
   // 用户登录
-  'login': '/mizar/m/user/bind'
+  'login': '/mizar/m/user/bind',
+  /**
+   * 扫描录入触点
+   * ============================================== */
+  // 微信 sdk 配置
+  'weixinConfig': '/mizar/m/tool/jsconfig',
+  // 获取名片识别结果
+  'cardResult': '/mizar/m/tool/cardlist',
+  // 名片识别
+  'cardIdentify': '/mizar/m/channel/identify',
+  // 上传图片
+  'photoUpload': '/mizar/m/tool/upload'
 })

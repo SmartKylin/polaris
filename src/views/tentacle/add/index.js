@@ -3,6 +3,7 @@ import './index.styl'
 import TentacleBar from 'components/tentaclebar'
 import { queryIndustry, addTentacle, queryLabel, queryTentacleDetail, editTentacle } from 'services'
 import storage from '../../../helper/storage'
+import PhotoUploader from 'components/photouploader'
 
 export default create({
   data() {
@@ -47,7 +48,8 @@ export default create({
     }
   },
   components: {
-    TentacleBar
+    TentacleBar,
+    PhotoUploader
   },
   methods: {
     // 查询触点详情

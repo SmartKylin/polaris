@@ -1,0 +1,30 @@
+{
+  "path": "",
+  "delay": 500,
+  "name": "",
+  "description": "",
+  "isPaging": false,
+  "datasource": "success.data",
+  "responseName": "success",
+  "response": {
+    "success": {
+      "retcode": 2000000,
+      "msg": "成功",
+      "data": {
+        "address":"xxxx",
+        "name":"xxxx",
+        "mobile": "13000000001",
+        "postion": "职位",
+        "imgreq":"图片地址",
+        "imgthum": "缩略图地址",
+        "img": "图片存库名称",
+        "institutionName":"机构名称",
+        "industy":"业务类型"
+      }
+    },
+    "failure": {
+      "retcode": 4000000,
+      "msg": "系统繁忙"
+    }
+  }
+}

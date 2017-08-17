@@ -1,0 +1,25 @@
+{
+  "path": "",
+  "delay": 500,
+  "name": "",
+  "description": "",
+  "isPaging": false,
+  "datasource": "success.data",
+  "responseName": "success",
+  "response": {
+    "success": {
+      "retcode": 2000000,
+      "msg": "成功",
+      "data":{
+        "key": "test/20170627/1498543866998.jpg",
+        "reqKey": "https://bbt-dev.oss-cn-beijing.aliyuncs.com/test/20170627/1498546794289.jpg?Expires=1498550394&OSSAccessKeyId=LTAIZ1zaEnYbzBwP&Signature=IK3RROAPO395gc0LFULpVIBMvmI%3D",
+        "thumKey": "https://bbt-dev.oss-cn-beijing.aliyuncs.com/test/20170627/1498543866998.jpg?Expires=1498550110&OSSAccessKeyId=LTAIZ1zaEnYbzBwP&Signature=cWsvRpHIBw9LyLb9u52p9eiJtbo%3D&x-oss-process=image%2Fresize%2Ch_100"
+      }
+
+    },
+    "failure": {
+      "retcode": 4000000,
+      "msg": "系统繁忙"
+    }
+  }
+}

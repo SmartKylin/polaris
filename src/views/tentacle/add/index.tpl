@@ -21,6 +21,11 @@
     <Field v-show="industry!=4" label="职位" placeholder="请输入职位" align="right" v-model="position"></Field>
   </CellGroup>
   <!--<Cell title="画像" class="info&#45;&#45;title"></Cell>-->
+  
+  <CellGroup class="mb10">
+    <PhotoUploader/>
+  </CellGroup>
+  
   <CellGroup>
     <Selector title="触点评估" @input="relationChange" class="relasel--wrap" placeholder="请选择关系标签" v-model="label">
       <!--<SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id">-->
@@ -48,8 +53,8 @@
     </div>
   </CellGroup>-->
 
-  <CellGroup>
-    <div class="add--textarea--wrap mb90">
+  <CellGroup class="mb80">
+    <div class="add--textarea--wrap">
       <div class="textarea--title">
         <div>拜访日志</div>
         <div class="button--small" :class="{'btn--delay--write': logDelay}" @click="logDelayHandle">稍后再写</div>

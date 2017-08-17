@@ -1,0 +1,25 @@
+{
+  "path": "",
+  "delay": 500,
+  "name": "",
+  "description": "",
+  "isPaging": false,
+  "datasource": "success.data",
+  "responseName": "success",
+  "response": {
+    "success": {
+      "retcode": 2000000,
+      "msg": "成功",
+      "data": {
+        "appId": "wx3e77f9a3f2f8391b",
+        "timestamp": 1502955196,
+        "nonceStr": "42811ad042b81343ece6f54e513e7923",
+        "signature": "100937f15f1af8a4eff6cde00d573a7b7018e1e9"
+      }
+    },
+    "failure": {
+      "retcode": 4000000,
+      "msg": "系统繁忙"
+    }
+  }
+}
