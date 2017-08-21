@@ -1,8 +1,9 @@
-<div class="tentadd" v-if="labRelaList.length">
-  <CellGroup class="mt15 mb10">
+<div class="tentadd" v-if="isEditPage ? name : true">
+  <CellGroup class="mt10 mb10">
     <!--<Cell title="基本信息" class="info&#45;&#45;title"></Cell>-->
     <Field label="姓名" type="text" placeholder="请输入姓名" align="right" v-model="name"></Field>
-    <Field label="电话" type="tel" placeholder="请输入电话" align="right" v-model="mobile" @blur="checkMobile"></Field>
+    <Field :label="(isEditPage ? '个人':'') + '电话'" type="tel" placeholder="请输入电话" align="right" v-model="mobile" @blur="checkMobile(mobile)"></Field>
+    <Field v-if="isEditPage" label="门面电话" type="tel" placeholder="请输入电话" align="right" v-model="storefrontMobile" @blur="checkMobile(storefrontMobile)"></Field>
     <Selector title="行业类型" v-model="industry" placeholder="请选择行业类型" @input="industryChange" :options="industryList">
     </Selector>
     <!--field连续才会有border-bottom，所以此处每个组件分别添加v-show-->
@@ -18,14 +19,13 @@
     <!--<Field v-show="industry!=4" label="所在分店" placeholder="请输入分店名(选填)" v-model="branchstoreName" align="right"></Field>-->
     <Field label="地址" placeholder="请输入地址" align="right" v-model="address"></Field>
     <Field v-show="industry!=4" label="职位" placeholder="请输入职位" align="right" v-model="position"></Field>
+    <Field v-if="isEditPage" label="邮箱" placeholder="请输入邮箱" align="right" v-model="email"></Field>
   </CellGroup>
-  <!--<Cell title="画像" class="info&#45;&#45;title"></Cell>-->
-  
-  <CellGroup class="mb10">
+  <CellGroup class="mb10" :class="{'mb80': isEditPage}">
     <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images"/>
   </CellGroup>
   
-  <CellGroup>
+  <CellGroup v-if="!isEditPage">
     <Selector title="触点评估" @input="relationChange" class="relasel--wrap" placeholder="请选择关系标签" v-model="label">
       <!--<SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id">-->
       <SelectorOption v-for="lab in labRelaList" :value="lab.id" :text="lab.name">
@@ -44,7 +44,7 @@
     </div>
   </CellGroup>-->
   
-  <CellGroup class="mb80">
+  <CellGroup class="mb80" v-if="!isEditPage">
     <div class="add--textarea--wrap">
       <div class="textarea--title">备注</div>
       <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="(选填)" maxlength="100" v-model="remark"></textarea>

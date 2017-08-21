@@ -52,7 +52,10 @@ export default create({
       // 名片存库名称
       img: '',
       // 所有要上传的图片
-      images: []
+      images: [],
+      email: '',
+      // 门店电话
+      storefrontMobile: ''
     }
   },
   components: {
@@ -62,7 +65,9 @@ export default create({
   methods: {
     // 查询触点详情
     queryTent(channelId) {
+      this.$loading.show()
       queryTentacleDetail({ channelId }).then(data => {
+        this.$loading.hide()
         this.industry = data.industry
         this.name = data.name
         this.label = data.labelId[0]
@@ -75,6 +80,11 @@ export default create({
         this.branchstoreId = data.branchstore_id
         this.institutionName = data.channelInstitutionName
         this.institutionId = data.channelInstitutionId
+        this.storefrontMobile = data.storefrontMobile
+        this.email = data.emial
+      }).catch(err => {
+        this.$loading.hide()
+        this.$toast.show(err.message)
       })
     },
     // 查询标签列表
@@ -107,8 +117,8 @@ export default create({
       this.position = ''
     },
     // 电话输入框失焦，检查手机号
-    checkMobile() {
-      if (!this.mobileRight) {
+    checkMobile(mobile) {
+      if (!(/^1[3|4|5|7|8][0-9]{9}$/.test(mobile))) {
         this.$toast.show('请输入正确的手机号')
       }
     },
@@ -123,7 +133,7 @@ export default create({
     }, */
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, remark, hobby, address, branchstoreName, branchstoreId, label, institutionId, institutionName, channelId } = this
+      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, email, storefrontMobile } = this
       let cityId = window.cityId
       this.isPosting = true
       editTentacle({
@@ -134,13 +144,15 @@ export default create({
         cityId,
         institutionId,
         institutionName,
-        branchstoreName,
-        branchstoreId,
+        /* branchstoreName,
+        branchstoreId, */
         address,
         position,
         label,
-        hobby,
-        remark
+        /* hobby,
+        remark */
+        email,
+        storefrontMobile
       }).then(res => {
         this.isPosting = false
         this.$toast.show('编辑触点成功', () => {
@@ -194,10 +206,11 @@ export default create({
       if (!this.btnSubmitActive) {
         return
       }
-      if (!this.mobileRight) {
+      // 失焦时已检查手机号
+      /* if (!this.mobileRight) {
         this.$toast.show('手机号格式有误')
         return
-      }
+      } */
       if (this.isPosting) {
         return
       }
@@ -210,14 +223,14 @@ export default create({
   },
   mounted() {
     this.channelId = this.$route.params.id
-    // 如果是编辑页
-    if (this.isEditPage && !window.norQueryTent) {
-      this.queryTent(this.channelId)
+    // 如果是编辑页并且是第一次打开，跳转到其他页面在调回来，不去重新查询触点信息，而是加载localstorage
+    if (this.isEditPage) {
+      // 查询标签列表
+      this.queryLab()
+      if (!window.norQueryTent) this.queryTent(this.channelId)
     }
     // 查询行业类型列表
     this.queryIndus()
-    // 查询标签列表
-    this.queryLab()
     // 加载localStorage中的数据
     if (storage.get('tentacle')) {
       Object.assign(this, storage.get('tentacle'))
@@ -235,7 +248,7 @@ export default create({
     window.norQueryTent = false
   },
   computed: {
-    // 是否编辑页
+    // 是否编辑页,根据路由中有无ID参数确定
     isEditPage() {
       return !!this.$route.params.id
     },

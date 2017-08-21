@@ -11,7 +11,7 @@ import TentacleSea from 'views/tentacle/sea'
 import TentacleDetailAchieve from 'views/tentacle/detail/achieve'
 import TentacleDetailDescription from 'views/tentacle/detail/description'
 import TentacleDetailLogger from 'views/tentacle/detail/logger'
-import TentacleDetailInfo from 'views/tentacle/detail/info'
+// import TentacleDetailInfo from 'views/tentacle/detail/info'
 
 import OrganIndex from 'views/organ/index'
 import OrganAdd from 'views/organ/add'
@@ -87,9 +87,14 @@ export default [
         path: 'description',
         component: TentacleDetailDescription
       },
-      {
+      /* {
         path: 'info',
         component: TentacleDetailInfo
+      }, */
+      // 触点编辑和触点添加使用同一个组件TentacleEdit
+      {
+        path: 'info',
+        component: TentacleEdit
       }
     ]
   },

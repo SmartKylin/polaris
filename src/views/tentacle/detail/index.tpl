@@ -6,5 +6,5 @@
     <router-link :to="'/tentacle/detail/' + id +'/description'" :replace="true">触点画像</router-link>
     <router-link :to="'/tentacle/detail/' + id +'/info'" :replace="true">基本信息</router-link>
   </div>
-  <router-view :data="data" v-if="data"></router-view>
+  <router-view :data="data"></router-view>
 </div>
