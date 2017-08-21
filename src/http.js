@@ -14,6 +14,7 @@ axios.interceptors.response.use(response => {
   if (response.data.retcode === 2000000) {
     return response.data.data || response.data
   } else {
+    window.app.$toast.show(response.data.msg)
     throw Error(response.data.msg || '服务异常')
   }
 })

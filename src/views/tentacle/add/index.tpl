@@ -7,24 +7,22 @@
     </Selector>
     <!--field连续才会有border-bottom，所以此处每个组件分别添加v-show-->
     <!--<Cell v-show="industry!=4" title="所属机构" :to="`/organ?industry=${industry}`">-->
-    <div v-show="industry!=4">
-      <Cell v-show="fromPage == 2" title="所属机构" arrow @click="linkToOrgan">
-        <div slot="body">
-          <span v-show="!institutionName" slot="body" class="field--placeholder">请选择所属机构</span>
-          <span slot="body">{{institutionName}}</span>
-        </div>
-      </Cell>
-    </div>
+    <Cell v-show="industry!=4 && fromPage == 2" title="所属机构" arrow @click="linkToOrgan">
+      <div slot="body">
+        <span v-show="!institutionName" slot="body" class="field--placeholder">请选择所属机构</span>
+        <span slot="body">{{institutionName}}</span>
+      </div>
+    </Cell>
     <!--来自名片扫描，所属机构改成Field-->
     <Field v-show="industry!=4 && fromPage == 1" label="所属机构" placeholder="请输入所属机构" v-model="institutionName" align="right"></Field>
-    <Field v-show="industry!=4" label="所在分店" placeholder="请输入分店名(选填)" v-model="branchstoreName" align="right"></Field>
+    <!--<Field v-show="industry!=4" label="所在分店" placeholder="请输入分店名(选填)" v-model="branchstoreName" align="right"></Field>-->
     <Field label="地址" placeholder="请输入地址" align="right" v-model="address"></Field>
     <Field v-show="industry!=4" label="职位" placeholder="请输入职位" align="right" v-model="position"></Field>
   </CellGroup>
   <!--<Cell title="画像" class="info&#45;&#45;title"></Cell>-->
   
   <CellGroup class="mb10">
-    <PhotoUploader/>
+    <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images"/>
   </CellGroup>
   
   <CellGroup>

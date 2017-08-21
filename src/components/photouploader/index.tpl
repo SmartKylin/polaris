@@ -8,6 +8,10 @@
   </header>
   <main>
     <div class="photo--box flex">
+      <div v-if="img">
+        <img :src="imgreq" alt="" @click="previewImg = imgthum">
+        <a href="javascript:;" class="photo--del" @click="$emit('update:img', '')"></a>
+      </div>
       <div v-for="img in imgList">
         <img :src="img.localId" alt="" @click="previewImg = img.reqKey">
         <a href="javascript:;" class="photo--del" @click="deleteImg(img)"></a>

@@ -28,10 +28,10 @@ export default create({
       hobby: '',
       // 备注
       remark: '',
-      // 分店名
+      /* // 分店名
       branchstoreName: '',
       // 分店ID
-      branchstoreId: '',
+      branchstoreId: '', */
       // 行业类型ID
       institutionId: '',
       institutionName: '',
@@ -44,7 +44,15 @@ export default create({
       // 日志延迟
       logDelay: false, */
       // 录入方式: 1，名片识别； 2，手动录入
-      fromPage: 2
+      fromPage: 2,
+      // 名片原图地址
+      imgreq: '',
+      // 名片缩略图地址
+      imgthum: '',
+      // 名片存库名称
+      img: '',
+      // 所有要上传的图片
+      images: []
     }
   },
   components: {
@@ -104,7 +112,7 @@ export default create({
         this.$toast.show('请输入正确的手机号')
       }
     },
-    logDelayHandle() {
+    /* logDelayHandle() {
       if (this.logDelay === true) {
         return
       }
@@ -112,7 +120,7 @@ export default create({
       this.$dialog.alert('已为您设置20:00的拜访提醒', '记得补写拜访日志哦~', [{
         title: '我知道了'
       }])
-    },
+    }, */
     // 编辑触点
     tentacleEdit() {
       let { name, mobile, industry, position, remark, hobby, address, branchstoreName, branchstoreId, label, institutionId, institutionName, channelId } = this
@@ -145,9 +153,12 @@ export default create({
     },
     // 增加触点
     tentacleAdd() {
-      let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName } = this
+      let { name, mobile, industry, position, remark, address, label, institutionId, institutionName, fromPage, images, img } = this
       let cityId = window.cityId
       this.isPosting = true
+      if (img) {
+        this.images.push(img)
+      }
       addTentacle({
         name,
         mobile,
@@ -155,12 +166,14 @@ export default create({
         cityId,
         institutionId,
         institutionName,
-        branchstoreName,
+        // branchstoreName,
         address,
         position,
         label,
-        hobby,
-        remark
+        // hobby,
+        fromPage,
+        remark,
+        images
       }).then(res => {
         this.isPosting = false
         this.$toast.show('触点添加成功', () => {
@@ -238,8 +251,8 @@ export default create({
     }
   },
   beforeRouteEnter(to, from, next) {
-    if (!(from.path === '/organ' || from.path === '/organ/add') || from.path === '/tentacle/editselector') {
-      // storage.remove('tentacle')
+    if (!(from.path === '/organ' || from.path === '/organ/add' || from.path === '/tentacle/editselector')) {
+      storage.remove('tentacle')
     }
     next()
   },
@@ -267,4 +280,9 @@ export default create({
     }
     next()
   }
+  /*  watch: {
+    images(val) {
+      console.log(val);
+    }
+  } */
 })

@@ -3,18 +3,25 @@ import './index.styl'
 import wx from 'weixin-js-sdk'
 import { uploadPhoto } from '../../services'
 
-const img = require('../../images/logo.png')
+// const img = require('../../images/logo.png')
 
 export default create({
+  props: {
+    img: String,
+    imgthum: String,
+    imgreq: String,
+    images: Array
+  },
   data() {
     return {
-      previewImg: img,
-      imgList: []
+      previewImg: '',
+      imgList: [],
+      cardVisible: false
     }
   },
   methods: {
     chooseImage() {
-      if (this.localIds.length > 9) {
+      if (this.imgList.length > 9) {
         return
       }
       wx.chooseImage({
@@ -28,6 +35,7 @@ export default create({
     },
     deleteImg(img) {
       this.imgList = this.imgList.filter(item => item !== img)
+      this.$emit('update:images', this.imgList.map(item => item.key))
     },
     previewImg() {
       wx.previewImage({
@@ -40,6 +48,7 @@ export default create({
       const Success = data => {
         this.$loading.hide()
         this.imgList.push({ localId, ...data.data })
+        this.$emit('update:images', this.imgList.map(item => item.key))
       }
       const Fail = err => {
         this.$loading.hide()
@@ -51,6 +60,11 @@ export default create({
         success: res => uploadPhoto(res.serverId).then(Success).catch(Fail),
         fail: err => Fail({ message: err.errMsg })
       })
+    }
+  },
+  mounted() {
+    if (this.img) {
+      this.cardVisible = true
     }
   }
 })
