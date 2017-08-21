@@ -1,14 +1,12 @@
 import create from './index.tpl'
 import './index.styl'
-import { editTentacle, queryLabel, queryTentacleDetail } from 'services'
+import { editTentacle, queryTentacleDetail } from 'services'
 import bus from '../../../../helper/bus'
 
 export default create({
   data() {
     return {
-      // data触点数据
-      data: {},
-      // 选中的关系标签
+      /* // 选中的关系标签
       curRela: '',
       // 选中的产能标签
       curCap: '',
@@ -24,36 +22,65 @@ export default create({
       industryList: [],
       // 机构所处产业
       industry: '',
-      // 触点地址 */
+      // 触点地址 
       address: '',
       // 触点姓名
       name: '',
       // 触点电话
       mobile: '',
       // 职位
-      position: '',
-      // 兴趣爱好
-      hobby: '',
-      // 备注
-      remark: '',
+      position: '', 
       // 分店名
       branchstoreName: '',
       // 分店ID
       branchstoreId: '',
       // 行业类型ID
       institutionId: '',
-      institutionName: '',
+      institutionName: '', */
+      // 兴趣爱好
+      hobby: '',
+      // 备注
+      remark: '',
       // 是否正在提交数据
       isPosting: false,
       // 触点id
-      channelId: ''
+      channelId: '',
+      // 基本画像
+      sex: '',
+      sexList: [
+        { text: '男', value: '1' },
+        { text: '女', value: '2' }
+      ],
+      ageList: [
+        { text: '20~30岁', value: '1' },
+        { text: '30~40岁', value: '2' },
+        { text: '40~50岁', value: '3' },
+        { text: '50岁以上', value: '4' }
+      ],
+      experienceList: [
+        { text: '1年以下', value: '1' },
+        { text: '1~3年', value: '2' },
+        { text: '3~5年', value: '3' },
+        { text: '5~10年', value: '4' },
+        { text: '10年以上', value: '5' }
+      ],
+      contactsList: [
+        { id: '1', name: '一星', explain: '较少' },
+        { id: '2', name: '二星', explain: '一般' },
+        { id: '3', name: '三星', explain: '丰富' }
+      ],
+      age: '',
+      // 从业经验
+      experience: '',
+      // 人脉关系
+      contacts: ''
     }
   },
   methods: {
     // 查询触点信息
     queryTent(channelId) {
       queryTentacleDetail({ channelId }).then(data => {
-        this.data = data
+        // this.data = data
         this.industry = data.industry
         this.name = data.name
         this.label = data.labelId[0]
@@ -66,9 +93,13 @@ export default create({
         this.branchstoreId = data.branchstoreId
         this.institutionName = data.channelInstitutionName
         this.institutionId = data.channelInstitutionId
+        this.age = data.age
+        this.experience = data.experience
+        this.sex = data.sex
+        this.contacts = data.contacs
       })
     },
-    // 选择标签
+    /* // 选择标签
     selectLabel (event) {
       let src = event.target
       if (src.tagName.toLowerCase() === 'span') {
@@ -82,10 +113,10 @@ export default create({
         // 关系标签： A， B1， B2，
         this.label = status
       }
-    },
+    }, */
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, address, branchstoreName, branchstoreId, label, institutionId, institutionName, channelId, remark, hobby } = this
+      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, remark, hobby, sex, age, experience, contacts } = this
       let cityId = window.cityId
       // let { remark, hobby } = this.data
       this.isPosting = true
@@ -97,13 +128,17 @@ export default create({
         cityId,
         institutionId,
         institutionName,
-        branchstoreName,
-        branchstoreId,
+        // branchstoreName,
+        // branchstoreId,
         address,
         position,
         label,
         hobby,
-        remark
+        remark,
+        sex,
+        age,
+        experience,
+        contacts
       }).then(res => {
         this.isPosting = false
         this.$dialog.alert('提示', '编辑触点成功')
@@ -117,6 +152,7 @@ export default create({
   },
   mounted() {
     this.channelId = this.$route.params.id
+    this.queryTent(this.channelId)
     /* let id = this.$route.params.id
     this.$loading.show()
     queryTentacleDetail({ channelId: id }).then(data => {
@@ -127,13 +163,12 @@ export default create({
       this.$dialog.hide()
       this.$dialog.alert('提示', err.message)
     }) */
-    this.queryTent(this.channelId)
-    queryLabel().then(data => {
+    /* queryLabel().then(data => {
       this.labRelaList = data[1].list
       // 产能标签暂时关闭
       // this.labCapaList = data[2].list
     }).catch(err => {
       this.$dialog.alert('提示', err.message)
-    })
+    }) */
   }
 })

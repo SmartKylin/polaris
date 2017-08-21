@@ -17,6 +17,7 @@ export default create({
   },
   methods: {
     scanCardHandle() {
+      this.identiFailed = false
       wx.chooseImage({
         count: 1,
         sizeType: ['original', 'compressed'],
@@ -59,8 +60,6 @@ export default create({
   beforeRouteEnter(from, to, next) {
     const url = encodeURIComponent(location.href.split('#')[0])
     getWeixinConfig(url).then(initWeixinSDK)
-    next(vm => {
-      // console.log(vm)
-    })
+    next()
   }
 })

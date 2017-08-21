@@ -153,12 +153,9 @@ export default create({
     },
     // 增加触点
     tentacleAdd() {
-      let { name, mobile, industry, position, remark, address, label, institutionId, institutionName, fromPage, images, img } = this
+      let { name, mobile, industry, position, remark, address, label, institutionId, institutionName, fromPage, images } = this
       let cityId = window.cityId
       this.isPosting = true
-      if (img) {
-        this.images.push(img)
-      }
       addTentacle({
         name,
         mobile,
@@ -228,6 +225,10 @@ export default create({
     // 判断是否来自拍摄
     if (this.$route.query.fromPage) {
       this.fromPage = this.$route.query.fromPage
+    }
+    // 如果有名片
+    if (this.img) {
+      this.images.push(this.img)
     }
   },
   beforeDestroy() {
