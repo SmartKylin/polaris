@@ -4,16 +4,17 @@
       <span>上传照片</span>
       <span class="field--tip">(名片照、店面照、头像照)</span>
     </div>
-    <div class="btn--add--photo">+</div>
+    <div class="btn--add--photo" @click="chooseImage">+</div>
   </header>
   <main>
     <div class="photo--box flex">
-      <img src="../../images/logo.png" alt="">
-      <img src="../../images/logo.png" alt="">
-      <img src="../../images/logo.png" alt="">
-      <img src="../../images/logo.png" alt="">
-      <img src="../../images/logo.png" alt="">
-      <img src="../../images/logo.png" alt="">
+      <div v-for="img in imgList">
+        <img :src="img.localId" alt="" @click="previewImg = img.reqKey">
+        <a href="javascript:;" class="photo--del" @click="deleteImg(img)"></a>
+      </div>
     </div>
   </main>
+  <div class="img--preview" v-show="previewImg" @click="previewImg = ''">
+    <img :src="previewImg" alt="previewphoto">
+  </div>
 </div>

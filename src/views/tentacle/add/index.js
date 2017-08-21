@@ -1,9 +1,9 @@
 import create from './index.tpl'
 import './index.styl'
-import TentacleBar from 'components/tentaclebar'
 import { queryIndustry, addTentacle, queryLabel, queryTentacleDetail, editTentacle } from 'services'
 import storage from '../../../helper/storage'
 import PhotoUploader from 'components/photouploader'
+import TentacleBar from 'components/tentaclebar'
 
 export default create({
   data() {
@@ -39,12 +39,12 @@ export default create({
       isPosting: false,
       // 触点id
       channelId: '',
-      // 拜访日志
+      /* // 拜访日志
       visitLog: '',
       // 日志延迟
-      logDelay: false,
-      // 是否从扫描页跳转过来
-      isFromScan: false
+      logDelay: false, */
+      // 录入方式: 1，名片识别； 2，手动录入
+      fromPage: 2
     }
   },
   components: {
@@ -88,18 +88,15 @@ export default create({
       })
     },
     industryChange() {
+      // 如果是名片录入，机构改变时不清空相关数据
+      if (parseInt(this.fromPage) === 1) {
+        return
+      }
       // 机构ID必须置空
       this.institutionId = ''
       this.institutionName = ''
       this.branchstoreName = ''
       this.position = ''
-      /* let tent = {}
-      tent.industry = this.industry
-      tent.institutionId = ''
-      tent.branchstoreName = ''
-      tent.institutionName = ''
-      tent.position = ''
-      storage.set('tentacle', tent) */
     },
     // 电话输入框失焦，检查手机号
     checkMobile() {
@@ -202,8 +199,8 @@ export default create({
     }
   },
   mounted() {
-    // 如果是编辑页
     this.channelId = this.$route.params.id
+    // 如果是编辑页
     if (this.isEditPage && !window.norQueryTent) {
       this.queryTent(this.channelId)
     }
@@ -216,8 +213,8 @@ export default create({
       Object.assign(this, storage.get('tentacle'))
     }
     // 判断是否来自拍摄
-    if (this.$route.query.scan) {
-      this.isFromScan = true
+    if (this.$route.query.fromPage) {
+      this.fromPage = this.$route.query.fromPage
     }
   },
   beforeDestroy() {
@@ -232,9 +229,8 @@ export default create({
       return (/^1[3|4|5|7|8][0-9]{9}$/.test(this.mobile))
     },
     btnSubmitActive() {
-      let { name, mobile, industry, address, position, institutionName, label, visitLog } = this
+      let { name, mobile, industry, address, position, institutionName, label } = this
       let common = name.length && mobile.length && address.length && label.length
-      common = this.logDelay ? common : common && visitLog.length
       if (parseInt(industry) === 4) {
         return common
       }
@@ -242,8 +238,8 @@ export default create({
     }
   },
   beforeRouteEnter(to, from, next) {
-    if (!(from.path === '/organ' || from.path === '/organ/add')) {
-      storage.remove('tentacle')
+    if (!(from.path === '/organ' || from.path === '/organ/add') || from.path === '/tentacle/editselector') {
+      // storage.remove('tentacle')
     }
     next()
   },

@@ -6,7 +6,6 @@ import TentacleSearchResult from 'views/tentacle/searchresult'
 import TentacleDetail from 'views/tentacle/detail'
 import TentacleEdit from 'views/tentacle/add'
 import TentacleAddSelector from 'views/tentacle/addselector'
-import TentaclePhotoReader from 'components/smartphotoreader'
 // import TentacleEdit from 'views/tentacle/edit'
 import TentacleSea from 'views/tentacle/sea'
 import TentacleDetailAchieve from 'views/tentacle/detail/achieve'
@@ -55,10 +54,6 @@ export default [
   {
     path: '/tentacle/editselector',
     component: TentacleAddSelector
-  },
-  {
-    path: '/tentacle/photoreader',
-    component: TentaclePhotoReader
   },
   {
     path: '/tentacle/list',
