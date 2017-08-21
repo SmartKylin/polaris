@@ -18,10 +18,11 @@
   </section>
   
   <section v-show="isIdentifying">
-    <header>
+    <header class="select--header">
       <div v-show="!identiFailed" class="header--identifying">
         请稍等，正在识别中...
       </div>
+      <div v-show="!identiFailed" class="progress--box">{{progress}}%</div>
       <div v-show="identiFailed" class="header--failed">
         <p class="failed--tip">无法识别名片信息</p>
         <p class="method--tip">请尝试重新拍摄或手动录入</p>

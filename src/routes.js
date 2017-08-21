@@ -15,7 +15,6 @@ import TentacleDetailLogger from 'views/tentacle/detail/logger'
 
 import OrganIndex from 'views/organ/index'
 import OrganAdd from 'views/organ/add'
-import OrganBranch from 'views/organ/branch'
 
 import ClueIndex from 'views/clue/index'
 import ClueDetail from 'views/clue/detail'
@@ -110,11 +109,6 @@ export default [
     path: '/organ/add',
     component: OrganAdd
   },
-  {
-    path: '/organ/branch',
-    component: OrganBranch
-  },
-
   /**
    * 线索
    * ==========================

@@ -4,6 +4,7 @@ import { queryIndustry, addTentacle, queryLabel, queryTentacleDetail, editTentac
 import storage from '../../../helper/storage'
 import PhotoUploader from 'components/photouploader'
 import TentacleBar from 'components/tentaclebar'
+import bus from '../../../helper/bus'
 
 export default create({
   data() {
@@ -156,6 +157,7 @@ export default create({
       }).then(res => {
         this.isPosting = false
         this.$toast.show('编辑触点成功', () => {
+          bus.$emit('refresh-tentdata')
           this.$router.push('/tentacle/detail/' + this.channelId + '/info')
         })
       }).catch(err => {
@@ -168,6 +170,7 @@ export default create({
       let { name, mobile, industry, position, remark, address, label, institutionId, institutionName, fromPage, images } = this
       let cityId = window.cityId
       this.isPosting = true
+      images = images.join(',')
       addTentacle({
         name,
         mobile,
@@ -225,9 +228,14 @@ export default create({
     this.channelId = this.$route.params.id
     // 如果是编辑页并且是第一次打开，跳转到其他页面在调回来，不去重新查询触点信息，而是加载localstorage
     if (this.isEditPage) {
+      if (!window.norQueryTent) this.queryTent(this.channelId)
+    } else {
       // 查询标签列表
       this.queryLab()
-      if (!window.norQueryTent) this.queryTent(this.channelId)
+      // 如果有名片
+      if (this.img) {
+        this.images.push(this.img)
+      }
     }
     // 查询行业类型列表
     this.queryIndus()
@@ -238,10 +246,6 @@ export default create({
     // 判断是否来自拍摄
     if (this.$route.query.fromPage) {
       this.fromPage = this.$route.query.fromPage
-    }
-    // 如果有名片
-    if (this.img) {
-      this.images.push(this.img)
     }
   },
   beforeDestroy() {

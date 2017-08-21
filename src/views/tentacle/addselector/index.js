@@ -12,7 +12,8 @@ export default create({
       isIdentifying: false,
       identiFailed: false,
       localId: '',
-      serverId: ''
+      serverId: '',
+      progress: 0
     }
   },
   methods: {
@@ -28,8 +29,20 @@ export default create({
           // 上传图片
           this.uploadPhoto(this.localId)
           this.isIdentifying = true
+          this.startTimer()
         }
       })
+    },
+    startTimer() {
+      this.timer = setInterval(() => {
+        if (this.progress + 1 >= 100) {
+          this.progress = 100
+          clearInterval(this.timer)
+          this.$router.push('/tentacle/edit?fromPage=1')
+        } else {
+          this.progress += 1
+        }
+      }, 50)
     },
     uploadPhoto(localId) {
       wx.uploadImage({
@@ -53,7 +66,7 @@ export default create({
     getIdentifyResult(serverId) {
       getCardResult(serverId).then(res => {
         storage.set('tentacle', res)
-        this.$router.push('/tentacle/edit?fromPage=1')
+        // this.$router.push('/tentacle/edit?fromPage=1')
       })
     }
   },
