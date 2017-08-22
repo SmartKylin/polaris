@@ -3,9 +3,8 @@
     <!--<Cell title="基本信息" class="info&#45;&#45;title"></Cell>-->
     <Field label="姓名" type="text" placeholder="请输入姓名" align="right" v-model="name"></Field>
     <Field :label="(isEditPage ? '个人':'') + '电话'" type="tel" placeholder="请输入电话" align="right" v-model="mobile" @blur="checkMobile(mobile)"></Field>
-    <Field v-if="isEditPage" label="门面电话" type="tel" placeholder="请输入电话" align="right" v-model="storefrontMobile" @blur="checkMobile(storefrontMobile)"></Field>
-    <Selector title="行业类型" v-model="industry" placeholder="请选择行业类型" @input="industryChange" :options="industryList">
-    </Selector>
+    <Field v-if="isEditPage" label="门面电话" type="tel" placeholder="请输入电话" align="right" v-model="storefrontMobile"></Field>
+    <Selector title="行业类型" v-model="industry" placeholder="请选择行业类型" @input="industryChange" :options="industryList"></Selector>
     <!--field连续才会有border-bottom，所以此处每个组件分别添加v-show-->
     <!--<Cell v-show="industry!=4" title="所属机构" :to="`/organ?industry=${industry}`">-->
     <Cell v-show="industry!=4 && fromPage == 2" title="所属机构" arrow @click="linkToOrgan">
@@ -21,21 +20,25 @@
     <Field v-show="industry!=4" label="职位" placeholder="请输入职位" align="right" v-model="position"></Field>
     <Field v-if="isEditPage" label="邮箱" placeholder="请输入邮箱" align="right" v-model="email"></Field>
   </CellGroup>
-  <CellGroup class="mb10" :class="{'mb80': isEditPage}">
-    <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images" :editImgList.sync="editImgList"/>
-  </CellGroup>
-  
-  <CellGroup v-if="!isEditPage">
+
+  <!-- 触点评估带说明
+    <CellGroup class="mb10">
     <Selector title="触点评估" @input="relationChange" class="relasel--wrap" placeholder="请选择关系标签" v-model="label">
-      <!--<SelectorOption v-for="lab in labRelaList" :text="`${lab.name} (${lab.explain})`" :value="lab.id">-->
       <SelectorOption v-for="lab in labRelaList" :value="lab.id" :text="lab.name">
         <div>
           <p>{{lab.name}}({{lab.explain}})</p>
         </div>
       </SelectorOption>
     </Selector>
+  </CellGroup> -->
+
+  <CellGroup class="mb10" v-show="labRelaList.length">
+    <Selector title="触点评估" v-model="label" placeholder="请选择关系标签" :options="labRelaList"></Selector>
+  </CellGroup> 
+
+  <CellGroup class="mb10" :class="{'mb80': isEditPage}">
+    <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images" :editImgList.sync="editImgList" @deleteCard="cardDelete"/>
   </CellGroup>
-  
  <!-- <CellGroup>
     <div class="add&#45;&#45;textarea&#45;&#45;wrap">
       <div class="textarea&#45;&#45;title">兴趣爱好</div>

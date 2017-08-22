@@ -29,11 +29,11 @@
       </div>
     </header>
     <section class="main--img">
-      <img :src="isAndroid? localId :localData" alt="photo">
+      <img :src="isAndroid? localId :localData" alt="您的设备不支持预览名片，但不影响名片识别">
     </section>
     <Footer v-show="identiFailed" class="footer--failed mt10">
       <div class="button--small" @click="scanCardHandle">重新拍摄</div>
-      <router-link to="/tentacle/edit">
+      <router-link to="/tentacle/edit?fromPage=2">
         <div class="button--small">手动录入</div>
       </router-link>
     </Footer>

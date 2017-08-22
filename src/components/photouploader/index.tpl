@@ -10,15 +10,15 @@
     <div class="photo--box flex">
       <div v-if="img">
         <img :src="imgreq" alt="" @click="previewImg = imgreq">
-        <a href="javascript:;" class="photo--del" @click="$emit('update:img', '')"></a>
+        <a href="javascript:;" class="photo--del" @click="deleteCard"></a>
       </div>
-      <div v-for="item in editImgList" v-if="editImgList.length">
+      <!-- <div v-for="item in editImgList" v-if="editImgList.length">
         <img :src="item.realUrl" alt="" @click="previewImg = item.realUrl">
         <a href="javascript:;" class="photo--del" @click="editDeleteImg(item.videoValue)"></a>
-      </div>
+      </div> -->
       <div v-for="img in imgList">
-        <img :src="img.localId" alt="" @click="previewImg = img.reqKey">
-        <a href="javascript:;" class="photo--del" @click="deleteImg(img)"></a>
+        <img :src="img.reqKey" alt="" @click="previewImg = img.reqKey">
+        <a href="javascript:;" class="photo--del" @click="deleteImg(img.key)"></a>
       </div>
     </div>
   </main>

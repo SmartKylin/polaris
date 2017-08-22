@@ -47,7 +47,7 @@ export default create({
       // 日志延迟
       logDelay: false, */
       // 录入方式: 1，名片识别； 2，手动录入
-      fromPage: null,
+      fromPage: 2,
       // 名片原图地址
       imgreq: '',
       // 名片缩略图地址
@@ -60,7 +60,13 @@ export default create({
       // 门店电话
       storefrontMobile: '',
       // 触点详情页下的img列表
-      editImgList: []
+      editImgList: [],
+      sex: '',
+      age: '',
+      // 从业经验
+      experience: '',
+      // 人脉关系
+      contacts: ''
     }
   },
   components: {
@@ -85,13 +91,17 @@ export default create({
         this.branchstoreId = data.branchstore_id
         this.institutionName = data.channelInstitutionName
         this.institutionId = data.channelInstitutionId
-        this.storefrontMobile = data.storefrontMobile
-        this.email = data.emial
+        this.storefrontMobile = data.storefront_mobile
+        this.email = data.email
         this.editImgList = data.images
-        let images = data.images
+        this.sex = data.sex
+        this.age = data.age
+        this.experience = data.experience
+        this.contacts = data.contacts
+        /* let images = data.images
         if (images && images.length) {
           this.images = images.map(item => item.videoValue)
-        }
+        } */
       }).catch(err => {
         this.$loading.hide()
         this.$toast.show(err.message)
@@ -100,9 +110,16 @@ export default create({
     // 查询标签列表
     queryLab() {
       queryLabel().then(data => {
-        this.labRelaList = data[1].list
+        // this.labRelaList = data[1].list
         // 产能标签删除
         // this.labCapaList = data[2].list
+        let list = []
+        data[1].list.map(item => {
+          list.push({ text: item.name, value: item.id })
+        })
+        this.labRelaList = list
+      }).catch(err => {
+        this.$toast.show(err.message)
       })
     },
     // 查询行业类型列表
@@ -113,6 +130,8 @@ export default create({
           list.push({ text: data[key], value: key })
         }
         this.industryList = list
+      }).catch(err => {
+        this.$toast.show(err.message)
       })
     },
     industryChange() {
@@ -132,6 +151,10 @@ export default create({
         this.$toast.show('请输入正确的手机号')
       }
     },
+    // 删除名片
+    cardDelete() {
+      this.img = ''
+    },
     /* logDelayHandle() {
       if (this.logDelay === true) {
         return
@@ -143,9 +166,11 @@ export default create({
     }, */
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, email, storefrontMobile, images } = this
+      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, email, storefrontMobile, images, sex, age, experience, contacts, hobby, remark } = this
       let cityId = window.cityId
       this.isPosting = true
+      /* console.log('editTentacle')
+      console.log(images) */
       images = images.join(',')
       editTentacle({
         channelId,
@@ -161,10 +186,14 @@ export default create({
         position,
         label,
         images,
-        /* hobby,
-        remark */
+        hobby,
+        remark,
         email,
-        storefrontMobile
+        storefrontMobile,
+        sex,
+        age,
+        experience,
+        contacts
       }).then(res => {
         this.isPosting = false
         this.$toast.show('编辑触点成功', () => {
@@ -181,6 +210,9 @@ export default create({
       let { name, mobile, industry, position, remark, address, label, institutionId, institutionName, fromPage, images } = this
       let cityId = window.cityId
       this.isPosting = true
+      if (this.img) {
+        images.unshift(this.img)
+      }
       images = images.join(',')
       addTentacle({
         name,
@@ -236,26 +268,21 @@ export default create({
     }
   },
   mounted() {
-    this.channelId = this.$route.params.id
-    // 如果是编辑页并且是第一次打开，跳转到其他页面在调回来，不去重新查询触点信息，而是加载localstorage
-    if (this.isEditPage) {
-      if (!window.norQueryTent) this.queryTent(this.channelId)
-    } else {
-      // 查询标签列表
-      this.queryLab()
-      // 如果有名片
-      if (this.img) {
-        this.images.push(this.img)
-      }
-    }
-    // 查询行业类型列表
-    this.queryIndus()
     // 加载localStorage中的数据
     if (storage.get('tentacle')) {
       Object.assign(this, storage.get('tentacle'))
     }
+    // 查询标签列表
+    this.queryLab()
+    // 查询行业类型列表
+    this.queryIndus()
     // 判断是否来自拍摄
-    if (this.$route.query.fromPage) {
+    this.channelId = this.$route.params.id
+    // 如果是编辑页并且是第一次打开，跳转到其他页面在调回来，不去重新查询触点信息，而是加载localstorage
+    if (this.isEditPage && !window.norQueryTent) {
+      this.queryTent(this.channelId)
+    }
+    if (this.$route.query.fromPage === '1') {
       this.fromPage = this.$route.query.fromPage
     }
   },
@@ -272,7 +299,7 @@ export default create({
     },
     btnSubmitActive() {
       let { name, mobile, industry, address, position, institutionName, label } = this
-      let common = name.length && mobile.length && address.length && label.length
+      let common = name.length && mobile.length && address.length && label.length && this.industry
       if (parseInt(industry) === 4) {
         return common
       }
@@ -288,7 +315,7 @@ export default create({
     next()
   },
   beforeRouteLeave(to, from, next) {
-    let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName, channelId } = this
+    let { name, mobile, industry, position, remark, hobby, address, branchstoreName, label, institutionId, institutionName, channelId, sex, age, experience, contacts } = this
     let cityId = window.cityId
     if (to.path === '/organ') {
       storage.set('tentacle', {
@@ -304,18 +331,27 @@ export default create({
         label,
         hobby,
         remark,
-        channelId
+        channelId,
+        age,
+        sex,
+        contacts,
+        experience
       })
     } else {
       storage.remove('tentacle')
     }
     next()
-  },
-  watch: {
-    editImgList(val) {
-      if (this.editImgList && this.editImgList.length) {
-        this.images = this.images.concat(this.editImgList.map(item => item.videoValue))
-      }
-    }
   }
+  /* ,
+  watch: {
+    editImgList() {
+      console.log('editImgList')
+      console.log(this.editImgList)
+      this.images = this.images.concat(this.editImgList.map(item => item.videoValue))
+    },
+    images(val) {
+      console.log(this.images)
+      console.log(val)
+  } 
+  } */
 })

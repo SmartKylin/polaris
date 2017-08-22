@@ -46,7 +46,6 @@ export default create({
       // 触点id
       channelId: '',
       // 基本画像
-      sex: '',
       sexList: [
         { text: '男', value: '1' },
         { text: '女', value: '2' }
@@ -65,10 +64,11 @@ export default create({
         { text: '10年以上', value: '5' }
       ],
       contactsList: [
-        { id: '1', name: '一星', explain: '较少' },
-        { id: '2', name: '二星', explain: '一般' },
-        { id: '3', name: '三星', explain: '丰富' }
+        { text: '较少', value: '1' },
+        { text: '一般', value: '2' },
+        { text: '丰富', value: '3' }
       ],
+      sex: '',
       age: '',
       // 从业经验
       experience: '',
@@ -89,14 +89,16 @@ export default create({
         this.position = data.position
         this.hobby = data.hobby
         this.remark = data.remark
-        this.branchstoreName = data.branchstore_name
-        this.branchstoreId = data.branchstoreId
+        /* this.branchstoreName = data.branchstore_name
+        this.branchstoreId = data.branchstoreId */
         this.institutionName = data.channelInstitutionName
         this.institutionId = data.channelInstitutionId
         this.age = data.age
         this.experience = data.experience
         this.sex = data.sex
-        this.contacts = data.contacs
+        this.contacts = data.contacts
+        this.email = data.email
+        this.storefrontMobile = data.storefront_mobile
       })
     },
     /* // 选择标签
@@ -116,7 +118,7 @@ export default create({
     }, */
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, remark, hobby, sex, age, experience, contacts } = this
+      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, remark, hobby, sex, age, experience, contacts, email, storefrontMobile } = this
       let cityId = window.cityId
       // let { remark, hobby } = this.data
       this.isPosting = true
@@ -138,7 +140,9 @@ export default create({
         sex,
         age,
         experience,
-        contacts
+        contacts,
+        email,
+        storefrontMobile
       }).then(res => {
         this.isPosting = false
         this.$dialog.alert('提示', '编辑触点成功')
