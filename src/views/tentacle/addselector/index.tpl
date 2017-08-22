@@ -29,14 +29,13 @@
       </div>
     </header>
     <section class="main--img">
-      <img :src="localId" alt="photo">
+      <img :src="isAndroid? localId :localData" alt="photo">
     </section>
-    <Footer v-show="identiFailed" class="footer--failed">
-      <button class="button--small" @click="scanCardHandle">重新拍摄</button>
+    <Footer v-show="identiFailed" class="footer--failed mt10">
+      <div class="button--small" @click="scanCardHandle">重新拍摄</div>
       <router-link to="/tentacle/edit">
-        <button class="button--small">手动录入</button>
+        <div class="button--small">手动录入</div>
       </router-link>
     </Footer>
   </section>
-  
 </div>

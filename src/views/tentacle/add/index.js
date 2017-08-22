@@ -5,6 +5,8 @@ import storage from '../../../helper/storage'
 import PhotoUploader from 'components/photouploader'
 import TentacleBar from 'components/tentaclebar'
 import bus from '../../../helper/bus'
+import { getWeixinConfig } from '../../../services'
+import { initWeixinSDK } from '../../../helper/wxconfig'
 
 export default create({
   data() {
@@ -45,7 +47,7 @@ export default create({
       // 日志延迟
       logDelay: false, */
       // 录入方式: 1，名片识别； 2，手动录入
-      fromPage: 2,
+      fromPage: null,
       // 名片原图地址
       imgreq: '',
       // 名片缩略图地址
@@ -56,7 +58,9 @@ export default create({
       images: [],
       email: '',
       // 门店电话
-      storefrontMobile: ''
+      storefrontMobile: '',
+      // 触点详情页下的img列表
+      editImgList: []
     }
   },
   components: {
@@ -83,6 +87,11 @@ export default create({
         this.institutionId = data.channelInstitutionId
         this.storefrontMobile = data.storefrontMobile
         this.email = data.emial
+        this.editImgList = data.images
+        let images = data.images
+        if (images && images.length) {
+          this.images = images.map(item => item.videoValue)
+        }
       }).catch(err => {
         this.$loading.hide()
         this.$toast.show(err.message)
@@ -134,9 +143,10 @@ export default create({
     }, */
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, email, storefrontMobile } = this
+      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, email, storefrontMobile, images } = this
       let cityId = window.cityId
       this.isPosting = true
+      images = images.join(',')
       editTentacle({
         channelId,
         name,
@@ -150,6 +160,7 @@ export default create({
         address,
         position,
         label,
+        images,
         /* hobby,
         remark */
         email,
@@ -269,6 +280,8 @@ export default create({
     }
   },
   beforeRouteEnter(to, from, next) {
+    const url = encodeURIComponent(location.href.split('#')[0])
+    getWeixinConfig(url).then(initWeixinSDK)
     if (!(from.path === '/organ' || from.path === '/organ/add' || from.path === '/tentacle/editselector')) {
       storage.remove('tentacle')
     }
@@ -297,10 +310,12 @@ export default create({
       storage.remove('tentacle')
     }
     next()
-  }
-  /*  watch: {
-    images(val) {
-      console.log(val);
+  },
+  watch: {
+    editImgList(val) {
+      if (this.editImgList && this.editImgList.length) {
+        this.images = this.images.concat(this.editImgList.map(item => item.videoValue))
+      }
     }
-  } */
+  }
 })

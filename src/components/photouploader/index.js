@@ -2,21 +2,25 @@ import create from './index.tpl'
 import './index.styl'
 import wx from 'weixin-js-sdk'
 import { uploadPhoto } from '../../services'
-
 // const img = require('../../images/logo.png')
 
 export default create({
   props: {
+    // 名片相关
     img: String,
     imgthum: String,
     imgreq: String,
-    images: Array
+    // 要上传的图片列表
+    images: Array,
+    // 编辑页的图片列表
+    editImgList: Array
   },
   data() {
     return {
       previewImg: '',
       imgList: [],
       cardVisible: false
+      // editImgList: []
     }
   },
   methods: {
@@ -33,9 +37,10 @@ export default create({
         }
       })
     },
+    // 删除后续上传的照片
     deleteImg(img) {
       this.imgList = this.imgList.filter(item => item !== img)
-      this.$emit('update:images', this.imgList.map(item => item.key))
+      this.$emit('update:images', this.images.concat(this.imgList.map(item => item.key)))
     },
     previewImg() {
       wx.previewImage({
@@ -43,12 +48,17 @@ export default create({
         urls: [] // 需要预览的图片http链接列表
       })
     },
+    // 删除详情页带过来的照片
+    editDeleteImg(videoValue) {
+      this.$emit('update:editImgList', this.editImgList.filter(item => item.videoValue !== videoValue))
+      this.$emit('update:images', this.images.concat(this.editImgList.map(item => item.videoValue)))
+    },
     uploadImg(localId) {
       this.$loading.show()
       const Success = data => {
         this.$loading.hide()
         this.imgList.push({ localId, ...data.data })
-        this.$emit('update:images', this.imgList.map(item => item.key))
+        this.$emit('update:images', this.images.concat(this.imgList.map(item => item.key)))
       }
       const Fail = err => {
         this.$loading.hide()

@@ -22,7 +22,7 @@
     <Field v-if="isEditPage" label="邮箱" placeholder="请输入邮箱" align="right" v-model="email"></Field>
   </CellGroup>
   <CellGroup class="mb10" :class="{'mb80': isEditPage}">
-    <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images"/>
+    <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images" :editImgList.sync="editImgList"/>
   </CellGroup>
   
   <CellGroup v-if="!isEditPage">

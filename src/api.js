@@ -106,5 +106,7 @@ export default (config => {
   // 名片识别
   'cardIdentify': '/mizar/m/channel/identify',
   // 上传图片
-  'photoUpload': '/mizar/m/tool/upload'
+  'photoUpload': '/mizar/m/tool/upload',
+  // 获取单张图片地址
+  'singleImage': '/mizar/m/tool/image'
 })

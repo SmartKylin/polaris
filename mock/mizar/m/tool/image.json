@@ -1,0 +1,20 @@
+{
+  "path": "",
+  "delay": 500,
+  "name": "",
+  "description": "",
+  "isPaging": false,
+  "datasource": "success.data",
+  "responseName": "success",
+  "response": {
+    "success": {
+      "retcode": 2000000,
+      "msg": "成功",
+      "data": "https://bbt-dev.oss-cn-beijing.aliyuncs.com/test/20170821/1503304844341.jpeg?Expires=1503308444&OSSAccessKeyId=LTAIZ1zaEnYbzBwP&Signature=3ZgH0GyGtUIGrJOEcN6ZJBFWTEw%3D"
+    },
+    "failure": {
+      "retcode": 4000000,
+      "msg": "系统繁忙"
+    }
+  }
+}

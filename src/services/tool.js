@@ -49,3 +49,10 @@ export function getCardResult(serverId) {
 export function uploadPhoto(serverId) {
   return http.post(apis.photoUpload, { serverId })
 }
+
+/**
+ * 获取单张图片
+ */
+export function getSingleImg(key) {
+  return http.get(apis.singleImage, { key })
+}
