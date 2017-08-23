@@ -4,7 +4,7 @@ import './index.styl'
 export default create({
   data() {
     return {
-      data: { }
+      data: []
     }
   }
 })

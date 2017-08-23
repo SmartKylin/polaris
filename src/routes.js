@@ -1,4 +1,5 @@
 import Login from 'views/user/login'
+// 触点相关
 import TentacleIndex from 'views/tentacle/index'
 import TentacleList from 'views/tentacle/list'
 import TentacleSearch from 'views/tentacle/search'
@@ -13,9 +14,10 @@ import TentacleDetailDescription from 'views/tentacle/detail/description'
 import TentacleDetailLogger from 'views/tentacle/detail/logger'
 // import TentacleDetailInfo from 'views/tentacle/detail/info'
 
+// 机构
 import OrganIndex from 'views/organ/index'
 import OrganAdd from 'views/organ/add'
-
+// 线索
 import ClueIndex from 'views/clue/index'
 import ClueDetail from 'views/clue/detail'
 import ClueAdd from 'views/clue/add'
@@ -24,9 +26,11 @@ import ClueClose from 'views/clue/close'
 import ClueLogs from 'views/clue/logs'
 import PickTentacle from 'views/clue/pick-tentacle'
 import TodoDone from 'views/clue/todo-done'
+// 个人中心
+import UserTodoList from 'views/user/todolist'
 import UserIndex from 'views/user/index'
-
 import TaskDetail from 'views/user/task'
+import UserManageByObject from 'views/user/manage-object'
 
 export default [
   {
@@ -155,6 +159,15 @@ export default [
   {
     path: '/user',
     component: UserIndex
+  },
+  {
+    path: '/user/todolist',
+    component: UserTodoList
+  },
+  // 目标管理
+  {
+    path: '/user/mbo',
+    component: UserManageByObject
   },
   {
     path: '/user/task/:flag/:type',
