@@ -1,4 +1,4 @@
-import wx from 'weixin-js-sdk'
+import wx from '../jweixin-1.2.0'
 
 export const initWeixinSDK = (config) => {
   wx.config({

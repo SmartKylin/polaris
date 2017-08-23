@@ -22,14 +22,14 @@
       <div v-show="!identiFailed" class="header--identifying">
         请稍等，正在识别中...
       </div>
-      <div v-show="!identiFailed" class="progress--box">{{progress}}%</div>
+      <!-- <div v-show="!identiFailed" class="progress--box">{{progress}}%</div> -->
       <div v-show="identiFailed" class="header--failed">
         <p class="failed--tip">无法识别名片信息</p>
         <p class="method--tip">请尝试重新拍摄或手动录入</p>
       </div>
     </header>
     <section class="main--img">
-      <img :src="isAndroid? localId :localData" alt="您的设备不支持预览名片，但不影响名片识别">
+      <img :src="localId" alt="您的设备不支持预览名片，但不影响名片识别">
     </section>
     <Footer v-show="identiFailed" class="footer--failed mt10">
       <div class="button--small" @click="scanCardHandle">重新拍摄</div>

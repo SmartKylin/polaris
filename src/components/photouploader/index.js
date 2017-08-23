@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import wx from 'weixin-js-sdk'
+import wx from '../../jweixin-1.2.0'
 import { uploadPhoto } from '../../services'
 // const img = require('../../images/logo.png')
 

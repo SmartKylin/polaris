@@ -1,7 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-
-import wx from 'weixin-js-sdk'
+import wx from '../../../jweixin-1.2.0'
 import { getWeixinConfig, identifyPhoto, getCardResult } from 'services'
 import { initWeixinSDK } from '../../../helper/wxconfig'
 import storage from '../../../helper/storage'
@@ -14,7 +13,6 @@ export default create({
       localId: '',
       serverId: '',
       progress: 0,
-      isAndroid: true,
       localData: ''
     }
   },
@@ -25,29 +23,15 @@ export default create({
         this.localId = res.localIds[0]
         this.uploadPhoto(this.localId)
         this.isIdentifying = true
-        this.startTimer()
+        // this.startTimer()
       }
       wx.chooseImage({
         count: 1,
         sizeType: ['original', 'compressed'],
         sourceType: ['album', 'camera'],
-        success: res => {
-          // 图片显示在模板
-          if (this.isAndroid) {
-            Success(res)
-          } else { // 兼容IOS的WKWebview内核
-            wx.getLocalImgData({
-              localId: res.localIds[0],
-              success: function (res2) {
-                let localData = res2.localData
-                this.localData = localData.replace('jgp', 'jpeg')
-                Success(res)
-              },
-              fail: err => {
-                this.$toast.show(err.errMsg)
-              }
-            })
-          }
+        success: Success,
+        fail: err => {
+          this.$toast.show(err.errMsg)
         }
       })
     },
@@ -78,6 +62,7 @@ export default create({
     identifyCard(serverId) {
       identifyPhoto(serverId).then(res => {
         this.serverId = res.serverId
+        // console.log('res.serverId: ' + res.serverId)
         this.getIdentifyResult(res.serverId)
       }).catch(err => {
         this.identiFailed = true
@@ -86,15 +71,14 @@ export default create({
     },
     getIdentifyResult(serverId) {
       getCardResult(serverId).then(res => {
+        /* console.log('serverId: ' + serverId)
+        console.log(res) */
         storage.set('tentacle', res)
-        // this.$router.push('/tentacle/edit?fromPage=1')
+        this.$router.push('/tentacle/edit?fromPage=1')
       }).catch(err => {
         this.$toast.show(err.message)
       })
     }
-  },
-  created() {
-    this.isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1
   },
   beforeRouteEnter(from, to, next) {
     const url = encodeURIComponent(location.href.split('#')[0])

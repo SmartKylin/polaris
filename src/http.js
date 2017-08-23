@@ -11,6 +11,7 @@ axios.defaults.timeout = 100000
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 axios.interceptors.response.use(response => {
+  // console.log(response)
   if (response.data.retcode === 2000000) {
     return response.data.data || response.data
   } else {
