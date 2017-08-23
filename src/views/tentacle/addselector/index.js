@@ -12,15 +12,34 @@ export default create({
       identiFailed: false,
       localId: '',
       serverId: '',
-      progress: 0,
+      // progress: 0,
       localData: ''
+    }
+  },
+  computed: {
+    isWkView() {
+      return window.__wxjs_is_wkwebview
     }
   },
   methods: {
     scanCardHandle() {
       this.identiFailed = false
+      const failure = err => {
+        this.$toast.show(err.errMsg)
+      }
       const Success = res => {
-        this.localId = res.localIds[0]
+        let localId = res.localIds[0]
+        if (this.isWkView) {
+          wx.getLocalImgData({
+            localId,
+            success: resp => {
+              let localData = resp.localData
+              this.localData = localData.replace('jgp', 'jpeg')
+            },
+            fail: failure
+          })
+        }
+        this.localId = localId
         this.uploadPhoto(this.localId)
         this.isIdentifying = true
         // this.startTimer()
@@ -30,12 +49,10 @@ export default create({
         sizeType: ['original', 'compressed'],
         sourceType: ['album', 'camera'],
         success: Success,
-        fail: err => {
-          this.$toast.show(err.errMsg)
-        }
+        fail: failure
       })
     },
-    startTimer() {
+    /* startTimer() {
       this.timer && clearInterval(this.timer)
       this.timer = setInterval(() => {
         if (this.progress + 1 >= 100) {
@@ -48,7 +65,7 @@ export default create({
           this.progress += 1
         }
       }, 50)
-    },
+    }, */
     uploadPhoto(localId) {
       wx.uploadImage({
         localId,

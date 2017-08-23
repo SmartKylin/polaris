@@ -29,7 +29,7 @@
       </div>
     </header>
     <section class="main--img">
-      <img :src="localId" alt="您的设备不支持预览名片，但不影响名片识别">
+      <img :src="isWkView ? localData : localId" alt="您的设备不支持预览名片，但不影响名片识别">
     </section>
     <Footer v-show="identiFailed" class="footer--failed mt10">
       <div class="button--small" @click="scanCardHandle">重新拍摄</div>
