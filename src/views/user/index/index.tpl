@@ -2,6 +2,7 @@
   <router-link to="/user/mbo">
     <div class="CellBox">
       <div class="Cell smart-border-bottom">
+        <div class="goal--icon"></div>
         <div class="Cell--hd">
           <span class="Cell--title flag--undo">目标管理</span>
         </div>
@@ -9,5 +10,16 @@
       </div>
     </div>
   </router-link>
-  <Cell title="待办事项" to="/user/todolist"></Cell>
+  
+  <router-link to="/user/todolist">
+    <div class="CellBox">
+      <div class="Cell smart-border-bottom">
+        <div class="todo--icon"></div>
+        <div class="Cell--hd">
+          <span class="Cell--title">待办事项</span>
+        </div>
+        <i class="Cell--arrow"></i>
+      </div>
+    </div>
+  </router-link>
 </div>

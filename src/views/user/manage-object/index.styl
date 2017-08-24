@@ -1,0 +1,68 @@
+.mbo {
+  .tab--item {
+    color: #333;
+    border-bottom: 2px solid #fff;
+    &.active {
+      color: #20a0ff;
+      font-weight: bold;
+      background-color: #fff;
+      border-bottom: 2px solid #20a0ff;
+    }
+  }
+}
+
+.week--switch {
+  padding: 5px 0;
+  .switch--left {
+    margin: 8px 0;
+    background: #20a0ff;
+    color: #fff;
+    //border-radius: 50%;
+  }
+  .switch--right {
+  //border-left: 1px solid #20a0ff;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.month--icon {
+  width: 20px;
+  height: 20px;
+  background: url(../../../images/user/month.svg) no-repeat;
+  background-size: cover;
+  margin-bottom: 5px;
+}
+
+.months--group {
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid #20a0ff;
+  padding: 5px 0;
+  .month--item {
+    color: #333;
+    width: 16%;
+    height: 30px;
+    padding: 5px 0;
+    text-align: center;
+    line-height: 30px;
+    &.active {
+      background: #20a0ff;
+      color: #fff;
+      border-radius: 50%;
+    }
+  }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+  opacity: 0
+}
+
