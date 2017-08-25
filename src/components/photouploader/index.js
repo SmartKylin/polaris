@@ -98,7 +98,7 @@ export default create({
       console.log('has card')
       console.log(this.imgList)
     } */
-    if (this.editImgList.length) {
+    if (this.editImgList && this.editImgList.length) {
       this.editImgList.map(item => {
         this.imgList.push({ key: item.videoValue, reqKey: item.realUrl })
       })

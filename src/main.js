@@ -15,9 +15,12 @@ import getTitle from './titles'
 import initHelper from './helper'
 import App from 'views/app'
 import './css/index.styl'
+import { Steps, Step } from 'element-ui'
 
 Vue.use(Router)
 Vue.use(SmartUI)
+Vue.use(Steps)
+Vue.use(Step)
 initHelper(Vue)
 
 /**

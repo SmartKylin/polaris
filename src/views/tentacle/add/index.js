@@ -115,7 +115,8 @@ export default create({
         // this.labCapaList = data[2].list
         let list = []
         data[1].list.map(item => {
-          list.push({ text: item.name, value: item.id })
+          // list.push({ text: item.name + '(' + item.explain  + ')', value: item.id, desc: item.explain })
+          list.push({ text: item.name, value: item.id, desc: item.explain })
         })
         this.labRelaList = list
       }).catch(err => {
@@ -352,6 +353,6 @@ export default create({
     images(val) {
       console.log(this.images)
       console.log(val)
-  } 
+  }
   } */
 })

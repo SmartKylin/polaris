@@ -5,7 +5,6 @@
     <Field :label="(isEditPage ? '个人':'') + '电话'" type="tel" placeholder="请输入电话" align="right" v-model="mobile" @blur="checkMobile(mobile)"></Field>
     <Field v-if="isEditPage" label="门面电话" type="tel" placeholder="请输入电话" align="right" v-model="storefrontMobile"></Field>
     <Selector title="行业类型" v-model="industry" placeholder="请选择行业类型" @input="industryChange" :options="industryList"></Selector>
-    <!--field连续才会有border-bottom，所以此处每个组件分别添加v-show-->
     <!--<Cell v-show="industry!=4" title="所属机构" :to="`/organ?industry=${industry}`">-->
     <Cell v-show="industry!=4 && fromPage == 2" title="所属机构" arrow @click="linkToOrgan">
       <div slot="body">
@@ -21,20 +20,21 @@
     <Field v-if="isEditPage" label="邮箱" placeholder="请输入邮箱" align="right" v-model="email"></Field>
   </CellGroup>
 
-  <!-- 触点评估带说明
+   <!--触点评估带说明-->
     <CellGroup class="mb10">
     <Selector title="触点评估" @input="relationChange" class="relasel--wrap" placeholder="请选择关系标签" v-model="label">
-      <SelectorOption v-for="lab in labRelaList" :value="lab.id" :text="lab.name">
+      <SelectorOption v-for="lab in labRelaList" :value="lab.value" :text="lab.text">
         <div>
-          <p>{{lab.name}}({{lab.explain}})</p>
+          <p>{{lab.text}}({{lab.desc}})</p>
         </div>
       </SelectorOption>
     </Selector>
-  </CellGroup> -->
+  </CellGroup>
 
-  <CellGroup class="mb10" v-show="labRelaList.length">
+  <!--触点评估不带说明-->
+  <!--<CellGroup class="mb10" v-show="labRelaList.length">
     <Selector title="触点评估" v-model="label" placeholder="请选择关系标签" :options="labRelaList"></Selector>
-  </CellGroup> 
+  </CellGroup>-->
 
   <CellGroup class="mb10" :class="{'mb80': isEditPage}">
     <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images" :editImgList.sync="editImgList" @deleteCard="cardDelete"/>

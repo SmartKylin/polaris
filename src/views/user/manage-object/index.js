@@ -1,10 +1,11 @@
 import create from './index.tpl'
 import './index.styl'
+import {getCountDown} from "../../../helper/countdown"
 
 export default create({
   data() {
     return {
-      status: 'setting',
+      status: 'review',
       month: '8月',
       monthSelectorVisible: false,
       weeks: [
@@ -33,7 +34,14 @@ export default create({
           statusName: '未开放'
         }
       ],
-      months: []
+      months: [],
+      whichStep: 1,
+      now: null,
+      countDown: '',
+      timer: null,
+      personalAnalysis: '',
+      leaderAnalysis: '',
+      summarize: ''
     }
   },
   methods: {
@@ -50,9 +58,25 @@ export default create({
       setTimeout(() => {
         this.monthSelectorVisible = false
       }, 100)
+    },
+    startTimer() {
+      this.timer = setInterval(() => {
+        this.countDown = getCountDown('2018/2/18 12:00:00')
+        if (this.countDown === '未开放') {
+          clearInterval(this.timer)
+        }
+      }, 1000)
+    },
+    initQueryString() {
+      if (this.$route.query.whichStep) {
+        this.whichStep = parseInt(this.$route.query.whichStep)
+      }
     }
   },
   created() {
+    this.initQueryString()
     this.makeMonths()
+    this.startTimer()
+    this.now = new Date()
   }
 })

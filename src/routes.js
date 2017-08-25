@@ -31,6 +31,7 @@ import UserTodoList from 'views/user/todolist'
 import UserIndex from 'views/user/index'
 import TaskDetail from 'views/user/task'
 import UserManageByObject from 'views/user/manage-object'
+import UserAddGoal from 'views/user/add-goal'
 
 export default [
   {
@@ -168,6 +169,10 @@ export default [
   {
     path: '/user/mbo',
     component: UserManageByObject
+  },
+  {
+    path: '/user/add-goal',
+    component: UserAddGoal
   },
   {
     path: '/user/task/:flag/:type',

@@ -20,7 +20,9 @@ const conf = {
   '^/login$': '登录',
   '^/organ$': '所属机构',
   '^/organ/branch$': '所在分店',
-  '^/organ/add$': '添加机构'
+  '^/organ/add$': '添加机构',
+  '^/user/mbo': '目标管理',
+  '^/user/add-goal': '添加目标'
 }
 
 export default function(path) {

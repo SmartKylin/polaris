@@ -9,6 +9,23 @@
       border-bottom: 2px solid #20a0ff;
     }
   }
+  .steps--bar {
+    padding: 8px 5px 5px 25px;
+  }
+  .button--large {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .setting--statistic {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
 }
 
 .week--switch {
@@ -17,7 +34,7 @@
     margin: 8px 0;
     background: #20a0ff;
     color: #fff;
-    //border-radius: 50%;
+  //border-radius: 50%;
   }
   .switch--right {
   //border-left: 1px solid #20a0ff;
@@ -59,10 +76,34 @@
   }
 }
 
+.setting--area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .setting--period {
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 0;
+  }
+  .goal--box {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    background: #13CE66
+    color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+
+.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */
+{
   opacity: 0
 }
 

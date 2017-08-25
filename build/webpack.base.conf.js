@@ -53,7 +53,7 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg|woff|ttf)(\?.*)?$/,
         loader: 'url-loader'
       },
     ]
