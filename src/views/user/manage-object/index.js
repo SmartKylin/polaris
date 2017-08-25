@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import {getCountDown} from "../../../helper/countdown"
+import { getCountDown } from '../../../helper/countdown'
 
 export default create({
   data() {

@@ -7,7 +7,7 @@ export default create({
       analysis: '这是我的个人分析',
       discussion: '',
       analysisVisible: false,
-      whichStep: 0,
+      whichStep: 0
     }
   },
   methods: {
