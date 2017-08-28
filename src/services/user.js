@@ -14,3 +14,10 @@ export function sendsms(params) {
 export function login(params) {
   return http.post(apis.login, params)
 }
+
+/**
+ * 获取目标管理状态
+ */
+export function getManageStatus() {
+  return http.get(apis.manage)
+}

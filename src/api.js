@@ -96,6 +96,8 @@ export default (config => {
   'sendcode': '/mizar/m/tool/sendcode',
   // 用户登录
   'login': '/mizar/m/user/bind',
+  // 获取目标管理状态
+  'manage': '/mizar/m/user/aims/manage',
   /**
    * 扫描录入触点
    * ============================================== */

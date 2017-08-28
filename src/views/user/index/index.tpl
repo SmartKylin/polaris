@@ -4,7 +4,7 @@
       <div class="Cell smart-border-bottom">
         <div class="goal--icon"></div>
         <div class="Cell--hd">
-          <span class="Cell--title flag--undo">目标管理</span>
+          <span class="Cell--title" :class="{'flag--undo': status == 1}">目标管理</span>
         </div>
         <i class="Cell--arrow"></i>
       </div>
