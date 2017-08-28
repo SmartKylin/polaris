@@ -36,7 +36,7 @@
     <Selector title="触点评估" v-model="label" placeholder="请选择关系标签" :options="labRelaList"></Selector>
   </CellGroup>-->
 
-  <CellGroup class="mb10" :class="{'mb80': isEditPage}">
+  <CellGroup class="mb10" :class="{'mb50': isEditPage}">
     <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images" :editImgList.sync="editImgList" @deleteCard="cardDelete"/>
   </CellGroup>
  <!-- <CellGroup>
@@ -47,7 +47,7 @@
     </div>
   </CellGroup>-->
   
-  <CellGroup class="mb80" v-if="!isEditPage">
+  <CellGroup class="mb50" v-if="!isEditPage">
     <div class="add--textarea--wrap">
       <div class="textarea--title">备注</div>
       <textarea name="" id="" cols="3" rows="4" class="add--text--area" placeholder="(选填)" maxlength="100" v-model="remark"></textarea>
@@ -66,7 +66,8 @@
       <div v-show="!logDelay" class="textarea&#45;&#45;length">{{visitLog.length}}/500</div>
     </div>
   </CellGroup>-->
-  <div class="btn--wrap">
-    <div class="btn--addtent " :class="{'active': btnSubmitActive && !isPosting}" @click="handlePostBtn">提交</div>
-  </div>
+  <!--<div class="btn&#45;&#45;wrap">
+    <div class="btn&#45;&#45;addtent " :class="{'active': btnSubmitActive && !isPosting}" @click="handlePostBtn">提交</div>
+  </div>-->
+  <div class="button--large" :class="{'active': btnSubmitActive && !isPosting}" @click="handlePostBtn">提交</div>
 </div>

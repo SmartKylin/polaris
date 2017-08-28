@@ -13,25 +13,29 @@ export default create({
           name: 'week1',
           period: '2017.2.28-2017.3.2',
           status: 0,
-          statusName: '已关闭'
+          statusName: '已关闭',
+          step: 1
         },
         {
           name: 'week2',
           period: '2017.2.28-2017.3.2',
           status: 1,
-          statusName: '已开放'
+          statusName: '已开放',
+          step: 2
         },
         {
           name: 'week3',
           period: '2017.2.28-2017.3.2',
           status: 2,
-          statusName: '未开放'
+          statusName: '未开放',
+          step: 3
         },
         {
           name: 'week4',
           period: '2017.2.28-2017.3.2',
           status: 2,
-          statusName: '未开放'
+          statusName: '未开放',
+          step: 2
         }
       ],
       months: [],
@@ -41,12 +45,16 @@ export default create({
       timer: null,
       personalAnalysis: '',
       leaderAnalysis: '',
-      summarize: ''
+      summarize: '',
+      curWeek: ''
     }
   },
   methods: {
     changeGoalStatus(val) {
       this.status = val
+    },
+    changeCurWeek(val) {
+      this.curWeek = this.weeks.find(w => w.name === val)
     },
     makeMonths() {
       for (let i = 1; i < 13; i++) {

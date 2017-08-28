@@ -1,5 +1,5 @@
 <div class="mbo">
-  <CellGroup class="mb10">
+  <CellGroup class="mb10 page--switcher">
     <Tab @change="changeGoalStatus">
       <div class="tab--item" data-key="setting" :class="{active: status == 'setting'}">目标设置</div>
       <div class="tab--item" data-key="review" :class="{active: status == 'review'}">目标复盘</div>
@@ -12,33 +12,38 @@
     </div>
   </transition>
   <!--周选择器-->
-  <CellGroup class="mb10">
+  <CellGroup class="mb10 mt50">
     <transition name="fade">
-      <div class="flex bg-white week--switch" v-show="!monthSelectorVisible">
-        <div class="tab--item switch--left flex-center">{{month}}</div>
-        <Tab change="changeCurWeek">
-          <div class="tab--item" v-for="w in weeks">
+      <div class="flex bg-white week--switch">
+        <div class="tab--item switch--right flex-center">
+          <div class="month--icon"></div>
+          {{month}}
+        </div>
+        <!--<div class="tab&#45;&#45;item switch&#45;&#45;left flex-center">{{month}}</div>-->
+        <Tab @change="changeCurWeek">
+          <div class="tab--item" v-for="w in weeks" :data-key="w.name">
             <div class="mb10 font-16">{{w.name}}</div>
             <div class="font-12 color-gray">{{w.statusName}}</div>
           </div>
         </Tab>
-        <div class="tab--item switch--right flex-center" @click="monthSelectorVisible = true">
-          <div class="month--icon"></div>
+        <!--<div class="tab&#45;&#45;item switch&#45;&#45;right flex-center" @click="monthSelectorVisible = true">
+          <div class="month&#45;&#45;icon"></div>
           更多
-        </div>
+        </div>-->
+        <div class="tab--item switch--left flex-center" @click="monthSelectorVisible = true"  v-show="!monthSelectorVisible">更多</div>
       </div>
     </transition>
   </CellGroup>
   <!--设置或者复盘进度显示栏-->
   <CellGroup class="steps--bar bg-white" v-if="status == 'setting'">
-    <el-steps :active="whichStep" :align-center="true" :center="true" processStatus="process" finishStatus="success">
+    <el-steps :active="curWeek.step" :align-center="true" :center="true" processStatus="process" finishStatus="success">
       <el-step title="目标待预设"></el-step>
       <el-step title="待完善"></el-step>
       <el-step title="设置完成"></el-step>
     </el-steps>
   </CellGroup>
   <CellGroup class="steps--bar bg-white" v-if="status == 'review'">
-    <el-steps :active="whichStep" :align-center="true" :center="true" finishStatus="success" processStatus="process">
+    <el-steps :active="curWeek.step" :align-center="true" :center="true" finishStatus="success" processStatus="process">
       <el-step title="未设置目标"></el-step>
       <el-step title="待复盘"></el-step>
       <el-step title="复盘完成"></el-step>

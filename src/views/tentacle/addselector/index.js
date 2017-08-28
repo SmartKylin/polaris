@@ -12,7 +12,6 @@ export default create({
       identiFailed: false,
       localId: '',
       serverId: '',
-      // progress: 0,
       localData: ''
     }
   },
@@ -52,20 +51,6 @@ export default create({
         fail: failure
       })
     },
-    /* startTimer() {
-      this.timer && clearInterval(this.timer)
-      this.timer = setInterval(() => {
-        if (this.progress + 1 >= 100) {
-          this.progress = 100
-          clearInterval(this.timer)
-          if (!this.identiFailed) {
-            this.$router.push('/tentacle/edit?fromPage=1')
-          }
-        } else {
-          this.progress += 1
-        }
-      }, 50)
-    }, */
     uploadPhoto(localId) {
       wx.uploadImage({
         localId,
