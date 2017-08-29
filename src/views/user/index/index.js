@@ -1,6 +1,6 @@
 import create from './index.tpl'
 import './index.styl'
-import { getManageStatus } from '../../../services'
+import { getOpenStatus } from '../../../services'
 
 export default create({
   data() {
@@ -9,9 +9,8 @@ export default create({
     }
   },
   created() {
-    getManageStatus().then(res => {
+    getOpenStatus().then(res => {
       this.status = res.status
-      
     }).catch(err => {
       this.$toast.show(err.message)
     })

@@ -18,6 +18,20 @@ export function login(params) {
 /**
  * 获取目标管理状态
  */
-export function getManageStatus() {
-  return http.get(apis.manage)
+export function getOpenStatus() {
+  return http.get(apis.getOpenStatus)
+}
+
+/**
+ * 获取目标管理信息
+ */
+export function getManageData(params) {
+  return http.get(apis.getManageData, params)
+}
+
+/**
+ * 获取目标历史信息
+ */
+export function getAimsHistory(params) {
+  return http.get(apis.getAimsHistory, params)
 }

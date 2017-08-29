@@ -97,7 +97,11 @@ export default (config => {
   // 用户登录
   'login': '/mizar/m/user/bind',
   // 获取目标管理状态
-  'manage': '/mizar/m/user/aims/manage',
+  'getOpenStatus': '/mizar/m/user/aims/openstatus',
+  // 获取目标管理信息
+  'getManageData': '/mizar/m/user/aims/manage',
+  // 获取目标历史信息
+  'getAimsHistory': '/mizar/m/user/aims/history',
   /**
    * 扫描录入触点
    * ============================================== */

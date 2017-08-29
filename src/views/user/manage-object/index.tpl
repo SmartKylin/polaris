@@ -12,7 +12,7 @@
     </div>
   </transition>
   <!--周选择器-->
-  <CellGroup class="mb10 mt50">
+  <CellGroup class="mb10 mt50" v-if="weeks.length">
     <transition name="fade">
       <div class="flex bg-white week--switch">
         <div class="tab--item switch--right flex-center">
@@ -21,9 +21,9 @@
         </div>
         <!--<div class="tab&#45;&#45;item switch&#45;&#45;left flex-center">{{month}}</div>-->
         <Tab @change="changeCurWeek">
-          <div class="tab--item" v-for="w in weeks" :data-key="w.name">
-            <div class="mb10 font-16">{{w.name}}</div>
-            <div class="font-12 color-gray">{{w.statusName}}</div>
+          <div class="tab--item" v-for="(w, ind) in weeks" :data-key="ind" :class="{active: w.active == 1}">
+            <div class="mb10 font-16">Week{{ind+1}}</div>
+            <div class="font-12 color-gray">{{w.openStatus}}</div>
           </div>
         </Tab>
         <!--<div class="tab&#45;&#45;item switch&#45;&#45;right flex-center" @click="monthSelectorVisible = true">
@@ -36,7 +36,7 @@
   </CellGroup>
   <!--设置或者复盘进度显示栏-->
   <CellGroup class="steps--bar bg-white" v-if="status == 'setting'">
-    <el-steps :active="curWeek.step" :align-center="true" :center="true" processStatus="process" finishStatus="success">
+    <el-steps :active="whichStep" :align-center="true" :center="true" processStatus="process" finishStatus="success">
       <el-step title="目标待预设"></el-step>
       <el-step title="待完善"></el-step>
       <el-step title="设置完成"></el-step>
@@ -51,21 +51,26 @@
   </CellGroup>
   <!--设置和复盘控制区域-->
   <CellGroup class="bg-white mt10 setting--area">
-    <div class="setting--period color-gray">目标设置开放时间段 {{now}}</div>
+    <div class="setting--period color-gray">{{status == 'setting' ? '目标设置' : '总结提交'}}开放时间段 周五18:00-周日24:00</div>
     <div class="color-red mb5">距设置截止时间</div>
-    <div class="color-red">{{countDown}}</div>
+    <div>
+      <span v-for="(count, ind) in countDown">
+        <span  class="time--cell">{{count}}</span>
+        <span v-if="ind !== 2" class="mr5">:</span>
+      </span>
+    </div>
     <div class="goal--box mb10 mt10">
       <div class="mb5">签约金额</div>
       <div class="mb10">个人本周目标</div>
-      <div class="setting-status color-blue">待设置</div>
+      <div class="setting-status color-blue">{{aims_info.amount||'待设置'}}</div>
     </div>
     <div class="setting--statistic mt30" v-if="status == 'setting'">
       <div class="color-orange">
-        <div class="mb10 font-16">10</div>
+        <div class="mb10 font-16">{{num.not_set}}</div>
         <div class="mb30">未设置人数</div>
       </div>
       <div class="color-green">
-        <div class="mb10 font-16">80</div>
+        <div class="mb10 font-16">{{num.re_set}}</div>
         <div class="mb30">已设置人数</div>
       </div>
     </div>
@@ -93,10 +98,10 @@
       <div class="textarea--length">{{summarize.length}}/500</div>
     </div>
   </CellGroup>
-  <router-link to="/user/add-goal?whichStep=1" v-if="whichStep == 1">
+  <router-link to="/user/add-goal?whichStep=1" v-if="whichStep == 0">
     <div class="button--large">去设置目标</div>
   </router-link>
-  <router-link to="/user/add-goal?whichStep=2" v-if="whichStep == 2">
+  <router-link to="/user/add-goal?whichStep=2" v-if="whichStep == 1">
     <div class="button--large">去完善目标</div>
   </router-link>
   <div class="button--large" v-show="status == 'review'">提交复盘总结</div>

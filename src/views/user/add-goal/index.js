@@ -5,6 +5,7 @@ export default create({
   data() {
     return {
       analysis: '这是我的个人分析',
+      amount: 0,
       discussion: '',
       analysisVisible: false,
       whichStep: 0
