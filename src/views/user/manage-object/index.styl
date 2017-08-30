@@ -109,8 +109,11 @@
   }
   .cancel--btn {
     font-size: 32px;
-    width: 50px;
+    width: 30px;
     text-align: center;
+    border-bottom: 3px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 }
 
@@ -178,6 +181,21 @@
   }
   .el-step__title {
     font-size: 12px;
+  }
+  .el-step__line-inner {
+    width: 100%!important;
+  }
+}
+
+// 修改placeholder的默认样式
+.mbo {
+  .red--tip {
+    display: flex;
+    flex-direction: column;
+    ::-webkit-input-placeholder {
+      color: red;
+      font-size: 14px;
+    }
   }
 }
 

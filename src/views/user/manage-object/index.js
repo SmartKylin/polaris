@@ -44,11 +44,13 @@ export default create({
       // 设置是否有小红点
       settingHasDot: null,
       // 复盘是否有小红点
-      replayHasDot: null
-
+      replayHasDot: null,
+      // 是否取历史记录
+      getFromHistory: false
     }
   },
   methods: {
+    // 设置目标/目标复盘
     changeGoalStatus(val) {
       this.status = val
       this.curWeek = ''
@@ -58,27 +60,32 @@ export default create({
         this.queryReplayData()
       }
     },
+    selectMoreMonth() {
+      this.getFromHistory = true
+      this.monthSelectorVisible = true 
+    },
     // 选择周
     changeCurWeek(ind) {
       this.curIndex = parseInt(ind)
       this.curWeek = this.weeks[this.curIndex]
       let isCurrentWeek = new Date().getMonth() + 1 === parseInt(this.month)
       if (this.status === 'setting') {
-        isCurrentWeek ? this.queryManageData() : this.queryAimsHistory()
+        this.getFromHistory ? this.queryAimsHistory() : this.queryManageData() 
       } else {
         isCurrentWeek ? this.queryReplayData() : this.queryReplayHistory()
       }
     },
     makeMonths() {
       let month = (new Date()).getMonth() + 1
-      this.month = month + '月'
+      this.month = month
       for (let i = 1; i < 13; i++) {
-        this.months.push(i + '月')
+        this.months.push(i)
       }
     },
     // 选择月份
     selectMonth(m) {
       this.month = m
+      this.curWeek = ''
       setTimeout(() => {
         this.monthSelectorVisible = false
         if (this.status === 'setting') {
@@ -108,15 +115,19 @@ export default create({
         this.whichStep = parseInt(this.$route.query.whichStep)
       }
     },
+    // 查询目标设置信息
     queryManageData() {
+      this.$loading.show()
       let startTime = this.curWeek.start_time
       let endTime = this.curWeek.end_time
       if (startTime) {
         getManageData({ start_time: startTime, end_time: endTime }).then(this.querySuccess).catch(err => {
+          this.$loading.hide()
           this.$toast.show(err.message)
         })
       } else {
         getManageData().then(this.querySuccess).catch(err => {
+          this.$loading.hide()
           this.$toast.show(err.message)
         })
       }
@@ -137,19 +148,31 @@ export default create({
     queryAimsHistory() {
       let year = new Date().getFullYear()
       let month = parseInt(this.month)
-      getAimsHistory({ year, month }).then(this.querySuccess).catch(err => {
+      let params = { year, month }
+      if (this.curWeek) {
+        params.start_time = this.curWeek.start_time
+        params.end_time = this.curWeek.end_time
+      }
+      getAimsHistory(params).then(this.querySuccess).catch(err => {
         this.$toast.show(err.message)
       })
     },
     queryReplayHistory() {
       let year = new Date().getFullYear()
       let month = parseInt(this.month)
-      getReplayHistory({ year, month }).then(this.queryReplaySuccess).catch(err => {
+      let params = { year, month }
+      if (this.curWeek) {
+        params.start_time = this.curWeek.start_time
+        params.end_time = this.curWeek.end_time
+      }
+      getReplayHistory(params).then(this.queryReplaySuccess).catch(err => {
         this.$toast.show(err.message)
       })
     },
     // 查询目标设置信息成功的回调函数
     querySuccess(res) {
+      this.month = parseInt(res.month)
+      this.$loading.hide()
       this.weeks = res.weeks
       this.aims_info = res.aims_info
       this.num = res.num
@@ -163,11 +186,13 @@ export default create({
       } else {
         this.curWeek = res.weeks[this.curIndex]
       }
-      if (this.curWeek.open_status === 1) {
+      if (this.curWeek && this.curWeek.open_status === 1) {
         this.startTimer(res.set.end_time * 1000)
       }
-      this.startTime = this.formatDate(this.curWeek.start_time)
-      this.endTime = this.formatDate(this.curWeek.end_time)
+      if (this.curWeek) {
+        this.startTime = this.formatDate(this.curWeek.start_time)
+        this.endTime = this.formatDate(this.curWeek.end_time)
+      }
       // 计算每周的开放状态
       /* this.weeks = this.weeks.map((w, ind) => {
         if (res.curr_time < w.start_time) {
@@ -188,6 +213,7 @@ export default create({
     },
     // 查询目标复盘信息成功回调函数
     queryReplaySuccess(res) {
+      this.month = parseInt(res.month)
       this.weeks = res.weeks
       this.aims_info = res.aims_info
       this.analysis = res.aims_info.analysis

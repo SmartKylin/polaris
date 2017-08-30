@@ -1,5 +1,5 @@
 <div class="user--view">
-  <div class="user--header">
+ <!--  <div class="user--header">
     <Tab @change="handleChange">
       <div class="tab--item active" data-key="week">本周目标</div>
       <div class="tab--item" data-key="month">本月目标</div>
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="section-title">待办事项</div>
   <div class="user--bd">
