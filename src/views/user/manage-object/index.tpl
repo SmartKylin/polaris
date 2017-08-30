@@ -16,7 +16,7 @@
       </div>
     </transition>
     <!--周选择器-->
-    <CellGroup class="mb10 mt50" v-if=weeks.length>
+    <CellGroup class="mb10" :class="{'mt50': !monthSelectorVisible}" v-if=weeks.length>
       <transition name="fade">
         <div class="flex bg-white week--switch" v-show="!monthSelectorVisible">
           <div class="tab--item switch--right flex-center">
