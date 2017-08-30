@@ -2,6 +2,10 @@
   .tab--item {
     color: #333;
     border-bottom: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     &.active {
       color: #20a0ff;
       font-weight: bold;
@@ -42,15 +46,19 @@
     margin: 8px 0;
     background: #20a0ff;
     color: #fff;
+    flex: 0.5
   //border-radius: 50%;
   }
   .switch--right {
   //border-left: 1px solid #20a0ff;
     font-size: 16px;
     display: flex;
-    width: 70px;
+    flex: 0.5;
     flex-direction: column;
     align-items: center;
+  }
+  .switch--middle {
+    flex: 5;
   }
 }
 
@@ -96,11 +104,13 @@
     padding: 10px 0;
   }
   .goal--box {
-    width: 100px;
-    height: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     display: flex;
-    background: #13CE66
+    background: #20a0ff;
     color: #fff;
     flex-direction: column;
     align-items: center;

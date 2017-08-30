@@ -7,7 +7,7 @@ export default create({
   data() {
     return {
       status: 'setting',
-      month: '8月',
+      month: '',
       monthSelectorVisible: false,
       months: [],
       whichStep: 1,
@@ -23,28 +23,41 @@ export default create({
       aims_info: {},
       num: {},
       // 设置截止时间
-      deadline: ''
+      deadline: '',
+      // 目标周期
+      startTime: '',
+      endTime: '',
+      // 预想目标提交时间
+      createdTime: '',
+      // 当前周的开放状态
+      openStatus: 0,
+      // 当前周索引
+      curIndex: ''
     }
   },
   methods: {
     changeGoalStatus(val) {
       this.status = val
     },
+    // 选择周
     changeCurWeek(ind) {
-      this.curWeek = this.weeks[ind]
-      this.queryManageData()
+      this.curIndex = parseInt(ind)
+      this.curWeek = this.weeks[this.curIndex]
+      new Date().getMonth() + 1 === parseInt(this.month) ? this.queryManageData() : this.queryAimsHistory()
     },
     makeMonths() {
+      let month = (new Date()).getMonth() + 1
+      this.month = month + '月'
       for (let i = 1; i < 13; i++) {
         this.months.push(i + '月')
       }
     },
+    // 选择月份
     selectMonth(m) {
       this.month = m
       setTimeout(() => {
         this.monthSelectorVisible = false
-        let year = new Date().getFullYear()
-        this.queryAimsHistory(year, parseInt(m))
+        this.queryAimsHistory()
       }, 100)
     },
     // 倒计时
@@ -55,6 +68,12 @@ export default create({
           clearInterval(this.timer)
         }
       }, 1000)
+    },
+    formatDate(time) {
+      time = new Date(time * 1000).toLocaleDateString()
+      time = time.split(' ')[0].split('/')
+      time.shift()
+      return time.join('.')
     },
     initQueryString() {
       if (this.$route.query.whichStep) {
@@ -74,8 +93,10 @@ export default create({
         })
       }
     },
-    queryAimsHistory(month, year) {
-      getAimsHistory({ month, year }).then(this.querySuccess).catch(err => {
+    queryAimsHistory() {
+      let year = new Date().getFullYear()
+      let month = parseInt(this.month)
+      getAimsHistory({ year, month }).then(this.querySuccess).catch(err => {
         this.$toast.show(err.message)
       })
     },
@@ -83,19 +104,37 @@ export default create({
       this.weeks = res.weeks
       this.aims_info = res.aims_info
       this.num = res.num
-      this.startTimer(res.set.start_time * 1000)
-      this.whichStep = parseInt(res.aims_info.status)
-      let curInd = res.weeks.findIndex(w => w.active === 1)
-      this.weeks = this.weeks.map((w, ind) => {
-        if (ind < curInd) {
-          w.openStatus = '已结束'
-        } else if (ind === curInd) {
-          w.openStatus = '已开放'
+      this.openStatus = res.open_status
+      if (res.aims_info) {
+        this.whichStep = parseInt(res.aims_info.status)
+        this.createdTime = res.aims_info.created_time.split(' ')[0].split('-').join('.')
+      }
+      if (!this.curWeek) {
+        this.curWeek = res.weeks.find(w => w.active === 1)
+      } else {
+        this.curWeek = res.weeks[this.curIndex]
+      }
+      if (this.curWeek.open_status === 1) {
+        this.startTimer(res.set.end_time * 1000)
+      }
+      this.startTime = this.formatDate(this.curWeek.start_time)
+      this.endTime = this.formatDate(this.curWeek.end_time)
+      /* this.weeks = this.weeks.map((w, ind) => {
+        if (res.curr_time < w.start_time) {
+          w.openStatus = 0
+        } else if (res.curr_time > w.end_time) {
+          w.openStatus = 2
         } else {
-          w.openStatus = '未开放'
+          if (res.curr_time < res.set.start_time) {
+            w.openStatus = 0
+          } else if (res.curr_time > res.set.end_time) {
+            w.openStatus = 2
+          } else {
+            w.openStatus = 1
+          }
         }
         return w
-      })
+      }) */
     }
   },
   created() {

@@ -35,3 +35,17 @@ export function getManageData(params) {
 export function getAimsHistory(params) {
   return http.get(apis.getAimsHistory, params)
 }
+
+/**
+ * 添加目标
+ */
+export function addGoal(params) {
+  return http.post(apis.addGoal, params)
+}
+
+/**
+ * 完善目标
+ */
+export function perfectGoal(params) {
+  return http.post(apis.perfectGoal, params)
+}

@@ -88,7 +88,7 @@ export default create({
         this.hobby = data.hobby
         this.remark = data.remark
         this.branchstoreName = data.branchstore_name
-        this.branchstoreId = data.branchstore_id
+        // this.branchstoreId = data.branchstore_id
         this.institutionName = data.channelInstitutionName
         this.institutionId = data.channelInstitutionId
         this.storefrontMobile = data.storefront_mobile
@@ -343,16 +343,4 @@ export default create({
     }
     next()
   }
-  /* ,
-  watch: {
-    editImgList() {
-      console.log('editImgList')
-      console.log(this.editImgList)
-      this.images = this.images.concat(this.editImgList.map(item => item.videoValue))
-    },
-    images(val) {
-      console.log(this.images)
-      console.log(val)
-  }
-  } */
 })

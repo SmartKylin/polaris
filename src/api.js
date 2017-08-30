@@ -102,6 +102,10 @@ export default (config => {
   'getManageData': '/mizar/m/user/aims/manage',
   // 获取目标历史信息
   'getAimsHistory': '/mizar/m/user/aims/history',
+  // 添加目标
+  'addGoal': '/mizar/m/user/aims/add',
+  // 完善目标
+  'perfectGoal': '/mizar/m/user/aims/perfect',
   /**
    * 扫描录入触点
    * ============================================== */
