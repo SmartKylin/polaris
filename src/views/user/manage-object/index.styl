@@ -12,6 +12,9 @@
       background-color: #fff;
       border-bottom: 2px solid #20a0ff;
     }
+    &.title {
+      font-size: 16px;
+    }
   }
   .steps--bar {
     padding: 8px 5px 5px 25px;
@@ -37,6 +40,12 @@
     right: 0;
     width: 100%;
     z-index: 10;
+  }
+  .add--textarea--wrap {
+    &.mt0 {
+      background-color: #fff!important;
+      margin-top: 0;
+    }
   }
 }
 
@@ -72,25 +81,36 @@
 
 .months--group {
   background: #fff;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
   border-bottom: 2px solid #20a0ff;
   padding: 5px 0;
   margin-top: 40px;
-  .month--item {
-    color: #333;
-    width: 16%;
-    height: 30px;
-    padding: 5px 0;
-    text-align: center;
-    line-height: 30px;
-    &.active {
-      background: #20a0ff;
-      color: #fff;
-      border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .months--item--wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    .month--item {
+      color: #333;
+      width: 16%;
+      height: 30px;
+      padding: 5px 0;
+      text-align: center;
+      line-height: 30px;
+      &.active {
+        background: #20a0ff;
+        color: #fff;
+        border-radius: 50%;
+      }
     }
+  }
+  .cancel--btn {
+    font-size: 32px;
+    width: 50px;
+    text-align: center;
   }
 }
 
@@ -124,6 +144,10 @@
     border-radius: 5px;
   }
 }
+.open--textarea {
+  display: flex;
+  flex-direction: column;
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
@@ -132,5 +156,28 @@
 .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */
 {
   opacity: 0
+}
+
+// 修改element的steps插件样式
+.mbo {
+  .el-step__head {
+    width: 15px;
+    height: 15px;
+  }
+  .el-step__icon {
+    line-height: 15px;
+    font-size: 12px;
+  }
+  .el-step__line.is-horizontal {
+    top: 9px;
+    height: 2px;
+    left: 20px;
+  }
+  .el-step__title.is-finish {
+    font-weight: normal;
+  }
+  .el-step__title {
+    font-size: 12px;
+  }
 }
 

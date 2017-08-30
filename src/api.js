@@ -98,6 +98,8 @@ export default (config => {
   'login': '/mizar/m/user/bind',
   // 获取目标管理状态
   'getOpenStatus': '/mizar/m/user/aims/openstatus',
+  // 获取目标复盘状态
+  'getReplayOpenStatus': '/mizar/m/user/aims/replayopenstatus',
   // 获取目标管理信息
   'getManageData': '/mizar/m/user/aims/manage',
   // 获取目标历史信息
@@ -106,6 +108,12 @@ export default (config => {
   'addGoal': '/mizar/m/user/aims/add',
   // 完善目标
   'perfectGoal': '/mizar/m/user/aims/perfect',
+  // 获取目标复盘管理信息
+  'getReplayData': '/mizar/m/user/aims/replay',
+  // 获取目标复盘历史记录
+  'getReplayHistory': '/mizar/m/user/aims/replayhistory',
+  // 增加复盘内容
+  'replayEdit': '/mizar/m/user/aims/replayedit',
   /**
    * 扫描录入触点
    * ============================================== */

@@ -23,10 +23,24 @@ export function getOpenStatus() {
 }
 
 /**
- * 获取目标管理信息
+ * 获取目标复盘状态
+ */
+export function getReplayOpenStatus() {
+  return http.get(apis.getReplayOpenStatus)
+}
+
+/**
+ * 获取目标管理设置信息
  */
 export function getManageData(params) {
   return http.get(apis.getManageData, params)
+}
+
+/**
+ * 获取目标复盘管理信息
+ */
+export function getReplayData(params) {
+  return http.get(apis.getReplayData, params)
 }
 
 /**
@@ -34,6 +48,20 @@ export function getManageData(params) {
  */
 export function getAimsHistory(params) {
   return http.get(apis.getAimsHistory, params)
+}
+
+/**
+ * 获取复盘历史信息
+ */
+export function getReplayHistory(params) {
+  return http.get(apis.getReplayHistory, params)
+}
+
+/**
+ *  目标复盘
+ */
+export function postReplay(params) {
+  return http.post(apis.replayEdit, params)
 }
 
 /**

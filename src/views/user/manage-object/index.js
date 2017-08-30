@@ -1,7 +1,7 @@
 import create from './index.tpl'
 import './index.styl'
 import { getCountDown } from '../../../helper/countdown'
-import { getManageData, getAimsHistory } from '../../../services'
+import { getManageData, getAimsHistory, getReplayData, getReplayHistory, postReplay, getOpenStatus, getReplayOpenStatus } from '../../../services'
 
 export default create({
   data() {
@@ -14,9 +14,17 @@ export default create({
       now: null,
       countDown: '',
       timer: null,
-      personalAnalysis: '',
-      leaderAnalysis: '',
-      summarize: '',
+      // 目标复盘相关
+      // 个人分析
+      analysis: '',
+      // 组长分析
+      summary: '',
+      // 个人分析是否可见
+      analysisVisible: false,
+      // 组长分析是否可见
+      summaryVisible: false,
+      // 复盘内容
+      replayContent: '',
       // 目标管理相关
       curWeek: '',
       weeks: [],
@@ -32,18 +40,34 @@ export default create({
       // 当前周的开放状态
       openStatus: 0,
       // 当前周索引
-      curIndex: ''
+      curIndex: '',
+      // 设置是否有小红点
+      settingHasDot: null,
+      // 复盘是否有小红点
+      replayHasDot: null
+
     }
   },
   methods: {
     changeGoalStatus(val) {
       this.status = val
+      this.curWeek = ''
+      if (val === 'setting') {
+        this.queryManageData()
+      } else if (val === 'review') {
+        this.queryReplayData()
+      }
     },
     // 选择周
     changeCurWeek(ind) {
       this.curIndex = parseInt(ind)
       this.curWeek = this.weeks[this.curIndex]
-      new Date().getMonth() + 1 === parseInt(this.month) ? this.queryManageData() : this.queryAimsHistory()
+      let isCurrentWeek = new Date().getMonth() + 1 === parseInt(this.month)
+      if (this.status === 'setting') {
+        isCurrentWeek ? this.queryManageData() : this.queryAimsHistory()
+      } else {
+        isCurrentWeek ? this.queryReplayData() : this.queryReplayHistory()
+      }
     },
     makeMonths() {
       let month = (new Date()).getMonth() + 1
@@ -57,7 +81,11 @@ export default create({
       this.month = m
       setTimeout(() => {
         this.monthSelectorVisible = false
-        this.queryAimsHistory()
+        if (this.status === 'setting') {
+          this.queryAimsHistory()
+        } else {
+          this.queryReplayHistory()
+        }
       }, 100)
     },
     // 倒计时
@@ -93,6 +121,19 @@ export default create({
         })
       }
     },
+    queryReplayData() {
+      let startTime = this.curWeek.start_time
+      let endTime = this.curWeek.end_time
+      if (startTime) {
+        getReplayData({ start_time: startTime, end_time: endTime }).then(this.queryReplaySuccess).catch(err => {
+          this.$toast.show(err.message)
+        })
+      } else {
+        getReplayData().then(this.queryReplaySuccess).catch(err => {
+          this.$toast.show(err.message)
+        })
+      }
+    },
     queryAimsHistory() {
       let year = new Date().getFullYear()
       let month = parseInt(this.month)
@@ -100,6 +141,14 @@ export default create({
         this.$toast.show(err.message)
       })
     },
+    queryReplayHistory() {
+      let year = new Date().getFullYear()
+      let month = parseInt(this.month)
+      getReplayHistory({ year, month }).then(this.queryReplaySuccess).catch(err => {
+        this.$toast.show(err.message)
+      })
+    },
+    // 查询目标设置信息成功的回调函数
     querySuccess(res) {
       this.weeks = res.weeks
       this.aims_info = res.aims_info
@@ -119,6 +168,7 @@ export default create({
       }
       this.startTime = this.formatDate(this.curWeek.start_time)
       this.endTime = this.formatDate(this.curWeek.end_time)
+      // 计算每周的开放状态
       /* this.weeks = this.weeks.map((w, ind) => {
         if (res.curr_time < w.start_time) {
           w.openStatus = 0
@@ -135,12 +185,52 @@ export default create({
         }
         return w
       }) */
+    },
+    // 查询目标复盘信息成功回调函数
+    queryReplaySuccess(res) {
+      this.weeks = res.weeks
+      this.aims_info = res.aims_info
+      this.analysis = res.aims_info.analysis
+      this.summary = res.aims_info.summary
+      if (!this.curWeek) {
+        this.curWeek = res.weeks.find(w => w.active === 1)
+      } else {
+        this.curWeek = res.weeks[this.curIndex]
+      }
+    },
+    // 提交复盘总结
+    postReplayHandle() {
+      postReplay({ id: this.aims_info.id, replayContent: this.replayContent }).then(res => {
+        this.queryReplayData()
+        this.replayHasDot = 0
+      }).catch(err => {
+        this.$toast.show(err.message)
+      })
+    },
+    // 查询设置小红点状态
+    queryOpenStatus() {
+      getOpenStatus().then(res => {
+        this.settingHasDot = res.status
+      }).catch(err => {
+        this.$toast.show(err.message)
+      })
+    },
+    // 查询复盘小红点状态
+    queryReplayOpenStatus() {
+      getReplayOpenStatus().then(res => {
+        this.replayHasDot = res.status
+      }).catch(err => {
+        this.$toast.show(err.message)
+      })
     }
   },
   created() {
     this.initQueryString()
     this.makeMonths()
     this.queryManageData()
+    // 获取小红点状态
+    this.queryOpenStatus()
+    this.queryReplayOpenStatus()
   },
   beforeDestroy() {
     clearInterval(this.timer)

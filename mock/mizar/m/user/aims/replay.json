@@ -15,26 +15,22 @@
           {
             "start_time":1502035200,
             "end_time":1502640000,
-            "active":0,
-            "open_status": "1"
+            "active":0
           },
           {
             "start_time":1502640000,
             "end_time":1503244800,
-            "active": 0,
-            "open_status": "0"
+            "active":0
           },
           {
             "start_time":1503244800,
             "end_time":1503849600,
-            "active": 0,
-            "open_status": "0"
+            "active":0
           },
           {
             "start_time":1503849600,
             "end_time":1504454400,
-            "active": 1,
-            "open_status": "0"
+            "active":1
           }
         ],
         "open_status": 1,

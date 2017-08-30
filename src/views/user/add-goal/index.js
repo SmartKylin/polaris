@@ -7,7 +7,7 @@ export default create({
     return {
       analysis: '',
       // 添加目标的金额
-      amount: 0,
+      amount: null,
       analysisVisible: false,
       whichStep: 0,
       // 与组长讨论纪要
@@ -15,7 +15,7 @@ export default create({
       startTime: '',
       endTime: '',
       // 最终目标金额
-      finalAmount: 0,
+      finalAmount: null,
       // 预想目标提交时间
       createdTime: '',
       // 目标周期时间戳
@@ -37,7 +37,7 @@ export default create({
         this.analysis = analysis
       }
       if (amount) {
-        this.amount = amount
+        this.amount = parseInt(amount)
       }
       if (createdTime) {
         this.createdTime = createdTime

@@ -1,12 +1,12 @@
 <div class="add-goal">
   <CellGroup v-if="whichStep == 2">
     <Cell :title="'个人预想目标：' + amount + '万'" :content="createdTime + '提交'"></Cell>
-    <Cell title="个人预想目标：文字"  content="显示全部" arrow @click="showAnalysis"></Cell>
+    <Cell title="个人预想目标：文字"  :content="analysisVisible ? '收起' : '显示全部'" arrow @click="showAnalysis"></Cell>
   </CellGroup>
   <CellGroup v-show="analysisVisible == true">
     <div class="add--textarea--wrap">
       <textarea name="" id="" cols="3" rows="4" class="add--text--area"  maxlength="500" :value="analysis" disabled></textarea>
-      <div class="textarea--length">{{analysis.length}}/500</div>
+      <!-- <div class="textarea--length">{{analysis.length}}/500</div> -->
     </div>
   </CellGroup>
   <Cell title="目标周期：" :content="startTime + '-' + endTime"></Cell>
