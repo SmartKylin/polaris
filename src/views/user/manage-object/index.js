@@ -54,6 +54,7 @@ export default create({
     changeGoalStatus(val) {
       this.status = val
       this.curWeek = ''
+      this.monthSelectorVisible = false
       if (val === 'setting') {
         this.queryManageData()
       } else if (val === 'review') {

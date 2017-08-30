@@ -26,6 +26,6 @@
       <div class="textarea--length">{{summary.length}}/500</div>
     </div>
   </CellGroup>
-  <div class="button--large submit--fixed" :class="{active: postAddBtnAvailable}" @click="postAddGoal" v-if="whichStep == 1">提交个人预想</div>
+  <div class="button--large submit--fixed" :class="{active: postAddBtnAvailable}" @click="postAddGoal" v-if="whichStep == 1">提交个人预想目标</div>
   <div class="button--large submit--fixed" :class="{active: postPerfectBtnAvailable}" @click="postPerfectGoal" v-if="whichStep == 2">提交最终确定目标</div>
 </div>
