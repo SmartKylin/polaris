@@ -62,7 +62,7 @@ export default create({
     },
     selectMoreMonth() {
       this.getFromHistory = true
-      this.monthSelectorVisible = true 
+      this.monthSelectorVisible = true
     },
     // 选择周
     changeCurWeek(ind) {
@@ -70,7 +70,7 @@ export default create({
       this.curWeek = this.weeks[this.curIndex]
       let isCurrentWeek = new Date().getMonth() + 1 === parseInt(this.month)
       if (this.status === 'setting') {
-        this.getFromHistory ? this.queryAimsHistory() : this.queryManageData() 
+        this.getFromHistory ? this.queryAimsHistory() : this.queryManageData()
       } else {
         isCurrentWeek ? this.queryReplayData() : this.queryReplayHistory()
       }
