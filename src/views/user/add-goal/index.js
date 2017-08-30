@@ -22,7 +22,9 @@ export default create({
       startTimeStamp: '',
       endTimeStamp: '',
       // 预想目标ID
-      id: ''
+      id: '',
+      // 是否正在提交数据
+      isPosting: false
     }
   },
   methods: {
@@ -56,9 +58,13 @@ export default create({
       this.analysisVisible = !this.analysisVisible
     },
     postAddGoal() {
+      if (this.isPosting) {
+        return
+      }
       if (!this.postAddBtnAvailable) {
         return
       }
+      this.isPosting = true
       addGoal({ amount: this.amount, analysis: this.analysis }).then(res => {
         if (res) {
           this.$router.replace('/user/mbo?whichStep=2')
@@ -70,9 +76,13 @@ export default create({
       })
     },
     postPerfectGoal() {
+      if (this.isPosting) {
+        return
+      }
       if (!this.postPerfectBtnAvailable) {
         return
       }
+      this.isPosting = true
       perfectGoal({
         start_time: this.startTimeStamp,
         end_time: this.endTimeStamp,
