@@ -93,7 +93,7 @@
     </CellGroup>
   
     <!-- 未设置目标时不显示 个人分析和组长分析 -->
-    <CellGroup v-if="status == 'review'" v-if="aims_info.aims_replay_status != 0">
+    <CellGroup v-if="status == 'review' && aims_info.aims_replay_status != 0">
       <Cell title="个人分析" :content="analysisVisible == true ? '收起' : '展开'" arrow @click="analysisVisible = !analysisVisible"></Cell>
       <div class="add--textarea--wrap mt0" v-show="analysisVisible == true">
         <textarea name="" id="" cols="3" rows="4" class="add--text--area" maxlength="500" :value="analysis"
