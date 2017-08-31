@@ -25,7 +25,7 @@ export default create({
   },
   created() {
     // 如果登录过
-    if (parseInt(window.__CONFIG__.login) === 1) {
+    if (parseInt(window.login) === 1) {
       getOpenStatus().then(res => {
         this.status = res.status
       }).catch(err => {
