@@ -19,7 +19,7 @@ export default create({
         this.data = data
         this.id = data.id
       }).catch(err => {
-        this.$dialog.hide()
+        this.$loading.hide()
         this.$dialog.alert('提示', err.message)
       })
     }
