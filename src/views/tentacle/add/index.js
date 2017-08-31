@@ -81,7 +81,9 @@ export default create({
         this.$loading.hide()
         this.industry = data.industry
         this.name = data.name
-        this.label = data.labelId[0]
+        if (data.labelId) {
+          this.label = data.labelId[0]
+        }
         this.address = data.address
         this.mobile = data.mobile
         this.position = data.position

@@ -22,14 +22,14 @@ export default create({
       industryList: [],
       // 机构所处产业
       industry: '',
-      // 触点地址 
+      // 触点地址
       address: '',
       // 触点姓名
       name: '',
       // 触点电话
       mobile: '',
       // 职位
-      position: '', 
+      position: '',
       // 分店名
       branchstoreName: '',
       // 分店ID
@@ -83,7 +83,9 @@ export default create({
         // this.data = data
         this.industry = data.industry
         this.name = data.name
-        this.label = data.labelId[0]
+        if (data.labelId) {
+          this.label = data.labelId[0]
+        }
         this.address = data.address
         this.mobile = data.mobile
         this.position = data.position
