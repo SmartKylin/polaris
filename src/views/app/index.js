@@ -24,15 +24,18 @@ export default create({
     }
   },
   created() {
-    getOpenStatus().then(res => {
-      this.status = res.status
-    }).catch(err => {
-      this.$toast.show(err.message)
-    })
-    getReplayOpenStatus().then(res => {
-      this.replayStatus = res.status
-    }).catch(err => {
-      this.$toast.show(err.message)
-    })
+    // 如果登录过
+    if (parseInt(window.__CONFIG__.login) === 1) {
+      getOpenStatus().then(res => {
+        this.status = res.status
+      }).catch(err => {
+        this.$toast.show(err.message)
+      })
+      getReplayOpenStatus().then(res => {
+        this.replayStatus = res.status
+      }).catch(err => {
+        this.$toast.show(err.message)
+      })
+    }
   }
 })

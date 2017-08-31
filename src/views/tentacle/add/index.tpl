@@ -66,8 +66,8 @@
       <div v-show="!logDelay" class="textarea&#45;&#45;length">{{visitLog.length}}/500</div>
     </div>
   </CellGroup>-->
-  <!--<div class="btn&#45;&#45;wrap">
+  <!-- <div class="btn&#45;&#45;wrap">
     <div class="btn&#45;&#45;addtent " :class="{'active': btnSubmitActive && !isPosting}" @click="handlePostBtn">提交</div>
-  </div>-->
+  </div> -->
   <div class="button--large" :class="{'active': btnSubmitActive && !isPosting}" @click="handlePostBtn">提交</div>
 </div>
