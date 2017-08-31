@@ -180,7 +180,9 @@ export default create({
       this.openStatus = res.open_status
       if (res.aims_info) {
         this.whichStep = parseInt(res.aims_info.status)
-        this.createdTime = res.aims_info.created_time.split(' ')[0].split('-').join('.')
+        if (res.aims_info.created_time) {
+          this.createdTime = res.aims_info.created_time.split(' ')[0].split('-').join('.')
+        }
       }
       if (!this.curWeek) {
         this.curWeek = res.weeks.find(w => w.active === 1)

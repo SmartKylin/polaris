@@ -8,10 +8,9 @@
     // 全局配置
     var __CONFIG__ = {}
     var cityId = ''
-    var login = 0
     __CONFIG__.apiPath = '<%=htmlWebpackPlugin.options.apiPath%>'
     __CONFIG__.version = '<%=htmlWebpackPlugin.options.appVersion%>'
-    login = '<?php echo $login;?>'
+    __CONFIG__.login = '<?php echo $login;?>'
     cityId = '<?php echo $city_id;?>'
   </script>
   <%=htmlWebpackPlugin.files.webpackManifest%>
