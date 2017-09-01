@@ -73,8 +73,6 @@ export default create({
     },
     getIdentifyResult(serverId) {
       getCardResult(serverId).then(res => {
-        /* console.log('serverId: ' + serverId)
-        console.log(res) */
         storage.set('tentacle', res)
         this.$router.push('/tentacle/edit?fromPage=1')
       }).catch(err => {

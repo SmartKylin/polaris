@@ -37,7 +37,7 @@
   </CellGroup>-->
 
   <CellGroup class="mb10" :class="{'mb50': isEditPage}">
-    <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images" :editImgList.sync="editImgList" @deleteCard="cardDelete"/>
+    <PhotoUploader :img.sync="img" :imgreq="imgreq" :imgthum="imgthum" :images.sync="images" :editImgList.sync="editImgList"/>
   </CellGroup>
  <!-- <CellGroup>
     <div class="add&#45;&#45;textarea&#45;&#45;wrap">

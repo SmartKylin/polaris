@@ -54,12 +54,12 @@ export default create({
       imgthum: '',
       // 名片存库名称
       img: '',
-      // 所有要上传的图片
+      // 最终要所有要上传的图片
       images: [],
       email: '',
       // 门店电话
       storefrontMobile: '',
-      // 触点详情页下的img列表
+      // 触点详情页已经存在的img列表
       editImgList: [],
       sex: '',
       age: '',
@@ -95,15 +95,20 @@ export default create({
         this.institutionId = data.channelInstitutionId
         this.storefrontMobile = data.storefront_mobile
         this.email = data.email
-        this.editImgList = data.images
+        // 区分名片和其他图片
+        let images = data.images
+        if (images) {
+          let card = images.find(img => parseInt(img.is_card) === 1)
+          if (card && card.videoValue && card.realUrl) {
+            this.img = card.videoValue
+            this.imgreq = card.realUrl
+          }
+          this.editImgList = images.filter(img => parseInt(img.is_card) !== 1)
+        }
         this.sex = data.sex
         this.age = data.age
         this.experience = data.experience
         this.contacts = data.contacts
-        /* let images = data.images
-        if (images && images.length) {
-          this.images = images.map(item => item.videoValue)
-        } */
       }).catch(err => {
         this.$loading.hide()
         this.$toast.show(err.message)
@@ -154,26 +159,11 @@ export default create({
         this.$toast.show('请输入正确的手机号')
       }
     },
-    // 删除名片
-    cardDelete() {
-      this.img = ''
-    },
-    /* logDelayHandle() {
-      if (this.logDelay === true) {
-        return
-      }
-      this.logDelay = true
-      this.$dialog.alert('已为您设置20:00的拜访提醒', '记得补写拜访日志哦~', [{
-        title: '我知道了'
-      }])
-    }, */
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, email, storefrontMobile, images, sex, age, experience, contacts, hobby, remark } = this
+      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, email, storefrontMobile, images, sex, age, experience, contacts, hobby, remark, img } = this
       let cityId = window.cityId
       this.isPosting = true
-      /* console.log('editTentacle')
-      console.log(images) */
       images = images.join(',')
       editTentacle({
         channelId,
@@ -188,7 +178,10 @@ export default create({
         address,
         position,
         label,
+        // 其他图片
         images,
+        // 名片
+        img,
         hobby,
         remark,
         email,
@@ -210,12 +203,9 @@ export default create({
     },
     // 增加触点
     tentacleAdd() {
-      let { name, mobile, industry, position, remark, address, label, institutionId, institutionName, fromPage, images } = this
+      let { name, mobile, industry, position, remark, address, label, institutionId, institutionName, fromPage, images, img } = this
       let cityId = window.cityId
       this.isPosting = true
-      if (this.img) {
-        images.unshift(this.img)
-      }
       images = images.join(',')
       addTentacle({
         name,
@@ -231,7 +221,10 @@ export default create({
         // hobby,
         fromPage,
         remark,
-        images
+        // 其他图片
+        images,
+        // 名片
+        img
       }).then(res => {
         this.isPosting = false
         this.$toast.show('触点添加成功', () => {
