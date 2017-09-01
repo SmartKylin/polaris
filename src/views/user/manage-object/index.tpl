@@ -75,7 +75,8 @@
             <div v-if="aims_info.status == 1">待完善</div>
             <div v-if="aims_info.status == 2" class="font-16">{{aims_info.final_amount}}万</div>
         </div>
-        <div v-if="curWeek && curWeek.open_status == 2" class="setting-status color-red">{{aims_info.final_amount ? aims_info.final_amount + '万' : '未设置'}}</div>
+        <div v-if="status == 'setting' && curWeek && curWeek.open_status == 2" class="setting-status color-red">{{aims_info.final_amount ? aims_info.final_amount + '万' : '未设置'}}</div>
+        <div v-if="status == 'review' && aims_info && aims_info.aims_replay_status == 0" class="setting-status color-red">未设置</div>
         <div class="font-14 mt30">签约金额:周目标</div>
       </div>
       <!-- <div v-if="status == 'review'" class="mt10 mb20">本周实际签约金额{{aims_info.final_amount}}万</div> -->
@@ -119,7 +120,7 @@
         <div class="red--tip">
           <textarea v-if="curWeek && curWeek.open_status == 0" name="" id="" cols="3" rows="4" class="add--text--area" placeholder="还未到开放时间，暂时不能编辑提交" disabled></textarea>
           <textarea v-if="curWeek && curWeek.open_status == 2 && aims_info.aims_replay_status != 0" name="" id="" cols="3" rows="4" class="add--text--area" placeholder="开放时间已经过了，下周记得准时提交复盘总结~" disabled></textarea>
-          <textarea v-if="curWeek && curWeek.open_status == 2 && aims_info.aims_replay_status == 0" name="" id="" cols="3" rows="4" class="add--text--area" placeholder="本周未设置目标，不能提交复盘总结，下周记得准时设置目标~" disabled></textarea>
+          <textarea v-if="aims_info.aims_replay_status == 0" name="" id="" cols="3" rows="4" class="add--text--area" placeholder="本周未设置目标，不能提交复盘总结，下周记得准时设置目标~" disabled></textarea>
         </div>
       </div>
     </CellGroup>
@@ -153,4 +154,4 @@
     </router-link>
     <div class="button--large" v-show="status == 'review'" v-if="curWeek && curWeek.open_status === 1 && aims_info.aims_replay_status == 1" @click="postReplayHandle">提交复盘总结</div>
   </div>
-</div>  
+</div>
