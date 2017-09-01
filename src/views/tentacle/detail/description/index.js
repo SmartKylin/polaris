@@ -101,6 +101,16 @@ export default create({
         this.contacts = data.contacts
         this.email = data.email
         this.storefrontMobile = data.storefront_mobile
+        // 画像页面编辑时需要传入原有的图片
+        // 区分名片和其他图片
+        let images = data.images
+        if (images) {
+          let card = images.find(img => parseInt(img.is_card) === 1)
+          if (card && card.videoValue && card.realUrl) {
+            this.img = card.videoValue
+          }
+          this.images = images.filter(img => parseInt(img.is_card) !== 1)
+        }
       })
     },
     /* // 选择标签
@@ -120,10 +130,11 @@ export default create({
     }, */
     // 编辑触点
     tentacleEdit() {
-      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, remark, hobby, sex, age, experience, contacts, email, storefrontMobile } = this
+      let { name, mobile, industry, position, address, label, institutionId, institutionName, channelId, remark, hobby, sex, age, experience, contacts, email, storefrontMobile, images, img } = this
       let cityId = window.cityId
       // let { remark, hobby } = this.data
       this.isPosting = true
+      images = images.join(',')
       editTentacle({
         channelId,
         name,
@@ -144,7 +155,9 @@ export default create({
         experience,
         contacts,
         email,
-        storefrontMobile
+        storefrontMobile,
+        images,
+        img
       }).then(res => {
         this.isPosting = false
         this.$dialog.alert('提示', '编辑触点成功')
