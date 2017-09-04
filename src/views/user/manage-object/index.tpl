@@ -69,7 +69,7 @@
       </span>
       
       <div class="goal--box mb10 mt10">
-        <div v-show="curWeek && curWeek.open_status == 0" class="setting-status">未开放</div>
+        <div v-show="curWeek && curWeek.open_status == 0 && !(aims_info && aims_info.aims_replay_status == 0)" class="setting-status">未开放</div>
         <div v-if="curWeek && curWeek.open_status == 1" class="setting-status">
             <div v-if="!aims_info || aims_info.status == 0">待预设</div>
             <div v-if="aims_info.status == 1">待完善</div>
