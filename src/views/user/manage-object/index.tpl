@@ -68,19 +68,21 @@
         <span v-if="curWeek && curWeek.open_status == 2">已结束</span>
       </span>
       
-      <div class="goal--box mb10 mt10">
-        <div v-show="curWeek && curWeek.open_status == 0 && !(aims_info && aims_info.aims_replay_status == 0)" class="setting-status">未开放</div>
+      <div class="goal--box mb20 mt10">
+        <div v-show="curWeek && curWeek.open_status == 0 && !(aims_info && aims_info.aims_replay_status == 0) && !(aims_info && aims_info.aims_replay_status == 1)" class="setting-status">未开放</div>
+        <div v-show="curWeek && curWeek.open_status == 0 && (aims_info && aims_info.aims_replay_status == 1)" class="setting-status">{{aims_info.final_amount}}</div>
         <div v-if="curWeek && curWeek.open_status == 1" class="setting-status">
             <div v-if="!aims_info || aims_info.status == 0">待预设</div>
             <div v-if="aims_info.status == 1">待完善</div>
-            <div v-if="aims_info.status == 2" class="font-16">{{aims_info.final_amount}}万</div>
+            <div v-if="aims_info.status == 2" class="font-16">{{aims_info.final_amount}}</div>
         </div>
-        <div v-if="status == 'setting' && curWeek && curWeek.open_status == 2" class="setting-status color-red">{{aims_info.final_amount ? aims_info.final_amount + '万' : '未设置'}}</div>
+        <div v-if="status == 'setting' && curWeek && curWeek.open_status == 2" class="setting-status color-red">{{aims_info.final_amount ? aims_info.final_amount : '未设置'}}</div>
         <div v-if="status == 'review' && aims_info && aims_info.aims_replay_status == 0" class="setting-status color-red">未设置</div>
-        <div class="font-14 mt30">签约金额:周目标</div>
+        <!--<div class="font-14 mt30">签约金额:周目标</div>-->
+        <div class="font-14 mt30">个人本周目标</div>
       </div>
       <!-- <div v-if="status == 'review'" class="mt10 mb20">本周实际签约金额{{aims_info.final_amount}}万</div> -->
-      <div v-if="status == 'review'" class="mt10 mb20">本周实际签约金额：系统未开放</div>
+      <!--<div v-if="status == 'review'" class="mt10 mb20">本周实际签约金额：系统未开放</div>-->
       <div class="setting--statistic mt30" v-if="status == 'setting'">
         <div class="color-blue">
           <div class="mb10 font-16">{{num.not_set}}</div>

@@ -39,7 +39,8 @@ export default create({
         this.analysis = analysis
       }
       if (amount) {
-        this.amount = parseInt(amount)
+        // this.amount = parseInt(amount)
+        this.amount = amount
       }
       if (createdTime) {
         this.createdTime = createdTime

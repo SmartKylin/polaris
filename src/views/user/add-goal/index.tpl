@@ -1,6 +1,7 @@
 <div class="add-goal">
   <CellGroup v-if="whichStep == 2">
-    <Cell :title="'个人预想目标：' + amount + '万'" :content="createdTime + '提交'"></Cell>
+    <!--<Cell :title="'个人预想目标：' + amount + '万'" :content="createdTime + '提交'"></Cell>-->
+    <Cell :title="'个人预想目标：' + amount" :content="createdTime + '提交'"></Cell>
     <Cell title="个人分析："  :content="analysisVisible ? '收起' : '展开'" arrow @click="showAnalysis"></Cell>
   </CellGroup>
   <CellGroup v-show="analysisVisible == true">
@@ -10,8 +11,10 @@
     </div>
   </CellGroup>
   <Cell title="目标周期：" :content="startTime + '-' + endTime"></Cell>
-  <Field v-if="whichStep == 1" type="number" label="目标签约金额(万)：" placeholder="填写个人预想目标签约金额" align="right" v-model="amount"></Field>
-  <Field v-if="whichStep == 2" type="number" label="最终目标金额(万)：" placeholder="填写个人最终目标签约金额" align="right" v-model="finalAmount"></Field>
+  <!--<Field v-if="whichStep == 1" type="number" label="目标签约金额(万)：" placeholder="填写个人预想目标签约金额" align="right" v-model="amount"></Field>-->
+  <Field v-if="whichStep == 1" label="个人预想目标：" placeholder="填写个人预想目标(不限内容)" align="right" v-model="amount"></Field>
+  <!--<Field v-if="whichStep == 2" type="number" label="最终目标金额(万)：" placeholder="填写个人最终目标签约金额" align="right" v-model="finalAmount"></Field>-->
+  <Field v-if="whichStep == 2" label="最终个人目标：" placeholder="填写个人最终目标(不限内容)" align="right" v-model="finalAmount"></Field>
   <CellGroup v-if="whichStep == 1">
     <div class="add--textarea--wrap">
       <div class="textarea--title">个人分析</div>
