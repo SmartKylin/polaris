@@ -76,7 +76,7 @@
             <div v-if="aims_info.status == 1">待完善</div>
             <div v-if="aims_info.status == 2" class="font-16">{{aims_info.final_amount}}</div>
         </div>
-        <div v-if="status == 'setting' && curWeek && curWeek.open_status == 2" class="setting-status color-red">{{aims_info.final_amount ? aims_info.final_amount : '未设置'}}</div>
+        <div v-if="status == 'setting' && curWeek && curWeek.open_status == 2" class="setting-status">{{aims_info.final_amount ? aims_info.final_amount : '未设置'}}</div>
         <div v-if="status == 'review' && aims_info && aims_info.aims_replay_status == 0" class="setting-status color-red">未设置</div>
         <!--<div class="font-14 mt30">签约金额:周目标</div>-->
         <div class="font-14 mt30">个人本周目标</div>
