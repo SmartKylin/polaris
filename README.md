@@ -1,7 +1,5 @@
 # polaris
 
-房联铁军
-
 * 开发
 
 ```
@@ -20,10 +18,6 @@ yarn run build
 yarn run deploy
 ```
 
-## 公众号
-
-* 房联铁军 fangliantiejun
-* 京房联测试 jingfanglian_test
 
 ## 主题颜色
 
